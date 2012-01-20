@@ -131,7 +131,7 @@ set showtabline=2 " Always show tab line
 set tabpagemax=10 " Only show 10 tabs
 
 set backspace=indent,eol,start " Make backspaces delete sensibly
-set whichwrap+=<,>,[,] " Backspace and cursor keys wrap to
+set whichwrap+=h,l,<,>,[,] " Backspace and cursor keys wrap to
 set virtualedit=onemore " Allow for cursor beyond last character
 set scrolljump=5 " Lines to scroll when cursor leaves screen
 set scrolloff=3 " Minimum lines to keep above and below cursor
