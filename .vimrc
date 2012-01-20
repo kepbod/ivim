@@ -19,6 +19,7 @@
 "   -> Tagbar
 "   -> NERD_tree
 "   -> NERD_commenter
+"   -> snipMate
 "
 " Plugins_Included:
 "   > Vundle - https://github.com/gmarik/vundle
@@ -33,6 +34,9 @@
 "   > NERD_commenter - https://github.com/scrooloose/nerdcommenter
 "     Provide many different commenting operations and styles
 "     info -> :help NERD_commenter.txt
+"   > snipMate - https://github.com/garbas/vim-snipmate
+"     Implement some of TextMate's snippets features in Vim
+"     info -> :help snipMate.txt 
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -343,5 +347,13 @@ let NERDTreeDirArrows=1
 let NERDCommentWholeLinesInVMode=2
 let NERDSpaceDelims=1
 let NERDRemoveExtraSpaces=1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"--------------------------------------------------
+" => snipMate
+"--------------------------------------------------
+
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
