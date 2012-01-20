@@ -311,6 +311,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'scrooloose/syntastic'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
+Bundle 'snipmate-snippets'
 filetype plugin indent on " Required!
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
