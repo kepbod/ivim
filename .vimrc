@@ -267,7 +267,7 @@ nnoremap <Space> za
 vnoremap <Space> za
 
 function! MyFoldText()
-    let line=getline(v:foldlevelstart)
+    let line=getline(v:foldstart)
     let nucolwidth=&foldcolumn+&number*&numberwidth
     let windowwidth=winwidth(0)-nucolwidth-3
     let foldedlinecount=v:foldend-v:foldstart
