@@ -10,16 +10,15 @@
 "   -> Status Line
 "   -> Indent and Tab Related
 "   -> Search Related
+"   -> Fold Related
 "   -> Key Mapping
-"
-"   -> Perl Section
-"   -> Python Section
 "
 "   -> Vundle
 "   -> Tagbar
 "   -> NERD_tree
 "   -> NERD_commenter
 "   -> snipMate
+"   -> Supertab
 "
 " Plugins_Included:
 "   > Vundle - https://github.com/gmarik/vundle
@@ -37,6 +36,15 @@
 "   > snipMate - https://github.com/garbas/vim-snipmate
 "     Implement some of TextMate's snippets features in Vim
 "     info -> :help snipMate.txt 
+"   > surround - https://github.com/tpope/vim-surround
+"     provide mappings to delete, change and add surroundings in pairs
+"     info -> :help surround.txt 
+"   > delimitMate - https://github.com/Raimondi/delimitMate
+"     provides automatic closing of quotes, parenthesis, brackets, etc.
+"     info -> :help delimitMate.txt 
+"   > Supertab - https://github.com/ervandew/supertab
+"     Perform all your insert completion using the tab key
+"     info -> :help supertab.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -201,7 +209,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "-------------------------------------------------
-" => Status line
+" => Status Line
 "-------------------------------------------------
 
 set laststatus=2 "Show the statusline
@@ -248,6 +256,30 @@ vnoremap / /\v
 nnoremap <leader><Space> :set hlsearch!<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"-------------------------------------------------
+" => Fold Related
+"-------------------------------------------------
+
+set foldlevelstart=0 " Start with all folds closed
+
+" Space to toggle folds.
+nnoremap <Space> za
+vnoremap <Space> za
+
+function! MyFoldText()
+    let line=getline(v:foldlevelstart)
+    let nucolwidth=&foldcolumn+&number*&numberwidth
+    let windowwidth=winwidth(0)-nucolwidth-3
+    let foldedlinecount=v:foldend-v:foldstart
+    let onetab=strpart('          ', 0, &tabstop)
+    let line=substitute(line, '\t', onetab, 'g')
+    let line=strpart(line, 0, windowwidth-2-len(foldedlinecount))
+    let fillcharcount=windowwidth-len(line)-len(foldedlinecount)
+    return line.'…'.repeat(" ",fillcharcount).foldedlinecount.'…'.' '
+endfunction
+set foldtext=MyFoldText()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "-------------------------------------------------
 " => Key Mapping
@@ -283,20 +315,8 @@ nnoremap <C-l> <C-w>l
 nnoremap ; :
 
 " Quickly escaping
-inoremap jj <ESC>
-vnoremap jj <ESC>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Perl section
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Python section
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => R section
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+inoremap nn <ESC>
+vnoremap nn <ESC>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -368,6 +388,14 @@ let NERDRemoveExtraSpaces=1
 " => snipMate
 "--------------------------------------------------
 
+let g:snip_author='Xiaoou Zhang (kepbod) <kepbod@gmail.com>'
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"--------------------------------------------------
+" => Supertab
+"--------------------------------------------------
+
+let g:SuperTabDefaultCompletionType='context'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
