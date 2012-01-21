@@ -136,14 +136,9 @@ set tabpagemax=10 " Only show 10 tabs
 
 set backspace=indent,eol,start " Make backspaces delete sensibly
 set whichwrap+=h,l,<,>,[,] " Backspace and cursor keys wrap to
-set virtualedit=onemore " Allow for cursor beyond last character
+set virtualedit=block,onemore " Allow for cursor beyond last character
 set scrolljump=5 " Lines to scroll when cursor leaves screen
 set scrolloff=3 " Minimum lines to keep above and below cursor
-set nowrap " Wrap long lines
-set textwidth=80 " Change text width
-set colorcolumn=85 " Indicate text border
-set formatoptions+=mM " Optimize format options
-set foldmethod=marker " Folding configuration
 
 set matchpairs+=<:> " Allow % to bounce between angles too
 set showmatch " Show matching brackets/parenthesis
@@ -160,8 +155,13 @@ function! ToggleRelativenumber()
     endif
 endfunction
 nnoremap <leader>n :call ToggleRelativenumber()<CR>
+set wrap " Set wrap
+set showbreak=↪  " Change wrap line break
+set textwidth=80 " Change text width
+set colorcolumn=85 " Indicate text border
+set formatoptions+=rnlmM " Optimize format options
 set list " Show these tabs and spaces and so on
-set listchars=eol:¬,tab:▸\ ,extends:‽,precedes:‽
+set listchars=tab:▸\ ,eol:¬
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -260,6 +260,10 @@ inoremap <C-k> <up>
 inoremap <C-j> <down>
 inoremap <C-h> <left>
 inoremap <C-l> <right>
+
+" Make j and k work the way you expect
+nnoremap j gj
+nnoremap k gk
 
 " Navigation between windows
 nnoremap <C-h> <C-w>h
