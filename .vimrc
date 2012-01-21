@@ -143,8 +143,8 @@ set scrolloff=3 " Minimum lines to keep above and below cursor
 set matchpairs+=<:> " Allow % to bounce between angles too
 set showmatch " Show matching brackets/parenthesis
 set matchtime=2 " Decrease the time to blink
-nnoremap <tab> %
-vnoremap <tab> %
+nnoremap <Tab> %
+vnoremap <Tab> %
 
 set number " Show line numbers
 function! ToggleRelativenumber()
@@ -162,6 +162,16 @@ set colorcolumn=85 " Indicate text border
 set formatoptions+=rnlmM " Optimize format options
 set list " Show these tabs and spaces and so on
 set listchars=tab:▸\ ,eol:¬
+
+" Set gvim UI setting
+if has('gui_running')
+    set guioptions-=m
+    set guioptions-=T
+    set guioptions-=l
+    set guioptions-=L
+    set guioptions-=r
+    set guioptions-=R
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -237,7 +247,7 @@ set incsearch " Find as you type search
 set gdefault " turn on 'g' flag
 nnoremap / /\v
 vnoremap / /\v
-nnoremap <leader><space> :set hlsearch!<CR>
+nnoremap <leader><Space> :set hlsearch!<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -246,20 +256,20 @@ nnoremap <leader><space> :set hlsearch!<CR>
 "-------------------------------------------------
 
 " Disable array keys
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
 
 " Redesign moving keys in insert mode
-inoremap <C-k> <up>
-inoremap <C-j> <down>
-inoremap <C-h> <left>
-inoremap <C-l> <right>
+inoremap <C-k> <Up>
+inoremap <C-j> <Down>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
 
 " Make j and k work the way you expect
 nnoremap j gj
@@ -313,6 +323,7 @@ Bundle 'wincent/Command-T'
 Bundle 'mileszs/ack.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'scrooloose/syntastic'
+" Bundles needed by snipMate:
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'snipmate-snippets'
