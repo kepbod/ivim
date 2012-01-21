@@ -1,6 +1,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
-" Maintainer: Xiaoou Zhang (kepbod)
+" Maintainer: Xiaoou Zhang (kepbod) <kepbod@gmail.com>
 "
 " Sections:
 "   -> General
@@ -69,8 +69,6 @@ set clipboard+=unnamed " Yanks go on clipboard instead
 set spell " Spell checking on
 set modeline " Turn on modeline
 set encoding=utf-8 " Set utf-8 encoding
-
-set complete=.,w,b,u,U
 set completeopt+=longest " Optimize auto complete
 
 set mousehide " Hide mouse after chars typed
