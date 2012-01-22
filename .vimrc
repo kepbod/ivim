@@ -219,7 +219,7 @@ set statusline=%<%f\  " Filename
 set statusline+=%w%h%m%r " Options
 set statusline+=\ [%{&ff}/%Y] " filetype
 set statusline+=\ [%{getcwd()}] " current directory
-set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII / Hexadecimal value of char
+set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII/Hexadecimal value of char
 set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file navigation info
 
 set cursorline " Highlight the current line
@@ -261,16 +261,17 @@ nnoremap <leader><Space> :set hlsearch!<CR>
 "-------------------------------------------------
 
 set foldlevelstart=0 " Start with all folds closed
+set foldcolumn=1 " Set fold column
 
-" Space to toggle folds.
-nnoremap <Space> za
-vnoremap <Space> za
+" Space to toggle and create folds.
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
 
 function! MyFoldText()
     let line=getline(v:foldstart)
     let nucolwidth=&foldcolumn+&number*&numberwidth
     let windowwidth=winwidth(0)-nucolwidth-3
-    let foldedlinecount=v:foldend-v:foldstart
+    let foldedlinecount=v:foldend-v:foldstart+1
     let onetab=strpart('          ', 0, &tabstop)
     let line=substitute(line, '\t', onetab, 'g')
     let line=strpart(line, 0, windowwidth-2-len(foldedlinecount))
