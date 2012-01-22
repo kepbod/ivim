@@ -182,7 +182,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "-------------------------------------------------
-" => Colors and fonts
+" => Colors and Fonts
 "-------------------------------------------------
 
 syntax on " Enable syntax
@@ -202,7 +202,7 @@ if has("gui_running")
     elseif has("x11")
         :set guifont=Menlo\ Regular:h12
     elseif has("gui_win32")
-        :set guifont=Consolas:h10:cANSI
+        :set guifont=Consolas:h12:cANSI
     endif
 endif
 
@@ -326,7 +326,7 @@ vnoremap nn <ESC>
 "--------------------------------------------------
 
 filetype off " Required!
-set rtp+=~/.vim/bundle/vundle/ 
+set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 " Let Vundle manage Vundle
 Bundle 'gmarik/vundle'
