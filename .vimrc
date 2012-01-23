@@ -18,7 +18,10 @@
 "   -> NERD_tree
 "   -> NERD_commenter
 "   -> snipMate
+"   -> delimitMate
 "   -> Supertab
+"   -> Ack
+"   -> Syntastic
 "
 " Plugins_Included:
 "   > Vundle - https://github.com/gmarik/vundle
@@ -35,16 +38,28 @@
 "     info -> :help NERD_commenter.txt
 "   > snipMate - https://github.com/garbas/vim-snipmate
 "     Implement some of TextMate's snippets features in Vim
-"     info -> :help snipMate.txt 
+"     info -> :help snipMate.txt
 "   > surround - https://github.com/tpope/vim-surround
 "     provide mappings to delete, change and add surroundings in pairs
-"     info -> :help surround.txt 
+"     info -> :help surround.txt
 "   > delimitMate - https://github.com/Raimondi/delimitMate
 "     provides automatic closing of quotes, parenthesis, brackets, etc.
-"     info -> :help delimitMate.txt 
+"     info -> :help delimitMate.txt
 "   > Supertab - https://github.com/ervandew/supertab
 "     Perform all your insert completion using the tab key
 "     info -> :help supertab.txt
+"   > Command-T - https://github.com/wincent/Command-T
+"     Provide fast, intuitive mechanism for opening files and buffers
+"     info -> :help command-t.txt
+"   > Ack - https://github.com/mileszs/ack.vim
+"     A replacement for 'grep' using Perl module App::Ack
+"     info -> :help ack.txt
+"   > Tabular - https://github.com/godlygeek/tabular
+"     Line up text easily
+"     info -> :help Tabular.txt
+"   > Syntastic - https://github.com/scrooloose/syntastic
+"     syntax checking that runs files through external syntax checkers
+"     info -> :help syntastic.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -63,7 +78,7 @@ set timeoutlen=500 " Time to wait for a command
 " Source the vimrc file after saving it
 autocmd bufwritepost .vimrc source $MYVIMRC
 " Fast edit the .vimrc file using ',v'
-nnoremap <leader>v :tabedit $MYVIMRC<CR>
+nnoremap <Leader>v :tabedit $MYVIMRC<CR>
 
 set viewoptions+=slash,unix " Better Unix/Windows compatibility
 set fileformats=unix,mac,dos " Auto detect the file formats
@@ -146,7 +161,6 @@ set virtualedit=block,onemore " Allow for cursor beyond last character
 set scrolljump=5 " Lines to scroll when cursor leaves screen
 set scrolloff=3 " Minimum lines to keep above and below cursor
 
-set matchpairs+=<:> " Allow % to bounce between angles too
 set showmatch " Show matching brackets/parenthesis
 set matchtime=2 " Decrease the time to blink
 nnoremap <Tab> %
@@ -160,7 +174,7 @@ function! ToggleRelativenumber()
         set number
     endif
 endfunction
-nnoremap <leader>n :call ToggleRelativenumber()<CR>
+nnoremap <Leader>n :call ToggleRelativenumber()<CR>
 set wrap " Set wrap
 set showbreak=↪  " Change wrap line break
 set textwidth=80 " Change text width
@@ -220,11 +234,12 @@ set statusline+=%w%h%m%r " Options
 set statusline+=\ [%{&ff}/%Y] " filetype
 set statusline+=\ [%{getcwd()}] " current directory
 set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII/Hexadecimal value of char
+set statusline+=\ %{SyntasticStatuslineFlag()} " Syntax errors and warnings
 set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file navigation info
 
 set cursorline " Highlight the current line
 set wildmenu " Show list instead of just completing
-set wildmode=list:longest,full " Use powerful wildmenu 
+set wildmode=list:longest,full " Use powerful wildmenu
 set shortmess=at " Avoids 'hit enter'
 set showcmd " Show cmd
 
@@ -235,6 +250,7 @@ set showcmd " Show cmd
 "-------------------------------------------------
 
 set autoindent " Preserve current indent on new lines
+set cindent " set C style indent
 set expandtab " Convert all tabs typed to spaces
 set softtabstop=4 " Indentation levels every four columns
 set shiftwidth=4 " Indent/outdent by four columns
@@ -253,7 +269,9 @@ set incsearch " Find as you type search
 set gdefault " turn on 'g' flag
 nnoremap / /\v
 vnoremap / /\v
-nnoremap <leader><Space> :set hlsearch!<CR>
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap <Leader><Space> :set hlsearch!<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "-------------------------------------------------
@@ -297,27 +315,31 @@ inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
 " Redesign moving keys in insert mode
-inoremap <C-k> <Up>
-inoremap <C-j> <Down>
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
+inoremap <C-K> <Up>
+inoremap <C-J> <Down>
+inoremap <C-H> <Left>
+inoremap <C-L> <Right>
 
 " Make j and k work the way you expect
 nnoremap j gj
 nnoremap k gk
 
 " Navigation between windows
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap <C-H> <C-W>h
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
 
 " Remap ; to :
 nnoremap ; :
+vnoremap ; :
 
 " Quickly escaping
 inoremap nn <ESC>
 vnoremap nn <ESC>
+
+" Strip all trailing whitespace in the current file
+nnoremap <Leader>w :%s/\s\+$//<cr>:let @/=''<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -354,7 +376,7 @@ filetype plugin indent on " Required!
 " => Tagbar
 "--------------------------------------------------
 
-nnoremap <leader>t :TagbarToggle<CR>
+nnoremap <Leader>e :TagbarToggle<CR>
 let g:tagbar_autofocus=1
 let g:tagbar_expand=1
 let g:tagbar_foldlevel=2
@@ -367,8 +389,8 @@ let g:tagbar_autoshowtag=1
 " => NERD_tree
 "--------------------------------------------------
 
-nnoremap <leader>d :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-map <leader>f :NERDTreeFind<CR>
+nnoremap <Leader>d :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+map <Leader>f :NERDTreeFind<CR>
 let NERDTreeShowBookmarks=1
 let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1
@@ -394,9 +416,38 @@ let g:snip_author='Xiaoou Zhang (kepbod) <kepbod@gmail.com>'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
+" => delimitMate
+"--------------------------------------------------
+
+let delimitMate_expand_cr=1
+let delimitMate_expand_space=1
+let delimitMate_balance_matchpairs = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"--------------------------------------------------
 " => Supertab
 "--------------------------------------------------
 
 let g:SuperTabDefaultCompletionType='context'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"--------------------------------------------------
+" => Ack
+"--------------------------------------------------
+
+nnoremap <Leader>a :Ack!
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"--------------------------------------------------
+" => Syntastic
+"--------------------------------------------------
+
+nnoremap <Leader>s :Errors<CR>
+let g:syntastic_check_on_open=1
+let g:syntastic_auto_jump=1
+let g:syntastic_stl_format='[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
