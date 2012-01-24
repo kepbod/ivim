@@ -24,6 +24,7 @@
 "   -> Syntastic
 "   -> Indent Guides
 "   -> Gundo
+"   -> EasyTags
 "
 " Plugins_Included:
 "   > Vundle - https://github.com/gmarik/vundle
@@ -74,6 +75,9 @@
 "   > Gundo - https://github.com/sjl/gundo.vim
 "     visualize VIM undo tree
 "     info -> :help gundo.txt
+"   > EasyTags - https://github.com/xolox/vim-easytags
+"     Automated tag generation and syntax highlighting in Vim
+"     info -> :help easytags.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -383,7 +387,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'mutewinter/vim-indent-guides'
 Bundle 'tpope/vim-fugitive'
 Bundle 'sjl/gundo.vim'
-Bundle 'jeetsukumaran/vim-buffergator'
+Bundle 'xolox/vim-easytags'
 " Bundles needed by snipMate:
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
@@ -493,5 +497,16 @@ let g:indent_guides_guide_size=1
 "--------------------------------------------------
 
 nnoremap <Leader>u :GundoToggle<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"--------------------------------------------------
+" => EasyTags
+"--------------------------------------------------
+
+nnoremap <Leader>rt Updatetags!
+let g:easytags_by_filetype='$HOME/.vim/tags/'
+let g:easytags_include_members=1
+highlight cMember gui=italic
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
