@@ -22,6 +22,8 @@
 "   -> Supertab
 "   -> Ack
 "   -> Syntastic
+"   -> Indent Guides
+"   -> Gundo
 "
 " Plugins_Included:
 "   > Vundle - https://github.com/gmarik/vundle
@@ -58,8 +60,20 @@
 "     Line up text easily
 "     info -> :help Tabular.txt
 "   > Syntastic - https://github.com/scrooloose/syntastic
-"     syntax checking that runs files through external syntax checkers
+"     syntax check that runs files through external syntax checkers
 "     info -> :help syntastic.txt
+"   > EasyMotion - https://github.com/Lokaltog/vim-easymotion
+"     provide a much simpler way to use some motions in vim
+"     info -> :help easymotion.txt
+"   > Indent Guides - https://github.com/mutewinter/vim-indent-guides
+"     visually display indent levels in Vim
+"     info -> :help indent_guides.txt
+"   > fugitive - https://github.com/tpope/vim-fugitive
+"     Git wrapper
+"     info -> :help fugitive.txt
+"   > Gundo - https://github.com/sjl/gundo.vim
+"     visualize VIM undo tree
+"     info -> :help gundo.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -231,6 +245,7 @@ set laststatus=2 "Show the statusline
 " Set the style of the status line
 set statusline=%<%f\  " Filename
 set statusline+=%w%h%m%r " Options
+set statusline+=%{fugitive#statusline()} " Git Hotness
 set statusline+=\ [%{&ff}/%Y] " filetype
 set statusline+=\ [%{getcwd()}] " current directory
 set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII/Hexadecimal value of char
@@ -364,6 +379,11 @@ Bundle 'wincent/Command-T'
 Bundle 'mileszs/ack.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'scrooloose/syntastic'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'mutewinter/vim-indent-guides'
+Bundle 'tpope/vim-fugitive'
+Bundle 'sjl/gundo.vim'
+Bundle 'jeetsukumaran/vim-buffergator'
 " Bundles needed by snipMate:
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
@@ -438,6 +458,9 @@ let g:SuperTabDefaultCompletionType='context'
 "--------------------------------------------------
 
 nnoremap <Leader>a :Ack!
+if has('unix')
+    let g:ackprg='ack-grep -H --nocolor --nogroup --column'
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -449,5 +472,26 @@ nnoremap <Leader>s :Errors<CR>
 let g:syntastic_check_on_open=1
 let g:syntastic_auto_jump=1
 let g:syntastic_stl_format='[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"--------------------------------------------------
+" => Indent Guides
+"--------------------------------------------------
+
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_auto_colors=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=darkgray ctermbg=darkgray
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgray ctermbg=darkgray
+let g:indent_guides_color_change_percent=5
+let g:indent_guides_guide_size=1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"--------------------------------------------------
+" => Gundo
+"--------------------------------------------------
+
+nnoremap <Leader>u :GundoToggle<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
