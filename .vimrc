@@ -123,20 +123,20 @@ function! InitializeDirectories()
     let parent=$HOME
     let prefix='.vim'
     let dir_list={
-                \ 'backup': 'backupdir',
+                \  'backup': 'backupdir',
                 \ 'view': 'viewdir',
                 \ 'swap': 'directory',
                 \ 'undo': 'undodir'}
-    for [dirname,settingname] in items(dir_list)
+    for [dirname, settingname] in items(dir_list)
         let directory=parent.'/'.prefix.'/'.dirname.'/'
-        if exists('*mkdir')
-            if !isdirectory(directory)
-                call mkdir(directory)
-            endif
-        endif
         if !isdirectory(directory)
-            echo "Warning: Unable to create directory: ".directory
-            echo "Try: mkdir -p ".directory
+            if exists('*mkdir')
+                call mkdir(directory)
+                exec 'set '.settingname.'='.directory
+            else
+                echo "Warning: Unable to create directory: ".directory
+                echo "Try: mkdir -p ".directory
+            endif
         else
             exec 'set '.settingname.'='.directory
         endif
@@ -371,27 +371,34 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 " Let Vundle manage Vundle
 Bundle 'gmarik/vundle'
-" My Bundles here:
+
+" UI Additions
+Bundle 'mutewinter/vim-indent-guides'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'sjl/gundo.vim'
+" Navigation
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'garbas/vim-snipmate'
-Bundle 'tpope/vim-surround'
-Bundle 'Raimondi/delimitMate'
-Bundle 'ervandew/supertab'
 Bundle 'wincent/Command-T'
 Bundle 'mileszs/ack.vim'
+" Commands
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
+" Automatic Helper
+Bundle 'garbas/vim-snipmate'
+Bundle 'ervandew/supertab'
+Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'mutewinter/vim-indent-guides'
+
+" Others
 Bundle 'tpope/vim-fugitive'
-Bundle 'sjl/gundo.vim'
 Bundle 'xolox/vim-easytags'
-" Bundles needed by snipMate:
+" Bundles needed by snipMate
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'snipmate-snippets'
+
 filetype plugin indent on " Required!
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -504,8 +511,26 @@ nnoremap <Leader>u :GundoToggle<CR>
 " => EasyTags
 "--------------------------------------------------
 
-nnoremap <Leader>rt Updatetags!
-let g:easytags_by_filetype='$HOME/.vim/tags/'
+function! InitializeTagDirectory()
+    let parent=$HOME
+    let prefix='.vim'
+    let dirname='tags'
+    let directory=parent.'/'.prefix.'/'.dirname.'/'
+    if !isdirectory(directory)
+        if exists('*mkdir')
+            call mkdir(directory)
+            let g:easytags_by_filetype=directory
+        else
+            echo "Warning: Unable to create directory: ".directory
+            echo "Try: mkdir -p ".directory
+        endif
+    else
+        let g:easytags_by_filetype=directory
+    endif
+endfunction
+call InitializeTagDirectory()
+let g:easytags_python_enabled=1
+let g:easytags_python_script=1
 let g:easytags_include_members=1
 highlight cMember gui=italic
 
