@@ -20,11 +20,13 @@
 "   -> snipMate
 "   -> delimitMate
 "   -> Supertab
+"   -> Command-T
 "   -> Ack
 "   -> Syntastic
 "   -> Indent Guides
 "   -> Gundo
 "   -> EasyTags
+"   -> SingleCompile
 "
 " Plugins_Included:
 "   > Vundle - https://github.com/gmarik/vundle
@@ -78,6 +80,12 @@
 "   > EasyTags - https://github.com/xolox/vim-easytags
 "     Automated tag generation and syntax highlighting in Vim
 "     info -> :help easytags.txt
+"   > SmartusLine - https://github.com/molok/vim-smartusline
+"     change color of statusline with the current mode
+"     info -> :help smartusline.txt
+"   > SingleCompile - https://github.com/xuhdev/SingleCompile
+"     compile or run a single source file without leaving vim
+"     info -> :help SingleCompile.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -373,6 +381,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " UI Additions
+Bundle 'molok/vim-smartusline'
 Bundle 'mutewinter/vim-indent-guides'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'sjl/gundo.vim'
@@ -386,6 +395,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
+Bundle 'xuhdev/SingleCompile'
 " Automatic Helper
 Bundle 'garbas/vim-snipmate'
 Bundle 'ervandew/supertab'
@@ -465,6 +475,14 @@ let g:SuperTabDefaultCompletionType='context'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
+" => Command-T
+"--------------------------------------------------
+
+nnoremap <Leader>g :CommandTBuffer<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"--------------------------------------------------
 " => Ack
 "--------------------------------------------------
 
@@ -533,5 +551,18 @@ let g:easytags_python_enabled=1
 let g:easytags_python_script=1
 let g:easytags_include_members=1
 highlight cMember gui=italic
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"--------------------------------------------------
+" => EasyTags
+"--------------------------------------------------
+
+nnoremap <Leader>b :SingleCompile<CR>
+nnoremap <Leader>r :SingleCompileRun<CR>
+let g:SingleCompile_showquickfixiferror=1
+if has('unix')
+    let g:SingleCompile_showresultafterrun=1
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
