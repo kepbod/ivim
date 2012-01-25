@@ -381,6 +381,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/nerdtree'
 Bundle 'wincent/Command-T'
 Bundle 'mileszs/ack.vim'
+Bundle 'tpope/vim-fugitive'
 " Commands
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
@@ -392,7 +393,6 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
 
 " Others
-Bundle 'tpope/vim-fugitive'
 Bundle 'xolox/vim-easytags'
 " Bundles needed by snipMate
 Bundle 'MarcWeber/vim-addon-mw-utils'
