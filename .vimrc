@@ -407,7 +407,7 @@ Bundle 'xolox/vim-easytags'
 " Bundles needed by snipMate
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
-Bundle 'snipmate-snippets'
+Bundle 'scrooloose/snipmate-snippets'
 
 filetype plugin indent on " Required!
 
