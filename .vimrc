@@ -555,14 +555,11 @@ highlight cMember gui=italic
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
-" => EasyTags
+" => SingleCompile
 "--------------------------------------------------
 
 nnoremap <Leader>b :SingleCompile<CR>
 nnoremap <Leader>r :SingleCompileRun<CR>
 let g:SingleCompile_showquickfixiferror=1
-if has('unix')
-    let g:SingleCompile_showresultafterrun=1
-endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
