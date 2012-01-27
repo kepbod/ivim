@@ -5,7 +5,7 @@ have some questions about this configure, please feel free to contact me! Thank 
 If you want to install this configure in your computer, please run these
 commands in your terminal:
 1 git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
-2 git clone http://github.com/kepbod/vimrc.git $HOME/vimrc
+2 git clone http://github.com/kepbod/kepbod-vim-configure.git $HOME/vimrc
 3 cp $HOME/vimrc/.vimrc $HOME/.vimrc
 4 vim .vimrc
 5 :BundleInsall!
