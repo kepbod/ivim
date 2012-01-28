@@ -229,8 +229,14 @@ syntax on " Enable syntax
 if $TERM=='xterm'
     set t_Co=256
 endif
-colorscheme lucius
-if has("gui_running")
+if ( has('win32') || has('win64') ) && !has('gui_running')
+    colorscheme desert " Set colorscheme
+else
+    colorscheme lucius " Set colorscheme
+endif
+if has('gui_running')
+    set background=dark " Set background
+elseif has('win32') || has('win64')
     set background=dark " Set background
 else
     set background=light " Set background
