@@ -181,6 +181,11 @@ set title " Turn on title
 set showtabline=2 " Always show tab line
 set tabpagemax=10 " Only show 10 tabs
 
+if has("gui_running")
+    set lines=50
+    set columns=90
+endif
+
 set backspace=indent,eol,start " Make backspaces delete sensibly
 set whichwrap+=h,l,<,>,[,] " Backspace and cursor keys wrap to
 set virtualedit=block,onemore " Allow for cursor beyond last character
