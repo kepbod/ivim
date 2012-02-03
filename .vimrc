@@ -244,11 +244,11 @@ endif
 
 if has("gui_running")
     if has("gui_gtk2")
-        :set guifont=Monospace\ 12
+        set guifont=Monospace\ 12
     elseif has("x11")
-        :set guifont=Menlo\ Regular:h12
+        set guifont=Menlo\ Regular:h12
     elseif has("gui_win32")
-        :set guifont=Consolas:h12:cANSI
+        set guifont=Consolas:h12:cANSI
     endif
 endif
 
