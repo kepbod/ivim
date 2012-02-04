@@ -194,10 +194,12 @@ set scrolloff=3 " Minimum lines to keep above and below cursor
 
 set showmatch " Show matching brackets/parenthesis
 set matchtime=2 " Decrease the time to blink
+" Use Tab instead of % to switch among brackets/parenthesis
 nnoremap <Tab> %
 vnoremap <Tab> %
 
 set number " Show line numbers
+" Toggle relativenumber
 function! ToggleRelativenumber()
     if &number==1
         set relativenumber
@@ -213,6 +215,12 @@ set colorcolumn=85 " Indicate text border
 set formatoptions+=rnlmM " Optimize format options
 set list " Show these tabs and spaces and so on
 set listchars=tab:▸\ ,eol:¬
+" Only show trailing whitespace when not in insert mode
+augroup trailing
+    autocmd!
+    autocmd InsertEnter * :set listchars-=trail:⌴
+    autocmd InsertLeave * :set listchars+=trail:⌴
+augroup end
 
 " Set gvim UI setting
 if has('gui_running')
@@ -249,11 +257,11 @@ endif
 
 if has("gui_running")
     if has("gui_gtk2")
-        set guifont=Monospace\ 12
+        set guifont=Monospace\ 18
     elseif has("x11")
-        set guifont=Menlo\ Regular:h12
+        set guifont=Menlo\ Regular:h18
     elseif has("gui_win32")
-        set guifont=Consolas:h12:cANSI
+        set guifont=Consolas:h18:cANSI
     endif
 endif
 
@@ -305,10 +313,26 @@ set smartcase " Case sensitive when uc present
 set hlsearch " Highlight search terms
 set incsearch " Find as you type search
 set gdefault " turn on 'g' flag
+
+" Use sane regexes
 nnoremap / /\v
 vnoremap / /\v
+
+" Keep search matches in the middle of the window
 nnoremap n nzzzv
 nnoremap N Nzzzv
+
+" Visual search mappings
+function! s:VSetSearch()
+    let temp=@@
+    normal! gvy
+    let @/='\V'.substitute(escape(@@, '\'), '\n', '\\n', 'g')
+    let @@=temp
+endfunction
+vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
+vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
+
+" Use ,Space to toggle the highlight search
 nnoremap <Leader><Space> :set hlsearch!<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -323,6 +347,7 @@ set foldcolumn=1 " Set fold column
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 
+" Set foldtext
 function! MyFoldText()
     let line=getline(v:foldstart)
     let nucolwidth=&foldcolumn+&number*&numberwidth
@@ -361,6 +386,10 @@ inoremap <C-L> <Right>
 " Make j and k work the way you expect
 nnoremap j gj
 nnoremap k gk
+
+" Same when jumping around
+nnoremap g; g;zz
+nnoremap g, g,zz
 
 " Navigation between windows
 nnoremap <C-H> <C-W>h
