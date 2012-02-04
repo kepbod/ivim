@@ -152,8 +152,8 @@ function! InitializeDirectories()
 endfunction
 call InitializeDirectories()
 
-au BufWinLeave *.* silent! mkview " Make vim save view (state) (folds, cursor, etc)
-au BufWinEnter *.* silent! loadview " Make vim load view (state) (folds, cursor, etc)
+autocmd BufWinLeave *.* silent! mkview " Make vim save view (state) (folds, cursor, etc)
+autocmd BufWinEnter *.* silent! loadview " Make vim load view (state) (folds, cursor, etc)
 
 " No sound on errors
 set noerrorbells
