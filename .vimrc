@@ -200,7 +200,6 @@ set showmatch " Show matching brackets/parenthesis
 set matchtime=2 " Decrease the time to blink
 " Use Tab instead of % to switch among brackets/parenthesis
 nnoremap <Tab> %
-vnoremap <Tab> %
 
 set number " Show line numbers
 " Toggle relativenumber
