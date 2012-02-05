@@ -179,7 +179,7 @@ endif
 
 set title " Turn on title
 set showtabline=2 " Always show tab line
-set tabpagemax=10 " Only show 10 tabs
+set tabpagemax=5 " Only show 5 tabs
 
 if has("gui_running")
     set lines=50
@@ -396,6 +396,7 @@ nnoremap <C-H> <C-W>h
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
+nnoremap <C-O> <C-W>o
 
 " Remap ; to :
 nnoremap ; :
