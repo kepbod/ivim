@@ -27,6 +27,7 @@
 "   -> Gundo
 "   -> EasyTags
 "   -> SingleCompile
+"   -> TabMan
 "
 " Plugins_Included:
 "   > Vundle - https://github.com/gmarik/vundle
@@ -86,6 +87,9 @@
 "   > SingleCompile - https://github.com/xuhdev/SingleCompile
 "     compile or run a single source file without leaving vim
 "     info -> :help SingleCompile.txt
+"   > TabMan - https://github.com/kien/tabman.vim
+"     provide a convenient way to navigate between tabs and windows
+"     info -> :help tabman.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -398,6 +402,13 @@ nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-O> <C-W>o
 
+" Navigation between tabs
+nnoremap <Leader>1 :tabn 1<CR>
+nnoremap <Leader>2 :tabn 2<CR>
+nnoremap <Leader>3 :tabn 3<CR>
+nnoremap <Leader>4 :tabn 4<CR>
+nnoremap <Leader>5 :tabn 5<CR>
+
 " Remap ; to :
 nnoremap ; :
 vnoremap ; :
@@ -427,6 +438,7 @@ Bundle 'mutewinter/vim-indent-guides'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'sjl/gundo.vim'
 " Navigation
+Bundle 'kien/tabman.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/nerdtree'
 Bundle 'wincent/Command-T'
@@ -602,5 +614,14 @@ highlight cMember gui=italic
 nnoremap <Leader>b :SingleCompile<CR>
 nnoremap <Leader>r :SingleCompileRun<CR>
 let g:SingleCompile_showquickfixiferror=1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"--------------------------------------------------
+" => SingleCompile
+"--------------------------------------------------
+
+let g:tabman_specials=1
+let g:tabman_number=0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
