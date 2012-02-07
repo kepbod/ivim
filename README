@@ -6,7 +6,7 @@ commands in your terminal:
 2 git clone http://github.com/kepbod/kepbod-vim-configure.git $HOME/vimrc
 3 cp $HOME/vimrc/.vimrc $HOME/.vimrc
 4 vim .vimrc
-5 :BundleInsall!
+5 :BundleInstall!
 6 Just enjoy it!
 
 PS: This configure needs git support. What's more, it needs lucius colorscheme, so you can download it from http://www.vim.org/scripts/script.php?script_id=2536 and install it in the right path. Last but not least, the Command-T and ACK require ruby running time and Perl module App::Ack, and you can check :help command-t.txt and :help Ack.txt for more details.
