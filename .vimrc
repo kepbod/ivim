@@ -413,8 +413,8 @@ nnoremap ; :
 vnoremap ; :
 
 " Quickly escaping
-inoremap ;; <ESC>
-vnoremap ;; <ESC>
+inoremap jj <ESC>
+vnoremap jj <ESC>
 
 " Strip all trailing whitespace in the current file
 nnoremap <Leader>w :%s/\s\+$//<cr>:let @/=''<cr>
