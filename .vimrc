@@ -267,6 +267,7 @@ if has("gui_running")
         set guifont=Consolas:h18:cANSI
     endif
 endif
+set guifont=Menlo\ Regular:h18
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -413,8 +414,8 @@ nnoremap ; :
 vnoremap ; :
 
 " Quickly escaping
-inoremap jj <ESC>
-vnoremap jj <ESC>
+inoremap nn <ESC>
+vnoremap nn <ESC>
 
 " Strip all trailing whitespace in the current file
 nnoremap <Leader>w :%s/\s\+$//<cr>:let @/=''<cr>
