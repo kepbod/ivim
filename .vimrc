@@ -18,9 +18,9 @@
 "   -> NERD_tree
 "   -> NERD_commenter
 "   -> snipMate
-"   -> delimitMate
+"   -> AutoClose
 "   -> Supertab
-"   -> Command-T
+"   -> Ctrlp
 "   -> Ack
 "   -> Syntastic
 "   -> Indent Guides
@@ -48,15 +48,15 @@
 "   > surround - https://github.com/tpope/vim-surround
 "     provide mappings to delete, change and add surroundings in pairs
 "     info -> :help surround.txt
-"   > delimitMate - https://github.com/Raimondi/delimitMate
+"   > AutoClose - https://github.com/Townk/vim-autoclose
 "     provides automatic closing of quotes, parenthesis, brackets, etc.
-"     info -> :help delimitMate.txt
+"     info -> :help AutoClose.txt
 "   > Supertab - https://github.com/ervandew/supertab
 "     Perform all your insert completion using the tab key
 "     info -> :help supertab.txt
-"   > Command-T - https://github.com/wincent/Command-T
-"     Provide fast, intuitive mechanism for opening files and buffers
-"     info -> :help command-t.txt
+"   > Ctrlp - https://github.com/kien/ctrlp.vim
+"     Full path fuzzy file, buffer, mru and tag finder with an intuitive interface
+"     info -> :help ctrlp.txt
 "   > Ack - https://github.com/mileszs/ack.vim
 "     A replacement for 'grep' using Perl module App::Ack
 "     info -> :help ack.txt
@@ -267,7 +267,6 @@ if has("gui_running")
         set guifont=Consolas:h18:cANSI
     endif
 endif
-set guifont=Menlo\ Regular:h18
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -390,6 +389,8 @@ inoremap <C-L> <Right>
 " Make j and k work the way you expect
 nnoremap j gj
 nnoremap k gk
+vnoremap j gj
+vnoremap k gk
 
 " Same when jumping around
 nnoremap g; g;zz
@@ -441,7 +442,7 @@ Bundle 'sjl/gundo.vim'
 Bundle 'kien/tabman.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/nerdtree'
-Bundle 'wincent/Command-T'
+Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-fugitive'
 " Commands
@@ -452,7 +453,7 @@ Bundle 'xuhdev/SingleCompile'
 " Automatic Helper
 Bundle 'garbas/vim-snipmate'
 Bundle 'ervandew/supertab'
-Bundle 'Raimondi/delimitMate'
+Bundle 'Townk/vim-autoclose'
 Bundle 'scrooloose/syntastic'
 
 " Others
@@ -510,12 +511,10 @@ let g:snip_author='Xiaoou Zhang (kepbod) <kepbod@gmail.com>'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
-" => delimitMate
+" => AutoClose
 "--------------------------------------------------
 
-let delimitMate_expand_cr=1
-let delimitMate_expand_space=1
-let delimitMate_balance_matchpairs = 1
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -528,10 +527,10 @@ let g:SuperTabDefaultCompletionType='context'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
-" => Command-T
+" => Ctrlp
 "--------------------------------------------------
 
-nnoremap <Leader>g :CommandTBuffer<CR>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
