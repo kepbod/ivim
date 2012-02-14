@@ -180,9 +180,48 @@ endif
 " => Vim User Interface
 "-------------------------------------------------
 
-set title " Turn on title
+" Set title
+set title
+set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)\ -\ %{v:servername}
+
+" Set tabline
 set showtabline=2 " Always show tab line
 set tabpagemax=5 " Only show 5 tabs
+function! MyTabLine()
+    let s=''
+    let t=tabpagenr()
+    let i=1
+    while i<=tabpagenr('$')
+      let buflist=tabpagebuflist(i)
+      let winnr=tabpagewinnr(i)
+      let s.='%'.i.'T'
+      let s.=(i==t?'%1*':'%2*')
+      let s.=' '
+      let s.=i.':'
+      let s.=winnr.'/'.tabpagewinnr(i,'$')
+      let s.=' %*'
+      let s.=(i==t?'%#TabLineSel#':'%#TabLine#')
+      let bufnr=buflist[winnr-1]
+      let file=bufname(bufnr)
+      let buftype=getbufvar(bufnr, 'buftype')
+      if buftype=='nofile'
+        if file=~'\/.'
+          let file=substitute(file, '.*\/\ze.', '', '')
+        endif
+      else
+        let file=fnamemodify(file, ':p:t')
+      endif
+      if file==''
+        let file='[No Name]'
+      endif
+      let s.=file
+      let i=i+1
+    endwhile
+    let s.='%T%#TabLineFill#%='
+    let s.=(tabpagenr('$')>1?'%999XX':'X')
+    return s
+endfunction
+set tabline=%!MyTabLine()
 
 if has("gui_running")
     set lines=50
@@ -232,6 +271,7 @@ if has('gui_running')
     set guioptions-=L
     set guioptions-=r
     set guioptions-=R
+    set guioptions-=e
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
