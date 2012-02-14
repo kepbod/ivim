@@ -18,7 +18,6 @@
 "   -> NERD_tree
 "   -> NERD_commenter
 "   -> snipMate
-"   -> AutoClose
 "   -> Supertab
 "   -> Ctrlp
 "   -> Ack
@@ -48,9 +47,9 @@
 "   > surround - https://github.com/tpope/vim-surround
 "     provide mappings to delete, change and add surroundings in pairs
 "     info -> :help surround.txt
-"   > AutoClose - https://github.com/Townk/vim-autoclose
+"   > delimitMate - https://github.com/Raimondi/delimitMate
 "     provides automatic closing of quotes, parenthesis, brackets, etc.
-"     info -> :help AutoClose.txt
+"     info -> :help delimitMate.txt
 "   > Supertab - https://github.com/ervandew/supertab
 "     Perform all your insert completion using the tab key
 "     info -> :help supertab.txt
@@ -81,9 +80,9 @@
 "   > EasyTags - https://github.com/xolox/vim-easytags
 "     Automated tag generation and syntax highlighting in Vim
 "     info -> :help easytags.txt
-"   > SmartusLine - https://github.com/molok/vim-smartusline
-"     change color of statusline with the current mode
-"     info -> :help smartusline.txt
+"   > Powerline - https://github.com/Lokaltog/vim-powerline
+"     Create better-looking, more functional vim statuslines
+"     info -> :help Powerline.txt
 "   > SingleCompile - https://github.com/xuhdev/SingleCompile
 "     compile or run a single source file without leaving vim
 "     info -> :help SingleCompile.txt
@@ -260,8 +259,8 @@ endif
 
 if has("gui_running")
     if has("gui_gtk2")
-        set guifont=Monospace\ 18
-    elseif has("x11")
+        set guifont=Luxi\ Mono\ 18
+    elseif has("gui_macvim")
         set guifont=Menlo\ Regular:h18
     elseif has("gui_win32")
         set guifont=Consolas:h18:cANSI
@@ -277,14 +276,11 @@ endif
 set laststatus=2 "Show the statusline
 
 " Set the style of the status line
-set statusline=%<%f\  " Filename
-set statusline+=%w%h%m%r " Options
-set statusline+=%{fugitive#statusline()} " Git Hotness
-set statusline+=\ [%{&ff}/%Y] " filetype
-set statusline+=\ [%{getcwd()}] " current directory
-set statusline+=\ [A=\%03.3b/H=\%02.2B] " ASCII/Hexadecimal value of char
-set statusline+=\ %{SyntasticStatuslineFlag()} " Syntax errors and warnings
-set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file navigation info
+" Use vim-powerline to modify the statuls line
+if has('gui_running')
+  let g:Powerline_symbols='unicode'
+endif
+
 
 set cursorline " Highlight the current line
 set wildmenu " Show list instead of just completing
@@ -320,6 +316,7 @@ set gdefault " turn on 'g' flag
 " Use sane regexes
 nnoremap / /\v
 vnoremap / /\v
+cnoremap s/ s/\v
 
 " Keep search matches in the middle of the window
 nnoremap n nzzzv
@@ -434,7 +431,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " UI Additions
-Bundle 'molok/vim-smartusline'
+Bundle 'Lokaltog/vim-powerline'
 Bundle 'mutewinter/vim-indent-guides'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'sjl/gundo.vim'
@@ -453,7 +450,7 @@ Bundle 'xuhdev/SingleCompile'
 " Automatic Helper
 Bundle 'garbas/vim-snipmate'
 Bundle 'ervandew/supertab'
-Bundle 'Townk/vim-autoclose'
+Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
 
 " Others
@@ -511,14 +508,6 @@ let g:snip_author='Xiaoou Zhang (kepbod) <kepbod@gmail.com>'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
-" => AutoClose
-"--------------------------------------------------
-
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"--------------------------------------------------
 " => Supertab
 "--------------------------------------------------
 
@@ -530,7 +519,10 @@ let g:SuperTabDefaultCompletionType='context'
 " => Ctrlp
 "--------------------------------------------------
 
-
+let g:ctrlp_working_path_mode=0
+let g:ctrlp_clear_cache_on_exit=0
+let g:ctrlp_cache_dir=$HOME.'/.vim/.cache/ctrlp'
+let g:ctrlp_extensions=['tag', 'buffertag', 'quickfix', 'dir', 'rtscript']
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
