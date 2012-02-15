@@ -17,8 +17,7 @@
 "   -> Tagbar
 "   -> NERD_tree
 "   -> NERD_commenter
-"   -> snipMate
-"   -> Supertab
+"   -> Neocomplcache
 "   -> Ctrlp
 "   -> Ack
 "   -> Syntastic
@@ -41,18 +40,15 @@
 "   > NERD_commenter - https://github.com/scrooloose/nerdcommenter
 "     Provide many different commenting operations and styles
 "     info -> :help NERD_commenter.txt
-"   > snipMate - https://github.com/garbas/vim-snipmate
-"     Implement some of TextMate's snippets features in Vim
-"     info -> :help snipMate.txt
+"   > Neocomplcache - https://github.com/Shougo/neocomplcache
+"     Performs keyword completion by maintaining a cache of keywords
+"     info -> :help neocomplcache.txt
 "   > surround - https://github.com/tpope/vim-surround
 "     provide mappings to delete, change and add surroundings in pairs
 "     info -> :help surround.txt
 "   > delimitMate - https://github.com/Raimondi/delimitMate
 "     provides automatic closing of quotes, parenthesis, brackets, etc.
 "     info -> :help delimitMate.txt
-"   > Supertab - https://github.com/ervandew/supertab
-"     Perform all your insert completion using the tab key
-"     info -> :help supertab.txt
 "   > Ctrlp - https://github.com/kien/ctrlp.vim
 "     Full path fuzzy file, buffer, mru and tag finder with an intuitive interface
 "     info -> :help ctrlp.txt
@@ -488,17 +484,13 @@ Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
 Bundle 'xuhdev/SingleCompile'
 " Automatic Helper
-Bundle 'garbas/vim-snipmate'
-Bundle 'ervandew/supertab'
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neocomplcache-snippets-complete'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
 
 " Others
 Bundle 'xolox/vim-easytags'
-" Bundles needed by snipMate
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'honza/snipmate-snippets'
 
 filetype plugin indent on " Required!
 
@@ -540,18 +532,50 @@ let NERDRemoveExtraSpaces=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
-" => snipMate
+" => Neocomplcache
 "--------------------------------------------------
 
-let g:snip_author='Xiaoou Zhang (kepbod) <kepbod@gmail.com>'
+let g:neocomplcache_enable_at_startup=1
+let g:neocomplcache_enable_smart_case=1
+let g:neocomplcache_enable_camel_case_completion=1
+let g:neocomplcache_enable_underbar_completion=1
+let g:neocomplcache_min_syntax_length=3
+let g:neocomplcache_enable_auto_delimiter=1
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" AutoComplPop like behavior.
+let g:neocomplcache_enable_auto_select=1
 
-"--------------------------------------------------
-" => Supertab
-"--------------------------------------------------
+" SuperTab like snippets behavior.
+imap <expr><Tab> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-N>" : "\<Tab>"
 
-let g:SuperTabDefaultCompletionType='context'
+" Plugin key-mappings.
+imap <C-K> <Plug>(neocomplcache_snippets_expand)
+smap <C-K> <Plug>(neocomplcache_snippets_expand)
+inoremap <expr><C-G> neocomplcache#undo_completion()
+inoremap <expr><C-L> neocomplcache#complete_common_string()
+
+" <CR>: close popup
+" <S-CR>: close popup and save indent.
+inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+inoremap <expr><S-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR>"
+" <Tab>: completion.
+inoremap <expr><Tab>  pumvisible() ? "\<C-N>" : "\<Tab>"
+
+" <C-H>, <BS>: close popup and delete backword char.
+inoremap <expr><C-H> neocomplcache#smart_close_popup()."\<C-H>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-H>"
+inoremap <expr><C-Y>  neocomplcache#close_popup()
+inoremap <expr><C-E>  neocomplcache#cancel_popup()
+
+if !exists('g:neocomplcache_keyword_patterns')
+    let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+" For snippet_complete marker.
+if has('conceal')
+    set conceallevel=2 concealcursor=i
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
