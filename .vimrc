@@ -18,6 +18,7 @@
 "   -> NERD_tree
 "   -> NERD_commenter
 "   -> Neocomplcache
+"   -> snipMate
 "   -> Ctrlp
 "   -> Ack
 "   -> Syntastic
@@ -40,6 +41,9 @@
 "   > NERD_commenter - https://github.com/scrooloose/nerdcommenter
 "     Provide many different commenting operations and styles
 "     info -> :help NERD_commenter.txt
+"   > Neocomplcache - https://github.com/Shougo/neocomplcache
+"     Performs keyword completion by maintaining a cache of keywords
+"     info -> :help neocomplcache.txt
 "   > Neocomplcache - https://github.com/Shougo/neocomplcache
 "     Performs keyword completion by maintaining a cache of keywords
 "     info -> :help neocomplcache.txt
@@ -485,11 +489,15 @@ Bundle 'godlygeek/tabular'
 Bundle 'xuhdev/SingleCompile'
 " Automatic Helper
 Bundle 'Shougo/neocomplcache'
+Bundle 'garbas/vim-snipmate'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
 
 " Others
 Bundle 'xolox/vim-easytags'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'honza/snipmate-snippets'
 
 filetype plugin indent on " Required!
 
@@ -541,22 +549,22 @@ let g:neocomplcache_enable_underbar_completion=1
 let g:neocomplcache_min_syntax_length=3
 let g:neocomplcache_enable_auto_delimiter=1
 
-" AutoComplPop like behavior.
+" AutoComplPop like behavior
 let g:neocomplcache_enable_auto_select=1
 
-" Plugin key-mappings.
+" Plugin key-mappings
 inoremap <expr><C-G> neocomplcache#undo_completion()
 inoremap <expr><C-L> neocomplcache#complete_common_string()
 
 " <CR>: close popup
-" <S-CR>: close popup and save indent.
+" <S-CR>: close popup and save indent
 inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 inoremap <expr><S-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR>"
 
-" <Tab>: completion.
+" <Tab>: completion
 inoremap <expr><Tab>  pumvisible() ? "\<C-N>" : "\<Tab>"
 
-" <C-H>, <BS>: close popup and delete backword char.
+" <C-H>, <BS>: close popup and delete backword char
 inoremap <expr><C-H> neocomplcache#smart_close_popup()."\<C-H>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-H>"
 inoremap <expr><C-Y>  neocomplcache#close_popup()
