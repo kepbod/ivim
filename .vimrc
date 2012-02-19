@@ -485,7 +485,6 @@ Bundle 'godlygeek/tabular'
 Bundle 'xuhdev/SingleCompile'
 " Automatic Helper
 Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neocomplcache-snippets-complete'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
 
@@ -545,12 +544,7 @@ let g:neocomplcache_enable_auto_delimiter=1
 " AutoComplPop like behavior.
 let g:neocomplcache_enable_auto_select=1
 
-" SuperTab like snippets behavior.
-imap <expr><Tab> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-N>" : "\<Tab>"
-
 " Plugin key-mappings.
-imap <C-K> <Plug>(neocomplcache_snippets_expand)
-smap <C-K> <Plug>(neocomplcache_snippets_expand)
 inoremap <expr><C-G> neocomplcache#undo_completion()
 inoremap <expr><C-L> neocomplcache#complete_common_string()
 
@@ -558,6 +552,7 @@ inoremap <expr><C-L> neocomplcache#complete_common_string()
 " <S-CR>: close popup and save indent.
 inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 inoremap <expr><S-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR>"
+
 " <Tab>: completion.
 inoremap <expr><Tab>  pumvisible() ? "\<C-N>" : "\<Tab>"
 
@@ -571,11 +566,6 @@ if !exists('g:neocomplcache_keyword_patterns')
     let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-" For snippet_complete marker.
-if has('conceal')
-    set conceallevel=2 concealcursor=i
-endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
