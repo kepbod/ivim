@@ -552,10 +552,6 @@ let g:neocomplcache_enable_auto_delimiter=1
 " AutoComplPop like behavior
 let g:neocomplcache_enable_auto_select=1
 
-" Plugin key-mappings
-inoremap <expr><C-G> neocomplcache#undo_completion()
-inoremap <expr><C-L> neocomplcache#complete_common_string()
-
 " <CR>: close popup
 " <S-CR>: close popup and save indent
 inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
@@ -563,17 +559,7 @@ inoremap <expr><S-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR
 
 " <Tab>: completion
 inoremap <expr><Tab>  pumvisible() ? "\<C-N>" : "\<Tab>"
-
-" <C-H>, <BS>: close popup and delete backword char
-inoremap <expr><C-H> neocomplcache#smart_close_popup()."\<C-H>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-H>"
-inoremap <expr><C-Y>  neocomplcache#close_popup()
-inoremap <expr><C-E>  neocomplcache#cancel_popup()
-
-if !exists('g:neocomplcache_keyword_patterns')
-    let g:neocomplcache_keyword_patterns = {}
-endif
-let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-P>" : "\<S-TAB>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
