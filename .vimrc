@@ -17,6 +17,7 @@
 "   -> Tagbar
 "   -> NERD_tree
 "   -> NERD_commenter
+"   -> Supertab
 "   -> Neocomplcache
 "   -> snipMate
 "   -> Ctrlp
@@ -41,12 +42,15 @@
 "   > NERD_commenter - https://github.com/scrooloose/nerdcommenter
 "     Provide many different commenting operations and styles
 "     info -> :help NERD_commenter.txt
+"   > Supertab - https://github.com/ervandew/supertab
+"     Perform all your insert completion using the tab key
+"     info -> :help supertab.txt
 "   > Neocomplcache - https://github.com/Shougo/neocomplcache
 "     Performs keyword completion by maintaining a cache of keywords
 "     info -> :help neocomplcache.txt
-"   > Neocomplcache - https://github.com/Shougo/neocomplcache
-"     Performs keyword completion by maintaining a cache of keywords
-"     info -> :help neocomplcache.txt
+"   > snipMate - https://github.com/garbas/vim-snipmate
+"     Implement some of TextMate's snippets features in Vim
+"     info -> :help snipMate.txt
 "   > surround - https://github.com/tpope/vim-surround
 "     provide mappings to delete, change and add surroundings in pairs
 "     info -> :help surround.txt
@@ -490,6 +494,7 @@ Bundle 'xuhdev/SingleCompile'
 " Automatic Helper
 Bundle 'Shougo/neocomplcache'
 Bundle 'garbas/vim-snipmate'
+Bundle 'ervandew/supertab'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
 
@@ -537,29 +542,25 @@ let NERDSpaceDelims=1
 let NERDRemoveExtraSpaces=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"--------------------------------------------------
+" => Supertab
+"--------------------------------------------------
+
+" Set these up for cross-buffer completion
+let g:SuperTabDefaultCompletionType="<C-X><C-N>"
+let g:SuperTabContextDefaultCompletionType="<C-X><C-N>"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
 " => Neocomplcache
 "--------------------------------------------------
 
 let g:neocomplcache_enable_at_startup=1
-let g:neocomplcache_enable_smart_case=1
 let g:neocomplcache_enable_camel_case_completion=1
 let g:neocomplcache_enable_underbar_completion=1
-let g:neocomplcache_min_syntax_length=3
 let g:neocomplcache_enable_auto_delimiter=1
-
-" AutoComplPop like behavior
 let g:neocomplcache_enable_auto_select=1
-
-" <CR>: close popup
-" <S-CR>: close popup and save indent
-inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-inoremap <expr><S-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR>"
-
-" <Tab>: completion
-inoremap <expr><Tab>  pumvisible() ? "\<C-N>" : "\<Tab>"
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-P>" : "\<S-TAB>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
