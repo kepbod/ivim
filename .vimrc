@@ -321,7 +321,7 @@ set laststatus=2 "Show the statusline
 
 " Set the style of the status line
 " Use vim-powerline to modify the statuls line
-if has('gui_running')
+if has('gui_running') && (!has('win64') || !has('win32'))
   let g:Powerline_symbols='unicode'
 endif
 
