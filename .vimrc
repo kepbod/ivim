@@ -93,6 +93,9 @@
 "   > TabMan - https://github.com/kien/tabman.vim
 "     provide a convenient way to navigate between tabs and windows
 "     info -> :help tabman.txt
+"   > CamelCaseMotion - https://github.com/bkad/CamelCaseMotion
+"     Refine words motion in vim
+"     info -> :help camelcasemotion.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -460,7 +463,7 @@ inoremap nn <ESC>
 vnoremap nn <ESC>
 
 " Strip all trailing whitespace in the current file
-nnoremap <Leader>w :%s/\s\+$//<cr>:let @/=''<cr>
+nnoremap <Leader>q :%s/\s\+$//<cr>:let @/=''<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -477,9 +480,10 @@ Bundle 'gmarik/vundle'
 " UI Additions
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'mutewinter/vim-indent-guides'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'sjl/gundo.vim'
 " Navigation
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'bkad/CamelCaseMotion'
+Bundle 'sjl/gundo.vim'
 Bundle 'kien/tabman.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/nerdtree'
@@ -512,7 +516,7 @@ filetype plugin indent on " Required!
 " => Tagbar
 "--------------------------------------------------
 
-nnoremap <Leader>e :TagbarToggle<CR>
+nnoremap <Leader>t :TagbarToggle<CR>
 let g:tagbar_autofocus=1
 let g:tagbar_expand=1
 let g:tagbar_foldlevel=2
@@ -651,7 +655,6 @@ highlight cMember gui=italic
 " => SingleCompile
 "--------------------------------------------------
 
-nnoremap <Leader>b :SingleCompile<CR>
 nnoremap <Leader>r :SingleCompileRun<CR>
 let g:SingleCompile_showquickfixiferror=1
 
