@@ -5,6 +5,7 @@
 " Sections:
 "   -> General
 "   -> Platform Specific Configuration
+"   -> Plugin
 "   -> Vim User Interface
 "   -> Colors and Fonts
 "   -> Status Line
@@ -13,7 +14,6 @@
 "   -> Fold Related
 "   -> Key Mapping
 "
-"   -> Vundle
 "   -> Tagbar
 "   -> NERD_tree
 "   -> NERD_commenter
@@ -141,7 +141,7 @@ function! InitializeDirectories()
     let parent=$HOME
     let prefix='.vim'
     let dir_list={
-                \  'backup': 'backupdir',
+                \ 'backup': 'backupdir',
                 \ 'view': 'viewdir',
                 \ 'swap': 'directory',
                 \ 'undo': 'undodir'}
@@ -180,6 +180,53 @@ set t_vb=
 if has('win32') || has('win64')
     set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"--------------------------------------------------
+" => Plugin
+"--------------------------------------------------
+
+filetype off " Required!
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+" Let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+" UI Additions
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'mutewinter/vim-indent-guides'
+Bundle 'godlygeek/csapprox'
+" Navigation
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'bkad/CamelCaseMotion'
+Bundle 'sjl/gundo.vim'
+Bundle 'kien/tabman.vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'scrooloose/nerdtree'
+Bundle 'kien/ctrlp.vim'
+Bundle 'mileszs/ack.vim'
+Bundle 'tpope/vim-fugitive'
+" Commands
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'tpope/vim-surround'
+Bundle 'godlygeek/tabular'
+Bundle 'xuhdev/SingleCompile'
+" Automatic Helper
+Bundle 'Shougo/neocomplcache'
+Bundle 'garbas/vim-snipmate'
+Bundle 'ervandew/supertab'
+Bundle 'Raimondi/delimitMate'
+Bundle 'scrooloose/syntastic'
+
+" Others
+Bundle 'xolox/vim-easytags'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'honza/snipmate-snippets'
+
+filetype plugin indent on " Required!
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -288,21 +335,12 @@ endif
 "-------------------------------------------------
 
 syntax on " Enable syntax
-if $TERM=='xterm'
-    set t_Co=256
-endif
-if ( has('win32') || has('win64') ) && !has('gui_running')
-    colorscheme desert " Set colorscheme
-else
-    colorscheme lucius " Set colorscheme
-endif
-if has('gui_running')
-    set background=dark " Set background
-elseif has('win32') || has('win64')
-    set background=dark " Set background
-else
-    set background=light " Set background
-endif
+set background=dark " Set background
+colorscheme solarized " Load a colorscheme
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
 
 if has("gui_running")
     if has("gui_gtk2")
@@ -320,7 +358,7 @@ endif
 " => Status Line
 "-------------------------------------------------
 
-set laststatus=2 "Show the statusline
+set laststatus=2 " Show the statusline
 
 " Set the style of the status line
 " Use vim-powerline to modify the statuls line
@@ -468,51 +506,6 @@ nnoremap <Leader>q :%s/\s\+$//<cr>:let @/=''<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
-" => Vundle
-"--------------------------------------------------
-
-filetype off " Required!
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-" Let Vundle manage Vundle
-Bundle 'gmarik/vundle'
-
-" UI Additions
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'mutewinter/vim-indent-guides'
-" Navigation
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'bkad/CamelCaseMotion'
-Bundle 'sjl/gundo.vim'
-Bundle 'kien/tabman.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'scrooloose/nerdtree'
-Bundle 'kien/ctrlp.vim'
-Bundle 'mileszs/ack.vim'
-Bundle 'tpope/vim-fugitive'
-" Commands
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'tpope/vim-surround'
-Bundle 'godlygeek/tabular'
-Bundle 'xuhdev/SingleCompile'
-" Automatic Helper
-Bundle 'Shougo/neocomplcache'
-Bundle 'garbas/vim-snipmate'
-Bundle 'ervandew/supertab'
-Bundle 'Raimondi/delimitMate'
-Bundle 'scrooloose/syntastic'
-
-" Others
-Bundle 'xolox/vim-easytags'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'honza/snipmate-snippets'
-
-filetype plugin indent on " Required!
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"--------------------------------------------------
 " => Tagbar
 "--------------------------------------------------
 
@@ -606,10 +599,6 @@ let g:syntastic_stl_format='[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 "--------------------------------------------------
 
 let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_auto_colors=0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=darkgray ctermbg=darkgray
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgray ctermbg=darkgray
-let g:indent_guides_color_change_percent=5
 let g:indent_guides_guide_size=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

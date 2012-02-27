@@ -1,4 +1,4 @@
-This is my VIM configure available for vim/gvim 7.3+ and it could run cross different platforms including Windows and *nix. It's better to use gvim instead of vim in Windows, so gvim is the preferable choice when you use Windows. If you use mac, I recommend to use iTerm and MacVim. This is my first time to use github. If you love my configure or have some questions about this configure, please feel free to contact me! Thank you!
+This is my VIM configure available for MacVim/Gvim 7.3+ and it could run cross different platforms including Windows and *nix. If you love my configure or have some questions about this configure, please feel free to contact me! Thank you!
 
 If you want to install this configure in your computer, please run these commands in your terminal:
 1 git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
@@ -8,4 +8,4 @@ If you want to install this configure in your computer, please run these command
 5 :BundleInstall!
 6 Just enjoy it!
 
-PS: This configure needs git support exuberant ctags installed. What's more, it needs lucius colorscheme, so you can download it from http://www.vim.org/scripts/script.php?script_id=2536 and install it in the right path. Last but not least, ACK require Perl module App::Ack, and you can check :help Ack.txt for more details.
+PS: This configure needs git support exuberant ctags installed and Ack.vim require Perl module App::Ack, and you can check :help Ack.txt for more details.
