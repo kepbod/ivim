@@ -15,7 +15,7 @@
 
 **MacVim**
 
-[![MacVim](https://github.com/kepbod/vim-config/macvim.png)](https://github.com/kepbod/vim-config/macvim.png)
+[![MacVim](https://github.com/kepbod/vim-config/blob/master/macvim.png)](https://github.com/kepbod/vim-config/blob/master/macvim.png)
 
 ## Requirements
 
