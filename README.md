@@ -4,18 +4,18 @@
 
 ## Installation
 
-1. 'git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle'
-2. 'git clone http://github.com/kepbod/kepbod-vim-configure.git $HOME/vimrc'
-3. 'cp $HOME/vimrc/.vimrc $HOME/.vimrc'
-4. 'vim .vimrc'
-5. 'BundleInstall'
+1. `git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle`
+2. `git clone http://github.com/kepbod/kepbod-vim-configure.git $HOME/vimrc`
+3. `cp $HOME/vimrc/.vimrc $HOME/.vimrc`
+4. `vim .vimrc`
+5. `BundleInstall`
 6. Just enjoy it!
 
 ## Screenshots
 
 **MacVim**
 
-[![MacVim](https://github.com/kepbod/vim-config/blob/master/macvim.png)](https://github.com/kepbod/vim-config/blob/master/macvim.png)
+[![MacVim](https://github.com/kepbod/vim-config/blob/master/screenshots/MacVim_small.png)](https://github.com/kepbod/vim-config/blob/master/screenshots/MacVim.png)
 
 ## Requirements
 
