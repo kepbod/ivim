@@ -414,8 +414,8 @@ function! s:VSetSearch()
     let @/='\V'.substitute(escape(@@, '\'), '\n', '\\n', 'g')
     let @@=temp
 endfunction
-vnoremap * :<C-u>call <SID>VSetSearch()<CR>//<CR>
-vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR>
+vnoremap * :<C-U>call <SID>VSetSearch()<CR>//<CR>
+vnoremap # :<C-U>call <SID>VSetSearch()<CR>??<CR>
 
 " Use ,Space to toggle the highlight search
 nnoremap <Leader><Space> :set hlsearch!<CR>
@@ -429,7 +429,7 @@ set foldlevelstart=0 " Start with all folds closed
 set foldcolumn=1 " Set fold column
 
 " Space to toggle and create folds.
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+nnoremap <silent><Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 
 " Set foldtext
@@ -500,8 +500,25 @@ vnoremap ; :
 inoremap nn <ESC>
 vnoremap nn <ESC>
 
+" Map Enter to commenting
+function! IsWhiteLine()
+    if (getline(".")=~"^$")
+        let oldlinenumber=line(".")
+        :call NERDComment('n', 'Sexy')
+        if (line(".")==oldlinenumber)
+            :call NERDComment('n', 'Append')
+        else
+            normal! k
+            startinsert!
+        endif
+    else
+        :call NERDComment('n', 'Append')
+    endif
+endfunction
+nnoremap <silent><Enter> :call IsWhiteLine()<CR>
+
 " Strip all trailing whitespace in the current file
-nnoremap <Leader>q :%s/\s\+$//<cr>:let @/=''<cr>
+nnoremap <Leader>q :%s/\s\+$//<CR>:let @/=''<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
