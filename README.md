@@ -11,12 +11,6 @@
 5. `BundleInstall`
 6. Just enjoy it!
 
-## Screenshots
-
-**MacVim**
-
-[![MacVim](https://github.com/kepbod/vim-config/blob/master/screenshots/MacVim_small.png)](https://github.com/kepbod/vim-config/blob/master/screenshots/MacVim.png)
-
 ## Requirements
 
 **VIM**
@@ -32,6 +26,7 @@
  * Ctags generates an index (or tag) file of language objects found in source files that allows these items to be quickly and easily located by a text editor or other utility. I recommend you to use [Exuberant Ctags](http://ctags.sourceforge.net/)
 
 ## Plugin List
+
  * [Vundle](https://github.com/gmarik/vundle) - Manage the vim scripts
  * [Tagbar](https://github.com/majutsushi/tagbar) - Browse the tags of source code files
  * [NERD_tree](https://github.com/scrooloose/nerdtree) - Explore filesystem and to open files and directories
