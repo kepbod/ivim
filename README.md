@@ -4,11 +4,11 @@
 
 ## Installation
 
-1. `git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle`
-2. `git clone http://github.com/kepbod/kepbod-vim-configure.git $HOME/vimrc`
-3. `cp $HOME/vimrc/.vimrc $HOME/.vimrc`
-4. `vim .vimrc`
-5. `BundleInstall`
+1. Install Vundle which is to install and update plugins, `git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle`;
+2. Get my configuration from github website, `git clone http://github.com/kepbod/kepbod-vim-configure.git $HOME/vimrc`;
+3. Copy my configuration to your home directory, `cp $HOME/vimrc/.vimrc $HOME/.vimrc`;
+4. Open .vimrc, `vim .vimrc`;
+5. Install plugins, `BundleInstall`;
 6. Just enjoy it!
 
 ## Requirements
@@ -24,6 +24,10 @@
 **CTAGS**
 
  * Ctags generates an index (or tag) file of language objects found in source files that allows these items to be quickly and easily located by a text editor or other utility. I recommend you to use [Exuberant Ctags](http://ctags.sourceforge.net/)
+
+## Notes
+
+ * This configuration refers to many other vim configurations, so there may be some unavoidable errors in it, but I have tried my best to make it work well. If you have any questions, please feel free to contact me! Thanks!
 
 ## Plugin List
 
@@ -49,3 +53,5 @@
  * [SingleCompile](https://github.com/xuhdev/SingleCompile) - compile or run a single source file without leaving vim
  * [TabMan](https://github.com/kien/tabman.vim) - provide a convenient way to navigate between tabs and windows
  * [CamelCaseMotion](https://github.com/bkad/CamelCaseMotion) - Refine words motion in vim
+
+**Each plugin has its unique requirements and configurations, so if you have any questions with them, please check help files of them first!**
