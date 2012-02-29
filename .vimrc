@@ -321,8 +321,6 @@ augroup end
 if has('gui_running')
     set guioptions-=m
     set guioptions-=T
-    set guioptions-=l
-    set guioptions-=r
     set guioptions-=e
 endif
 
