@@ -27,15 +27,13 @@
 
 ## Notes
 
- * This configuration refers to many other Vim configurations, so there may be some unavoidable errors in it, but I have tried my best to make it work well. If you have any questions, please feel free to contact me! Thanks!
+ * This configuration refers to many other famous Vim configurations (mainly contain [spf13-vim](https://github.com/spf13/spf13-vim), [Champions' Configuration](https://github.com/mutewinter/dot_vim) and [Steve's Configuration](https://github.com/sjl/dotfiles/tree/master/vim)), so there may be some unavoidable errors in it, but I have tried my best to make it work well. If you have any questions, please feel free to contact me! Thanks!
 
 ## Features
 
 ***Beautiful Colorschem***
 
  * Use famous colorschem [Solarized](http://ethanschoonover.com/solarized) to make your eyes feel confortable.
-
- [![Solarized](http://ethanschoonover.com/solarized/img/solarized-yinyang.png)](http://ethanschoonover.com/solarized#features)
 
 ***Efficient***
 
