@@ -5,7 +5,7 @@
 ## Installation
 
 1. Install Vundle which is to install and update plugins, `git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle`;
-2. Get my configuration from github website, `git clone http://github.com/kepbod/kepbod-vim-configure.git $HOME/vimrc`;
+2. Get my configuration from github website, `git clone http://github.com/kepbod/vim-config.git $HOME/vimrc`;
 3. Copy my configuration to your home directory, `cp $HOME/vimrc/.vimrc $HOME/.vimrc`;
 4. Open .vimrc, `vim .vimrc`;
 5. Install plugins, `BundleInstall`;
