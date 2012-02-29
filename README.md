@@ -1,6 +1,6 @@
 # The gVim/MacVim Configuration of Xiaoou Zhang
 
-[![Vim](http://www.vim.org/images/vim_editor.gif)]
+[![Vim](http://www.vim.org/images/vim_editor.gif)](http://www.vim.org/)
 
 ## Installation
 
@@ -31,13 +31,13 @@
 
 ## Features
 
-*Beautiful Colorschem*
+***Beautiful Colorschem***
 
  * Use famous colorschem [Solarized](http://ethanschoonover.com/solarized) to make your eyes feel confortable.
 
  [![Solarized](http://ethanschoonover.com/solarized/img/solarized-yinyang.png)](http://ethanschoonover.com/solarized#features)
 
-*Efficient*
+***Efficient***
 
  * Make using Vim more convenient and faster, and lots of useful plugins (such as [Neocomplcache](https://github.com/Shougo/neocomplcache), [NERD_commenter](https://github.com/scrooloose/nerdcommenter), [Syntastic](https://github.com/scrooloose/syntastic) and [SingleCompile](https://github.com/xuhdev/SingleCompile)) confirm a better proformance of Vim.
 
