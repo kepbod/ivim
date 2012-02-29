@@ -303,7 +303,7 @@ function! ToggleRelativenumber()
 endfunction
 nnoremap <Leader>n :call ToggleRelativenumber()<CR>
 set wrap " Set wrap
-set showbreak=↪  " Change wrap line break
+set showbreak=»  " Change wrap line break
 set textwidth=80 " Change text width
 set colorcolumn=85 " Indicate text border
 set formatoptions+=rnlmM " Optimize format options
@@ -312,8 +312,8 @@ set listchars=tab:▸\ ,eol:¬
 " Only show trailing whitespace when not in insert mode
 augroup trailing
     autocmd!
-    autocmd InsertEnter * :set listchars-=trail:⌴
-    autocmd InsertLeave * :set listchars+=trail:⌴
+    autocmd InsertEnter * :set listchars-=trail:¤
+    autocmd InsertLeave * :set listchars+=trail:¤
 augroup end
 
 " Set gVim UI setting
