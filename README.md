@@ -67,4 +67,3 @@
  * [CamelCaseMotion](https://github.com/bkad/CamelCaseMotion) - Refine words motion in Vim
 
 **Each plugin has its unique requirements and configurations, so if you have any questions with them, please check help files of them first!**
- [![Solarized](http://ethanschoonover.com/solarized/img/solarized-yinyang.png)](http://ethanschoonover.com/solarized#features)
