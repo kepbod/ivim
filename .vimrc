@@ -31,7 +31,7 @@
 "
 " Plugins_Included:
 "   > Vundle - https://github.com/gmarik/vundle
-"     Manage the vim scripts
+"     Manage the Vim scripts
 "     info -> :help vundle.txt
 "   > Tagbar - https://github.com/majutsushi/tagbar
 "     Browse the tags of source code files
@@ -70,7 +70,7 @@
 "     syntax check that runs files through external syntax checkers
 "     info -> :help syntastic.txt
 "   > EasyMotion - https://github.com/Lokaltog/vim-easymotion
-"     provide a much simpler way to use some motions in vim
+"     provide a much simpler way to use some motions in Vim
 "     info -> :help easymotion.txt
 "   > Indent Guides - https://github.com/mutewinter/vim-indent-guides
 "     visually display indent levels in Vim
@@ -79,22 +79,22 @@
 "     Git wrapper
 "     info -> :help fugitive.txt
 "   > Gundo - https://github.com/sjl/gundo.vim
-"     visualize VIM undo tree
+"     visualize Vim undo tree
 "     info -> :help gundo.txt
 "   > EasyTags - https://github.com/xolox/vim-easytags
 "     Automated tag generation and syntax highlighting in Vim
 "     info -> :help easytags.txt
 "   > Powerline - https://github.com/Lokaltog/vim-powerline
-"     Create better-looking, more functional vim statuslines
+"     Create better-looking, more functional Vim statuslines
 "     info -> :help Powerline.txt
 "   > SingleCompile - https://github.com/xuhdev/SingleCompile
-"     compile or run a single source file without leaving vim
+"     compile or run a single source file without leaving Vim
 "     info -> :help SingleCompile.txt
 "   > TabMan - https://github.com/kien/tabman.vim
 "     provide a convenient way to navigate between tabs and windows
 "     info -> :help tabman.txt
 "   > CamelCaseMotion - https://github.com/bkad/CamelCaseMotion
-"     Refine words motion in vim
+"     Refine words motion in Vim
 "     info -> :help camelcasemotion.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -162,8 +162,8 @@ function! InitializeDirectories()
 endfunction
 call InitializeDirectories()
 
-autocmd BufWinLeave *.* silent! mkview " Make vim save view (state) (folds, cursor, etc)
-autocmd BufWinEnter *.* silent! loadview " Make vim load view (state) (folds, cursor, etc)
+autocmd BufWinLeave *.* silent! mkview " Make Vim save view (state) (folds, cursor, etc)
+autocmd BufWinEnter *.* silent! loadview " Make Vim load view (state) (folds, cursor, etc)
 
 " No sound on errors
 set noerrorbells
@@ -317,7 +317,7 @@ augroup trailing
     autocmd InsertLeave * :set listchars+=trail:⌴
 augroup end
 
-" Set gvim UI setting
+" Set gVim UI setting
 if has('gui_running')
     set guioptions-=m
     set guioptions-=T
