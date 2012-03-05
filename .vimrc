@@ -304,7 +304,7 @@ endfunction
 nnoremap <Leader>n :call ToggleRelativenumber()<CR>
 set wrap " Set wrap
 set showbreak=»  " Change wrap line break
-set textwidth=80 " Change text width
+set textwidth=85 " Change text width
 set colorcolumn=85 " Indicate text border
 set formatoptions+=rnlmM " Optimize format options
 set list " Show these tabs and spaces and so on
