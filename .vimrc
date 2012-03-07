@@ -564,6 +564,9 @@ inoremap <expr><S-Tab>  pumvisible() ? "\<C-P>" : "\<S-Tab>"
 inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 inoremap <expr><S-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR>"
 
+" <C-E>: close popup
+inoremap <expr><C-E> neocomplcache#cancel_popup()
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
