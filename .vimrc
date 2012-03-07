@@ -557,13 +557,17 @@ let g:neocomplcache_enable_underbar_completion=1
 let g:neocomplcache_enable_auto_select=1
 
 " Tab/Shift-Tab to cycle completions
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
+inoremap <expr><Tab>  pumvisible() ? "\<C-N>" : "\<Tab>"
+inoremap <expr><S-Tab>  pumvisible() ? "\<C-P>" : "\<S-Tab>"
+
+" <S-CR>: close popup and save indent.
+inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+inoremap <expr><S-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
-" => Neocomplcache
+" => snipMate
 "--------------------------------------------------
 
 let g:snips_trigger_key='<C-Space>'
