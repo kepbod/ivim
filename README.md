@@ -45,7 +45,6 @@
  * [Tagbar](https://github.com/majutsushi/tagbar) - Browse the tags of source code files
  * [NERD_tree](https://github.com/scrooloose/nerdtree) - Explore filesystem and to open files and directories
  * [NERD_commenter](https://github.com/scrooloose/nerdcommenter) - Provide many different commenting operations and styles
- * [Supertab](https://github.com/ervandew/supertab) - Perform all your insert completion using the tab key
  * [Neocomplcache](https://github.com/Shougo/neocomplcache) - Performs keyword completion by maintaining a cache of keywords
  * [snipMate](https://github.com/garbas/vim-snipmate) - Implement some of TextMate's snippets features in Vim
  * [surround](https://github.com/tpope/vim-surround) - provide mappings to delete, change and add surroundings in pairs
