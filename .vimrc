@@ -17,7 +17,6 @@
 "   -> Tagbar
 "   -> NERD_tree
 "   -> NERD_commenter
-"   -> Supertab
 "   -> Neocomplcache
 "   -> snipMate
 "   -> Ctrlp
@@ -42,9 +41,6 @@
 "   > NERD_commenter - https://github.com/scrooloose/nerdcommenter
 "     Provide many different commenting operations and styles
 "     info -> :help NERD_commenter.txt
-"   > Supertab - https://github.com/ervandew/supertab
-"     Perform all your insert completion using the tab key
-"     info -> :help supertab.txt
 "   > Neocomplcache - https://github.com/Shougo/neocomplcache
 "     Performs keyword completion by maintaining a cache of keywords
 "     info -> :help neocomplcache.txt
@@ -215,7 +211,6 @@ Bundle 'xuhdev/SingleCompile'
 " Automatic Helper
 Bundle 'Shougo/neocomplcache'
 Bundle 'garbas/vim-snipmate'
-Bundle 'ervandew/supertab'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
 
@@ -304,7 +299,7 @@ endfunction
 nnoremap <Leader>n :call ToggleRelativenumber()<CR>
 set wrap " Set wrap
 set showbreak=»  " Change wrap line break
-set textwidth=80 " Change text width
+set textwidth=85 " Change text width
 set colorcolumn=85 " Indicate text border
 set formatoptions+=rnlmM " Optimize format options
 set list " Show these tabs and spaces and so on
@@ -551,15 +546,6 @@ let NERDSpaceDelims=1
 let NERDRemoveExtraSpaces=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"--------------------------------------------------
-" => Supertab
-"--------------------------------------------------
-
-" Set these up for cross-buffer completion
-let g:SuperTabDefaultCompletionType="<C-X><C-N>"
-let g:SuperTabContextDefaultCompletionType="<C-X><C-N>"
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
 " => Neocomplcache
@@ -568,10 +554,29 @@ let g:SuperTabContextDefaultCompletionType="<C-X><C-N>"
 let g:neocomplcache_enable_at_startup=1
 let g:neocomplcache_enable_camel_case_completion=1
 let g:neocomplcache_enable_underbar_completion=1
-let g:neocomplcache_enable_auto_delimiter=1
 let g:neocomplcache_enable_auto_select=1
 " Map <C-E> to cancel completion
 inoremap <expr><C-E> neocomplcache#cancel_popup()
+
+" Tab/Shift-Tab to cycle completions
+inoremap <expr><Tab>  pumvisible() ? "\<C-N>" : "\<Tab>"
+inoremap <expr><S-Tab>  pumvisible() ? "\<C-P>" : "\<S-Tab>"
+
+" <S-CR>: close popup and save indent.
+inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+inoremap <expr><S-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR>"
+
+" <C-E>: close popup
+inoremap <expr><C-E> neocomplcache#cancel_popup()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"--------------------------------------------------
+" => snipMate
+"--------------------------------------------------
+
+let g:snips_trigger_key='<C-Space>'
+let g:snips_trigger_key_backwards='<C-Space>'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
