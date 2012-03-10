@@ -72,13 +72,13 @@
 
 * Another way to get familiar with Vim commands and settings is just rely on the strong help system of Vim.
 
-    It's easy and convenient to type :h or :help in Vim for help of whatever you want to know.
+    It's easy and convenient to type `:h` or `:help` in Vim for help of whatever you want to know.
 
 *Key Map*
 
 * Because I have set some key maps for more convenient typing and checking, you may be inconvenient with them at start. But if you get familiar with them, I'm sure you will like them.
 
-    You can just type :map in Vim to see them.
+    You can just type `:map` in Vim to see them.
 
 *More Tips*
 
@@ -87,4 +87,4 @@
 
 ## Notes
 
- * This configuration refers to many other famous Vim configurations (mainly contain [spf13-vim](https://github.com/spf13/spf13-vim), [Champions' Configuration](https://github.com/mutewinter/dot_vim) and [Steve's Configuration](https://github.com/sjl/dotfiles/tree/master/vim)), so there may be some unavoidable errors in it, but I have tried my best to make it work well. If you have any questions, please feel free to contact me! Thanks!
+**This configuration refers to many other famous Vim configurations (mainly contain [spf13-vim](https://github.com/spf13/spf13-vim), [Champions' Configuration](https://github.com/mutewinter/dot_vim) and [Steve's Configuration](https://github.com/sjl/dotfiles/tree/master/vim)), so there may be some unavoidable errors in it, but I have tried my best to make it work well. If you have any questions, please feel free to contact me! Thanks!**
