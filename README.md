@@ -25,9 +25,6 @@
 
  * Ctags generates an index (or tag) file of language objects found in source files that allows these items to be quickly and easily located by a text editor or other utility. I recommend you to use [Exuberant Ctags](http://ctags.sourceforge.net/).
 
-## Notes
-
- * This configuration refers to many other famous Vim configurations (mainly contain [spf13-vim](https://github.com/spf13/spf13-vim), [Champions' Configuration](https://github.com/mutewinter/dot_vim) and [Steve's Configuration](https://github.com/sjl/dotfiles/tree/master/vim)), so there may be some unavoidable errors in it, but I have tried my best to make it work well. If you have any questions, please feel free to contact me! Thanks!
 
 ## Features
 
@@ -64,3 +61,30 @@
  * [CamelCaseMotion](https://github.com/bkad/CamelCaseMotion) - Refine words motion in Vim
 
 **Each plugin has its unique requirements and configurations, so if you have any questions with them, please check help files of them first!**
+
+## Vim Tips
+
+*Learning Vim*
+
+* A good learning method of Vim is vimtutor, a 30 minute tutorial that teaches the most basic Vim functionality hands-on.
+
+    To try it, just type `vimtutor` on terminal.
+
+* Another way to get familiar with Vim commands and settings is just rely on the strong help system of Vim.
+
+    It's easy and convenient to type :h or :help in Vim for help of whatever you want to know.
+
+*Key Map*
+
+* Because I have set some key maps for more convenient typing and checking, you may be inconvenient with them at start. But if you get familiar with them, I'm sure you will like them.
+
+    You can just type :map in Vim to see them.
+
+*More Tips*
+
+* [Vim_Tips_Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki) is an excellent website, and you can learn much from it.
+**Hope You Enjoy Vimmmmmming**
+
+## Notes
+
+ * This configuration refers to many other famous Vim configurations (mainly contain [spf13-vim](https://github.com/spf13/spf13-vim), [Champions' Configuration](https://github.com/mutewinter/dot_vim) and [Steve's Configuration](https://github.com/sjl/dotfiles/tree/master/vim)), so there may be some unavoidable errors in it, but I have tried my best to make it work well. If you have any questions, please feel free to contact me! Thanks!
