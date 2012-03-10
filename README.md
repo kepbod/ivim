@@ -83,7 +83,8 @@
 *More Tips*
 
 * [Vim_Tips_Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki) is an excellent website, and you can learn much from it.
-**Hope You Enjoy Vimmmmmming**
+
+**Hope You Enjoy Vimming**
 
 ## Notes
 
