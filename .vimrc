@@ -108,7 +108,7 @@ let mapleader=',' " Change the mapleader
 set timeoutlen=500 " Time to wait for a command
 
 " Source the vimrc file after saving it
-autocmd bufwritepost .vimrc source $MYVIMRC
+autocmd BufWritePost .vimrc source $MYVIMRC
 " Fast edit the .vimrc file using ',v'
 nnoremap <Leader>v :tabedit $MYVIMRC<CR>
 
@@ -498,9 +498,12 @@ function! IsWhiteLine()
         :call NERDComment('n', 'Append')
     endif
 endfunction
-if (&modifiable==1)
-    nnoremap <buffer> <silent><Enter> :call IsWhiteLine()<CR>
-endif
+function! SetEnter()
+    if (&modifiable==1)
+        nmap <buffer> <silent><Enter> :call IsWhiteLine()<CR>
+    endif
+endfunction
+autocmd BufEnter :call SetEnter()<CR>
 
 " Strip all trailing whitespace in the current file
 nnoremap <Leader>q :%s/\s\+$//<CR>:let @/=''<CR>
