@@ -1,4 +1,4 @@
-# The gVim/MacVim Configuration of Xiaoou Zhang
+# The gVim/MacVim Configuration of Xiao'ou Zhang
 
 [![Vim](http://www.vim.org/images/vim_editor.gif)](http://www.vim.org/)
 
