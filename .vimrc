@@ -483,7 +483,7 @@ vnoremap ; :
 inoremap nn <ESC>
 vnoremap nn <ESC>
 
-" Map Enter to commenting
+" Map C-C to commenting
 function! IsWhiteLine()
     if (getline(".")=~"^$")
         let oldlinenumber=line(".")
@@ -498,12 +498,7 @@ function! IsWhiteLine()
         :call NERDComment('n', 'Append')
     endif
 endfunction
-function! SetEnter()
-    if (&modifiable==1)
-        nmap <buffer> <silent><Enter> :call IsWhiteLine()<CR>
-    endif
-endfunction
-autocmd BufEnter :call SetEnter()<CR>
+nnoremap <silent><C-C> :call IsWhiteLine()<CR>
 
 " Strip all trailing whitespace in the current file
 nnoremap <Leader>q :%s/\s\+$//<CR>:let @/=''<CR>
