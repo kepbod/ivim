@@ -108,7 +108,7 @@ let mapleader=',' " Change the mapleader
 set timeoutlen=500 " Time to wait for a command
 
 " Source the vimrc file after saving it
-autocmd bufwritepost .vimrc source $MYVIMRC
+autocmd BufWritePost .vimrc source $MYVIMRC
 " Fast edit the .vimrc file using ',v'
 nnoremap <Leader>v :tabedit $MYVIMRC<CR>
 
@@ -475,13 +475,6 @@ nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-O> <C-W>o
 
-" Navigation between tabs
-nnoremap <Leader>1 :tabn 1<CR>
-nnoremap <Leader>2 :tabn 2<CR>
-nnoremap <Leader>3 :tabn 3<CR>
-nnoremap <Leader>4 :tabn 4<CR>
-nnoremap <Leader>5 :tabn 5<CR>
-
 " Remap ; to :
 nnoremap ; :
 vnoremap ; :
@@ -490,7 +483,7 @@ vnoremap ; :
 inoremap nn <ESC>
 vnoremap nn <ESC>
 
-" Map Enter to commenting
+" Map C-C to commenting
 function! IsWhiteLine()
     if (getline(".")=~"^$")
         let oldlinenumber=line(".")
@@ -505,7 +498,7 @@ function! IsWhiteLine()
         :call NERDComment('n', 'Append')
     endif
 endfunction
-nnoremap <silent><Enter> :call IsWhiteLine()<CR>
+nnoremap <silent><C-C> :call IsWhiteLine()<CR>
 
 " Strip all trailing whitespace in the current file
 nnoremap <Leader>q :%s/\s\+$//<CR>:let @/=''<CR>
@@ -531,6 +524,7 @@ let g:tagbar_autoshowtag=1
 
 nnoremap <Leader>d :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 map <Leader>f :NERDTreeFind<CR>
+let NERDTreeChDirMode=2
 let NERDTreeShowBookmarks=1
 let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1
