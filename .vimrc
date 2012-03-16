@@ -95,6 +95,9 @@
 "   > Zencoding - https://github.com/mattn/zencoding-vim
 "     High-speed HTML, XML, XSL coding and editing
 "     info -> :help zencoding.txt
+"   > Golden Ratio - https://github.com/roman/golden-ratio
+"     Resize windows automatically using the Golden Ratio
+"     info -> :help golden_ratio.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -196,6 +199,7 @@ Bundle 'gmarik/vundle'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'mutewinter/vim-indent-guides'
+Bundle 'roman/golden-ratio'
 " Navigation
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'bkad/CamelCaseMotion'
@@ -275,11 +279,6 @@ function! MyTabLine()
 endfunction
 set tabline=%!MyTabLine()
 
-if has("gui_running")
-    set lines=50
-    set columns=90
-endif
-
 set backspace=indent,eol,start " Make backspaces delete sensibly
 set whichwrap+=h,l,<,>,[,] " Backspace and cursor keys wrap to
 set virtualedit=block,onemore " Allow for cursor beyond last character
@@ -338,11 +337,11 @@ let g:solarized_visibility="high"
 
 if has("gui_running")
     if has("gui_gtk2")
-        set guifont=Luxi\ Mono\ 18
+        set guifont=Luxi\ Mono\ 12
     elseif has("gui_macvim")
-        set guifont=Monaco:h18
+        set guifont=Monaco:h12
     elseif has("gui_win32")
-        set guifont=Consolas:h18:cANSI
+        set guifont=Consolas:h12:cANSI
     endif
 endif
 
