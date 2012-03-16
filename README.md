@@ -60,6 +60,8 @@
  * [TabMan](https://github.com/kien/tabman.vim) - provide a convenient way to navigate between tabs and windows
  * [CamelCaseMotion](https://github.com/bkad/CamelCaseMotion) - Refine words motion in Vim
  * [Zencoding](https://github.com/mattn/zencoding-vim) - High-speed HTML, XML, XSL coding and editing
+ * [Golden Ratio](https://github.com/roman/golden-ratio) - Resize windows
+ automatically using the Golden Ratio
 
 **Each plugin has its unique requirements and configurations, so if you have any questions with them, please check help files of them first!**
 
