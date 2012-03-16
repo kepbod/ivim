@@ -59,6 +59,7 @@
  * [SingleCompile](https://github.com/xuhdev/SingleCompile) - compile or run a single source file without leaving Vim
  * [TabMan](https://github.com/kien/tabman.vim) - provide a convenient way to navigate between tabs and windows
  * [CamelCaseMotion](https://github.com/bkad/CamelCaseMotion) - Refine words motion in Vim
+ * [Zencoding](https://github.com/mattn/zencoding-vim) - High-speed HTML, XML, XSL coding and editing
 
 **Each plugin has its unique requirements and configurations, so if you have any questions with them, please check help files of them first!**
 

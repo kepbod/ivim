@@ -92,6 +92,9 @@
 "   > CamelCaseMotion - https://github.com/bkad/CamelCaseMotion
 "     Refine words motion in Vim
 "     info -> :help camelcasemotion.txt
+"   > Zencoding - https://github.com/mattn/zencoding-vim
+"     High-speed HTML, XML, XSL coding and editing
+"     info -> :help zencoding.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -213,6 +216,7 @@ Bundle 'Shougo/neocomplcache'
 Bundle 'garbas/vim-snipmate'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
+Bundle 'mattn/zencoding-vim'
 
 " Others
 Bundle 'xolox/vim-easytags'
