@@ -241,8 +241,8 @@ set title
 set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)\ -\ %{v:servername}
 
 " Set tabline
-set showtabline=2 " Always show tab line
-set tabpagemax=5 " Only show 5 tabs
+set showtabline=2 "Always show tab line
+set tabpagemax=5 "Only show 5 tabs
 function! MyTabLine()
     let s=''
     let t=tabpagenr()
@@ -337,11 +337,11 @@ let g:solarized_visibility="high"
 
 if has("gui_running")
     if has("gui_gtk2")
-        set guifont=Luxi\ Mono\ 12
+        set guifont=Luxi\ Mono\ 18
     elseif has("gui_macvim")
-        set guifont=Monaco:h12
+        set guifont=Monaco:h18
     elseif has("gui_win32")
-        set guifont=Consolas:h12:cANSI
+        set guifont=Consolas:h18:cANSI
     endif
 endif
 
