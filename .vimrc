@@ -241,8 +241,8 @@ set title
 set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)\ -\ %{v:servername}
 
 " Set tabline
-set showtabline=2 "Always show tab line
-set tabpagemax=5 "Only show 5 tabs
+set showtabline=2 " Always show tab line
+set tabpagemax=5 " Only show 5 tabs
 function! MyTabLine()
     let s=''
     let t=tabpagenr()
