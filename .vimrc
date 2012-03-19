@@ -19,6 +19,7 @@
 "   -> NERD_commenter
 "   -> Neocomplcache
 "   -> snipMate
+"   -> delimitMate
 "   -> Ctrlp
 "   -> Ack
 "   -> Syntastic
@@ -27,6 +28,7 @@
 "   -> EasyTags
 "   -> SingleCompile
 "   -> TabMan
+"   -> Splitjoin
 "
 " Plugins_Included:
 "   > Vundle - https://github.com/gmarik/vundle
@@ -98,6 +100,9 @@
 "   > Golden Ratio - https://github.com/roman/golden-ratio
 "     Resize windows automatically using the Golden Ratio
 "     info -> :help golden_ratio.txt
+"   > Splitjoin - https://github.com/AndrewRadev/splitjoin.vim
+"     Switch between a single-line statement and a multi-line one
+"     info -> :help splitjoin.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -214,6 +219,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
 Bundle 'godlygeek/tabular'
+Bundle 'AndrewRadev/splitjoin.vim'
 Bundle 'xuhdev/SingleCompile'
 " Automatic Helper
 Bundle 'Shougo/neocomplcache'
@@ -578,6 +584,15 @@ let g:snips_trigger_key_backwards='<C-Space>'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
+" => delimitMate
+"--------------------------------------------------
+
+let delimitMate_expand_cr=1
+let delimitMate_expand_space=1
+let delimitMate_balance_matchpairs=1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"--------------------------------------------------
 " => Ctrlp
 "--------------------------------------------------
 
@@ -671,5 +686,15 @@ let g:SingleCompile_showquickfixiferror=1
 
 let g:tabman_specials=1
 let g:tabman_number=0
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"--------------------------------------------------
+" => Splitjoin
+"--------------------------------------------------
+
+nnoremap sj :SplitjoinSplit<CR>
+nnoremap sk :SplitjoinJoin<CR>
+let g:splitjoin_normalize_whitespace=1
+let g:splitjoin_align=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
