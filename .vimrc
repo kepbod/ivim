@@ -50,10 +50,10 @@
 "     Implement some of TextMate's snippets features in Vim
 "     info -> :help snipMate.txt
 "   > surround - https://github.com/tpope/vim-surround
-"     provide mappings to delete, change and add surroundings in pairs
+"     Provide mappings to delete, change and add surroundings in pairs
 "     info -> :help surround.txt
 "   > delimitMate - https://github.com/Raimondi/delimitMate
-"     provides automatic closing of quotes, parenthesis, brackets, etc.
+"     Provides automatic closing of quotes, parenthesis, brackets, etc.
 "     info -> :help delimitMate.txt
 "   > Ctrlp - https://github.com/kien/ctrlp.vim
 "     Full path fuzzy file, buffer, mru and tag finder with an intuitive interface
@@ -65,19 +65,19 @@
 "     Line up text easily
 "     info -> :help Tabular.txt
 "   > Syntastic - https://github.com/scrooloose/syntastic
-"     syntax check that runs files through external syntax checkers
+"     Syntax check that runs files through external syntax checkers
 "     info -> :help syntastic.txt
 "   > EasyMotion - https://github.com/Lokaltog/vim-easymotion
-"     provide a much simpler way to use some motions in Vim
+"     Provide a much simpler way to use some motions in Vim
 "     info -> :help easymotion.txt
 "   > Indent Guides - https://github.com/mutewinter/vim-indent-guides
-"     visually display indent levels in Vim
+"     Visually display indent levels in Vim
 "     info -> :help indent_guides.txt
 "   > fugitive - https://github.com/tpope/vim-fugitive
 "     Git wrapper
 "     info -> :help fugitive.txt
 "   > Gundo - https://github.com/sjl/gundo.vim
-"     visualize Vim undo tree
+"     Visualize Vim undo tree
 "     info -> :help gundo.txt
 "   > EasyTags - https://github.com/xolox/vim-easytags
 "     Automated tag generation and syntax highlighting in Vim
@@ -86,10 +86,10 @@
 "     Create better-looking, more functional Vim statuslines
 "     info -> :help Powerline.txt
 "   > SingleCompile - https://github.com/xuhdev/SingleCompile
-"     compile or run a single source file without leaving Vim
+"     Compile or run a single source file without leaving Vim
 "     info -> :help SingleCompile.txt
 "   > TabMan - https://github.com/kien/tabman.vim
-"     provide a convenient way to navigate between tabs and windows
+"     Provide a convenient way to navigate between tabs and windows
 "     info -> :help tabman.txt
 "   > CamelCaseMotion - https://github.com/bkad/CamelCaseMotion
 "     Refine words motion in Vim
@@ -202,6 +202,7 @@ Bundle 'gmarik/vundle'
 
 " UI Additions
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'mutewinter/vim-indent-guides'
 Bundle 'roman/golden-ratio'
@@ -230,6 +231,7 @@ Bundle 'mattn/zencoding-vim'
 
 " Others
 Bundle 'xolox/vim-easytags'
+Bundle 'godlygeek/csapprox'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'honza/snipmate-snippets'
@@ -335,11 +337,13 @@ endif
 
 syntax on " Enable syntax
 set background=dark " Set background
-colorscheme solarized " Load a colorscheme
-let g:solarized_termtrans=1
-let g:solarized_termcolors=256
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
+if has("gui_running")
+    colorscheme solarized " Load a colorscheme
+    call togglebg#map("bg")
+else
+    set t_Co=256 " Use 256 colors
+    colorscheme Tomorrow-Night-Eighties " Load a colorscheme
+endif
 
 if has("gui_running")
     if has("gui_gtk2")
@@ -364,7 +368,6 @@ set laststatus=2 " Show the statusline
 if has('gui_running') && (!has('win64') || !has('win32'))
   let g:Powerline_symbols='unicode'
 endif
-
 
 set cursorline " Highlight the current line
 set wildmenu " Show list instead of just completing
@@ -629,6 +632,11 @@ let g:syntastic_stl_format='[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 " => Indent Guides
 "--------------------------------------------------
 
+if !has("gui_running")
+    let g:indent_guides_auto_colors = 0
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=237
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=239
+endif
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_guide_size=1
 
