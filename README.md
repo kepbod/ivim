@@ -57,7 +57,6 @@
  * [EasyTags](https://github.com/xolox/vim-easytags) - Automated tag generation and syntax highlighting in Vim
  * [Powerline](https://github.com/Lokaltog/vim-powerline) - Create better-looking, more functional Vim statuslines
  * [SingleCompile](https://github.com/xuhdev/SingleCompile) - Compile or run a single source file without leaving Vim
- * [TabMan](https://github.com/kien/tabman.vim) - Provide a convenient way to navigate between tabs and windows
  * [CamelCaseMotion](https://github.com/bkad/CamelCaseMotion) - Refine words motion in Vim
  * [Zencoding](https://github.com/mattn/zencoding-vim) - High-speed HTML, XML, XSL coding and editing
  * [Golden Ratio](https://github.com/roman/golden-ratio) - Resize windows

@@ -27,7 +27,6 @@
 "   -> Gundo
 "   -> EasyTags
 "   -> SingleCompile
-"   -> TabMan
 "   -> Splitjoin
 "
 " Plugins_Included:
@@ -88,9 +87,6 @@
 "   > SingleCompile - https://github.com/xuhdev/SingleCompile
 "     Compile or run a single source file without leaving Vim
 "     info -> :help SingleCompile.txt
-"   > TabMan - https://github.com/kien/tabman.vim
-"     Provide a convenient way to navigate between tabs and windows
-"     info -> :help tabman.txt
 "   > CamelCaseMotion - https://github.com/bkad/CamelCaseMotion
 "     Refine words motion in Vim
 "     info -> :help camelcasemotion.txt
@@ -213,7 +209,6 @@ Bundle 'roman/golden-ratio'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'bkad/CamelCaseMotion'
 Bundle 'sjl/gundo.vim'
-Bundle 'kien/tabman.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'sjbach/lusty'
 Bundle 'scrooloose/nerdtree'
@@ -562,9 +557,11 @@ let NERDRemoveExtraSpaces=1
 "--------------------------------------------------
 
 let g:neocomplcache_enable_at_startup=1
+let g:neocomplcache_enable_auto_select=1
+let g:neocomplcache_enable_auto_delimiter=1
 let g:neocomplcache_enable_camel_case_completion=1
 let g:neocomplcache_enable_underbar_completion=1
-let g:neocomplcache_enable_auto_select=1
+
 " Map <C-E> to cancel completion
 inoremap <expr><C-E> neocomplcache#cancel_popup()
 
@@ -572,12 +569,9 @@ inoremap <expr><C-E> neocomplcache#cancel_popup()
 inoremap <expr><Tab>  pumvisible() ? "\<C-N>" : "\<Tab>"
 inoremap <expr><S-Tab>  pumvisible() ? "\<C-P>" : "\<S-Tab>"
 
-" <S-CR>: close popup and save indent.
+" CR/S-CR: close popup and save indent.
 inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 inoremap <expr><S-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR>"
-
-" <C-E>: close popup
-inoremap <expr><C-E> neocomplcache#cancel_popup()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -689,15 +683,6 @@ highlight cMember gui=italic
 
 nnoremap <Leader>r :SingleCompileRun<CR>
 let g:SingleCompile_showquickfixiferror=1
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"--------------------------------------------------
-" => Tabman
-"--------------------------------------------------
-
-let g:tabman_specials=1
-let g:tabman_number=0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
