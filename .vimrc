@@ -103,6 +103,9 @@
 "   > Splitjoin - https://github.com/AndrewRadev/splitjoin.vim
 "     Switch between a single-line statement and a multi-line one
 "     info -> :help splitjoin.txt
+"   > Lusty - https://github.com/sjbach/lusty
+"     Famous LustyExplorer and LustyJuggler plugin
+"     info -> See the "Usage:" section of the script
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -212,6 +215,7 @@ Bundle 'bkad/CamelCaseMotion'
 Bundle 'sjl/gundo.vim'
 Bundle 'kien/tabman.vim'
 Bundle 'majutsushi/tagbar'
+Bundle 'sjbach/lusty'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
@@ -310,8 +314,8 @@ endfunction
 nnoremap <Leader>n :call ToggleRelativenumber()<CR>
 set wrap " Set wrap
 set showbreak=»  " Change wrap line break
-set textwidth=85 " Change text width
-set colorcolumn=85 " Indicate text border
+set textwidth=78 " Change text width
+set colorcolumn=78 " Indicate text border
 set formatoptions+=rnlmM " Optimize format options
 set list " Show these tabs and spaces and so on
 set listchars=tab:▸\ ,eol:¬

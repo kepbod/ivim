@@ -63,6 +63,7 @@
  * [Golden Ratio](https://github.com/roman/golden-ratio) - Resize windows
  automatically using the Golden Ratio
  * [Splitjoin](https://github.com/AndrewRadev/splitjoin.vim) - Switch between a single-line statement and a multi-line one
+ * [Lusty](https://github.com/sjbach/lusty) - Famous LustyExplorer and LustyJuggler plugin
 
 **Each plugin has its unique requirements and configurations, so if you have any questions with them, please check help files of them first!**
 
