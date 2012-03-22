@@ -63,6 +63,7 @@
  automatically using the Golden Ratio
  * [Splitjoin](https://github.com/AndrewRadev/splitjoin.vim) - Switch between a single-line statement and a multi-line one
  * [Lusty](https://github.com/sjbach/lusty) - Famous LustyExplorer and LustyJuggler plugin
+ * [rails.vim](https://github.com/tpope/vim-rails) - Plugin for working with Ruby on Rails applications
 
 **Each plugin has its unique requirements and configurations, so if you have any questions with them, please check help files of them first!**
 

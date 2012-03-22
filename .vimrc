@@ -8,7 +8,6 @@
 "   -> Plugin
 "   -> Vim User Interface
 "   -> Colors and Fonts
-"   -> Status Line
 "   -> Indent and Tab Related
 "   -> Search Related
 "   -> Fold Related
@@ -102,6 +101,9 @@
 "   > Lusty - https://github.com/sjbach/lusty
 "     Famous LustyExplorer and LustyJuggler plugin
 "     info -> See the "Usage:" section of the script
+"   > rails.vim - https://github.com/tpope/vim-rails
+"     Plugin for working with Ruby on Rails applications
+"     info -> :help rails.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -121,9 +123,6 @@ set timeoutlen=500 " Time to wait for a command
 autocmd BufWritePost .vimrc source $MYVIMRC
 " Fast edit the .vimrc file using ',v'
 nnoremap <Leader>v :tabedit $MYVIMRC<CR>
-
-set viewoptions+=slash,unix " Better Unix/Windows compatibility
-set fileformats=unix,mac,dos " Auto detect the file formats
 
 set autoread " Set autoread when a file is changed outside
 set autowrite " Write on make/shell commands
@@ -187,6 +186,9 @@ if has('win32') || has('win64')
     set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 endif
 
+set viewoptions+=slash,unix " Better Unix/Windows compatibility
+set fileformats=unix,mac,dos " Auto detect the file formats
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
@@ -226,6 +228,8 @@ Bundle 'Shougo/neocomplcache'
 Bundle 'garbas/vim-snipmate'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
+" Language related
+Bundle 'tpope/vim-rails'
 Bundle 'mattn/zencoding-vim'
 
 " Others
@@ -286,6 +290,19 @@ function! MyTabLine()
 endfunction
 set tabline=%!MyTabLine()
 
+" Set status line
+set laststatus=2 " Show the statusline
+" Set the style of the status line
+" Use vim-powerline to modify the statuls line
+if has('gui_running') && (!has('win64') || !has('win32'))
+  let g:Powerline_symbols='unicode'
+endif
+set cursorline " Highlight the current line
+set wildmenu " Show list instead of just completing
+set wildmode=list:longest,full " Use powerful wildmenu
+set shortmess=at " Avoids 'hit enter'
+set showcmd " Show cmd
+
 set backspace=indent,eol,start " Make backspaces delete sensibly
 set whichwrap+=h,l,<,>,[,] " Backspace and cursor keys wrap to
 set virtualedit=block,onemore " Allow for cursor beyond last character
@@ -307,13 +324,14 @@ function! ToggleRelativenumber()
     endif
 endfunction
 nnoremap <Leader>n :call ToggleRelativenumber()<CR>
+
 set wrap " Set wrap
-set showbreak=»  " Change wrap line break
+set formatoptions+=rnlmM " Optimize format options
 set textwidth=78 " Change text width
 set colorcolumn=78 " Indicate text border
-set formatoptions+=rnlmM " Optimize format options
 set list " Show these tabs and spaces and so on
 set listchars=tab:▸\ ,eol:¬
+set showbreak=»  " Change wrap line break
 " Only show trailing whitespace when not in insert mode
 augroup trailing
     autocmd!
@@ -336,6 +354,7 @@ endif
 
 syntax on " Enable syntax
 set background=dark " Set background
+
 if has("gui_running")
     colorscheme solarized " Load a colorscheme
     call togglebg#map("bg")
@@ -353,26 +372,6 @@ if has("gui_running")
         set guifont=Consolas:h18:cANSI
     endif
 endif
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"-------------------------------------------------
-" => Status Line
-"-------------------------------------------------
-
-set laststatus=2 " Show the statusline
-
-" Set the style of the status line
-" Use vim-powerline to modify the statuls line
-if has('gui_running') && (!has('win64') || !has('win32'))
-  let g:Powerline_symbols='unicode'
-endif
-
-set cursorline " Highlight the current line
-set wildmenu " Show list instead of just completing
-set wildmode=list:longest,full " Use powerful wildmenu
-set shortmess=at " Avoids 'hit enter'
-set showcmd " Show cmd
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -685,6 +684,7 @@ nnoremap <Leader>r :SingleCompileRun<CR>
 let g:SingleCompile_showquickfixiferror=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "--------------------------------------------------
 " => Splitjoin
 "--------------------------------------------------
