@@ -98,9 +98,9 @@
 "   > Splitjoin - https://github.com/AndrewRadev/splitjoin.vim
 "     Switch between a single-line statement and a multi-line one
 "     info -> :help splitjoin.txt
-"   > Lusty - https://github.com/sjbach/lusty
-"     Famous LustyExplorer and LustyJuggler plugin
-"     info -> See the "Usage:" section of the script
+"   > Unite - https://github.com/Shougo/unite.vim
+"     Search and display information from arbitrary sources
+"     info -> :help unite.txt
 "   > rails.vim - https://github.com/tpope/vim-rails
 "     Plugin for working with Ruby on Rails applications
 "     info -> :help rails.txt
@@ -212,7 +212,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'bkad/CamelCaseMotion'
 Bundle 'sjl/gundo.vim'
 Bundle 'majutsushi/tagbar'
-Bundle 'sjbach/lusty'
+Bundle 'Shougo/unite.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
@@ -313,6 +313,7 @@ set showmatch " Show matching brackets/parenthesis
 set matchtime=2 " Decrease the time to blink
 " Use Tab instead of % to switch among brackets/parenthesis
 nnoremap <Tab> %
+vnoremap <Tab> %
 
 set number " Show line numbers
 " Toggle relativenumber
@@ -365,11 +366,11 @@ endif
 
 if has("gui_running")
     if has("gui_gtk2")
-        set guifont=Luxi\ Mono\ 18
+        set guifont=Luxi\ Mono\ 15
     elseif has("gui_macvim")
-        set guifont=Monaco:h18
+        set guifont=Monaco:h15
     elseif has("gui_win32")
-        set guifont=Consolas:h18:cANSI
+        set guifont=Consolas:h15:cANSI
     endif
 endif
 
