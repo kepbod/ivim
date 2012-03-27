@@ -26,6 +26,7 @@
 "   -> Gundo
 "   -> EasyTags
 "   -> SingleCompile
+"   -> Zencoding
 "   -> Splitjoin
 "
 " Plugins_Included:
@@ -502,10 +503,10 @@ nnoremap <C-L> <C-W>l
 nnoremap <C-O> <C-W>o
 
 " Shift text left and right
-nnoremap <C-[> <<
-nnoremap <C-]> >>
-vnoremap <C-[> <gv
-vnoremap <C-]> >gv
+nnoremap <Leader>[ <<
+nnoremap <Leader>] >>
+vnoremap <Leader>[ <gv
+vnoremap <Leader>] >gv
 
 
 " Remap ; to :
@@ -516,7 +517,7 @@ vnoremap ; :
 inoremap nn <ESC>
 vnoremap nn <ESC>
 
-" Map C-C to commenting
+" Map \ to commenting
 function! IsWhiteLine()
     if (getline(".")=~"^$")
         let oldlinenumber=line(".")
@@ -531,7 +532,7 @@ function! IsWhiteLine()
         :call NERDComment('n', 'Append')
     endif
 endfunction
-nnoremap <silent><C-C> :call IsWhiteLine()<CR>
+nnoremap <silent>\ :call IsWhiteLine()<CR>
 
 " Strip all trailing whitespace in the current file
 nnoremap <Leader>q :%s/\s\+$//<CR>:let @/=''<CR>
@@ -705,6 +706,15 @@ highlight cMember gui=italic
 
 nnoremap <Leader>r :SingleCompileRun<CR>
 let g:SingleCompile_showquickfixiferror=1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"--------------------------------------------------
+" => Zencoding
+"--------------------------------------------------
+
+let g:user_zen_leader_key='<C-Z>'
+let g:user_zen_settings={'indentation':'   '}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
