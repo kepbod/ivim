@@ -64,6 +64,10 @@
  * [Splitjoin](https://github.com/AndrewRadev/splitjoin.vim) - Switch between a single-line statement and a multi-line one
  * [Unite](https://github.com/Shougo/unite.vim) - Search and display information from arbitrary sources
  * [rails.vim](https://github.com/tpope/vim-rails) - Plugin for working with Ruby on Rails applications
+ * [Indent Object](https://github.com/michaeljsmith/vim-indent-object) - Text objects based on indent levels
+ * [NrrwRgn](https://github.com/chrisbra/NrrwRgn) - Focus on a region and making the rest inaccessible
+ * [unimpaired.vim](https://github.com/tpope/vim-unimpaired) - Complementary pairs of mappings
+ * [abolish.vim](https://github.com/tpope/vim-abolish) - Search for, substitute, and abbreviate multiple variants of a word
 
 **Each plugin has its unique requirements and configurations, so if you have any questions with them, please check help files of them first!**
 
@@ -79,6 +83,8 @@
 
     It's easy and convenient to type `:h` or `:help` in Vim for help of whatever you want to know.
 
+* A beautiful Vim cheat sheet is available [here](http://michael.peopleofhonoronly.com/vim/). If you want one, just click it!
+
 *Key Map*
 
 * Because I have set some key maps for more convenient typing and checking, you may be inconvenient with them at start. But if you get familiar with them, I'm sure you will like them.
@@ -88,7 +94,7 @@
 *More Tips*
 
 * [Vim_Tips_Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki) is an excellent website, and you can learn much from it.
-
+* [Vimcasts](http://vimcasts.org) publishes free screencasts about Vim. It's useful and interesting! Believe me!
 **Hope You Enjoy Vimming**
 
 ## Notes

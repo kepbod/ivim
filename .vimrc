@@ -104,6 +104,18 @@
 "   > rails.vim - https://github.com/tpope/vim-rails
 "     Plugin for working with Ruby on Rails applications
 "     info -> :help rails.txt
+"   > Indent Object - https://github.com/michaeljsmith/vim-indent-object
+"     Text objects based on indent levels
+"     info -> :help indent-object.txt
+"   > NrrwRgn - https://github.com/chrisbra/NrrwRgn
+"     Focus on a region and making the rest inaccessible
+"     info -> :help NrrwRgn.txt
+"   > unimpaired.vim - https://github.com/tpope/vim-unimpaired
+"     Complementary pairs of mappings
+"     info -> :help unimpaired.txt
+"   > abolish.vim - https://github.com/tpope/vim-abolish
+"     Search for, substitute, and abbreviate multiple variants of a word
+"     info -> :help abolish.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -207,9 +219,12 @@ Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'mutewinter/vim-indent-guides'
 Bundle 'roman/golden-ratio'
+Bundle 'chrisbra/NrrwRgn'
 " Navigation
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'bkad/CamelCaseMotion'
+Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'tpope/vim-unimpaired'
 Bundle 'sjl/gundo.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'Shougo/unite.vim'
@@ -220,6 +235,7 @@ Bundle 'tpope/vim-fugitive'
 " Commands
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-abolish'
 Bundle 'godlygeek/tabular'
 Bundle 'AndrewRadev/splitjoin.vim'
 Bundle 'xuhdev/SingleCompile'
@@ -234,7 +250,7 @@ Bundle 'mattn/zencoding-vim'
 
 " Others
 Bundle 'xolox/vim-easytags'
-Bundle 'godlygeek/csapprox'
+Bundle 'tpope/vim-repeat'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'honza/snipmate-snippets'
@@ -326,7 +342,6 @@ function! ToggleRelativenumber()
 endfunction
 nnoremap <Leader>n :call ToggleRelativenumber()<CR>
 
-set wrap " Set wrap
 set formatoptions+=rnlmM " Optimize format options
 set textwidth=78 " Change text width
 set colorcolumn=78 " Indicate text border
@@ -485,6 +500,13 @@ nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-O> <C-W>o
+
+" Shift text left and right
+nnoremap <C-[> <<
+nnoremap <C-]> >>
+vnoremap <C-[> <gv
+vnoremap <C-]> >gv
+
 
 " Remap ; to :
 nnoremap ; :
