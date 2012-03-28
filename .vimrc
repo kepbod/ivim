@@ -536,7 +536,7 @@ vnoremap ; :
 inoremap nn <ESC>
 vnoremap nn <ESC>
 
-" Map \\ to commenting
+" Map \<Space> to commenting
 function! IsWhiteLine()
     if (getline(".")=~"^$")
         let oldlinenumber=line(".")
