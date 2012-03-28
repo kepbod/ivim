@@ -372,20 +372,39 @@ endif
 syntax on " Enable syntax
 set background=dark " Set background
 
-if has("gui_running")
+if has('gui_running')
     colorscheme solarized " Load a colorscheme
-    call togglebg#map("bg")
 else
     set t_Co=256 " Use 256 colors
     colorscheme Tomorrow-Night-Eighties " Load a colorscheme
 endif
 
-if has("gui_running")
-    if has("gui_gtk2")
+function! ToggleColor()
+    if has('gui_running')
+        let color=g:colors_name=='solarized'?'Tomorrow-Night':'solarized'
+        exe 'colorscheme '.color
+    endif
+endfunction
+nnoremap <silent>\c :call ToggleColor()<CR>
+
+function! ToggleBackground()
+    if has('gui_running')
+        if g:colors_name=='solarized'
+            let &background=&background=='dark'?'light':'dark'
+        else
+            let color=g:colors_name=='Tomorrow-Night'?'Tomorrow':'Tomorrow-Night'
+            exe 'colorschem '.color
+        endif
+    endif
+endfunction
+nnoremap <silent>\b :call ToggleBackground()<CR>
+
+if has('gui_running')
+    if has('gui_gtk2')
         set guifont=Luxi\ Mono\ 15
-    elseif has("gui_macvim")
+    elseif has('gui_macvim')
         set guifont=Monaco:h15
-    elseif has("gui_win32")
+    elseif has('gui_win32')
         set guifont=Consolas:h15:cANSI
     endif
 endif
@@ -517,7 +536,7 @@ vnoremap ; :
 inoremap nn <ESC>
 vnoremap nn <ESC>
 
-" Map \ to commenting
+" Map \\ to commenting
 function! IsWhiteLine()
     if (getline(".")=~"^$")
         let oldlinenumber=line(".")
@@ -532,7 +551,7 @@ function! IsWhiteLine()
         :call NERDComment('n', 'Append')
     endif
 endfunction
-nnoremap <silent>\ :call IsWhiteLine()<CR>
+nnoremap <silent>\<Space> :call IsWhiteLine()<CR>
 
 " Strip all trailing whitespace in the current file
 nnoremap <Leader>q :%s/\s\+$//<CR>:let @/=''<CR>
@@ -653,7 +672,7 @@ let g:syntastic_stl_format='[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 " => Indent Guides
 "--------------------------------------------------
 
-if !has("gui_running")
+if !has('gui_running')
     let g:indent_guides_auto_colors = 0
     autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=237
     autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=239
