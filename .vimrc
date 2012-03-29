@@ -388,13 +388,16 @@ endfunction
 nnoremap <silent>\c :call ToggleColor()<CR>
 
 function! ToggleBackground()
-    if has('gui_running')
-        if g:colors_name=='solarized'
-            let &background=&background=='dark'?'light':'dark'
-        else
+    if g:colors_name=='solarized'
+        let &background=&background=='dark'?'light':'dark'
+    else
+        if has('gui_running')
             let color=g:colors_name=='Tomorrow-Night'?'Tomorrow':'Tomorrow-Night'
-            exe 'colorschem '.color
+        else
+            let color=g:colors_name=='Tomorrow-Night-Eighties'?'Tomorrow':'Tomorrow-Night-Eighties'
+            call IndentColor(color)
         endif
+        exe 'colorschem '.color
     endif
 endfunction
 nnoremap <silent>\b :call ToggleBackground()<CR>
@@ -673,10 +676,22 @@ let g:syntastic_stl_format='[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 "--------------------------------------------------
 
 if !has('gui_running')
-    let g:indent_guides_auto_colors = 0
+    let g:indent_guides_auto_colors=0
     autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=237
     autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=239
 endif
+
+function! IndentColor(mode)
+    let g:indent_guides_auto_colors=0
+    if a:mode=='Tomorrow-Night-Eighties'
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=237
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=239
+    else
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=252
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=253
+    endif
+endfunction
+
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_guide_size=1
 
