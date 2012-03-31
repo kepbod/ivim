@@ -271,8 +271,8 @@ set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)\ -\ %{v:servernam
 " Set tabline
 set showtabline=2 " Always show tab line
 " Set up tab labels with tab number, buffer name, number of windows
-set guitablabel=%m%N:\ %t\ \[%{tabpagewinnr(v:lnum,'$')}\]
-set tabline=%m%N:\ %t\ \[%{tabpagewinnr(v:lnum,'$')}\]
+set guitablabel=%m%N:%t\[%{tabpagewinnr(v:lnum,'$')}\]
+set tabline=%m%N:%t\[%{tabpagewinnr(v:lnum,'$')}\]
 " Set up tab tooltips with every buffer name
 set guitabtooltip=%F
 
