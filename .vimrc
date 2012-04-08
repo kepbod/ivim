@@ -28,6 +28,7 @@
 "   -> SingleCompile
 "   -> Zencoding
 "   -> Splitjoin
+"   -> Unite
 "
 " Plugins_Included:
 "   > Vundle - https://github.com/gmarik/vundle
@@ -283,7 +284,9 @@ set laststatus=2 " Show the statusline
 if has('gui_running') && (!has('win64') || !has('win32'))
   let g:Powerline_symbols='unicode'
 endif
-set cursorline " Highlight the current line
+" Only have cursorline in current window
+autocmd WinLeave * set nocursorline
+autocmd WinEnter * set cursorline
 set wildmenu " Show list instead of just completing
 set wildmode=list:longest,full " Use powerful wildmenu
 set shortmess=at " Avoids 'hit enter'
@@ -413,6 +416,10 @@ cnoremap s/ s/\v
 " Keep search matches in the middle of the window
 nnoremap n nzzzv
 nnoremap N Nzzzv
+nnoremap * *zzzv
+nnoremap # #zzzv
+nnoremap g* g*zzzv
+nnoremap g# g#zzzv
 
 " Visual search mappings
 function! s:VSetSearch()
@@ -459,11 +466,11 @@ set foldtext=MyFoldText()
 " => Key Mapping
 "-------------------------------------------------
 
-" Disable array keys
-nnoremap <Up> <Nop>
-nnoremap <Down> <Nop>
-nnoremap <Left> <Nop>
-nnoremap <Right> <Nop>
+" Change array keys' function
+nnoremap <Up> :bp<CR>
+nnoremap <Down> :bn<CR>
+nnoremap <Left> :tabp<CR>
+nnoremap <Right> :tabn<CR>
 inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
@@ -492,12 +499,9 @@ nnoremap <C-K> <C-W>k
 nnoremap <C-L> <C-W>l
 nnoremap <C-O> <C-W>o
 
-" Shift text left and right
-nnoremap <Leader>[ <<
-nnoremap <Leader>] >>
-vnoremap <Leader>[ <gv
-vnoremap <Leader>] >gv
-
+" Reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
 
 " Remap ; to :
 nnoremap ; :
@@ -526,6 +530,9 @@ nnoremap <silent>\<Space> :call IsWhiteLine()<CR>
 
 " Strip all trailing whitespace in the current file
 nnoremap <Leader>q :%s/\s\+$//<CR>:let @/=''<CR>
+
+" Select all
+nnoremap \a ggVG
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -621,7 +628,7 @@ let g:ctrlp_extensions=['tag', 'buffertag', 'quickfix', 'dir', 'rtscript']
 " => Ack
 "--------------------------------------------------
 
-nnoremap <Leader>a :Ack!
+nnoremap <Leader>a :Ack!<Space>
 if has('unix')
     let g:ackprg='ack-grep -H --nocolor --nogroup --column'
 endif
@@ -728,5 +735,13 @@ nnoremap sj :SplitjoinSplit<CR>
 nnoremap sk :SplitjoinJoin<CR>
 let g:splitjoin_normalize_whitespace=1
 let g:splitjoin_align=1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"--------------------------------------------------
+" => Unite
+"--------------------------------------------------
+
+nnoremap <Leader>m :Unite<Space>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
