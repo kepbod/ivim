@@ -85,11 +85,11 @@
 
 * A beautiful Vim cheat sheet is available [here](http://michael.peopleofhonoronly.com/vim/). If you want one, just click it!
 
-*Key Map*
+*Key Mappings*
 
-* Because I have set some key maps for more convenient typing and checking, you may be inconvenient with them at start. But if you get familiar with them, I'm sure you will like them.
+* Because I have set some key mappings for more convenient typing and checking, you may be inconvenient with them at start. But if you get familiar with them, I'm sure you will like them.
 
-    You can just type `:map` in Vim to see them.
+    You can just type `:map` in Vim to see them or visite [here](https://github.com/kepbod/vim-config/wiki/Key-Mappings).
 
 *More Tips*
 

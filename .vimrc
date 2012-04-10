@@ -557,7 +557,7 @@ let g:tagbar_autoshowtag=1
 "--------------------------------------------------
 
 nnoremap <Leader>d :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-map <Leader>f :NERDTreeFind<CR>
+nnoremap <Leader>f :NERDTreeFind<CR>
 let NERDTreeChDirMode=2
 let NERDTreeShowBookmarks=1
 let NERDTreeShowHidden=1
