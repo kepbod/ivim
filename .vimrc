@@ -354,6 +354,7 @@ function! ToggleColor()
     if has('gui_running')
         let color=g:colors_name=='solarized'?'Tomorrow-Night':'solarized'
         exe 'colorscheme '.color
+        exe 'IndentGuidesEnable'
     endif
 endfunction
 nnoremap <silent>\c :call ToggleColor()<CR>
@@ -361,6 +362,7 @@ nnoremap <silent>\c :call ToggleColor()<CR>
 function! ToggleBackground()
     if g:colors_name=='solarized'
         let &background=&background=='dark'?'light':'dark'
+        exe 'IndentGuidesEnable'
     else
         if has('gui_running')
             let color=g:colors_name=='Tomorrow-Night'?'Tomorrow':'Tomorrow-Night'
@@ -369,6 +371,7 @@ function! ToggleBackground()
             call IndentColor(color)
         endif
         exe 'colorschem '.color
+        exe 'IndentGuidesEnable'
     endif
 endfunction
 nnoremap <silent>\b :call ToggleBackground()<CR>
