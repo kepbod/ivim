@@ -470,10 +470,10 @@ set foldtext=MyFoldText()
 "-------------------------------------------------
 
 " Change array keys' function
-nnoremap <Up> :bp<CR>
-nnoremap <Down> :bn<CR>
-nnoremap <Left> :tabp<CR>
-nnoremap <Right> :tabn<CR>
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Left> <Nop>
+nnoremap <Right> <Nop>
 inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Left> <Nop>
