@@ -68,6 +68,7 @@
  * [NrrwRgn](https://github.com/chrisbra/NrrwRgn) - Focus on a region and making the rest inaccessible
  * [unimpaired.vim](https://github.com/tpope/vim-unimpaired) - Complementary pairs of mappings
  * [abolish.vim](https://github.com/tpope/vim-abolish) - Search for, substitute, and abbreviate multiple variants of a word
+ * [vimux](https://github.com/benmills/vimux) - Easily interact with tmux from vim
 
 **Each plugin has its unique requirements and configurations, so if you have any questions with them, please check help files of them first!**
 

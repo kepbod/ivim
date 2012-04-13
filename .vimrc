@@ -29,6 +29,7 @@
 "   -> Zencoding
 "   -> Splitjoin
 "   -> Unite
+"   -> vimux
 "
 " Plugins_Included:
 "   > Vundle - https://github.com/gmarik/vundle
@@ -118,6 +119,9 @@
 "   > abolish.vim - https://github.com/tpope/vim-abolish
 "     Search for, substitute, and abbreviate multiple variants of a word
 "     info -> :help abolish.txt
+"   > vimux - https://github.com/benmills/vimux
+"     Easily interact with tmux from vim
+"     info -> :help vimux.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -234,6 +238,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-fugitive'
+Bundle 'benmills/vimux'
 " Commands
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
@@ -746,5 +751,29 @@ let g:splitjoin_align=1
 "--------------------------------------------------
 
 nnoremap <Leader>m :Unite<Space>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"--------------------------------------------------
+" => vimux
+"--------------------------------------------------
+
+" Run the current file with rspec
+nnoremap <Leader>xb :call RunVimTmuxCommand("clear; rspec " . bufname("%"))<CR>
+
+" Prompt for a command to run
+nnoremap <Leader>xp :PromptVimTmuxCommand<CR>
+
+" Run last command executed by RunVimTmuxCommand
+nnoremap <Leader>xl :RunLastVimTmuxCommand<CR>
+
+" Inspect runner pane
+nnoremap <Leader>xi :InspectVimTmuxRunner<CR>
+
+" Close all other tmux panes in current window
+nnoremap <Leader>xx :CloseVimTmuxPanes<CR>
+
+" Interrupt any command running in the runner pane
+nnoremap <Leader>xs :InterruptVimTmuxRunner<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
