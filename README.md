@@ -1,10 +1,10 @@
-# The Vim Configuration of Xiao'ou Zhang
+# The Vim Configuration of Xiaoou Zhang
 
 [![Vim](http://www.vim.org/images/vim_editor.gif)](http://www.vim.org/)
 
 ## Installation
 
-1. Install Vundle which is to install and update plugins, `git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle`;
+1. Install Vundle to install and update plugins, `git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle`;
 2. Get my configuration from github website, `git clone http://github.com/kepbod/vim-config.git $HOME/vimrc`;
 3. Copy my configuration to your home directory, `cp $HOME/vimrc/.vimrc $HOME/.vimrc`;
 4. Open .vimrc, `vim .vimrc`;
@@ -13,28 +13,29 @@
 
 ## Requirements
 
-**VIM**
+**Vim**
 
  * This configuration is adapted to both [Vim](http://www.vim.org/download.php) and [MacVim](http://www.vim.org/download.php#mac)/[gVim](http://www.vim.org/download.php#pc).
 
-**GIT**
+**Git**
 
- * All the Installation bases on [Git](http://git-scm.com/) which is a famous distributed revision control system. If you use Windows, you may need install [msysgit](http://code.google.com/p/msysgit/).
+ * All the installations are based on [Git](http://git-scm.com/) which is a famous distributed revision control system. If you use Windows, you may need install [msysgit](http://code.google.com/p/msysgit/).
 
-**CTAGS**
+**Ctags**
 
  * Ctags generates an index (or tag) file of language objects found in source files that allows these items to be quickly and easily located by a text editor or other utility. I recommend you to use [Exuberant Ctags](http://ctags.sourceforge.net/).
 
+*To use this configuration with less bugs, please get more suggestions from [here](https://github.com/kepbod/vim-config/wiki/Suggestions)*
 
 ## Features
 
-***Beautiful Colorschem***
+***Beautiful Colorscheme***
 
- * Use famous colorschem [Solarized](http://ethanschoonover.com/solarized)/[Tomorrow](https://github.com/chriskempson/tomorrow-theme) to make your eyes feel confortable in both Vim and MacVim/gVim.
+ * Use famous colorscheme [Solarized](http://ethanschoonover.com/solarized)/[Tomorrow](https://github.com/chriskempson/tomorrow-theme) to make your eyes feel comfortable in both Vim and MacVim/gVim.
 
 ***Efficient***
 
- * Make using Vim more convenient and faster, and lots of useful plugins (such as [Neocomplcache](https://github.com/Shougo/neocomplcache), [NERD_commenter](https://github.com/scrooloose/nerdcommenter), [Syntastic](https://github.com/scrooloose/syntastic) and [SingleCompile](https://github.com/xuhdev/SingleCompile)) confirm a better proformance of Vim.
+ * Make using Vim more convenient and faster, and lots of useful plugins (such as [Neocomplcache](https://github.com/Shougo/neocomplcache), [NERD_commenter](https://github.com/scrooloose/nerdcommenter), [Syntastic](https://github.com/scrooloose/syntastic) and [SingleCompile](https://github.com/xuhdev/SingleCompile)) confirm a better performance of Vim.
 
 ## Plugin List
 
@@ -88,9 +89,9 @@
 
 *Key Mappings*
 
-* Because I have set some key mappings for more convenient typing and checking, you may be inconvenient with them at start. But if you get familiar with them, I'm sure you will like them.
+* Because I have set some key mappings for more convenient typing and checking, you may feel inconvenient with them at start. But if you get familiar with them, I'm sure you will love them.
 
-    You can just type `:map` in Vim to see them or visite [here](https://github.com/kepbod/vim-config/wiki/Key-Mappings).
+    You can just type `:map` in Vim to see them or click [here](https://github.com/kepbod/vim-config/wiki/Key-Mappings).
 
 *More Tips*
 
