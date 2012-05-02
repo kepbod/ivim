@@ -11,6 +11,7 @@
 "   -> Indent and Tab Related
 "   -> Search Related
 "   -> Fold Related
+"   -> Filetype specific
 "   -> Key Mapping
 "
 "   -> Tagbar
@@ -27,6 +28,7 @@
 "   -> EasyTags
 "   -> SingleCompile
 "   -> Zencoding
+"   -> Golden Ratio
 "   -> Splitjoin
 "   -> Unite
 "   -> vimux
@@ -135,6 +137,7 @@
 set nocompatible " Get out of VI's compatible mode
 filetype plugin indent on " Enable filetype
 let mapleader=',' " Change the mapleader
+let maplocalleader='\' " Change the maplocalleader
 set timeoutlen=500 " Time to wait for a command
 
 " Source the vimrc file after saving it
@@ -289,9 +292,11 @@ set laststatus=2 " Show the statusline
 if has('gui_running') && (!has('win64') || !has('win32'))
   let g:Powerline_symbols='unicode'
 endif
-" Only have cursorline in current window
+" Only have cursorline in current window and in normal window
 autocmd WinLeave * set nocursorline
 autocmd WinEnter * set cursorline
+auto InsertEnter * set nocursorline
+auto InsertLeave * set cursorline
 set wildmenu " Show list instead of just completing
 set wildmode=list:longest,full " Use powerful wildmenu
 set shortmess=at " Avoids 'hit enter'
@@ -302,6 +307,8 @@ set whichwrap+=h,l,<,>,[,] " Backspace and cursor keys wrap to
 set virtualedit=block,onemore " Allow for cursor beyond last character
 set scrolljump=5 " Lines to scroll when cursor leaves screen
 set scrolloff=3 " Minimum lines to keep above and below cursor
+set sidescroll=1 " Minimal number of columns to scroll horizontally
+set sidescrolloff=10 " Minimal number of screen columns to keep away from cursor
 
 set showmatch " Show matching brackets/parenthesis
 set matchtime=2 " Decrease the time to blink
@@ -321,17 +328,20 @@ endfunction
 nnoremap <Leader>n :call ToggleRelativenumber()<CR>
 
 set formatoptions+=rnlmM " Optimize format options
-set textwidth=78 " Change text width
-set colorcolumn=78 " Indicate text border
+set wrap " Set wrap
+set textwidth=80 " Change text width
+set colorcolumn=+1 " Indicate text border
 set list " Show these tabs and spaces and so on
-set listchars=tab:▸\ ,eol:¬
-set showbreak=»  " Change wrap line break
+set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮ " Change listchars
+set linebreak " Wrap long lines at a blank
+set showbreak=↪  " Change wrap line break
+set fillchars=diff:⣿,vert:│ " Change fillchars
 " Only show trailing whitespace when not in insert mode
 augroup trailing
     autocmd!
-    autocmd InsertEnter * :set listchars-=trail:¤
-    autocmd InsertLeave * :set listchars+=trail:¤
-augroup end
+    autocmd InsertEnter * :set listchars-=trail:⌴
+    autocmd InsertLeave * :set listchars+=trail:⌴
+augroup END
 
 " Set gVim UI setting
 if has('gui_running')
@@ -363,23 +373,6 @@ function! ToggleColor()
     endif
 endfunction
 nnoremap <silent>\c :call ToggleColor()<CR>
-
-function! ToggleBackground()
-    if g:colors_name=='solarized'
-        let &background=&background=='dark'?'light':'dark'
-        exe 'IndentGuidesEnable'
-    else
-        if has('gui_running')
-            let color=g:colors_name=='Tomorrow-Night'?'Tomorrow':'Tomorrow-Night'
-        else
-            let color=g:colors_name=='Tomorrow-Night-Eighties'?'Tomorrow':'Tomorrow-Night-Eighties'
-            call IndentColor(color)
-        endif
-        exe 'colorschem '.color
-        exe 'IndentGuidesEnable'
-    endif
-endfunction
-nnoremap <silent>\b :call ToggleBackground()<CR>
 
 if has('gui_running')
     if has('gui_gtk2')
@@ -471,10 +464,68 @@ set foldtext=MyFoldText()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "-------------------------------------------------
+" => Filetype Specific
+"-------------------------------------------------
+
+" QuickFix
+augroup ft_quickfix
+    autocmd!
+    autocmd Filetype qf setlocal colorcolumn=0 nolist nocursorline nowrap textwidth=0
+augroup END
+
+" Markdown
+augroup ft_markdown
+    autocmd!
+    " Use <localLeader>1/2/3/4/5/6 to add headings
+    autocmd Filetype markdown nnoremap <buffer> <localLeader>1 I# <ESC>
+    autocmd Filetype markdown nnoremap <buffer> <localLeader>2 I## <ESC>
+    autocmd Filetype markdown nnoremap <buffer> <localLeader>3 I### <ESC>
+    autocmd Filetype markdown nnoremap <buffer> <localLeader>4 I#### <ESC>
+    autocmd Filetype markdown nnoremap <buffer> <localLeader>5 I##### <ESC>
+    autocmd Filetype markdown nnoremap <buffer> <localLeader>6 I###### <ESC>
+    " Use <LocalLeader>b to add blockquotes in normal and visual mode
+    autocmd Filetype markdown nnoremap <buffer> <localLeader>b I> <ESC>
+    autocmd Filetype markdown vnoremap <buffer> <localLeader>b :s/^/> /<CR>
+    " Use <localLeader>ul and <localLeader>ol to add list symbols in visual mode
+    autocmd Filetype markdown vnoremap <buffer> <localLeader>ul :s/^/* /<CR>
+    autocmd Filetype markdown vnoremap <buffer> <LocalLeader>ol :s/^/\=(line(".")-line("'<")+1).'. '/<CR>
+    " Use <localLeader>e1/2/3 to add emphasis symbols
+    autocmd Filetype markdown nnoremap <buffer> <localLeader>e1 I*<ESC>A*<ESC>
+    autocmd Filetype markdown nnoremap <buffer> <localLeader>e2 I**<ESC>A**<ESC>
+    autocmd Filetype markdown nnoremap <buffer> <localLeader>e3 I***<ESC>A***<ESC>
+augroup END
+
+" C and C++
+augroup ft_c
+    autocmd!
+    " TODO
+augroup END
+
+" Python
+augroup ft_python
+    autocmd!
+    " TODO
+augroup END
+
+" Perl
+augroup ft_perl
+    autocmd!
+    " TODO
+augroup END
+
+" Ruby
+augroup ft_ruby
+    autocmd!
+    " TODO
+augroup END
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"-------------------------------------------------
 " => Key Mapping
 "-------------------------------------------------
 
-" Change array keys' function
+" Disable array keys' function
 nnoremap <Up> <Nop>
 nnoremap <Down> <Nop>
 nnoremap <Left> <Nop>
@@ -538,9 +589,6 @@ nnoremap <silent>\<Space> :call IsWhiteLine()<CR>
 
 " Strip all trailing whitespace in the current file
 nnoremap <Leader>q :%s/\s\+$//<CR>:let @/=''<CR>
-
-" Select all
-nnoremap \a ggVG
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -664,17 +712,6 @@ if !has('gui_running')
     autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=239
 endif
 
-function! IndentColor(mode)
-    let g:indent_guides_auto_colors=0
-    if a:mode=='Tomorrow-Night-Eighties'
-        autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=237
-        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=239
-    else
-        autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=252
-        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=253
-    endif
-endfunction
-
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_guide_size=1
 
@@ -732,6 +769,17 @@ let g:SingleCompile_showquickfixiferror=1
 
 let g:user_zen_leader_key='<C-Z>'
 let g:user_zen_settings={'indentation':'   '}
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"--------------------------------------------------
+" => Golden Ratio
+"--------------------------------------------------
+
+" Disable Golden Ratio plugin when in diff mode
+if &diff
+  let g:loaded_golden_ratio=1
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
