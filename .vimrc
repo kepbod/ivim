@@ -279,9 +279,72 @@ set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)\ -\ %{v:servernam
 
 " Set tabline
 set showtabline=2 " Always show tab line
-" Set up tab labels with tab number, buffer name, number of windows
+" Set up tab labels
 set guitablabel=%m%N:%t\[%{tabpagewinnr(v:lnum,'$')}\]
-set tabline=\|%m%{tabpagenr()}:%t\[%{tabpagewinnr(v:lnum,'$')+1}\]\|
+set tabline=%!MyTabLine()
+function! MyTabLine()
+  let s='' " Complete tabline goes here
+  " Loop through each tab page
+  for t in range(tabpagenr('$'))
+    " Select the highlighting for the buffer names
+    if t+1==tabpagenr()
+      let s.='%#TabLineSel#'
+    else
+      let s.='%#TabLine#'
+    endif
+    " Empty space
+    let s.=' '
+    " Set the tab page number (for mouse clicks)
+    let s.='%' . (t + 1) . 'T'
+    " Set page number string
+    let s.=t+1.' '
+    " Get buffer names and statuses
+    let n='' 
+    let m=0
+    let bc=len(tabpagebuflist(t+1))  " Counter to avoid last ' '
+    " Loop through each buffer in a tab
+    for b in tabpagebuflist(t+1)
+      " Buffer types: quickfix gets a [Q], help gets [H]{base fname}
+      " Others get 1dir/2dir/3dir/fname shortened to 1/2/3/fname
+      if getbufvar(b,"&buftype") =='help'
+        let n.='[H]'.fnamemodify( bufname(b),':t:s/.txt$//')
+      elseif getbufvar(b,"&buftype")=='quickfix'
+        let n.='[Q]'
+      else
+        let n.=pathshorten(bufname(b))
+      endif
+      " Check and ++ tab's &modified count
+      if getbufvar(b,"&modified")
+        let m+=1
+      endif
+      " No final ' ' added...formatting looks better done later
+      if bc>1
+        let n.=' '
+      endif
+      let bc-=1
+    endfor
+    " Add modified label [n+] where n pages in tab are modified
+    if m>0
+      " let s .= '[' . m . '+]'
+      let s.='+ '
+    endif
+    " Add buffer names
+    if n==''
+      let s.='[No Name]'
+    else
+      let s.=n
+    endif
+    " Switch to no underlining and add final space to buffer list
+    let s.=' '
+  endfor
+  " After the last tab fill with TabLineFill and reset tab page nr
+  let s.='%#TabLineFill#%T'
+  " Right-align the label to close the current tab page
+  if tabpagenr('$')>1
+    let s.='%=%#TabLine#%999XX'
+  endif
+  return s
+endfunction
 " Set up tab tooltips with every buffer name
 set guitabtooltip=%F
 
@@ -347,6 +410,7 @@ augroup END
 if has('gui_running')
     set guioptions-=m
     set guioptions-=T
+    set guioptions+=f
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
