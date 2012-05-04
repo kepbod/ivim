@@ -283,7 +283,7 @@ set showtabline=2 " Always show tab line
 set guitablabel=%m%N:%t\[%{tabpagewinnr(v:lnum,'$')}\]
 set tabline=%!MyTabLine()
 function! MyTabLine()
-  let s='' " Complete tabline goes here
+  let s=''
   " Loop through each tab page
   for t in range(tabpagenr('$'))
     " Select the highlighting for the buffer names
@@ -294,10 +294,6 @@ function! MyTabLine()
     endif
     " Empty space
     let s.=' '
-    " Set the tab page number (for mouse clicks)
-    let s.='%' . (t + 1) . 'T'
-    " Set page number string
-    let s.=t+1.' '
     " Get buffer names and statuses
     let n='' 
     let m=0
@@ -325,9 +321,12 @@ function! MyTabLine()
     endfor
     " Add modified label [n+] where n pages in tab are modified
     if m>0
-      " let s .= '[' . m . '+]'
-      let s.='+ '
+      let s.='[+]'
     endif
+    " Set the tab page number (for mouse clicks)
+    let s.='%'.(t + 1).'T'
+    " Set page number string
+    let s.=t+1.':'
     " Add buffer names
     if n==''
       let s.='[No Name]'
