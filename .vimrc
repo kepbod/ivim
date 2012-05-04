@@ -124,6 +124,12 @@
 "   > vimux - https://github.com/benmills/vimux
 "     Easily interact with tmux from vim
 "     info -> :help vimux.txt
+"   > vim-shell - https://github.com/xolox/vim-shell
+"     Improve the integration between Vim and its environment
+"     info -> :help shell.txt
+"   > Preview - https://github.com/greyblake/vim-preview
+"     Preview markup files when you are editing them
+"     info -> :help preview.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -241,6 +247,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-fugitive'
+Bundle 'xolox/vim-shell'
 Bundle 'benmills/vimux'
 " Commands
 Bundle 'scrooloose/nerdcommenter'
@@ -257,6 +264,7 @@ Bundle 'scrooloose/syntastic'
 " Language related
 Bundle 'tpope/vim-rails'
 Bundle 'mattn/zencoding-vim'
+Bundle 'greyblake/vim-preview'
 
 " Others
 Bundle 'xolox/vim-easytags'
@@ -280,70 +288,41 @@ set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:p:h\")})%)%(\ %a%)\ -\ %{v:servernam
 " Set tabline
 set showtabline=2 " Always show tab line
 " Set up tab labels
-set guitablabel=%m%N:%t\[%{tabpagewinnr(v:lnum,'$')}\]
+set guitablabel=%m%N:%t\[%{tabpagewinnr(v:lnum)}\]
 set tabline=%!MyTabLine()
 function! MyTabLine()
-  let s=''
-  " Loop through each tab page
-  for t in range(tabpagenr('$'))
-    " Select the highlighting for the buffer names
-    if t+1==tabpagenr()
-      let s.='%#TabLineSel#'
-    else
-      let s.='%#TabLine#'
-    endif
-    " Empty space
-    let s.=' '
-    " Get buffer names and statuses
-    let n='' 
-    let m=0
-    let bc=len(tabpagebuflist(t+1))  " Counter to avoid last ' '
-    " Loop through each buffer in a tab
-    for b in tabpagebuflist(t+1)
-      " Buffer types: quickfix gets a [Q], help gets [H]{base fname}
-      " Others get 1dir/2dir/3dir/fname shortened to 1/2/3/fname
-      if getbufvar(b,"&buftype") =='help'
-        let n.='[H]'.fnamemodify( bufname(b),':t:s/.txt$//')
-      elseif getbufvar(b,"&buftype")=='quickfix'
-        let n.='[Q]'
-      else
-        let n.=pathshorten(bufname(b))
+    let s=''
+    let t=tabpagenr() " The index of current page
+    let i=1
+    while i<=tabpagenr('$') " From the first page
+      let buflist=tabpagebuflist(i)
+      let winnr=tabpagewinnr(i)
+      let s.=(i==t?'%#TabLineSel#':'%#TabLine#')
+      let s.='%'.i.'T'
+      let s.=' '
+      let bufnr=buflist[winnr - 1]
+      let file=bufname(bufnr)
+      let m=''
+      if getbufvar(bufnr, "&modified")
+          let m='[+]'
       endif
-      " Check and ++ tab's &modified count
-      if getbufvar(b,"&modified")
-        let m+=1
+      if file=~'\/.'
+          let file=substitute(file,'.*\/\ze.','','')
       endif
-      " No final ' ' added...formatting looks better done later
-      if bc>1
-        let n.=' '
+      if file==''
+        let file='[No Name]'
       endif
-      let bc-=1
-    endfor
-    " Add modified label [n+] where n pages in tab are modified
-    if m>0
-      let s.='[+]'
-    endif
-    " Set the tab page number (for mouse clicks)
-    let s.='%'.(t + 1).'T'
-    " Set page number string
-    let s.=t+1.':'
-    " Add buffer names
-    if n==''
-      let s.='[No Name]'
-    else
-      let s.=n
-    endif
-    " Switch to no underlining and add final space to buffer list
-    let s.=' '
-  endfor
-  " After the last tab fill with TabLineFill and reset tab page nr
-  let s.='%#TabLineFill#%T'
-  " Right-align the label to close the current tab page
-  if tabpagenr('$')>1
-    let s.='%=%#TabLine#%999XX'
-  endif
-  return s
-endfunction
+      let s.=m
+      let s.=i.':'
+      let s.=file
+      let s.='['.winnr.']'
+      let s.=' '
+      let i=i+1
+    endwhile
+    let s.='%T%#TabLineFill#%='
+    let s.=(tabpagenr('$')>1?'%999XX':'X')
+    return s
+  endfunction
 " Set up tab tooltips with every buffer name
 set guitabtooltip=%F
 
@@ -422,7 +401,7 @@ syntax on " Enable syntax
 set background=dark " Set background
 
 if has('gui_running')
-    colorscheme solarized " Load a colorscheme
+    colorscheme Tomorrow-Night " Load a colorscheme
 else
     set t_Co=256 " Use 256 colors
     colorscheme Tomorrow-Night-Eighties " Load a colorscheme
@@ -439,11 +418,11 @@ nnoremap <silent>\c :call ToggleColor()<CR>
 
 if has('gui_running')
     if has('gui_gtk2')
-        set guifont=Luxi\ Mono\ 15
+        set guifont=Monospaced\ 13
     elseif has('gui_macvim')
-        set guifont=Monaco:h15
+        set guifont=Monaco:h13
     elseif has('gui_win32')
-        set guifont=Consolas:h15:cANSI
+        set guifont=Consolas:h13:cANSI
     endif
 endif
 
@@ -871,6 +850,9 @@ nnoremap <Leader>m :Unite<Space>
 
 " Run the current file with rspec
 nnoremap <Leader>xb :call RunVimTmuxCommand("clear; rspec " . bufname("%"))<CR>
+
+" Run command without sending sending a return
+nnoremap <Leader>xq :call RunVimTmuxCommand("clear; rspec " . bufname("%"), 0)<CR>
 
 " Prompt for a command to run
 nnoremap <Leader>xp :PromptVimTmuxCommand<CR>

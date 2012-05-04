@@ -31,7 +31,7 @@
 
 ***Beautiful Colorscheme***
 
- * Use famous colorscheme [Solarized](http://ethanschoonover.com/solarized)/[Tomorrow](https://github.com/chriskempson/tomorrow-theme) to make your eyes feel comfortable in both Vim and MacVim/gVim.
+ * Use famous colorscheme [Tomorrow](https://github.com/chriskempson/tomorrow-theme)/[Solarized](http://ethanschoonover.com/solarized) to make your eyes feel comfortable in both Vim and MacVim/gVim.
 
 ***Efficient***
 
@@ -70,6 +70,8 @@
  * [unimpaired.vim](https://github.com/tpope/vim-unimpaired) - Complementary pairs of mappings
  * [abolish.vim](https://github.com/tpope/vim-abolish) - Search for, substitute, and abbreviate multiple variants of a word
  * [vimux](https://github.com/benmills/vimux) - Easily interact with tmux from vim
+ * [vim-shell](https://github.com/xolox/vim-shell) - Improve the integration between Vim and its environment
+ * [Preview](https://github.com/greyblake/vim-preview) - Preview markup files when you are editing them
 
 **Each plugin has its unique requirements and configurations, so if you have any questions with them, please check help files of them first!**
 
