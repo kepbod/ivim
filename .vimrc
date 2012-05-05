@@ -417,8 +417,8 @@ endfunction
 nnoremap <silent>\c :call ToggleColor()<CR>
 
 if has('gui_running')
-    if has('gui_gtk2')
-        set guifont=Monospaced\ 13
+    if has('gui_gtk')
+        set guifont=Monospace\ 13
     elseif has('gui_macvim')
         set guifont=Monaco:h13
     elseif has('gui_win32')
