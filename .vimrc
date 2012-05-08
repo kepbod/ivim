@@ -124,12 +124,12 @@
 "   > vimux - https://github.com/benmills/vimux
 "     Easily interact with tmux from vim
 "     info -> :help vimux.txt
-"   > vim-shell - https://github.com/xolox/vim-shell
-"     Improve the integration between Vim and its environment
-"     info -> :help shell.txt
 "   > Preview - https://github.com/greyblake/vim-preview
 "     Preview markup files when you are editing them
 "     info -> :help preview.txt
+"   > vim-ipython - https://github.com/ivanov/vim-ipython
+"     Integrate vim with ipython
+"     info -> https://github.com/ivanov/vim-ipython/blob/master/README.rst
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -247,7 +247,6 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-fugitive'
-Bundle 'xolox/vim-shell'
 Bundle 'benmills/vimux'
 " Commands
 Bundle 'scrooloose/nerdcommenter'
@@ -262,6 +261,7 @@ Bundle 'garbas/vim-snipmate'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
 " Language related
+Bundle 'ivanov/vim-ipython'
 Bundle 'tpope/vim-rails'
 Bundle 'mattn/zencoding-vim'
 Bundle 'greyblake/vim-preview'
