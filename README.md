@@ -1,4 +1,4 @@
-# The Vim Configuration of Xiaoou Zhang
+# ivim - The Vim Configuration of Xiaoou Zhang
 
 [![Vim](http://www.vim.org/images/vim_editor.gif)](http://www.vim.org/)
 
