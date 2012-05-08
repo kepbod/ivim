@@ -25,7 +25,7 @@
 
  * Ctags generates an index (or tag) file of language objects found in source files that allows these items to be quickly and easily located by a text editor or other utility. I recommend you to use [Exuberant Ctags](http://ctags.sourceforge.net/).
 
-*To use this configuration with less bugs, please get more suggestions from [here](https://github.com/kepbod/vim-config/wiki/Suggestions)*
+*To use this configuration with less bugs, please get more suggestions from [here](https://github.com/kepbod/ivim/wiki/Suggestions)*
 
 ## Features
 
@@ -93,7 +93,7 @@
 
 * Because I have set some key mappings for more convenient typing and checking, you may feel inconvenient with them at start. But if you get familiar with them, I'm sure you will love them.
 
-    You can just type `:map` in Vim to see them or click [here](https://github.com/kepbod/vim-config/wiki/Key-Mappings).
+    You can just type `:map` in Vim to see them or click [here](https://github.com/kepbod/ivim/wiki/Key-Mappings).
 
 *More Tips*
 
