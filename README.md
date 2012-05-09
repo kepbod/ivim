@@ -33,6 +33,10 @@
 
  * Use famous colorscheme [Tomorrow](https://github.com/chriskempson/tomorrow-theme)/[Solarized](http://ethanschoonover.com/solarized) to make your eyes feel comfortable in both Vim and MacVim/gVim.
 
+ ![Tomorrow](http://fmn.rrimg.com/fmn057/20120509/1910/large_BFAJ_18bb00000918125d.jpg)
+
+ ![Solarized](http://fmn.rrimg.com/fmn062/20120509/1910/large_QK35_388d00000348125e.jpg)
+
 ***Efficient***
 
  * Make using Vim more convenient and faster, and lots of useful plugins (such as [Neocomplcache](https://github.com/Shougo/neocomplcache), [NERD_commenter](https://github.com/scrooloose/nerdcommenter), [Syntastic](https://github.com/scrooloose/syntastic) and [SingleCompile](https://github.com/xuhdev/SingleCompile)) confirm a better performance of Vim.
