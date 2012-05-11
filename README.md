@@ -74,7 +74,6 @@
  * [unimpaired.vim](https://github.com/tpope/vim-unimpaired) - Complementary pairs of mappings
  * [abolish.vim](https://github.com/tpope/vim-abolish) - Search for, substitute, and abbreviate multiple variants of a word
  * [vimux](https://github.com/benmills/vimux) - Easily interact with tmux from vim
- * [Preview](https://github.com/greyblake/vim-preview) - Preview markup files when you are editing them
  * [vim-ipython](https://github.com/ivanov/vim-ipython) - Integrate vim with ipython
  * [markdown-preview](https://github.com/swaroopch/vim-markdown-preview) - Select Markdown text, render to HTML and preview in browser
 
