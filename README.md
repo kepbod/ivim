@@ -76,6 +76,7 @@
  * [vimux](https://github.com/benmills/vimux) - Easily interact with tmux from vim
  * [Preview](https://github.com/greyblake/vim-preview) - Preview markup files when you are editing them
  * [vim-ipython](https://github.com/ivanov/vim-ipython) - Integrate vim with ipython
+ * [markdown-preview](https://github.com/swaroopch/vim-markdown-preview) - Select Markdown text, render to HTML and preview in browser
 
 **Each plugin has its unique requirements and configurations, so if you have any questions with them, please check help files of them first!**
 

@@ -124,12 +124,12 @@
 "   > vimux - https://github.com/benmills/vimux
 "     Easily interact with tmux from vim
 "     info -> :help vimux.txt
-"   > Preview - https://github.com/greyblake/vim-preview
-"     Preview markup files when you are editing them
-"     info -> :help preview.txt
 "   > vim-ipython - https://github.com/ivanov/vim-ipython
 "     Integrate vim with ipython
 "     info -> https://github.com/ivanov/vim-ipython/blob/master/README.rst
+"   > markdown-preview - https://github.com/swaroopch/vim-markdown-preview
+"     Select Markdown text, render to HTML and preview in browser
+"     info -> https://github.com/swaroopch/vim-markdown-preview/blob/master/README.md
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -264,7 +264,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'ivanov/vim-ipython'
 Bundle 'tpope/vim-rails'
 Bundle 'mattn/zencoding-vim'
-Bundle 'greyblake/vim-preview'
+Bundle 'swaroopch/vim-markdown-preview'
 
 " Others
 Bundle 'xolox/vim-easytags'
@@ -535,6 +535,8 @@ augroup ft_markdown
     autocmd Filetype markdown nnoremap <buffer> <localLeader>e1 I*<ESC>A*<ESC>
     autocmd Filetype markdown nnoremap <buffer> <localLeader>e2 I**<ESC>A**<ESC>
     autocmd Filetype markdown nnoremap <buffer> <localLeader>e3 I***<ESC>A***<ESC>
+    " Use <Leader>P to preview markdown file in browser
+    autocmd Filetype markdown nnoremap <buffer> <Leader>P :MarkdownPreview
 augroup END
 
 " C and C++
@@ -710,8 +712,8 @@ inoremap <expr><S-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR
 " => snipMate
 "--------------------------------------------------
 
-let g:snips_trigger_key='<C-Space>'
-let g:snips_trigger_key_backwards='<C-Space>'
+let g:snips_trigger_key=',,s'
+let g:snips_trigger_key_backwards=',,s'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
