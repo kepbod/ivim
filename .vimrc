@@ -536,7 +536,7 @@ augroup ft_markdown
     autocmd Filetype markdown nnoremap <buffer> <localLeader>e2 I**<ESC>A**<ESC>
     autocmd Filetype markdown nnoremap <buffer> <localLeader>e3 I***<ESC>A***<ESC>
     " Use <Leader>P to preview markdown file in browser
-    autocmd Filetype markdown nnoremap <buffer> <Leader>P :MarkdownPreview
+    autocmd Filetype markdown nnoremap <buffer> <Leader>P :MarkdownPreview<CR>
 augroup END
 
 " C and C++
