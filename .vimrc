@@ -124,9 +124,6 @@
 "   > vimux - https://github.com/benmills/vimux
 "     Easily interact with tmux from vim
 "     info -> :help vimux.txt
-"   > vim-ipython - https://github.com/ivanov/vim-ipython
-"     Integrate vim with ipython
-"     info -> https://github.com/ivanov/vim-ipython/blob/master/README.rst
 "   > markdown-preview - https://github.com/swaroopch/vim-markdown-preview
 "     Select Markdown text, render to HTML and preview in browser
 "     info -> https://github.com/swaroopch/vim-markdown-preview/blob/master/README.md
@@ -261,7 +258,6 @@ Bundle 'garbas/vim-snipmate'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
 " Language related
-Bundle 'ivanov/vim-ipython'
 Bundle 'tpope/vim-rails'
 Bundle 'mattn/zencoding-vim'
 Bundle 'swaroopch/vim-markdown-preview'
