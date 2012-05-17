@@ -4,6 +4,7 @@
 
 ## Installation
 
+0. A Vim/MacVim/gVim with version higher than 7.3 has been installed on your computer;
 1. Install Vundle to install and update plugins, `git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle`;
 2. Get my configuration from github website, `git clone http://github.com/kepbod/ivim.git $HOME/ivim`;
 3. Copy my configuration to your home directory, `cp $HOME/ivim/.vimrc $HOME/.vimrc`;
@@ -15,7 +16,7 @@
 
 **Vim**
 
- * This configuration is adapted to both [Vim](http://www.vim.org/download.php) and [MacVim](http://www.vim.org/download.php#mac)/[gVim](http://www.vim.org/download.php#pc).
+ * This configuration is adapted to both [Vim](http://www.vim.org/download.php) and [MacVim](http://www.vim.org/download.php#mac)/[gVim](http://www.vim.org/download.php#pc). Remember that the Vim/MacVim/gVim version should be 7.3+, or errors would occur!
 
 **Git**
 
@@ -75,6 +76,7 @@
  * [abolish.vim](https://github.com/tpope/vim-abolish) - Search for, substitute, and abbreviate multiple variants of a word
  * [vimux](https://github.com/benmills/vimux) - Easily interact with tmux from vim
  * [markdown-preview](https://github.com/swaroopch/vim-markdown-preview) - Select Markdown text, render to HTML and preview in browser
+ * [unite-outline](https://github.com/h1mesuke/unite-outline) - Provide your Vim's buffer with the outline view
 
 **Each plugin has its unique requirements and configurations, so if you have any questions with them, please check help files of them first!**
 
@@ -102,6 +104,7 @@
 
 * [Vim_Tips_Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki) is an excellent website, and you can learn much from it.
 * [Vimcasts](http://vimcasts.org) publishes free screencasts about Vim. It's useful and interesting! Believe me!
+
 **Hope You Enjoy Vimming**
 
 ## Notes

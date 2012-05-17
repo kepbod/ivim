@@ -127,6 +127,9 @@
 "   > markdown-preview - https://github.com/swaroopch/vim-markdown-preview
 "     Select Markdown text, render to HTML and preview in browser
 "     info -> https://github.com/swaroopch/vim-markdown-preview/blob/master/README.md
+"   > unite-outline - https://github.com/h1mesuke/unite-outline
+"     Provide your Vim's buffer with the outline view
+"     info -> :help unite-outline.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -158,6 +161,7 @@ set spell " Spell checking on
 set modeline " Turn on modeline
 set encoding=utf-8 " Set utf-8 encoding
 set completeopt+=longest " Optimize auto complete
+set completeopt-=preview " Optimize auto complete
 
 set mousehide " Hide mouse after chars typed
 set mouse=a " Mouse in all modes
@@ -264,6 +268,7 @@ Bundle 'swaroopch/vim-markdown-preview'
 
 " Others
 Bundle 'xolox/vim-easytags'
+Bundle 'h1mesuke/unite-outline'
 Bundle 'tpope/vim-repeat'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
