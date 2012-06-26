@@ -77,6 +77,8 @@
  * [vimux](https://github.com/benmills/vimux) - Easily interact with tmux from vim
  * [markdown-preview](https://github.com/swaroopch/vim-markdown-preview) - Select Markdown text, render to HTML and preview in browser
  * [unite-outline](https://github.com/h1mesuke/unite-outline) - Provide your Vim's buffer with the outline view
+ * [swap-parameters](https://github.com/mutewinter/swap-parameters) - Swap
+parameters
 
 **Each plugin has its unique requirements and configurations, so if you have any questions with them, please check help files of them first!**
 

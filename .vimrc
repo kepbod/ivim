@@ -130,6 +130,9 @@
 "   > unite-outline - https://github.com/h1mesuke/unite-outline
 "     Provide your Vim's buffer with the outline view
 "     info -> :help unite-outline.txt
+"   > Swap-parameters - https://github.com/mutewinter/swap-parameters
+"     Swap the parameters
+"     info -> :help swap-parameters.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -255,6 +258,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-abolish'
 Bundle 'godlygeek/tabular'
 Bundle 'AndrewRadev/splitjoin.vim'
+Bundle 'mutewinter/swap-parameters'
 Bundle 'xuhdev/SingleCompile'
 " Automatic Helper
 Bundle 'Shougo/neocomplcache'
