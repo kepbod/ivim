@@ -274,6 +274,7 @@ Bundle 'swaroopch/vim-markdown-preview'
 Bundle 'xolox/vim-easytags'
 Bundle 'h1mesuke/unite-outline'
 Bundle 'tpope/vim-repeat'
+Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'honza/snipmate-snippets'
@@ -703,7 +704,7 @@ let g:tagbar_autoshowtag=1
 " => NERD_tree
 "--------------------------------------------------
 
-nnoremap <Leader>d :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+nnoremap <Leader>d :NERDTreeTabsToggle<CR>
 nnoremap <Leader>f :NERDTreeFind<CR>
 let NERDTreeChDirMode=2
 let NERDTreeShowBookmarks=1
