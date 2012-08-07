@@ -35,7 +35,7 @@ echo "Installing Vundle..."
 git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
 
 echo "Installing plugins using Vundle... "
-vim -E -s makefile <<-EOF
+vim -E -s .vimrc <<-EOF
    :BundleInstall!
    :BundleClean!
    :quit
