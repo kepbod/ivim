@@ -23,7 +23,7 @@ which ctags || warn "No ctags installed!\nPlease install ctags form http://ctags
 
 # back up existing .vim stuff
 echo "Backing up current vim config..."
-for i in $HOME/.vim $HOME.vimrc $HOME.gvimrc; do [ -e $i ] && mv $i $i.backup; done
+for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && mv -f $i $i.backup; done
 
 # install ivim
 echo "Cloning ivim..."
