@@ -34,10 +34,7 @@ ln -s $HOME/ivim/vimrc $HOME/.vimrc
 echo "Installing Vundle..."
 git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
 
-echo "Installing Tomorrow theme..."
-git clone http://github.com/chriskempson/vim-tomorrow-theme.git $HOME/.vim/bundle/vim-tomorrow-theme
-
 echo "Installing plugins using Vundle... "
-vim +BundleInstall! +BundleClean! +qa! .vimrc
+vim +BundleInstall +qall
 
 echo "Ivim has been installed. Just enjoy vimming!"
