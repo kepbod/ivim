@@ -619,16 +619,6 @@ augroup END
 " => Key Mapping
 "-------------------------------------------------
 
-" Disable array keys' function
-nnoremap <Up> <Nop>
-nnoremap <Down> <Nop>
-nnoremap <Left> <Nop>
-nnoremap <Right> <Nop>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
-
 " Redesign moving keys in insert mode
 inoremap <C-K> <Up>
 inoremap <C-J> <Down>
@@ -684,6 +674,10 @@ nnoremap <silent>\<Space> :call IsWhiteLine()<CR>
 
 " Strip all trailing whitespace in the current file
 nnoremap <Leader>q :%s/\s\+$//<CR>:let @/=''<CR>
+
+" See the differences between the current buffer and the file it was loaded from
+command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
+    \ | diffthis | wincmd p | diffthis
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
