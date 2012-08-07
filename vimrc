@@ -11,8 +11,9 @@
 "   -> Indent and Tab Related
 "   -> Search Related
 "   -> Fold Related
-"   -> Filetype specific
+"   -> Filetype Specific
 "   -> Key Mapping
+"   -> Local Setting
 "
 "   -> Tagbar
 "   -> NERD_tree
@@ -278,6 +279,11 @@ Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'honza/snipmate-snippets'
+
+" Local bundles if avaiable
+if filereadable(expand("~/.vimrc.bundles.local"))
+    source ~/.vimrc.bundles.local
+endif
 
 filetype plugin indent on " Required!
 
@@ -666,7 +672,7 @@ function! IsWhiteLine()
             startinsert!
         endif
     else
-        normal! A 
+        normal! A
         :call NERDComment('n', 'Append')
     endif
 endfunction
@@ -678,6 +684,24 @@ nnoremap <Leader>q :%s/\s\+$//<CR>:let @/=''<CR>
 " See the differences between the current buffer and the file it was loaded from
 command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
     \ | diffthis | wincmd p | diffthis
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"--------------------------------------------------
+" => Local Setting
+"--------------------------------------------------
+
+" Use local vimrc if available
+if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif
+
+" Use local gvimrc if available and gui is running
+if has('gui_rng')
+    if filereadable(expand("~/.gvimrc.local"))
+        source ~/.gvimrc.local
+    endif
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

@@ -4,13 +4,33 @@
 
 ## Installation
 
+### Manual Install
+
 0. A Vim/MacVim/gVim with version higher than 7.3 has been installed on your computer;
 1. Install Vundle to install and update plugins, `git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle`;
-2. Get my configuration from github website, `git clone http://github.com/kepbod/ivim.git $HOME/ivim`;
-3. Copy my configuration to your home directory, `cp $HOME/ivim/.vimrc $HOME/.vimrc`;
-4. Open .vimrc, `vim .vimrc`;
-5. Install plugins, `BundleInstall`;
+2. Install Tomorrow-theme, `git clone http://github.com/chriskempson/vim-tomorrow-theme.git $HOME/.vim/bundle/vim-tomorrow-theme`;
+3. Get ivim from github website, `git clone http://github.com/kepbod/ivim.git $HOME/ivim`;
+4. Make symbolic links of vimrc to your home directory, `ln -s $HOME/ivim/vimrc $HOME/.vimrc`;
+5. Install plugins, `vim +BundleInstall! +BundleClean! +qa!`;
 6. Just enjoy it!
+
+### Automatic Install
+
+**via 'curl'**
+
+```bash
+
+    curl -L https://raw.github.com/kepbod/ivim/master/bootstrap.sh | bash
+
+```
+
+**via 'wget'**
+
+```bash
+
+    wget --no-check-certificate https://raw.github.com/kepbod/ivim/master/bootstrap.sh -O - | bash
+
+```
 
 ## Requirements
 
@@ -41,6 +61,8 @@
 ***Efficient***
 
  * Make using Vim more convenient and faster, and lots of useful plugins (such as [Neocomplcache](https://github.com/Shougo/neocomplcache), [NERD_commenter](https://github.com/scrooloose/nerdcommenter), [Syntastic](https://github.com/scrooloose/syntastic) and [SingleCompile](https://github.com/xuhdev/SingleCompile)) confirm a better performance of Vim.
+
+*The distribution is completely customisable using a `~/.vimrc.local`, `~/.gvimrc.local` and `~/.vimrc.bundles.local`!*
 
 ## Plugin List
 
