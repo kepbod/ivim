@@ -38,6 +38,6 @@ echo "Installing Tomorrow theme..."
 git clone http://github.com/chriskempson/vim-tomorrow-theme.git $HOME/.vim/bundle/vim-tomorrow-theme
 
 echo "Installing plugins using Vundle... "
-vim +BundleInstall +qall
+exec vim +BundleInstall! +BundleClean! +qa!
 
 echo "Ivim has been installed. Just enjoy vimming!"
