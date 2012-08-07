@@ -1,11 +1,11 @@
 #!/usr/bin/env sh
 
-function warn
+warn ()
 {
     echo "$1" >&2
 }
 
-function die
+die ()
 {
     warn "$1"
     exit 1
