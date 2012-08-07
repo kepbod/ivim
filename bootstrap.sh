@@ -27,6 +27,7 @@ for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && mv -f $i $i.back
 
 # install ivim
 echo "Cloning ivim..."
+rm -rf $HOME/ivim
 git clone http://github.com/kepbod/ivim.git $HOME/ivim
 ln -s $HOME/ivim/vimrc $HOME/.vimrc
 
