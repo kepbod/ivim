@@ -35,7 +35,7 @@ echo "Installing Vundle..."
 git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
 
 echo "Installing Tomorrow theme..."
-git clone http://github.com/chriskempson/tomorrow-theme.git $HOME/.vim/bundle/tomorrow-theme
+git clone http://github.com/chriskempson/vim-tomorrow-theme.git $HOME/.vim/bundle/vim-tomorrow-theme
 
 echo "Installing plugins using Vundle... "
 vim +BundleInstall! +BundleClean! +qa! .vimrc
