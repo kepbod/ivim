@@ -672,7 +672,7 @@ function! IsWhiteLine()
             startinsert!
         endif
     else
-        normal! A
+        normal! A 
         :call NERDComment('n', 'Append')
     endif
 endfunction
@@ -682,7 +682,7 @@ nnoremap <silent>\<Space> :call IsWhiteLine()<CR>
 nnoremap <Leader>q :%s/\s\+$//<CR>:let @/=''<CR>
 
 " See the differences between the current buffer and the file it was loaded from
-command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
+command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
     \ | diffthis | wincmd p | diffthis
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -697,7 +697,7 @@ if filereadable(expand("~/.vimrc.local"))
 endif
 
 " Use local gvimrc if available and gui is running
-if has('gui_rng')
+if has('gui_running')
     if filereadable(expand("~/.gvimrc.local"))
         source ~/.gvimrc.local
     endif
