@@ -20,7 +20,7 @@
 
 ```bash
 
-    curl -L https://raw.github.com/kepbod/ivim/master/tools/bootstrap.sh | bash
+curl -L https://raw.github.com/kepbod/ivim/master/tools/bootstrap.sh | bash
 
 ```
 
@@ -28,14 +28,14 @@
 
 ```bash
 
-    wget --no-check-certificate https://raw.github.com/kepbod/ivim/master/tools/bootstrap.sh -O - | bash
+wget --no-check-certificate https://raw.github.com/kepbod/ivim/master/tools/bootstrap.sh -O - | bash
 
 ```
 
 ## Updating
 
 ```bash
-    bash $HOME/ivim/tools/update.sh
+bash $HOME/ivim/tools/update.sh
 ```
 
 ## Requirements
