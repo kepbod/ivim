@@ -32,6 +32,12 @@
 
 ```
 
+## Updating
+
+```bash
+    bash $HOME/tools/update.sh
+```
+
 ## Requirements
 
 **Vim**
