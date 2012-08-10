@@ -759,7 +759,7 @@ inoremap <expr><Tab>  pumvisible() ? "\<C-N>" : "\<Tab>"
 inoremap <expr><S-Tab>  pumvisible() ? "\<C-P>" : "\<S-Tab>"
 
 " CR/S-CR: close popup and save indent.
-inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+inoremap <expr><CR>  delimitMate#WithinEmptyPair() ? "\<C-R>=delimitMate#ExpandReturn()\<CR>" : pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 inoremap <expr><S-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR>"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

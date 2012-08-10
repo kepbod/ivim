@@ -1,12 +1,16 @@
-# ivim - The Vim Configuration of Xiaoou Zhang
+# ivim - The Vim Distribution of Xiaoou Zhang
 
-[![Vim](http://www.vim.org/images/vim_editor.gif)](http://www.vim.org/)
+         _       _
+        (_)   __(_)___ ___ 
+       / / | / / / __ `__ \
+      / /| |/ / / / / / / /
+     /_/ |___/_/_/ /_/ /_/ 
 
 ## Installation
 
 ### Manual Install
 
-0. A Vim/MacVim/gVim with version higher than 7.3 has been installed on your computer;
+0. A Vim/MacVim/gVim with version higher than 7.3 has been installed on your computer, and back up your origin vim stuff;
 1. Install Vundle to install and update plugins, `git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle`;
 2. Install Tomorrow-theme, `git clone http://github.com/chriskempson/vim-tomorrow-theme.git $HOME/.vim/bundle/vim-tomorrow-theme`;
 3. Get ivim from github website, `git clone http://github.com/kepbod/ivim.git $HOME/ivim`;
@@ -14,13 +18,13 @@
 5. Install plugins, `vim +BundleInstall! +BundleClean! +qa!`;
 6. Just enjoy it!
 
-### Automatic Install
+### Automatic Install (*nix only)
 
 **via 'curl'**
 
 ```bash
 
-    curl -L https://raw.github.com/kepbod/ivim/master/bootstrap.sh | bash
+    curl -L https://raw.github.com/kepbod/ivim/master/tools/bootstrap.sh | bash
 
 ```
 
@@ -28,7 +32,7 @@
 
 ```bash
 
-    wget --no-check-certificate https://raw.github.com/kepbod/ivim/master/bootstrap.sh -O - | bash
+    wget --no-check-certificate https://raw.github.com/kepbod/ivim/master/tools/bootstrap.sh -O - | bash
 
 ```
 
@@ -36,7 +40,7 @@
 
 **Vim**
 
- * This configuration is adapted to both [Vim](http://www.vim.org/download.php) and [MacVim](http://www.vim.org/download.php#mac)/[gVim](http://www.vim.org/download.php#pc). Remember that the Vim/MacVim/gVim version should be 7.3+, or errors would occur!
+ * This distribution is adapted to both [Vim](http://www.vim.org/download.php) and [MacVim](http://www.vim.org/download.php#mac)/[gVim](http://www.vim.org/download.php#pc). Remember that the Vim/MacVim/gVim version should be 7.3+, or errors would occur!
 
 **Git**
 
@@ -46,7 +50,7 @@
 
  * Ctags generates an index (or tag) file of language objects found in source files that allows these items to be quickly and easily located by a text editor or other utility. I recommend you to use [Exuberant Ctags](http://ctags.sourceforge.net/).
 
-*To use this configuration with less bugs, please get more suggestions from [here](https://github.com/kepbod/ivim/wiki/Suggestions)*
+*To use this distribution with less bugs, please get more suggestions from [here](https://github.com/kepbod/ivim/wiki/Suggestions)*
 
 ## Features
 
@@ -62,7 +66,7 @@
 
  * Make using Vim more convenient and faster, and lots of useful plugins (such as [Neocomplcache](https://github.com/Shougo/neocomplcache), [NERD_commenter](https://github.com/scrooloose/nerdcommenter), [Syntastic](https://github.com/scrooloose/syntastic) and [SingleCompile](https://github.com/xuhdev/SingleCompile)) confirm a better performance of Vim.
 
-*The distribution is completely customisable using a `~/.vimrc.local`, `~/.gvimrc.local` and `~/.vimrc.bundles.local`!*
+*This distribution is completely customisable using a `~/.vimrc.local`, `~/.gvimrc.local` and `~/.vimrc.bundles.local`!*
 
 ## Plugin List
 
@@ -133,4 +137,4 @@ parameters
 
 ## Notes
 
-**This configuration refers to many other famous Vim configurations (mainly contain [spf13-vim](https://github.com/spf13/spf13-vim), [Champions' Configuration](https://github.com/mutewinter/dot_vim) and [Steve's Configuration](https://github.com/sjl/dotfiles/tree/master/vim)), so there may be some unavoidable errors in it, but I have tried my best to make it work well. If you have any questions, please feel free to contact me! Thanks!**
+**This distribution refers to many other famous Vim configurations (mainly contain [spf13-vim](https://github.com/spf13/spf13-vim), [Champions' Configuration](https://github.com/mutewinter/dot_vim) and [Steve's Configuration](https://github.com/sjl/dotfiles/tree/master/vim)), so there may be some unavoidable errors in it, but I have tried my best to make it work well. If you have any questions, please feel free to contact me! Thanks!**
