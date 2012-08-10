@@ -44,6 +44,6 @@ printf '\033[0;34m%s\033[0m\n' "Installing Tomorrow theme..."
 git clone http://github.com/chriskempson/vim-tomorrow-theme.git $HOME/.vim/bundle/vim-tomorrow-theme
 
 printf '\033[0;34m%s\033[0m\n' "Installing plugins using Vundle... "
-vim +BundleInstall! +BundleClean! +qa!
+vim +'set nospell' +BundleInstall! +BundleClean! +qa! $HOME/ivim/tools/info.txt
 
 printf '\033[0;34m%s\033[0m\n' "ivim has been installed. Just enjoy vimming!"
