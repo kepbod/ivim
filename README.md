@@ -1,10 +1,6 @@
 # ivim - The Vim Distribution of Xiaoou Zhang
 
-        _       _
-       (_)   __(_)___ ___ 
-      / / | / / / __ `__ \
-     / /| |/ / / / / / / /
-    /_/ |___/_/_/ /_/ /_/ 
+[![Vim](http://www.vim.org/images/vim_editor.gif)](http://www.vim.org/)
 
 ## Installation
 
