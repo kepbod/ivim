@@ -35,7 +35,7 @@
 ## Updating
 
 ```bash
-    bash $HOME/tools/update.sh
+    bash $HOME/ivim/tools/update.sh
 ```
 
 ## Requirements
