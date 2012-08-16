@@ -134,6 +134,12 @@
 "   > Swap-parameters - https://github.com/mutewinter/swap-parameters
 "     Swap the parameters
 "     info -> :help swap-parameters.txt
+"   > autolink.vim - https://github.com/sampsyo/autolink.vim
+"     Find and insert URLs for links in Markdown and ReST documents
+"     info -> :help autolink.txt
+"   > textobj-word-column.vim - https://github.com/coderifous/textobj-word-column.vim
+"     Make operating on columns of code conceptually simpler and reduces keystrokes
+"     info -> :help textobj-word-column.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -234,8 +240,10 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " UI Additions
-Bundle 'altercation/vim-colors-solarized'
+Bundle 'w0ng/vim-hybrid'
 Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'nanotech/jellybeans.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'mutewinter/vim-indent-guides'
 Bundle 'roman/golden-ratio'
@@ -244,6 +252,7 @@ Bundle 'chrisbra/NrrwRgn'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'bkad/CamelCaseMotion'
 Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'coderifous/textobj-word-column.vim'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'sjl/gundo.vim'
 Bundle 'majutsushi/tagbar'
@@ -270,6 +279,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-rails'
 Bundle 'mattn/zencoding-vim'
 Bundle 'swaroopch/vim-markdown-preview'
+Bundle 'sampsyo/autolink.vim'
 
 " Others
 Bundle 'xolox/vim-easytags'
@@ -411,30 +421,26 @@ endif
 
 syntax on " Enable syntax
 set background=dark " Set background
-
-if has('gui_running')
-    colorscheme Tomorrow-Night " Load a colorscheme
-else
+if !has('gui_running')
     set t_Co=256 " Use 256 colors
-    colorscheme Tomorrow-Night-Eighties " Load a colorscheme
 endif
+colorscheme hybrid " Load a colorscheme
 
-function! ToggleColor()
-    if has('gui_running')
-        let color=g:colors_name=='solarized'?'Tomorrow-Night':'solarized'
-        exe 'colorscheme '.color
-        exe 'IndentGuidesEnable'
-    endif
-endfunction
-nnoremap <silent>\c :call ToggleColor()<CR>
+nnoremap <silent>\t :colorscheme Tomorrow-Night-Eighties<CR>
+nnoremap <silent>\j :colorscheme jellybeans<CR>
+nnoremap <silent>\h :colorscheme hybrid<CR>
+if has('gui_running')
+    nnoremap <silent>\t :colorscheme Tomorrow-Night<CR>
+    nnoremap <silent>\s :colorscheme solarized<CR>
+endif
 
 if has('gui_running')
     if has('gui_gtk')
-        set guifont=Monospace\ 13
+        set guifont=Monospace\ 11
     elseif has('gui_macvim')
-        set guifont=Monaco:h13
+        set guifont=Monaco:h11
     elseif has('gui_win32')
-        set guifont=Consolas:h13:cANSI
+        set guifont=Consolas:h11:cANSI
     endif
 endif
 

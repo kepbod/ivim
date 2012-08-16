@@ -58,7 +58,12 @@ bash $HOME/ivim/tools/update.sh
 
 ***Beautiful Colorscheme***
 
- * Use famous colorscheme [Tomorrow](https://github.com/chriskempson/tomorrow-theme)/[Solarized](http://ethanschoonover.com/solarized) to make your eyes feel comfortable in both Vim and MacVim/gVim.
+ * Use lots of famous colorschemes to make your eyes feel comfortable in both Vim and MacVim/gVim.
+
+    * [Hybrid](https://github.com/w0ng/vim-hybrid)(default)
+    * [Tomorrow-Night](https://github.com/chriskempson/tomorrow-theme)
+    * [Solarized](https://github.com/altercation/vim-colors-solarized)
+    * [Jellybeans](https://github.com/nanotech/jellybeans.vim)
 
  ![Tomorrow](http://fmn.rrimg.com/fmn057/20120509/1910/large_BFAJ_18bb00000918125d.jpg)
 
@@ -105,8 +110,9 @@ bash $HOME/ivim/tools/update.sh
  * [vimux](https://github.com/benmills/vimux) - Easily interact with tmux from vim
  * [markdown-preview](https://github.com/swaroopch/vim-markdown-preview) - Select Markdown text, render to HTML and preview in browser
  * [unite-outline](https://github.com/h1mesuke/unite-outline) - Provide your Vim's buffer with the outline view
- * [swap-parameters](https://github.com/mutewinter/swap-parameters) - Swap
-parameters
+ * [swap-parameters](https://github.com/mutewinter/swap-parameters) - Swap parameters
+ * [autolink.vim](https://github.com/sampsyo/autolink.vim) - Find and insert URLs for links in Markdown and ReST documents
+ * [textobj-word-column.txt](https://github.com/coderifous/textobj-word-column.vim) - Make operating on columns of code conceptually simpler and reduces keystrokes
 
 **Each plugin has its unique requirements and configurations, so if you have any questions with them, please check help files of them first!**
 
