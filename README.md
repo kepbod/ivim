@@ -8,7 +8,7 @@
 
 0. A Vim/MacVim/gVim with version higher than 7.3 has been installed on your computer, and back up your origin vim stuff;
 1. Install Vundle to install and update plugins, `git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle`;
-2. Install Tomorrow-theme, `git clone http://github.com/chriskempson/vim-tomorrow-theme.git $HOME/.vim/bundle/vim-tomorrow-theme`;
+2. Install hybrid theme, `git clone http://github.com/w0ng/vim-hybrid.git $HOME/.vim/bundle/vim-hybrid`;
 3. Get ivim from github website, `git clone http://github.com/kepbod/ivim.git $HOME/ivim`;
 4. Make symbolic links of vimrc to your home directory, `ln -s $HOME/ivim/vimrc $HOME/.vimrc`;
 5. Install plugins, `vim +BundleInstall! +BundleClean! +qa!`;

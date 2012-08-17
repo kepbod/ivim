@@ -40,8 +40,8 @@ ln -s $HOME/ivim/vimrc $HOME/.vimrc
 printf '\033[0;34m%s\033[0m\n' "Installing Vundle..."
 git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
 
-printf '\033[0;34m%s\033[0m\n' "Installing Tomorrow theme..."
-git clone http://github.com/chriskempson/vim-tomorrow-theme.git $HOME/.vim/bundle/vim-tomorrow-theme
+printf '\033[0;34m%s\033[0m\n' "Installing hybrid theme..."
+git clone http://github.com/w0ng/vim-hybrid.git $HOME/.vim/bundle/vim-hybrid
 
 printf '\033[0;34m%s\033[0m\n' "Installing plugins using Vundle..."
 vim +'set nospell' +BundleInstall! +BundleClean! +qa! $HOME/ivim/tools/info.txt

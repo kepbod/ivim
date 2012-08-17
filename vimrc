@@ -276,6 +276,7 @@ Bundle 'garbas/vim-snipmate'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
 " Language related
+Bundle 'julienr/vimux-pyutils'
 Bundle 'tpope/vim-rails'
 Bundle 'mattn/zencoding-vim'
 Bundle 'swaroopch/vim-markdown-preview'
@@ -662,10 +663,6 @@ vnoremap > >gv
 nnoremap ; :
 vnoremap ; :
 
-" Quickly escaping
-inoremap nn <ESC>
-vnoremap nn <ESC>
-
 " Map \<Space> to commenting
 function! IsWhiteLine()
     if (getline(".")=~"^$")
@@ -920,30 +917,16 @@ let g:splitjoin_align=1
 nnoremap <Leader>m :Unite<Space>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 "--------------------------------------------------
 " => vimux
 "--------------------------------------------------
 
-" Run the current file with rspec
-nnoremap <Leader>xb :call RunVimTmuxCommand("clear; rspec " . bufname("%"))<CR>
-
-" Run command without sending sending a return
-nnoremap <Leader>xq :call RunVimTmuxCommand("clear; rspec " . bufname("%"), 0)<CR>
-
-" Prompt for a command to run
-nnoremap <Leader>xp :PromptVimTmuxCommand<CR>
-
-" Run last command executed by RunVimTmuxCommand
-nnoremap <Leader>xl :RunLastVimTmuxCommand<CR>
-
-" Inspect runner pane
-nnoremap <Leader>xi :InspectVimTmuxRunner<CR>
-
-" Close all other tmux panes in current window
-nnoremap <Leader>xx :CloseVimTmuxPanes<CR>
-
-" Interrupt any command running in the runner pane
-nnoremap <Leader>xs :InterruptVimTmuxRunner<CR>
+nnoremap <Leader>xp :VimuxPromptCommand<CR>
+vnoremap <Leader>xs "vy :call VimuxRunCommand(@v . "\n", 0)<CR>
+nnoremap <Leader>xx :VimuxClosePanes<CR>
+nnoremap <Leader>xq :VimuxCloseRunner<CR>
+nnoremap <Leader>xi :VimuxInspectRunner<CR>
+nnoremap <Leader>xl :VimuxRunLastCommand<CR>
+nnoremap <Leader>xc :VimuxClearRunnerHistory<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
