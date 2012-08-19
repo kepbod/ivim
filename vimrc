@@ -25,6 +25,7 @@
 "   -> Ack
 "   -> Syntastic
 "   -> Indent Guides
+"   -> fugitive
 "   -> Gundo
 "   -> EasyTags
 "   -> SingleCompile
@@ -159,7 +160,7 @@ set timeoutlen=500 " Time to wait for a command
 " Source the vimrc file after saving it
 autocmd BufWritePost .vimrc source $MYVIMRC
 " Fast edit the .vimrc file using ',v'
-nnoremap <Leader>v :tabedit $MYVIMRC<CR>
+nnoremap <Leader>x :tabedit $MYVIMRC<CR>
 
 set autoread " Set autoread when a file is changed outside
 set autowrite " Write on make/shell commands
@@ -255,12 +256,18 @@ Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'coderifous/textobj-word-column.vim'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'sjl/gundo.vim'
-Bundle 'majutsushi/tagbar'
+if executable('ctags')
+    Bundle 'majutsushi/tagbar'
+endif
 Bundle 'Shougo/unite.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
-Bundle 'mileszs/ack.vim'
-Bundle 'tpope/vim-fugitive'
+if executable('ack-grep') || executable('ack')
+    Bundle 'mileszs/ack.vim'
+endif
+if executable('git')
+    Bundle 'tpope/vim-fugitive'
+endif
 Bundle 'benmills/vimux'
 " Commands
 Bundle 'scrooloose/nerdcommenter'
@@ -276,14 +283,15 @@ Bundle 'garbas/vim-snipmate'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
 " Language related
-Bundle 'julienr/vimux-pyutils'
 Bundle 'tpope/vim-rails'
 Bundle 'mattn/zencoding-vim'
 Bundle 'swaroopch/vim-markdown-preview'
 Bundle 'sampsyo/autolink.vim'
 
 " Others
-Bundle 'xolox/vim-easytags'
+if executable('ctags')
+    Bundle 'xolox/vim-easytags'
+endif
 Bundle 'h1mesuke/unite-outline'
 Bundle 'tpope/vim-repeat'
 Bundle 'jistr/vim-nerdtree-tabs'
@@ -773,6 +781,17 @@ inoremap <expr><S-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR
 
 let g:snips_trigger_key=',,s'
 let g:snips_trigger_key_backwards=',,s'
+snoremap <CR> a<BS>
+snoremap <BS> a<BS>
+snoremap <right> <ESC>a
+snoremap <left> <ESC>bi
+snoremap ' a<BS>'
+snoremap ` a<BS>`
+snoremap % a<BS>%
+snoremap U a<BS>U
+snoremap ^ a<BS>^
+snoremap \ a<BS>\
+snoremap <C-x> a<BS><c-x>` `' '
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -800,8 +819,10 @@ let g:ctrlp_extensions=['tag', 'buffertag', 'quickfix', 'dir', 'rtscript']
 " => Ack
 "--------------------------------------------------
 
-nnoremap <Leader>a :Ack!<Space>
-if has('unix')
+if executable('ack-grep') || executable('ack')
+    nnoremap <Leader>a :Ack!<Space>
+endif
+if has('unix') && executable('ack-grep')
     let g:ackprg='ack-grep -H --nocolor --nogroup --column'
 endif
 
@@ -830,6 +851,21 @@ endif
 
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_guide_size=1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"--------------------------------------------------
+" => fugitive
+"--------------------------------------------------
+
+if executable('git')
+    nnoremap <silent> <leader>gs :Gstatus<CR>
+    nnoremap <silent> <leader>gd :Gdiff<CR>
+    nnoremap <silent> <leader>gc :Gcommit<CR>
+    nnoremap <silent> <leader>gb :Gblame<CR>
+    nnoremap <silent> <leader>gl :Glog<CR>
+    nnoremap <silent> <leader>gp :Git push<CR>
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -921,12 +957,12 @@ nnoremap <Leader>m :Unite<Space>
 " => vimux
 "--------------------------------------------------
 
-nnoremap <Leader>xp :VimuxPromptCommand<CR>
-vnoremap <Leader>xs "vy :call VimuxRunCommand(@v . "\n", 0)<CR>
-nnoremap <Leader>xx :VimuxClosePanes<CR>
-nnoremap <Leader>xq :VimuxCloseRunner<CR>
-nnoremap <Leader>xi :VimuxInspectRunner<CR>
-nnoremap <Leader>xl :VimuxRunLastCommand<CR>
-nnoremap <Leader>xc :VimuxClearRunnerHistory<CR>
+nnoremap <Leader>vp :VimuxPromptCommand<CR>
+vnoremap <Leader>vs "vy :call VimuxRunCommand(@v . "\n", 0)<CR>
+nnoremap <Leader>vx :VimuxClosePanes<CR>
+nnoremap <Leader>vq :VimuxCloseRunner<CR>
+nnoremap <Leader>vi :VimuxInspectRunner<CR>
+nnoremap <Leader>vl :VimuxRunLastCommand<CR>
+nnoremap <Leader>vc :VimuxClearRunnerHistory<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

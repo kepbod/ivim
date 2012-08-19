@@ -134,7 +134,7 @@ bash $HOME/ivim/tools/update.sh
 
 * Because I have set some key mappings for more convenient typing and checking, you may feel inconvenient with them at start. But if you get familiar with them, I'm sure you will love them.
 
-    You can just type `:map` in Vim to see them or click [here](https://github.com/kepbod/ivim/wiki/Key-Mappings).
+    You can just type `:map` in Vim to see them.
 
 *More Tips*
 
