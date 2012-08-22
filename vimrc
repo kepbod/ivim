@@ -235,6 +235,7 @@ set fileformats=unix,mac,dos " Auto detect the file formats
 "--------------------------------------------------
 
 filetype off " Required!
+let g:vundle_default_git_proto='git'
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 " Let Vundle manage Vundle
@@ -482,6 +483,9 @@ set gdefault " turn on 'g' flag
 nnoremap / /\v
 vnoremap / /\v
 cnoremap s/ s/\v
+nnoremap ? ?\v
+vnoremap ? ?\v
+cnoremap s? s?\v
 
 " Keep search matches in the middle of the window
 nnoremap n nzzzv
@@ -670,6 +674,17 @@ vnoremap > >gv
 " Remap ; to :
 nnoremap ; :
 vnoremap ; :
+
+" Repeat last substitution, including flags, with &.
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
+
+" Keep the cursor in place while joining lines
+nnoremap J mzJ`z
+
+" Select entire buffer
+nnoremap vaa ggvGg_
+nnoremap Vaa ggVG
 
 " Map \<Space> to commenting
 function! IsWhiteLine()

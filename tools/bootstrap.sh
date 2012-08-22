@@ -34,14 +34,14 @@ for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && mv -f $i $i.back
 # install ivim
 printf '\033[0;34m%s\033[0m\n' "Cloning ivim..."
 rm -rf $HOME/ivim
-git clone http://github.com/kepbod/ivim.git $HOME/ivim
+git clone git://github.com/kepbod/ivim.git $HOME/ivim
 ln -s $HOME/ivim/vimrc $HOME/.vimrc
 
 printf '\033[0;34m%s\033[0m\n' "Installing Vundle..."
-git clone http://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
+git clone git://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
 
 printf '\033[0;34m%s\033[0m\n' "Installing hybrid theme..."
-git clone http://github.com/w0ng/vim-hybrid.git $HOME/.vim/bundle/vim-hybrid
+git clone git://github.com/w0ng/vim-hybrid.git $HOME/.vim/bundle/vim-hybrid
 
 printf '\033[0;34m%s\033[0m\n' "Installing plugins using Vundle..."
 vim +'set nospell' +BundleInstall! +BundleClean! +qa! $HOME/ivim/tools/info.txt
