@@ -2,6 +2,8 @@
 
 [![Vim](http://www.vim.org/images/vim_editor.gif)](http://www.vim.org/)
 
+[See ivim's states on GitEgo](http://gitego.com/kepbod/ivim#watchers?interval=by_day)
+
 ## Installation
 
 ### Manual Install

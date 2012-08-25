@@ -578,10 +578,8 @@ augroup END
 
 " Python
 augroup ft_python
-    autocmd!
 
     " Indent Python in the Google way.
-    setlocal indentexpr=GetGooglePythonIndent(v:lnum)
     let s:maxoff = 50 " maximum number of lines to look backwards.
     function! GetGooglePythonIndent(lnum)
         " Indent inside parens.
@@ -607,8 +605,6 @@ augroup ft_python
         " Delegate the rest to the original function.
         return GetPythonIndent(a:lnum)
     endfunction
-    let pyindent_nested_paren="&sw*2"
-    let pyindent_open_paren="&sw*2"
 
     function! ChoosePythonCompiler()
         echo "Please choose python compiler:\n"
@@ -623,13 +619,23 @@ augroup ft_python
             execute 'SingleCompileRun'
         endif
     endfunction
+
+    let pyindent_nested_paren="&sw*2"
+    let pyindent_open_paren="&sw*2"
+
+    autocmd!
+    autocmd filetype python setlocal indentexpr=GetGooglePythonIndent(v:lnum)
     autocmd filetype python nnoremap <buffer> <Leader>r :call ChoosePythonCompiler()<CR>
+
 augroup END
 
 " Perl
 augroup ft_perl
+    let perl_include_pod=1
+    let perl_extended_vars=1
+    let perl_sync_dist=250
     autocmd!
-    " TODO
+    autocmd filetype perl iab pusc use warnings;<CR>use strict;<CR>use Carp;<CR>
 augroup END
 
 " Ruby
