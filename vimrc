@@ -141,6 +141,9 @@
 "   > textobj-word-column.vim - https://github.com/coderifous/textobj-word-column.vim
 "     Make operating on columns of code conceptually simpler and reduces keystrokes
 "     info -> :help textobj-word-column.txt
+"   > imple_bookmarks.vim - https://github.com/AndrewRadev/simple_bookmarks.vim
+"     Provide several commands to manage named bookmarks
+"     info -> :help bookmark.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -159,7 +162,7 @@ set timeoutlen=500 " Time to wait for a command
 
 " Source the vimrc file after saving it
 autocmd BufWritePost .vimrc source $MYVIMRC
-" Fast edit the .vimrc file using ',v'
+" Fast edit the .vimrc file using ',x'
 nnoremap <Leader>x :tabedit $MYVIMRC<CR>
 
 set autoread " Set autoread when a file is changed outside
@@ -255,6 +258,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'bkad/CamelCaseMotion'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'coderifous/textobj-word-column.vim'
+Bundle 'AndrewRadev/simple_bookmarks.vim'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'sjl/gundo.vim'
 if executable('ctags')
@@ -570,12 +574,6 @@ augroup ft_markdown
     autocmd Filetype markdown nnoremap <buffer> <Leader>P :MarkdownPreview<CR>
 augroup END
 
-" C and C++
-augroup ft_c
-    autocmd!
-    " TODO
-augroup END
-
 " Python
 augroup ft_python
 
@@ -636,12 +634,7 @@ augroup ft_perl
     let perl_sync_dist=250
     autocmd!
     autocmd filetype perl iab pusc use warnings;<CR>use strict;<CR>use Carp;<CR>
-augroup END
-
-" Ruby
-augroup ft_ruby
-    autocmd!
-    " TODO
+    autocmd filetype perl setlocal keywordprg=perldoc\ -f
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
