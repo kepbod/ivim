@@ -116,6 +116,7 @@ bash $HOME/ivim/tools/update.sh
  * [autolink.vim](https://github.com/sampsyo/autolink.vim) - Find and insert URLs for links in Markdown and ReST documents
  * [textobj-word-column.txt](https://github.com/coderifous/textobj-word-column.vim) - Make operating on columns of code conceptually simpler and reduces keystrokes
  * [simple_bookmarks.vimux](https://github.com/AndrewRadev/simple_bookmarks.vimux) - Provide several commands to manage named bookmarks
+ * [dwm.vim](https://github.com/spolu/dwm.vim) - Add tiled window management capabilities to Vim
 
 **Each plugin has its unique requirements and configurations, so if you have any questions with them, please check help files of them first!**
 

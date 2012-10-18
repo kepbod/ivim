@@ -141,9 +141,12 @@
 "   > textobj-word-column.vim - https://github.com/coderifous/textobj-word-column.vim
 "     Make operating on columns of code conceptually simpler and reduces keystrokes
 "     info -> :help textobj-word-column.txt
-"   > imple_bookmarks.vim - https://github.com/AndrewRadev/simple_bookmarks.vim
+"   > simple_bookmarks.vim - https://github.com/AndrewRadev/simple_bookmarks.vim
 "     Provide several commands to manage named bookmarks
 "     info -> :help bookmark.txt
+"   > dwm.vim - https://github.com/spolu/dwm.vim
+"     Add tiled window management capabilities to Vim
+"     info -> :help dwm.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -265,6 +268,7 @@ if executable('ctags')
     Bundle 'majutsushi/tagbar'
 endif
 Bundle 'Shougo/unite.vim'
+Bundle 'spolu/dwm.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 if executable('ack-grep') || executable('ack')
@@ -658,13 +662,6 @@ vnoremap k gk
 " Same when jumping around
 nnoremap g; g;zz
 nnoremap g, g,zz
-
-" Navigation between windows
-nnoremap <C-H> <C-W>h
-nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k
-nnoremap <C-L> <C-W>l
-nnoremap <C-O> <C-W>o
 
 " Reselect visual block after indent/outdent
 vnoremap < <gv
