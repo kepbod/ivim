@@ -307,6 +307,8 @@ Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'honza/snipmate-snippets'
+Bundle 'groenewege/vim-less'
+Bundle 'juvenn/mustache.vim'
 
 " Local bundles if avaiable
 if filereadable(expand("~/.vimrc.bundles.local"))
@@ -577,6 +579,13 @@ augroup ft_markdown
     " Use <Leader>P to preview markdown file in browser
     autocmd Filetype markdown nnoremap <buffer> <Leader>P :MarkdownPreview<CR>
 augroup END
+
+" LESS
+augroup ft_less
+    autocmd!
+    autocmd filetype less nnoremap <buffer> <Leader>r :w <BAR> !lessc % > %:t:r.css<CR><Space>
+augroup END
+
 
 " Python
 augroup ft_python
