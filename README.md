@@ -67,9 +67,7 @@ bash $HOME/ivim/tools/update.sh
     * [Solarized](https://github.com/altercation/vim-colors-solarized)
     * [Jellybeans](https://github.com/nanotech/jellybeans.vim)
 
- ![Tomorrow](http://fmn.rrimg.com/fmn057/20120509/1910/large_BFAJ_18bb00000918125d.jpg)
-
- ![Solarized](http://fmn.rrimg.com/fmn062/20120509/1910/large_QK35_388d00000348125e.jpg)
+ ![screenshot](https://lh6.googleusercontent.com/-e-CWpdeh7GA/UJuyYagHmDI/AAAAAAAAAHU/k4hYnUHv2xg/s910/Tooltip_005.png)
 
 ***Efficient***
 
@@ -149,4 +147,4 @@ bash $HOME/ivim/tools/update.sh
 
 ## Notes
 
-**This distribution refers to many other famous Vim configurations (mainly contain [spf13-vim](https://github.com/spf13/spf13-vim), [Champions' Configuration](https://github.com/mutewinter/dot_vim) and [Steve's Configuration](https://github.com/sjl/dotfiles/tree/master/vim)), so there may be some unavoidable errors in it, but I have tried my best to make it work well. If you have any questions, please feel free to contact me! Thanks!**
+**This distribution refers to many other famous Vim configurations (mainly contain [spf13-vim](https://github.com/spf13/spf13-vim), [Champions' Configuration](https://github.com/mutewinter/dot_vim) and [Steve's Configuration](https://github.com/sjl/dotfiles/tree/master/vim)), so there may be some unavoidable errors in it, but I'll try my best to make it work well. If you have any questions, please feel free to [post your issues and suggestions](https://github.com/kepbod/ivim/issues)! Thanks!**

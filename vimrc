@@ -1,6 +1,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
-" Maintainer: Xiaoou Zhang (kepbod) <kepbod@gmail.com>
+" Maintainer: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "
 " Sections:
 "   -> General
