@@ -21,17 +21,13 @@
 **via 'curl'**
 
 ```bash
-
 curl -L https://raw.github.com/kepbod/ivim/master/tools/bootstrap.sh | bash
-
 ```
 
 **via 'wget'**
 
 ```bash
-
 wget --no-check-certificate https://raw.github.com/kepbod/ivim/master/tools/bootstrap.sh -O - | bash
-
 ```
 
 ## Updating
@@ -40,7 +36,7 @@ wget --no-check-certificate https://raw.github.com/kepbod/ivim/master/tools/boot
 bash $HOME/ivim/tools/update.sh
 ```
 
-*If you confront errors when you update vim plugin, please run command below*
+*If you confront errors when you update vim plugins, please run command below.*
 
 ```bash
 bash $HOME/ivim/tools/restore.sh
