@@ -10,6 +10,7 @@ die ()
     warn "$1"
     exit 1
 }
+
 printf '\033[0;34m%s\033[0m\n' "Thanks for installing ivim!"
 printf '\033[0;34m%s\033[0m\n' '    _       _         '
 printf '\033[0;34m%s\033[0m\n' '   (_)   __(_)___ ___ '
@@ -17,7 +18,7 @@ printf '\033[0;34m%s\033[0m\n' '  / / | / / / __ `__ \'
 printf '\033[0;34m%s\033[0m\n' ' / /| |/ / / / / / / /'
 printf '\033[0;34m%s\033[0m\n' '/_/ |___/_/_/ /_/ /_/ '
 printf '\033[0;34m%s\033[0m\n' '                      '
-                      
+
 # check requriements
 printf '\033[0;34m%s\033[0m\n' "Checking requriements for ivim..."
 printf '\033[0;34m%s\033[0m\n' "Checking vim version..."

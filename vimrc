@@ -19,7 +19,6 @@
 "   -> NERD_tree
 "   -> NERD_commenter
 "   -> Neocomplcache
-"   -> snipMate
 "   -> delimitMate
 "   -> Ctrlp
 "   -> Ack
@@ -51,9 +50,6 @@
 "   > Neocomplcache - https://github.com/Shougo/neocomplcache
 "     Performs keyword completion by maintaining a cache of keywords
 "     info -> :help neocomplcache.txt
-"   > snipMate - https://github.com/garbas/vim-snipmate
-"     Implement some of TextMate's snippets features in Vim
-"     info -> :help snipMate.txt
 "   > surround - https://github.com/tpope/vim-surround
 "     Provide mappings to delete, change and add surroundings in pairs
 "     info -> :help surround.txt
@@ -147,6 +143,9 @@
 "   > dwm.vim - https://github.com/spolu/dwm.vim
 "     Add tiled window management capabilities to Vim
 "     info -> :help dwm.txt
+"   > vim-speeddating - https://github.com/tpope/vim-speeddating
+"     Use CTRL-A/CTRL-X to increment dates, times, and more
+"     info -> :help speeddating.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -288,9 +287,9 @@ Bundle 'mutewinter/swap-parameters'
 Bundle 'xuhdev/SingleCompile'
 " Automatic Helper
 Bundle 'Shougo/neocomplcache'
-Bundle 'garbas/vim-snipmate'
 Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-speeddating'
 " Language related
 Bundle 'tpope/vim-rails'
 Bundle 'mattn/zencoding-vim'
@@ -304,9 +303,8 @@ endif
 Bundle 'h1mesuke/unite-outline'
 Bundle 'tpope/vim-repeat'
 Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
 Bundle 'honza/snipmate-snippets'
+Bundle 'Shougo/neosnippet'
 Bundle 'groenewege/vim-less'
 Bundle 'juvenn/mustache.vim'
 
@@ -656,12 +654,6 @@ augroup END
 " => Key Mapping
 "-------------------------------------------------
 
-" Redesign moving keys in insert mode
-inoremap <C-K> <Up>
-inoremap <C-J> <Down>
-inoremap <C-H> <Left>
-inoremap <C-L> <Right>
-
 " Make j and k work the way you expect
 nnoremap j gj
 nnoremap k gk
@@ -781,36 +773,30 @@ let g:neocomplcache_enable_auto_delimiter=1
 let g:neocomplcache_enable_camel_case_completion=1
 let g:neocomplcache_enable_underbar_completion=1
 
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
+let g:neosnippet#enable_snipmate_compatibility=1
+
+" Plugin key-mappings
+imap <C-K> <Plug>(neosnippet_expand_or_jump)
+smap <C-K> <Plug>(neosnippet_expand_or_jump)
+
 " Map <C-E> to cancel completion
 inoremap <expr><C-E> neocomplcache#cancel_popup()
 
-" Tab/Shift-Tab to cycle completions
-inoremap <expr><Tab>  pumvisible() ? "\<C-N>" : "\<Tab>"
-inoremap <expr><S-Tab>  pumvisible() ? "\<C-P>" : "\<S-Tab>"
+" SuperTab like snippets behavior
+inoremap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-N>" : "\<TAB>"
+snoremap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+inoremap <expr><S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
 
-" CR/S-CR: close popup and save indent.
-inoremap <expr><CR>  delimitMate#WithinEmptyPair() ? "\<C-R>=delimitMate#ExpandReturn()\<CR>" : pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+" CR/S-CR: close popup and save indent
+inoremap <expr><CR> delimitMate#WithinEmptyPair() ? "\<C-R>=delimitMate#ExpandReturn()\<CR>" : pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 inoremap <expr><S-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR>"
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"--------------------------------------------------
-" => snipMate
-"--------------------------------------------------
-
-let g:snips_trigger_key=',,s'
-let g:snips_trigger_key_backwards=',,s'
-snoremap <CR> a<BS>
-snoremap <BS> a<BS>
-snoremap <right> <ESC>a
-snoremap <left> <ESC>bi
-snoremap ' a<BS>'
-snoremap ` a<BS>`
-snoremap % a<BS>%
-snoremap U a<BS>U
-snoremap ^ a<BS>^
-snoremap \ a<BS>\
-snoremap <C-x> a<BS><c-x>` `' '
+" For snippet_complete marker
+if has('conceal')
+    set conceallevel=2 concealcursor=i
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -970,6 +956,7 @@ let g:splitjoin_align=1
 "--------------------------------------------------
 
 nnoremap <Leader>m :Unite<Space>
+let g:unite_update_time=4000
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------

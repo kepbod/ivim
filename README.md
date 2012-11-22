@@ -82,7 +82,6 @@ bash $HOME/ivim/tools/update.sh
  * [NERD_tree](https://github.com/scrooloose/nerdtree) - Explore filesystem and to open files and directories
  * [NERD_commenter](https://github.com/scrooloose/nerdcommenter) - Provide many different commenting operations and styles
  * [Neocomplcache](https://github.com/Shougo/neocomplcache) - Performs keyword completion by maintaining a cache of keywords
- * [snipMate](https://github.com/garbas/vim-snipmate) - Implement some of TextMate's snippets features in Vim
  * [surround](https://github.com/tpope/vim-surround) - Provide mappings to delete, change and add surroundings in pairs
  * [delimitMate](https://github.com/Raimondi/delimitMate) - Provides automatic closing of quotes, parenthesis, brackets, etc.
  * [Ctrlp](https://github.com/kien/ctrlp.vim) - Full path fuzzy file, buffer, mru and tag finder with an intuitive interface
@@ -115,6 +114,7 @@ bash $HOME/ivim/tools/update.sh
  * [textobj-word-column.txt](https://github.com/coderifous/textobj-word-column.vim) - Make operating on columns of code conceptually simpler and reduces keystrokes
  * [simple_bookmarks.vimux](https://github.com/AndrewRadev/simple_bookmarks.vimux) - Provide several commands to manage named bookmarks
  * [dwm.vim](https://github.com/spolu/dwm.vim) - Add tiled window management capabilities to Vim
+ * [vim-speeddating](https://github.com/tpope/vim-speeddating) Use CTRL-A/CTRL-X to increment dates, times, and more
 
 **Each plugin has its unique requirements and configurations, so if you have any questions with them, please check help files of them first!**
 
