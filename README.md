@@ -40,6 +40,12 @@ wget --no-check-certificate https://raw.github.com/kepbod/ivim/master/tools/boot
 bash $HOME/ivim/tools/update.sh
 ```
 
+*If you confront errors when you update vim plugin, please run command below*
+
+```bash
+bash $HOME/ivim/tools/restore.sh
+```
+
 ## Requirements
 
 **Vim**
