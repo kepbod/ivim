@@ -303,8 +303,8 @@ endif
 Bundle 'h1mesuke/unite-outline'
 Bundle 'tpope/vim-repeat'
 Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'honza/snipmate-snippets'
 Bundle 'Shougo/neosnippet'
+Bundle 'honza/snipmate-snippets'
 Bundle 'groenewege/vim-less'
 Bundle 'juvenn/mustache.vim'
 
@@ -774,7 +774,7 @@ let g:neocomplcache_enable_camel_case_completion=1
 let g:neocomplcache_enable_underbar_completion=1
 
 " Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
+let g:neosnippet#snippets_directory='$HOME/.vim/bundle/snipmate-snippets/snippets'
 let g:neosnippet#enable_snipmate_compatibility=1
 
 " Plugin key-mappings

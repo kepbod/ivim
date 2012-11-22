@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 echo "[ivim] Would you like to update ivim?"
-echo "Type Y to update: \c"
+echo -n "Type Y to update: "
 read line
-if ["$line" = Y] || ["$line" = y]
+if [ "$line" = Y ] || [ "$line" = y ]
 then
     # update ivim
     printf '\033[0;34m%s\033[0m\n' 'Upgrading ivim...'

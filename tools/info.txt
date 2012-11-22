@@ -11,6 +11,7 @@
 
 Thanks for using ivim!
 
-You are now installing/updating plugins for vim.
-This window will be closed automatically after 
-the install/update is complete.
+You are now installing/updating/restoring
+plugins for vim.
+This window will be closed automatically after
+the install/update/restoring is complete.
