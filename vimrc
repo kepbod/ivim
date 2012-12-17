@@ -644,7 +644,6 @@ augroup ft_perl
     let perl_extended_vars=1
     let perl_sync_dist=250
     autocmd!
-    autocmd filetype perl iab pusc use warnings;<CR>use strict;<CR>use Carp;<CR>
     autocmd filetype perl setlocal keywordprg=perldoc\ -f
 augroup END
 

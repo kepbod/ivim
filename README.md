@@ -60,7 +60,7 @@ bash $HOME/ivim/tools/restore.sh
 
 ## Features
 
-***Beautiful Colorscheme***
+***Beautiful***
 
  * Use lots of famous colorschemes to make your eyes feel comfortable in both Vim and MacVim/gVim.
 
