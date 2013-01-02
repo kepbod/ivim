@@ -667,10 +667,6 @@ nnoremap g, g,zz
 vnoremap < <gv
 vnoremap > >gv
 
-" Remap ; to :
-nnoremap ; :
-vnoremap ; :
-
 " Repeat last substitution, including flags, with &.
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
