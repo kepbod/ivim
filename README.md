@@ -56,7 +56,7 @@ bash $HOME/ivim/tools/restore.sh
 
  * Ctags generates an index (or tag) file of language objects found in source files that allows these items to be quickly and easily located by a text editor or other utility. I recommend you to use [Exuberant Ctags](http://ctags.sourceforge.net/).
 
-*To use this distribution with less bugs, please get more suggestions from [here](https://github.com/kepbod/ivim/wiki/Suggestions)*
+*To use this distribution with less bugs, please get more suggestions from [here](https://github.com/kepbod/ivim/wiki/Tips-for-ivim)*
 
 ## Features
 
