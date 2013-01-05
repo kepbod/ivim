@@ -428,7 +428,6 @@ augroup END
 if has('gui_running')
     set guioptions-=m
     set guioptions-=T
-    set guioptions+=f
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
