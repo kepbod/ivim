@@ -1,6 +1,8 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " Maintainer: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
+" Created: 2012-01-20
+" Last Modified: 2013-01-08
 "
 " Sections:
 "   -> General
@@ -767,8 +769,10 @@ let g:neocomplcache_enable_auto_delimiter=1
 let g:neocomplcache_enable_camel_case_completion=1
 let g:neocomplcache_enable_underbar_completion=1
 
+let g:snips_author='Xiao-Ou Zhang <kepbod@gmail.com>'
+
 " Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='$HOME/.vim/bundle/snipmate-snippets/snippets'
+let g:neosnippet#snippets_directory="$HOME/.vim/bundle/snipmate-snippets/snippets"
 let g:neosnippet#enable_snipmate_compatibility=1
 
 " Plugin key-mappings
