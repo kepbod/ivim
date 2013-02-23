@@ -748,6 +748,7 @@ let NERDTreeShowBookmarks=1
 let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1
 let NERDTreeDirArrows=1
+let g:nerdtree_tabs_open_on_gui_startup=0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
