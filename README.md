@@ -114,7 +114,7 @@ bash $HOME/ivim/tools/restore.sh
  * [swap-parameters](https://github.com/mutewinter/swap-parameters) - Swap parameters
  * [autolink.vim](https://github.com/sampsyo/autolink.vim) - Find and insert URLs for links in Markdown and ReST documents
  * [textobj-word-column.txt](https://github.com/coderifous/textobj-word-column.vim) - Make operating on columns of code conceptually simpler and reduces keystrokes
- * [simple_bookmarks.vimux](https://github.com/AndrewRadev/simple_bookmarks.vimux) - Provide several commands to manage named bookmarks
+ * [simple_bookmarks.vim](https://github.com/AndrewRadev/simple_bookmarks.vim) - Provide several commands to manage named bookmarks
  * [dwm.vim](https://github.com/spolu/dwm.vim) - Add tiled window management capabilities to Vim
  * [vim-speeddating](https://github.com/tpope/vim-speeddating) Use CTRL-A/CTRL-X to increment dates, times, and more
 
