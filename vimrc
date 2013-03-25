@@ -23,7 +23,7 @@
 "   -> Neocomplcache
 "   -> delimitMate
 "   -> Ctrlp
-"   -> Ack
+"   -> Ag(Ack)
 "   -> Syntastic
 "   -> Indent Guides
 "   -> fugitive
@@ -61,6 +61,9 @@
 "   > Ctrlp - https://github.com/kien/ctrlp.vim
 "     Full path fuzzy file, buffer, mru and tag finder with an intuitive interface
 "     info -> :help ctrlp.txt
+"   > Ag - https://github.com/rking/ag.vim
+"     A front for ag, A.K.A. the_silver_searcher
+"     info -> :help ag.txt
 "   > Ack - https://github.com/mileszs/ack.vim
 "     A replacement for 'grep' using Perl module App::Ack
 "     info -> :help ack.txt
@@ -233,6 +236,7 @@ if has('win32') || has('win64')
 endif
 
 set viewoptions+=slash,unix " Better Unix/Windows compatibility
+set viewoptions-=options " in case of mapping change
 set fileformats=unix,mac,dos " Auto detect the file formats
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -264,7 +268,9 @@ Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'coderifous/textobj-word-column.vim'
 Bundle 'AndrewRadev/simple_bookmarks.vim'
 Bundle 'tpope/vim-unimpaired'
-Bundle 'sjl/gundo.vim'
+if has('python')
+    Bundle 'sjl/gundo.vim'
+endif
 if executable('ctags')
     Bundle 'majutsushi/tagbar'
 endif
@@ -272,7 +278,9 @@ Bundle 'Shougo/unite.vim'
 Bundle 'spolu/dwm.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
-if executable('ack-grep') || executable('ack')
+if executable('ag')
+    Bundle 'rking/ag.vim'
+elseif executable('ack-grep') || executable('ack')
     Bundle 'mileszs/ack.vim'
 endif
 if executable('git')
@@ -285,7 +293,9 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-abolish'
 Bundle 'godlygeek/tabular'
 Bundle 'AndrewRadev/splitjoin.vim'
-Bundle 'mutewinter/swap-parameters'
+if has('python')
+    Bundle 'mutewinter/swap-parameters'
+endif
 Bundle 'xuhdev/SingleCompile'
 " Automatic Helper
 Bundle 'Shougo/neocomplcache'
@@ -820,13 +830,15 @@ let g:ctrlp_extensions=['tag', 'buffertag', 'quickfix', 'dir', 'rtscript']
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
-" => Ack
+" => Ag(Ack)
 "--------------------------------------------------
 
-if executable('ack-grep') || executable('ack')
+if executable('ag')
+    nnoremap <Leader>a :Ag<Space>
+elseif executable('ack-grep') || executable('ack')
     nnoremap <Leader>a :Ack!<Space>
 endif
-if has('unix') && executable('ack-grep')
+if !executable('ag') && has('unix') && executable('ack-grep')
     let g:ackprg='ack-grep -H --nocolor --nogroup --column'
 endif
 
@@ -877,7 +889,9 @@ endif
 " => Gundo
 "--------------------------------------------------
 
-nnoremap <Leader>u :GundoToggle<CR>
+if has('python')
+    nnoremap <Leader>u :GundoToggle<CR>
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
