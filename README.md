@@ -100,8 +100,6 @@ bash $HOME/ivim/tools/restore.sh
  * [SingleCompile](https://github.com/xuhdev/SingleCompile) - Compile or run a single source file without leaving Vim
  * [CamelCaseMotion](https://github.com/bkad/CamelCaseMotion) - Refine words motion in Vim
  * [Zencoding](https://github.com/mattn/zencoding-vim) - High-speed HTML, XML, XSL coding and editing
- * [Golden Ratio](https://github.com/roman/golden-ratio) - Resize windows
- automatically using the Golden Ratio
  * [Splitjoin](https://github.com/AndrewRadev/splitjoin.vim) - Switch between a single-line statement and a multi-line one
  * [Unite](https://github.com/Shougo/unite.vim) - Search and display information from arbitrary sources
  * [rails.vim](https://github.com/tpope/vim-rails) - Plugin for working with Ruby on Rails applications
@@ -115,9 +113,10 @@ bash $HOME/ivim/tools/restore.sh
  * [swap-parameters](https://github.com/mutewinter/swap-parameters) - Swap parameters
  * [autolink.vim](https://github.com/sampsyo/autolink.vim) - Find and insert URLs for links in Markdown and ReST documents
  * [textobj-word-column.txt](https://github.com/coderifous/textobj-word-column.vim) - Make operating on columns of code conceptually simpler and reduces keystrokes
- * [simple_bookmarks.vim](https://github.com/AndrewRadev/simple_bookmarks.vim) - Provide several commands to manage named bookmarks
- * [dwm.vim](https://github.com/spolu/dwm.vim) - Add tiled window management capabilities to Vim
  * [vim-speeddating](https://github.com/tpope/vim-speeddating) Use CTRL-A/CTRL-X to increment dates, times, and more
+ * [GoldenView.vim](https://github.com/zhaocai/GoldenView.Vim) Manage windows more convenient
+ * [vim-startify](https://github.com/mhinz/vim-startify) Provide a good start screen for vim
+ * [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors) Provide Sublime Text's awesome multiple selection feature to vim
 
 **Each plugin has its unique requirements and configurations, so if you have any questions with them, please check help files of them first!**
 

@@ -31,7 +31,7 @@
 "   -> EasyTags
 "   -> SingleCompile
 "   -> Zencoding
-"   -> Golden Ratio
+"   -> GoldenView
 "   -> Splitjoin
 "   -> Unite
 "   -> vimux
@@ -100,9 +100,6 @@
 "   > Zencoding - https://github.com/mattn/zencoding-vim
 "     High-speed HTML, XML, XSL coding and editing
 "     info -> :help zencoding.txt
-"   > Golden Ratio - https://github.com/roman/golden-ratio
-"     Resize windows automatically using the Golden Ratio
-"     info -> :help golden_ratio.txt
 "   > Splitjoin - https://github.com/AndrewRadev/splitjoin.vim
 "     Switch between a single-line statement and a multi-line one
 "     info -> :help splitjoin.txt
@@ -142,15 +139,18 @@
 "   > textobj-word-column.vim - https://github.com/coderifous/textobj-word-column.vim
 "     Make operating on columns of code conceptually simpler and reduces keystrokes
 "     info -> :help textobj-word-column.txt
-"   > simple_bookmarks.vim - https://github.com/AndrewRadev/simple_bookmarks.vim
-"     Provide several commands to manage named bookmarks
-"     info -> :help bookmark.txt
-"   > dwm.vim - https://github.com/spolu/dwm.vim
-"     Add tiled window management capabilities to Vim
-"     info -> :help dwm.txt
+"   > GoldenView.vim - https://github.com/zhaocai/GoldenView.Vim
+"     Manage windows more convenient
+"     info -> :help GoldenView.txt
+"   > vim-startify - https://github.com/mhinz/vim-startify
+"     Provide a good start screen for vim
+"     info -> :help startify.txt
 "   > vim-speeddating - https://github.com/tpope/vim-speeddating
 "     Use CTRL-A/CTRL-X to increment dates, times, and more
 "     info -> :help speeddating.txt
+"   > vim-multiple-cursors - https://github.com/terryma/vim-multiple-cursors
+"     Provide Sublime Text's awesome multiple selection feature to vim
+"     info -> :help multiple_cursors.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -259,15 +259,16 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'mutewinter/vim-indent-guides'
-Bundle 'roman/golden-ratio'
 Bundle 'chrisbra/NrrwRgn'
+Bundle 'mhinz/vim-startify'
 " Navigation
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'terryma/vim-multiple-cursors'
 Bundle 'bkad/CamelCaseMotion'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'coderifous/textobj-word-column.vim'
-Bundle 'AndrewRadev/simple_bookmarks.vim'
 Bundle 'tpope/vim-unimpaired'
+Bundle 'zhaocai/GoldenView.Vim'
 if has('python')
     Bundle 'sjl/gundo.vim'
 endif
@@ -275,7 +276,6 @@ if executable('ctags')
     Bundle 'majutsushi/tagbar'
 endif
 Bundle 'Shougo/unite.vim'
-Bundle 'spolu/dwm.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 if executable('ag')
@@ -943,13 +943,14 @@ let g:user_zen_settings={'indentation':'   '}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
-" => Golden Ratio
+" => GoldenView
 "--------------------------------------------------
 
-" Disable Golden Ratio plugin when in diff mode
-if &diff
-  let g:loaded_golden_ratio=1
-endif
+let g:goldenview__enable_default_mapping=0
+nmap <silent> <C-N> <Plug>GoldenViewSplit
+nmap <silent> <C-F> <Plug>GoldenViewSwitchToggle
+nmap <silent> <C-H> <Plug>GoldenViewNext
+nmap <silent> <C-L> <Plug>GoldenViewPrevious
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
