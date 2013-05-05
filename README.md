@@ -1,4 +1,4 @@
-# ivim - The Vim Distribution of Xiao-Ou Zhang
+# ivim - The Vim Distribution of Xiao-Ou Zhang(fork version by Huxinbang)
 
 [![Vim](http://www.vim.org/images/vim_editor.gif)](http://www.vim.org/)
 
@@ -21,13 +21,13 @@
 **via 'curl'**
 
 ```bash
-curl -L https://raw.github.com/kepbod/ivim/master/tools/bootstrap.sh | bash
+curl -L https://raw.github.com/huxinbang/ivim/master/tools/bootstrap.sh | bash
 ```
 
 **via 'wget'**
 
 ```bash
-wget --no-check-certificate https://raw.github.com/kepbod/ivim/master/tools/bootstrap.sh -O - | bash
+wget --no-check-certificate https://raw.github.com/huxinbang/ivim/master/tools/bootstrap.sh -O - | bash
 ```
 
 ## Updating
