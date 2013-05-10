@@ -2,7 +2,7 @@
 "
 " Maintainer: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 " Created: 2012-01-20
-" Last Modified: 2013-01-30
+" Last Modified: 2013-05-9
 "
 " Sections:
 "   -> General
@@ -670,6 +670,14 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 
+" Navigation between windows
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k 
+
+" More effective saving and quiting
+map :w :up
+map :q :confirm q
+
 " Same when jumping around
 nnoremap g; g;zz
 nnoremap g, g,zz
@@ -948,7 +956,7 @@ let g:user_zen_settings={'indentation':'   '}
 
 let g:goldenview__enable_default_mapping=0
 nmap <silent> <C-N> <Plug>GoldenViewSplit
-nmap <silent> <C-F> <Plug>GoldenViewSwitchToggle
+nmap <silent> <C-G> <Plug>GoldenViewSwitchToggle
 nmap <silent> <C-H> <Plug>GoldenViewNext
 nmap <silent> <C-L> <Plug>GoldenViewPrevious
 
