@@ -96,7 +96,7 @@ bash $HOME/ivim/tools/restore.sh
  * [fugitive](https://github.com/tpope/vim-fugitive) - Git wrapper
  * [Gundo](https://github.com/sjl/gundo.vim) - Visualize Vim undo tree
  * [EasyTags](https://github.com/xolox/vim-easytags) - Automated tag generation and syntax highlighting in Vim
- * [Powerline](https://github.com/Lokaltog/vim-powerline) - Create better-looking, more functional Vim statuslines
+ * [Powerline](https://github.com/Lokaltog/powerline) - Create better-looking, more functional Vim statuslines
  * [SingleCompile](https://github.com/xuhdev/SingleCompile) - Compile or run a single source file without leaving Vim
  * [CamelCaseMotion](https://github.com/bkad/CamelCaseMotion) - Refine words motion in Vim
  * [Zencoding](https://github.com/mattn/zencoding-vim) - High-speed HTML, XML, XSL coding and editing
@@ -117,6 +117,7 @@ bash $HOME/ivim/tools/restore.sh
  * [GoldenView.vim](https://github.com/zhaocai/GoldenView.Vim) Manage windows more convenient
  * [vim-startify](https://github.com/mhinz/vim-startify) Provide a good start screen for vim
  * [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors) Provide Sublime Text's awesome multiple selection feature to vim
+ * [vim-matchit](https://github.com/tsaleh/vim-matchit) Extended matching with "%"
 
 **Each plugin has its unique requirements and configurations, so if you have any questions with them, please check help files of them first!**
 

@@ -2,7 +2,7 @@
 "
 " Maintainer: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 " Created: 2012-01-20
-" Last Modified: 2013-05-9
+" Last Modified: 2013-05-11
 "
 " Sections:
 "   -> General
@@ -88,9 +88,9 @@
 "   > EasyTags - https://github.com/xolox/vim-easytags
 "     Automated tag generation and syntax highlighting in Vim
 "     info -> :help easytags.txt
-"   > Powerline - https://github.com/Lokaltog/vim-powerline
+"   > Powerline - https://github.com/Lokaltog/powerline
 "     Create better-looking, more functional Vim statuslines
-"     info -> :help Powerline.txt
+"     info -> https://powerline.readthedocs.org
 "   > SingleCompile - https://github.com/xuhdev/SingleCompile
 "     Compile or run a single source file without leaving Vim
 "     info -> :help SingleCompile.txt
@@ -151,6 +151,9 @@
 "   > vim-multiple-cursors - https://github.com/terryma/vim-multiple-cursors
 "     Provide Sublime Text's awesome multiple selection feature to vim
 "     info -> :help multiple_cursors.txt
+"   > vim-matchit - https://github.com/tsaleh/vim-matchit
+"     Extended matching with "%"
+"     info -> :help matchit.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -257,7 +260,13 @@ Bundle 'w0ng/vim-hybrid'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'nanotech/jellybeans.vim'
-Bundle 'Lokaltog/vim-powerline'
+if has("python") || has("python3")
+    Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
+    let old_powerline=0
+else
+    Bundle 'Lokaltog/vim-powerline'
+    let old_powerline=1
+endif
 Bundle 'mutewinter/vim-indent-guides'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'mhinz/vim-startify'
@@ -316,7 +325,7 @@ Bundle 'h1mesuke/unite-outline'
 Bundle 'tpope/vim-repeat'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'Shougo/neosnippet'
-Bundle 'honza/snipmate-snippets'
+Bundle 'honza/vim-snippets'
 Bundle 'groenewege/vim-less'
 Bundle 'juvenn/mustache.vim'
 
@@ -380,9 +389,10 @@ set guitabtooltip=%F
 
 " Set status line
 set laststatus=2 " Show the statusline
+set noshowmode " Hide the default mode text
 " Set the style of the status line
-" Use vim-powerline to modify the statuls line
-if has('gui_running') && (!has('win64') || !has('win32'))
+" Use powerline to modify the statuls line
+if has('gui_running') && (!has('win64') || !has('win32')) && old_powerline == 1
   let g:Powerline_symbols='unicode'
 endif
 " Only have cursorline in current window and in normal window
@@ -405,9 +415,9 @@ set sidescrolloff=10 " Minimal number of screen columns to keep away from cursor
 
 set showmatch " Show matching brackets/parenthesis
 set matchtime=2 " Decrease the time to blink
-" Use Tab instead of % to switch among brackets/parenthesis
-nnoremap <Tab> %
-vnoremap <Tab> %
+" Use Tab instead of % to switch using matchit
+nmap <Tab> %
+vmap <Tab> %
 
 set number " Show line numbers
 " Toggle relativenumber
@@ -465,7 +475,7 @@ endif
 
 if has('gui_running')
     if has('gui_gtk')
-        set guifont=Monospace\ 11
+        set guifont=DejaVu\ Sans\ Mono\ 11
     elseif has('gui_macvim')
         set guifont=Monaco:h11
     elseif has('gui_win32')
@@ -791,19 +801,20 @@ let g:neocomplcache_enable_underbar_completion=1
 let g:snips_author='Xiao-Ou Zhang <kepbod@gmail.com>'
 
 " Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory="$HOME/.vim/bundle/snipmate-snippets/snippets"
+let g:neosnippet#snippets_directory="$HOME/.vim/bundle/vim-snippets/snippets"
 let g:neosnippet#enable_snipmate_compatibility=1
 
 " Plugin key-mappings
 imap <C-K> <Plug>(neosnippet_expand_or_jump)
 smap <C-K> <Plug>(neosnippet_expand_or_jump)
+xmap <C-K> <Plug>(neosnippet_expand_target)
 
 " Map <C-E> to cancel completion
 inoremap <expr><C-E> neocomplcache#cancel_popup()
 
 " SuperTab like snippets behavior
-inoremap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-N>" : "\<TAB>"
-snoremap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+inoremap <expr><Tab> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-N>" : "\<Tab>"
+snoremap <expr><Tab> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<Tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
 
 " CR/S-CR: close popup and save indent
