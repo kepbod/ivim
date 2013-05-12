@@ -21,7 +21,7 @@
 "   -> NERD_tree
 "   -> NERD_commenter
 "   -> Neocomplcache
-"   -> delimitMate
+"   -> delimitMate removed for not useful.
 "   -> Ctrlp
 "   -> Ag(Ack)
 "   -> Syntastic
@@ -179,7 +179,7 @@ set hidden " Turn on hidden"
 set history=1000 " Increase the lines of history
 set clipboard+=unnamed " Yanks go on clipboard instead
 set spell " Spell checking on
-set modeline " Turn on modeline
+" set modeline " Turn on modeline
 set encoding=utf-8 " Set utf-8 encoding
 set completeopt+=longest " Optimize auto complete
 set completeopt-=preview " Optimize auto complete
@@ -299,12 +299,12 @@ endif
 Bundle 'xuhdev/SingleCompile'
 " Automatic Helper
 Bundle 'Shougo/neocomplcache'
-Bundle 'Raimondi/delimitMate'
+" Bundle 'Raimondi/delimitMate'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-speeddating'
 " Language related
-Bundle 'tpope/vim-rails'
-Bundle 'mattn/zencoding-vim'
+" Bundle 'tpope/vim-rails'
+" Bundle 'mattn/zencoding-vim'
 Bundle 'swaroopch/vim-markdown-preview'
 Bundle 'sampsyo/autolink.vim'
 
@@ -799,7 +799,6 @@ snoremap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jum
 inoremap <expr><S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
 
 " CR/S-CR: close popup and save indent
-inoremap <expr><CR> delimitMate#WithinEmptyPair() ? "\<C-R>=delimitMate#ExpandReturn()\<CR>" : pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 inoremap <expr><S-CR> pumvisible() ? neocomplcache#close_popup() "\<CR>" : "\<CR>"
 
 " For snippet_complete marker
@@ -808,14 +807,6 @@ if has('conceal')
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"--------------------------------------------------
-" => delimitMate
-"--------------------------------------------------
-
-let delimitMate_expand_cr=1
-let delimitMate_expand_space=1
-let delimitMate_balance_matchpairs=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
