@@ -38,32 +38,228 @@
           <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
         </div>
 
-        <h3>Welcome to GitHub Pages.</h3>
+        <h1>ivim - The Vim Distribution of Xiao-Ou Zhang</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p><a href="http://www.vim.org/"><img src="http://www.vim.org/images/vim_editor.gif" alt="Vim"></a></p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+<p><a href="http://gitego.com/kepbod/ivim#watchers?interval=by_day">See ivim's states on GitEgo</a></p>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<h2>Installation</h2>
 
-<h3>Designer Templates</h3>
+<h3>Manual Install</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<ol>
+<li>A Vim/MacVim/gVim with version higher than 7.3 has been installed on your computer, and back up your origin vim stuff;</li>
+<li>Install Vundle to install and update plugins, <code>git clone git://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle</code>;</li>
+<li>Install hybrid theme, <code>git clone git://github.com/w0ng/vim-hybrid.git $HOME/.vim/bundle/vim-hybrid</code>;</li>
+<li>Get ivim from github website, <code>git clone git://github.com/kepbod/ivim.git $HOME/ivim</code>;</li>
+<li>Make symbolic links of vimrc to your home directory, <code>ln -s $HOME/ivim/vimrc $HOME/.vimrc</code>;</li>
+<li>Install plugins, <code>vim +BundleInstall! +BundleClean! +qa!</code>;</li>
+<li>Just enjoy it!</li>
+</ol><h3>Automatic Install (*nix only)</h3>
 
-<h3>Rather Drive Stick?</h3>
+<p><strong>via 'curl'</strong></p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<div class="highlight"><pre>curl -L https://raw.github.com/kepbod/ivim/master/tools/bootstrap.sh | bash
+</pre></div>
 
-<h3>Authors and Contributors</h3>
+<p><strong>via 'wget'</strong></p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<div class="highlight"><pre>wget --no-check-certificate https://raw.github.com/kepbod/ivim/master/tools/bootstrap.sh -O - | bash
+</pre></div>
 
-<h3>Support or Contact</h3>
+<h2>Updating</h2>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<div class="highlight"><pre>bash <span class="nv">$HOME</span>/ivim/tools/update.sh
+</pre></div>
+
+<p><em>If you confront errors when you update vim plugins, please run command below.</em></p>
+
+<div class="highlight"><pre>bash <span class="nv">$HOME</span>/ivim/tools/restore.sh
+</pre></div>
+
+<h2>Requirements</h2>
+
+<p><strong>Vim</strong></p>
+
+<ul>
+<li>This distribution is adapted to both <a href="http://www.vim.org/download.php">Vim</a> and <a href="http://www.vim.org/download.php#mac">MacVim</a>/<a href="http://www.vim.org/download.php#pc">gVim</a>. Remember that the Vim/MacVim/gVim version should be 7.3+, or errors would occur!</li>
+</ul><p><strong>Git</strong></p>
+
+<ul>
+<li>All the installations are based on <a href="http://git-scm.com/">Git</a> which is a famous distributed revision control system. If you use Windows, you may need install <a href="http://msysgit.github.com//">msysgit</a>.</li>
+</ul><p><strong>Ctags</strong></p>
+
+<ul>
+<li>Ctags generates an index (or tag) file of language objects found in source files that allows these items to be quickly and easily located by a text editor or other utility. I recommend you to use <a href="http://ctags.sourceforge.net/">Exuberant Ctags</a>.</li>
+</ul><p><em>To use this distribution with less bugs, please get more suggestions from <a href="https://github.com/kepbod/ivim/wiki/Tips-for-ivim">here</a></em></p>
+
+<h2>Features</h2>
+
+<p><strong><em>Beautiful</em></strong></p>
+
+<ul>
+<li>
+<p>Use lots of famous colorschemes to make your eyes feel comfortable in both Vim and MacVim/gVim.</p>
+
+<ul>
+<li>
+<a href="https://github.com/w0ng/vim-hybrid">Hybrid</a>(default)</li>
+<li><a href="https://github.com/chriskempson/tomorrow-theme">Tomorrow-Night</a></li>
+<li><a href="https://github.com/altercation/vim-colors-solarized">Solarized</a></li>
+<li><a href="https://github.com/nanotech/jellybeans.vim">Jellybeans</a></li>
+</ul>
+<p><img src="https://lh6.googleusercontent.com/-e-CWpdeh7GA/UJuyYagHmDI/AAAAAAAAAHU/k4hYnUHv2xg/s910/Tooltip_005.png" alt="screenshot"></p>
+</li>
+</ul><p><strong><em>Efficient</em></strong></p>
+
+<ul>
+<li>Make using Vim more convenient and faster, and lots of useful plugins (such as <a href="https://github.com/Shougo/neocomplcache">Neocomplcache</a>, <a href="https://github.com/scrooloose/nerdcommenter">NERD_commenter</a>, <a href="https://github.com/scrooloose/syntastic">Syntastic</a> and <a href="https://github.com/xuhdev/SingleCompile">SingleCompile</a>) confirm a better performance of Vim.</li>
+</ul><p><em>This distribution is completely customisable using a <code>~/.vimrc.local</code>, <code>~/.gvimrc.local</code> and <code>~/.vimrc.bundles.local</code>!</em></p>
+
+<h2>Plugin List</h2>
+
+<ul>
+<li>
+<a href="https://github.com/gmarik/vundle">Vundle</a> - Manage the Vim scripts</li>
+<li>
+<a href="https://github.com/majutsushi/tagbar">Tagbar</a> - Browse the tags of source code files</li>
+<li>
+<a href="https://github.com/scrooloose/nerdtree">NERD_tree</a> - Explore filesystem and to open files and directories</li>
+<li>
+<a href="https://github.com/scrooloose/nerdcommenter">NERD_commenter</a> - Provide many different commenting operations and styles</li>
+<li>
+<a href="https://github.com/Shougo/neocomplcache">Neocomplcache</a> - Performs keyword completion by maintaining a cache of keywords</li>
+<li>
+<a href="https://github.com/tpope/vim-surround">surround</a> - Provide mappings to delete, change and add surroundings in pairs</li>
+<li>
+<a href="https://github.com/Raimondi/delimitMate">delimitMate</a> - Provides automatic closing of quotes, parenthesis, brackets, etc.</li>
+<li>
+<a href="https://github.com/kien/ctrlp.vim">Ctrlp</a> - Full path fuzzy file, buffer, mru and tag finder with an intuitive interface</li>
+<li>
+<a href="https://github.com/rking/ag.vim">Ag</a> - A front for ag, A.K.A. the_silver_searcher</li>
+<li>
+<a href="https://github.com/mileszs/ack.vim">Ack</a> - A replacement for 'grep' using Perl module App::Ack</li>
+<li>
+<a href="https://github.com/godlygeek/tabular">Tabular</a> - Line up text easily</li>
+<li>
+<a href="https://github.com/scrooloose/syntastic">Syntastic</a> - Syntax check that runs files through external syntax checkers</li>
+<li>
+<a href="https://github.com/Lokaltog/vim-easymotion">EasyMotion</a> - Provide a much simpler way to use some motions in Vim</li>
+<li>
+<a href="https://github.com/mutewinter/vim-indent-guides">Indent Guides</a> - Visually display indent levels in Vim</li>
+<li>
+<a href="https://github.com/tpope/vim-fugitive">fugitive</a> - Git wrapper</li>
+<li>
+<a href="https://github.com/sjl/gundo.vim">Gundo</a> - Visualize Vim undo tree</li>
+<li>
+<a href="https://github.com/xolox/vim-easytags">EasyTags</a> - Automated tag generation and syntax highlighting in Vim</li>
+<li>
+<a href="https://github.com/Lokaltog/powerline">Powerline</a> - Create better-looking, more functional Vim statuslines</li>
+<li>
+<a href="https://github.com/xuhdev/SingleCompile">SingleCompile</a> - Compile or run a single source file without leaving Vim</li>
+<li>
+<a href="https://github.com/bkad/CamelCaseMotion">CamelCaseMotion</a> - Refine words motion in Vim</li>
+<li>
+<a href="https://github.com/mattn/zencoding-vim">Zencoding</a> - High-speed HTML, XML, XSL coding and editing</li>
+<li>
+<a href="https://github.com/AndrewRadev/splitjoin.vim">Splitjoin</a> - Switch between a single-line statement and a multi-line one</li>
+<li>
+<a href="https://github.com/Shougo/unite.vim">Unite</a> - Search and display information from arbitrary sources</li>
+<li>
+<a href="https://github.com/tpope/vim-rails">rails.vim</a> - Plugin for working with Ruby on Rails applications</li>
+<li>
+<a href="https://github.com/michaeljsmith/vim-indent-object">Indent Object</a> - Text objects based on indent levels</li>
+<li>
+<a href="https://github.com/chrisbra/NrrwRgn">NrrwRgn</a> - Focus on a region and making the rest inaccessible</li>
+<li>
+<a href="https://github.com/tpope/vim-unimpaired">unimpaired.vim</a> - Complementary pairs of mappings</li>
+<li>
+<a href="https://github.com/tpope/vim-abolish">abolish.vim</a> - Search for, substitute, and abbreviate multiple variants of a word</li>
+<li>
+<a href="https://github.com/benmills/vimux">vimux</a> - Easily interact with tmux from vim</li>
+<li>
+<a href="https://github.com/swaroopch/vim-markdown-preview">markdown-preview</a> - Select Markdown text, render to HTML and preview in browser</li>
+<li>
+<a href="https://github.com/h1mesuke/unite-outline">unite-outline</a> - Provide your Vim's buffer with the outline view</li>
+<li>
+<a href="https://github.com/mutewinter/swap-parameters">swap-parameters</a> - Swap parameters</li>
+<li>
+<a href="https://github.com/sampsyo/autolink.vim">autolink.vim</a> - Find and insert URLs for links in Markdown and ReST documents</li>
+<li>
+<a href="https://github.com/coderifous/textobj-word-column.vim">textobj-word-column.txt</a> - Make operating on columns of code conceptually simpler and reduces keystrokes</li>
+<li>
+<a href="https://github.com/tpope/vim-speeddating">vim-speeddating</a> Use CTRL-A/CTRL-X to increment dates, times, and more</li>
+<li>
+<a href="https://github.com/zhaocai/GoldenView.Vim">GoldenView.vim</a> Manage windows more convenient</li>
+<li>
+<a href="https://github.com/mhinz/vim-startify">vim-startify</a> Provide a good start screen for vim</li>
+<li>
+<a href="https://github.com/terryma/vim-multiple-cursors">vim-multiple-cursors</a> Provide Sublime Text's awesome multiple selection feature to vim</li>
+<li>
+<a href="https://github.com/tsaleh/vim-matchit">vim-matchit</a> Extended matching with "%"</li>
+</ul><p><strong>Each plugin has its unique requirements and configurations, so if you have any questions with them, please check help files of them first!</strong></p>
+
+<h2>Vim Tips</h2>
+
+<p><em>Learning Vim</em></p>
+
+<ul>
+<li>
+<p>A good learning method of Vim is vimtutor, a 30 minute tutorial that teaches the most basic Vim functionality hands-on.</p>
+
+<p>To try it, just type <code>vimtutor</code> on terminal.</p>
+</li>
+<li>
+<p>Another way to get familiar with Vim commands and settings is just rely on the strong help system of Vim.</p>
+
+<p>It's easy and convenient to type <code>:h</code> or <code>:help</code> in Vim for help of whatever you want to know.</p>
+</li>
+<li><p>A beautiful Vim cheat sheet is available <a href="http://michael.peopleofhonoronly.com/vim/">here</a>. If you want one, just click it!</p></li>
+</ul><p><em>Key Mappings</em></p>
+
+<ul>
+<li>
+<p>Because I have set some key mappings for more convenient typing and checking, you may feel inconvenient with them at start. But if you get familiar with them, I'm sure you will love them.</p>
+
+<p>You can just type <code>:map</code> in Vim to see them.</p>
+</li>
+</ul><p><em>More Tips</em></p>
+
+<ul>
+<li>
+<a href="http://vim.wikia.com/wiki/Vim_Tips_Wiki">Vim_Tips_Wiki</a> is an excellent website, and you can learn much from it.</li>
+<li>
+<a href="http://vimcasts.org">Vimcasts</a> publishes free screencasts about Vim. It's useful and interesting! Believe me!</li>
+</ul><p><strong>Hope You Enjoy Vimming</strong></p>
+
+<h2>Notes</h2>
+
+<p><strong>This distribution refers to many other famous Vim configurations (mainly contain <a href="https://github.com/spf13/spf13-vim">spf13-vim</a>, <a href="https://github.com/mutewinter/dot_vim">Champions' Configuration</a> and <a href="https://github.com/sjl/dotfiles/tree/master/vim">Steve's Configuration</a>), so there may be some unavoidable errors in it, but I'll try my best to make it work well. If you have any questions, please feel free to <a href="https://github.com/kepbod/ivim/issues">post your issues and suggestions</a>! Thanks!</strong></p>
+
+<h2>Lisence</h2>
+
+<p>ivim - The Vim Distribution of Xiao-Ou Zhang</p>
+
+<p>Copyright (C) 2013 Xiao-Ou Zhang</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the 
+Software is furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
+OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
       </section>
 
     </div>
