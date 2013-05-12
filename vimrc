@@ -986,3 +986,16 @@ nnoremap <Leader>vl :VimuxRunLastCommand<CR>
 nnoremap <Leader>vc :VimuxClearRunnerHistory<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" keybindings  for huxinbang@gmail.com
+
+" Tab configuration
+map <leader>tn :tabnew! %<cr>
+map <leader>te :tabedit 
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove 
+
+" When pressing <leader>cd switch to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
