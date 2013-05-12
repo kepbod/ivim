@@ -256,14 +256,14 @@ Bundle 'gmarik/vundle'
 Bundle 'w0ng/vim-hybrid'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'nanotech/jellybeans.vim'
+" Bundle 'nanotech/jellybeans.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'mutewinter/vim-indent-guides'
 Bundle 'roman/golden-ratio'
 Bundle 'chrisbra/NrrwRgn'
 " Navigation
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'bkad/CamelCaseMotion'
+" Bundle 'bkad/CamelCaseMotion'
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'coderifous/textobj-word-column.vim'
 Bundle 'AndrewRadev/simple_bookmarks.vim'
@@ -316,7 +316,8 @@ Bundle 'h1mesuke/unite-outline'
 Bundle 'tpope/vim-repeat'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'Shougo/neosnippet'
-Bundle 'honza/snipmate-snippets'
+" Bundle 'honza/snipmate-snippets'
+Bundle 'huxinbang/snipmate-snippets'
 Bundle 'groenewege/vim-less'
 Bundle 'juvenn/mustache.vim'
 
@@ -794,8 +795,17 @@ smap <C-K> <Plug>(neosnippet_expand_or_jump)
 inoremap <expr><C-E> neocomplcache#cancel_popup()
 
 " SuperTab like snippets behavior
-inoremap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-N>" : "\<TAB>"
-snoremap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" inoremap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-N>" : "\<TAB>"
+" snoremap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
 inoremap <expr><S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
 
 " CR/S-CR: close popup and save indent
