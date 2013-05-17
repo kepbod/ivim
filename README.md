@@ -129,6 +129,10 @@ bash $HOME/ivim/tools/restore.sh
 
     To try it, just type `vimtutor` on terminal.
 
+* To practice vim skills, you can enable hard mode, and it will disable the arrow keys, the 'hjkl' keys, the page up/down keys, and a handful of other keys which allow one to rely on character-wise navigation.
+
+    To enable it, just type `:call HardMode()` in normal mode.
+
 * Another way to get familiar with Vim commands and settings is just rely on the strong help system of Vim.
 
     It's easy and convenient to type `:h` or `:help` in Vim for help of whatever you want to know.

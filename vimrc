@@ -2,7 +2,7 @@
 "
 " Maintainer: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 " Created: 2012-01-20
-" Last Modified: 2013-05-11
+" Last Modified: 2013-05-17
 "
 " Sections:
 "   -> General
@@ -316,6 +316,7 @@ Bundle 'tpope/vim-rails'
 Bundle 'mattn/zencoding-vim'
 Bundle 'swaroopch/vim-markdown-preview'
 Bundle 'sampsyo/autolink.vim'
+Bundle 'wikitopian/hardmode'
 
 " Others
 if executable('ctags')
@@ -328,6 +329,7 @@ Bundle 'Shougo/neosnippet'
 Bundle 'honza/vim-snippets'
 Bundle 'groenewege/vim-less'
 Bundle 'juvenn/mustache.vim'
+Bundle 'elzr/vim-json'
 
 " Local bundles if avaiable
 if filereadable(expand("~/.vimrc.bundles.local"))
@@ -683,10 +685,6 @@ vnoremap k gk
 " Navigation between windows
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k 
-
-" More effective saving and quiting
-map :w :up
-map :q :confirm q
 
 " Same when jumping around
 nnoremap g; g;zz
