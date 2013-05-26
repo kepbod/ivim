@@ -47,8 +47,9 @@ git clone git://github.com/w0ng/vim-hybrid.git $HOME/.vim/bundle/vim-hybrid
 printf '\033[0;34m%s\033[0m\n' "Installing font for powerline..."
 mkdir $HOME/.fonts
 wget -O $HOME/.fonts/PowerlineSymbols.otf https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf
-mkdir -p $HOME/.config/fontconfig/conf.d
-wget -O $HOME/.config/fontconfig/conf.d/10-powerline-symbols.conf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
+fc-cache -vf $HOME/.fonts
+mkdir $HOME/.fonts.conf.d
+wget -O $HOME/.fonts.conf.d/10-powerline-symbols.conf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
 
 printf '\033[0;34m%s\033[0m\n' "Installing plugins using Vundle..."
 vim +'set nospell' +BundleInstall! +BundleClean! +qa! $HOME/ivim/tools/info.txt
