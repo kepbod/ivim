@@ -89,7 +89,7 @@ bash $HOME/ivim/tools/restore.sh
  * [Ctrlp](https://github.com/kien/ctrlp.vim) - Full path fuzzy file, buffer, mru and tag finder with an intuitive interface
  * [Ag](https://github.com/rking/ag.vim) - A front for ag, A.K.A. the_silver_searcher
  * [Ack](https://github.com/mileszs/ack.vim) - A replacement for 'grep' using Perl module App::Ack
- * [Tabular](https://github.com/godlygeek/tabular) - Line up text easily
+ * [Tabular](https://github.com/nathanaelkane/vim-indent-guides) - Line up text easily
  * [Syntastic](https://github.com/scrooloose/syntastic) - Syntax check that runs files through external syntax checkers
  * [EasyMotion](https://github.com/Lokaltog/vim-easymotion) - Provide a much simpler way to use some motions in Vim
  * [Indent Guides](https://github.com/mutewinter/vim-indent-guides) - Visually display indent levels in Vim

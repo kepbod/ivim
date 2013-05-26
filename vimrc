@@ -76,7 +76,7 @@
 "   > EasyMotion - https://github.com/Lokaltog/vim-easymotion
 "     Provide a much simpler way to use some motions in Vim
 "     info -> :help easymotion.txt
-"   > Indent Guides - https://github.com/mutewinter/vim-indent-guides
+"   > Indent Guides - https://github.com/nathanaelkane/vim-indent-guides
 "     Visually display indent levels in Vim
 "     info -> :help indent_guides.txt
 "   > fugitive - https://github.com/tpope/vim-fugitive
@@ -267,7 +267,7 @@ else
     Bundle 'Lokaltog/vim-powerline'
     let old_powerline=1
 endif
-Bundle 'mutewinter/vim-indent-guides'
+Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'mhinz/vim-startify'
 " Navigation
@@ -295,7 +295,10 @@ endif
 if executable('git')
     Bundle 'tpope/vim-fugitive'
 endif
-Bundle 'benmills/vimux'
+if has('ruby')
+    Bundle 'benmills/vimux'
+endif
+Bundle 'tsaleh/vim-matchit'
 " Commands
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
@@ -317,6 +320,7 @@ Bundle 'mattn/zencoding-vim'
 Bundle 'swaroopch/vim-markdown-preview'
 Bundle 'sampsyo/autolink.vim'
 Bundle 'wikitopian/hardmode'
+Bundle 'LaTeX-Box-Team/LaTeX-Box'
 
 " Others
 if executable('ctags')
@@ -327,6 +331,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'Shougo/neosnippet'
 Bundle 'honza/vim-snippets'
+Bundle 'xolox/vim-misc'
 Bundle 'groenewege/vim-less'
 Bundle 'juvenn/mustache.vim'
 Bundle 'elzr/vim-json'
@@ -975,8 +980,8 @@ nmap <silent> <C-L> <Plug>GoldenViewPrevious
 " => Splitjoin
 "--------------------------------------------------
 
-nnoremap sj :SplitjoinSplit<CR>
-nnoremap sk :SplitjoinJoin<CR>
+let g:splitjoin_split_mapping = ',k'
+let g:splitjoin_join_mapping = ',j'
 let g:splitjoin_normalize_whitespace=1
 let g:splitjoin_align=1
 
@@ -1001,5 +1006,11 @@ nnoremap <Leader>vq :VimuxCloseRunner<CR>
 nnoremap <Leader>vi :VimuxInspectRunner<CR>
 nnoremap <Leader>vl :VimuxRunLastCommand<CR>
 nnoremap <Leader>vc :VimuxClearRunnerHistory<CR>
+" Fix bug in ruby 1.9
+ruby << EOF
+class Object
+  def flush; end unless Object.new.respond_to?(:flush)
+end
+EOF
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
