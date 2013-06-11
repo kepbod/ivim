@@ -19,8 +19,8 @@ printf '\033[0;34m%s\033[0m\n' ' / /| |/ / / / / / / /'
 printf '\033[0;34m%s\033[0m\n' '/_/ |___/_/_/ /_/ /_/ '
 printf '\033[0;34m%s\033[0m\n' '                      '
 
-# check requriements
-printf '\033[0;34m%s\033[0m\n' "Checking requriements for ivim..."
+# check requirements
+printf '\033[0;34m%s\033[0m\n' "Checking requirements for ivim..."
 printf '\033[0;34m%s\033[0m\n' "Checking vim version..."
 vim --version | grep 7.3 || die "Your vim's version is too low!\nPlease download higher version(7.3+) from http://www.vim.org/download.php"
 printf '\033[0;34m%s\033[0m\n' "Checking if git exists..."
