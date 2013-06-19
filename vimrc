@@ -319,8 +319,10 @@ Bundle 'tpope/vim-rails'
 Bundle 'mattn/zencoding-vim'
 Bundle 'swaroopch/vim-markdown-preview'
 Bundle 'sampsyo/autolink.vim'
-Bundle 'wikitopian/hardmode'
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
+Bundle 'juvenn/mustache.vim'
+Bundle 'elzr/vim-json'
+Bundle 'groenewege/vim-less'
 
 " Others
 if executable('ctags')
@@ -332,9 +334,7 @@ Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'Shougo/neosnippet'
 Bundle 'honza/vim-snippets'
 Bundle 'xolox/vim-misc'
-Bundle 'groenewege/vim-less'
-Bundle 'juvenn/mustache.vim'
-Bundle 'elzr/vim-json'
+Bundle 'wikitopian/hardmode'
 
 " Local bundles if avaiable
 if filereadable(expand("~/.vimrc.bundles.local"))
@@ -612,6 +612,14 @@ augroup ft_less
     autocmd filetype less nnoremap <buffer> <Leader>r :w <BAR> !lessc % > %:t:r.css<CR><Space>
 augroup END
 
+" JSON
+augroup ft_json
+    autocmd!
+    " Disable concealing of double quotes
+    autocmd filetype json setlocal conceallevel=0
+    " Added folding of {...} and [...] blocks
+    autocmd filetype json setlocal foldmethod=syntax
+augroup END
 
 " Python
 augroup ft_python
@@ -969,7 +977,7 @@ let g:user_zen_settings={'indentation':'   '}
 "--------------------------------------------------
 
 let g:goldenview__enable_default_mapping=0
-nmap <silent> <C-N> <Plug>GoldenViewSplit
+nmap <silent> <C-O> <Plug>GoldenViewSplit
 nmap <silent> <C-G> <Plug>GoldenViewSwitchToggle
 nmap <silent> <C-H> <Plug>GoldenViewNext
 nmap <silent> <C-L> <Plug>GoldenViewPrevious
