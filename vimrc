@@ -323,6 +323,8 @@ Bundle 'LaTeX-Box-Team/LaTeX-Box'
 Bundle 'juvenn/mustache.vim'
 Bundle 'elzr/vim-json'
 Bundle 'groenewege/vim-less'
+Bundle 'pangloss/vim-javascript'
+Bundle 'kepbod/php_indent'
 
 " Others
 if executable('ctags')
@@ -502,6 +504,11 @@ set expandtab " Convert all tabs typed to spaces
 set softtabstop=4 " Indentation levels every four columns
 set shiftwidth=4 " Indent/outdent by four columns
 set shiftround " Indent/outdent to nearest tabstop
+
+" Indent setting for html
+let g:html_indent_inctags = "html,body,head,tbody"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
