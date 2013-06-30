@@ -86,7 +86,6 @@ bash $HOME/ivim/tools/restore.sh
  * [Neocomplcache](https://github.com/Shougo/neocomplcache) - Performs keyword completion by maintaining a cache of keywords
  * [surround](https://github.com/tpope/vim-surround) - Provide mappings to delete, change and add surroundings in pairs
  * [delimitMate](https://github.com/Raimondi/delimitMate) - Provides automatic closing of quotes, parenthesis, brackets, etc.
- * [Ctrlp](https://github.com/kien/ctrlp.vim) - Full path fuzzy file, buffer, mru and tag finder with an intuitive interface
  * [Ag](https://github.com/rking/ag.vim) - A front for ag, A.K.A. the_silver_searcher
  * [Ack](https://github.com/mileszs/ack.vim) - A replacement for 'grep' using Perl module App::Ack
  * [Tabular](https://github.com/nathanaelkane/vim-indent-guides) - Line up text easily

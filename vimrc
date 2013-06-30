@@ -22,7 +22,6 @@
 "   -> NERD_commenter
 "   -> Neocomplcache
 "   -> delimitMate
-"   -> Ctrlp
 "   -> Ag(Ack)
 "   -> Syntastic
 "   -> Indent Guides
@@ -58,9 +57,6 @@
 "   > delimitMate - https://github.com/Raimondi/delimitMate
 "     Provides automatic closing of quotes, parenthesis, brackets, etc.
 "     info -> :help delimitMate.txt
-"   > Ctrlp - https://github.com/kien/ctrlp.vim
-"     Full path fuzzy file, buffer, mru and tag finder with an intuitive interface
-"     info -> :help ctrlp.txt
 "   > Ag - https://github.com/rking/ag.vim
 "     A front for ag, A.K.A. the_silver_searcher
 "     info -> :help ag.txt
@@ -286,7 +282,6 @@ if executable('ctags')
 endif
 Bundle 'Shougo/unite.vim'
 Bundle 'scrooloose/nerdtree'
-Bundle 'kien/ctrlp.vim'
 if executable('ag')
     Bundle 'rking/ag.vim'
 elseif executable('ack-grep') || executable('ack')
@@ -855,16 +850,6 @@ let delimitMate_expand_space=1
 let delimitMate_balance_matchpairs=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"--------------------------------------------------
-" => Ctrlp
-"--------------------------------------------------
-
-let g:ctrlp_working_path_mode=0
-let g:ctrlp_clear_cache_on_exit=0
-let g:ctrlp_cache_dir=$HOME.'/.vim/.cache/ctrlp'
-let g:ctrlp_extensions=['tag', 'buffertag', 'quickfix', 'dir', 'rtscript']
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
 " => Ag(Ack)
@@ -955,7 +940,6 @@ function! InitializeTagDirectory()
 endfunction
 call InitializeTagDirectory()
 let g:easytags_python_enabled=1
-let g:easytags_python_script=1
 let g:easytags_include_members=1
 highlight cMember gui=italic
 
