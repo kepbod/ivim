@@ -685,6 +685,18 @@ augroup ft_perl
     autocmd filetype perl setlocal keywordprg=perldoc\ -f
 augroup END
 
+" PHP
+augroup ft_php
+    autocmd!
+    if filereadable("$HOME/.vim/dict/php_funclist.txt")
+        function! AddPHPFuncList()  " Inspired by hawk (https://github.com/hawklim)
+            set dictionary-="$HOME/.vim/dict/php_funclist.txt" dictionary+="$HOME/.vim/dict/php_funclist.txt"
+            set complete-=k complete+=k
+        endfunction
+        autocmd filetype php call AddPHPFuncList()
+    endif
+augroup END
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "-------------------------------------------------
