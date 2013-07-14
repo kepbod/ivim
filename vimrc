@@ -360,34 +360,34 @@ function! MyTabLine()
     let t=tabpagenr() " The index of current page
     let i=1
     while i<=tabpagenr('$') " From the first page
-      let buflist=tabpagebuflist(i)
-      let winnr=tabpagewinnr(i)
-      let s.=(i==t?'%#TabLineSel#':'%#TabLine#')
-      let s.='%'.i.'T'
-      let s.=' '
-      let bufnr=buflist[winnr - 1]
-      let file=bufname(bufnr)
-      let m=''
-      if getbufvar(bufnr, "&modified")
-          let m='[+]'
-      endif
-      if file=~'\/.'
-          let file=substitute(file,'.*\/\ze.','','')
-      endif
-      if file==''
-        let file='[No Name]'
-      endif
-      let s.=m
-      let s.=i.':'
-      let s.=file
-      let s.='['.winnr.']'
-      let s.=' '
-      let i=i+1
+        let buflist=tabpagebuflist(i)
+        let winnr=tabpagewinnr(i)
+        let s.=(i==t?'%#TabLineSel#':'%#TabLine#')
+        let s.='%'.i.'T'
+        let s.=' '
+        let bufnr=buflist[winnr - 1]
+        let file=bufname(bufnr)
+        let m=''
+        if getbufvar(bufnr, "&modified")
+            let m='[+]'
+        endif
+        if file=~'\/.'
+            let file=substitute(file,'.*\/\ze.','','')
+        endif
+        if file==''
+            let file='[No Name]'
+        endif
+        let s.=m
+        let s.=i.':'
+        let s.=file
+        let s.='['.winnr.']'
+        let s.=' '
+        let i=i+1
     endwhile
     let s.='%T%#TabLineFill#%='
     let s.=(tabpagenr('$')>1?'%999XX':'X')
     return s
-  endfunction
+endfunction
 " Set up tab tooltips with every buffer name
 set guitabtooltip=%F
 
@@ -397,7 +397,7 @@ set noshowmode " Hide the default mode text
 " Set the style of the status line
 " Use powerline to modify the statuls line
 if has('gui_running') && (!has('win64') || !has('win32')) && old_powerline == 1
-  let g:Powerline_symbols='unicode'
+    let g:Powerline_symbols='unicode'
 endif
 " Only have cursorline in current window and in normal window
 autocmd WinLeave * set nocursorline
@@ -699,7 +699,7 @@ vnoremap k gk
 
 " Navigation between windows
 nnoremap <C-J> <C-W>j
-nnoremap <C-K> <C-W>k 
+nnoremap <C-K> <C-W>k
 
 " Same when jumping around
 nnoremap g; g;zz
@@ -741,9 +741,12 @@ nnoremap <silent>\<Space> :call IsWhiteLine()<CR>
 " Strip all trailing whitespace in the current file
 nnoremap <Leader>q :%s/\s\+$//<CR>:let @/=''<CR>
 
+" Modify all the indents
+nnoremap \= gg=G
+
 " See the differences between the current buffer and the file it was loaded from
 command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
-    \ | diffthis | wincmd p | diffthis
+            \ | diffthis | wincmd p | diffthis
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -1008,7 +1011,7 @@ nnoremap <Leader>vc :VimuxClearRunnerHistory<CR>
 " Fix bug in ruby 1.9
 ruby << EOF
 class Object
-  def flush; end unless Object.new.respond_to?(:flush)
+def flush; end unless Object.new.respond_to?(:flush)
 end
 EOF
 
