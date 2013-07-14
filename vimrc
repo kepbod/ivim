@@ -840,6 +840,14 @@ xmap <C-K> <Plug>(neosnippet_expand_target)
 " Map <C-E> to cancel completion
 inoremap <expr><C-E> neocomplcache#cancel_popup()
 
+" @date 2013/7/13 hawk
+" Add PHPDictory
+au FileType php call AddPHPFuncList()
+function! AddPHPFuncList()
+    set dictionary-=~/.vim/dict/php_funclist.txt dictionary+=~/.vim/dict/php_funclist.txt
+    set complete-=k complete+=k
+endfunction
+
 " SuperTab like snippets behavior
 inoremap <expr><Tab> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-N>" : "\<Tab>"
 snoremap <expr><Tab> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<Tab>"
