@@ -258,10 +258,10 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'nanotech/jellybeans.vim'
 if has("python") || has("python3")
     Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
-    let old_powerline=0
+    let airline=0
 else
-    Bundle 'Lokaltog/vim-powerline'
-    let old_powerline=1
+    Bundle 'bling/vim-airline'
+    let airline=1
 endif
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'chrisbra/NrrwRgn'
@@ -396,8 +396,8 @@ set laststatus=2 " Show the statusline
 set noshowmode " Hide the default mode text
 " Set the style of the status line
 " Use powerline to modify the statuls line
-if has('gui_running') && (!has('win64') || !has('win32')) && old_powerline == 1
-    let g:Powerline_symbols='unicode'
+if airline==1
+    let g:airline_powerline_fonts=1
 endif
 " Only have cursorline in current window and in normal window
 autocmd WinLeave * set nocursorline
