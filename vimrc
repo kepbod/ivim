@@ -34,6 +34,7 @@
 "   -> Splitjoin
 "   -> Unite
 "   -> vimux
+"   ->Conque-Shell
 "
 " Plugins_Included:
 "   > Vundle - https://github.com/gmarik/vundle
@@ -337,6 +338,8 @@ Bundle 'wikitopian/hardmode'
 if filereadable(expand("~/.vimrc.bundles.local"))
     source ~/.vimrc.bundles.local
 endif
+
+Bundle 'acx0/Conque-Shell'
 
 filetype plugin indent on " Required!
 
