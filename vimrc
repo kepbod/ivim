@@ -2,7 +2,7 @@
 "
 " Maintainer: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 " Created: 2012-01-20
-" Last Modified: 2013-05-17
+" Last Modified: 2013-07-21
 "
 " Sections:
 "   -> General
@@ -26,7 +26,7 @@
 "   -> Syntastic
 "   -> Indent Guides
 "   -> fugitive
-"   -> Gundo
+"   -> Gundo(Undotree)
 "   -> EasyTags
 "   -> SingleCompile
 "   -> Zencoding
@@ -276,6 +276,8 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'zhaocai/GoldenView.Vim'
 if has('python')
     Bundle 'sjl/gundo.vim'
+else
+    Bundle 'mbbill/undotree'
 endif
 if executable('ctags')
     Bundle 'majutsushi/tagbar'
@@ -923,11 +925,13 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
-" => Gundo
+" => Gundo(Undotree)
 "--------------------------------------------------
 
 if has('python')
     nnoremap <Leader>u :GundoToggle<CR>
+else
+    nnoremap <Leader>u :UndotreeToggle<CR>
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -1005,8 +1009,9 @@ let g:splitjoin_align=1
 " => Unite
 "--------------------------------------------------
 
+let g:unite_enable_start_insert=1
 nnoremap <Leader>m :Unite<Space>
-let g:unite_update_time=4000
+nnoremap <C-P> :Unite file_rec<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
