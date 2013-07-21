@@ -336,8 +336,8 @@ Bundle 'xolox/vim-misc'
 Bundle 'wikitopian/hardmode'
 
 " Local bundles if avaiable
-if filereadable(expand("~/.vimrc.bundles.local"))
-    source ~/.vimrc.bundles.local
+if filereadable(expand("$HOME/.vimrc.bundles.local"))
+    source $HOME/.vimrc.bundles.local
 endif
 
 filetype plugin indent on " Required!
@@ -689,12 +689,12 @@ augroup END
 
 " PHP
 augroup ft_php
-    autocmd!
-    if filereadable("$HOME/.vim/dict/php_funclist.txt")
+    if filereadable(expand("$HOME/.vim/dict/php_funclist.txt"))
         function! AddPHPFuncList()  " Inspired by hawk (https://github.com/hawklim)
-            set dictionary-="$HOME/.vim/dict/php_funclist.txt" dictionary+="$HOME/.vim/dict/php_funclist.txt"
+            set dictionary-=$HOME/.vim/dict/php_funclist.txt dictionary+=$HOME/.vim/dict/php_funclist.txt
             set complete-=k complete+=k
         endfunction
+        autocmd!
         autocmd filetype php call AddPHPFuncList()
     endif
 augroup END
@@ -769,14 +769,14 @@ command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
 "--------------------------------------------------
 
 " Use local vimrc if available
-if filereadable(expand("~/.vimrc.local"))
-    source ~/.vimrc.local
+if filereadable(expand("$HOME/.vimrc.local"))
+    source $HOME/.vimrc.local
 endif
 
 " Use local gvimrc if available and gui is running
 if has('gui_running')
-    if filereadable(expand("~/.gvimrc.local"))
-        source ~/.gvimrc.local
+    if filereadable(expand("$HOME/.gvimrc.local"))
+        source $HOME/.gvimrc.local
     endif
 endif
 
