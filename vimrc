@@ -1027,10 +1027,12 @@ nnoremap <Leader>vi :VimuxInspectRunner<CR>
 nnoremap <Leader>vl :VimuxRunLastCommand<CR>
 nnoremap <Leader>vc :VimuxClearRunnerHistory<CR>
 " Fix bug in ruby 1.9
-ruby << EOF
+if has('ruby')
+    ruby << EOF
 class Object
 def flush; end unless Object.new.respond_to?(:flush)
 end
 EOF
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
