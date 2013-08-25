@@ -98,7 +98,7 @@ bash $HOME/ivim/tools/restore.sh
  * [Powerline](https://github.com/Lokaltog/powerline) - Create better-looking, more functional Vim statuslines
  * [SingleCompile](https://github.com/xuhdev/SingleCompile) - Compile or run a single source file without leaving Vim
  * [CamelCaseMotion](https://github.com/bkad/CamelCaseMotion) - Refine words motion in Vim
- * [Zencoding](https://github.com/mattn/zencoding-vim) - High-speed HTML, XML, XSL coding and editing
+ * [Emmet](https://github.com/mattn/emmet-vim) - High-speed HTML, XML, XSL coding and editing
  * [Splitjoin](https://github.com/AndrewRadev/splitjoin.vim) - Switch between a single-line statement and a multi-line one
  * [Unite](https://github.com/Shougo/unite.vim) - Search and display information from arbitrary sources
  * [rails.vim](https://github.com/tpope/vim-rails) - Plugin for working with Ruby on Rails applications

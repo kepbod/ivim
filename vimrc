@@ -29,7 +29,7 @@
 "   -> Gundo(Undotree)
 "   -> EasyTags
 "   -> SingleCompile
-"   -> Zencoding
+"   -> Emmet
 "   -> GoldenView
 "   -> Splitjoin
 "   -> Unite
@@ -93,9 +93,9 @@
 "   > CamelCaseMotion - https://github.com/bkad/CamelCaseMotion
 "     Refine words motion in Vim
 "     info -> :help camelcasemotion.txt
-"   > Zencoding - https://github.com/mattn/zencoding-vim
+"   > emmet-vim - https://github.com/mattn/emmet-vim
 "     High-speed HTML, XML, XSL coding and editing
-"     info -> :help zencoding.txt
+"     info -> :help emmet.txt
 "   > Splitjoin - https://github.com/AndrewRadev/splitjoin.vim
 "     Switch between a single-line statement and a multi-line one
 "     info -> :help splitjoin.txt
@@ -313,7 +313,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-speeddating'
 " Language related
 Bundle 'tpope/vim-rails'
-Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/emmet-vim'
 Bundle 'swaroopch/vim-markdown-preview'
 Bundle 'sampsyo/autolink.vim'
 Bundle 'LaTeX-Box-Team/LaTeX-Box'
@@ -975,11 +975,12 @@ let g:SingleCompile_showquickfixiferror=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
-" => Zencoding
+" => Emmet
 "--------------------------------------------------
 
-let g:user_zen_leader_key='<C-Z>'
-let g:user_zen_settings={'indentation':'   '}
+let g:user_emmet_leader_key='<C-Z>'
+let g:user_emmet_settings={'indentation':'    '}
+let g:use_emmet_complete_tag=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
