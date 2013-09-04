@@ -150,6 +150,9 @@
 "   > vim-matchit - https://github.com/tsaleh/vim-matchit
 "     Extended matching with "%"
 "     info -> :help matchit.txt
+"   > vim-gitgutter - https://github.com/airblade/vim-gitgutter
+"     A Vim plugin which shows a git diff in the 'gutter' (sign column).
+"     info -> :help gitgutter.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -266,6 +269,9 @@ endif
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'chrisbra/NrrwRgn'
 Bundle 'mhinz/vim-startify'
+if has('signs')
+    Bundle 'airblade/vim-gitgutter'
+endif
 " Navigation
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'terryma/vim-multiple-cursors'
@@ -296,6 +302,7 @@ if has('ruby')
     Bundle 'benmills/vimux'
 endif
 Bundle 'tsaleh/vim-matchit'
+Bundle 'rhysd/clever-f.vim'
 " Commands
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
@@ -829,7 +836,9 @@ let g:neocomplcache_enable_auto_delimiter=1
 let g:neocomplcache_enable_camel_case_completion=1
 let g:neocomplcache_enable_underbar_completion=1
 
-let g:snips_author='Xiao-Ou Zhang <kepbod@gmail.com>'
+let g:snips_author='Xiao-Ou Zhang'
+let g:snips_email='kepbod@gmail.com'
+let g:snips_github='https://github.com/kepbod'
 
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory="$HOME/.vim/bundle/vim-snippets/snippets"
