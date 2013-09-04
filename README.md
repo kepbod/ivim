@@ -116,8 +116,8 @@ bash $HOME/ivim/tools/restore.sh
  * [GoldenView.vim](https://github.com/zhaocai/GoldenView.Vim) Manage windows more convenient
  * [vim-startify](https://github.com/mhinz/vim-startify) Provide a good start screen for vim
  * [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors) Provide Sublime Text's awesome multiple selection feature to vim
- * [vim-matchit](https://github.com/tsaleh/vim-matchit) Extended matching with "%"
- * [vim-gitgutter](https://github.com/airblade/vim-gitgutter) A Vim plugin which shows a git diff in the 'gutter' (sign column)
+ * [vim-matchit](https://github.com/tsaleh/vim-matchit) Extend matching with "%"
+ * [vim-gitgutter](https://github.com/airblade/vim-gitgutter) Show a git diff in the 'gutter' (sign column)
 
 **Each plugin has its unique requirements and configurations, so if you have any questions with them, please check help files of them first!**
 

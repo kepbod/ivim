@@ -148,10 +148,10 @@
 "     Provide Sublime Text's awesome multiple selection feature to vim
 "     info -> :help multiple_cursors.txt
 "   > vim-matchit - https://github.com/tsaleh/vim-matchit
-"     Extended matching with "%"
+"     Extend matching with "%"
 "     info -> :help matchit.txt
 "   > vim-gitgutter - https://github.com/airblade/vim-gitgutter
-"     A Vim plugin which shows a git diff in the 'gutter' (sign column).
+"     Show a git diff in the 'gutter' (sign column).
 "     info -> :help gitgutter.txt
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -302,7 +302,6 @@ if has('ruby')
     Bundle 'benmills/vimux'
 endif
 Bundle 'tsaleh/vim-matchit'
-Bundle 'rhysd/clever-f.vim'
 " Commands
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-surround'
