@@ -35,7 +35,7 @@ for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && mv -f $i $i.back
 # install ivim
 printf '\033[0;34m%s\033[0m\n' "Cloning ivim..."
 rm -rf $HOME/ivim
-git clone git://github.com/kepbod/ivim.git $HOME/ivim
+git clone git://github.com/daltonjorge/ivim.git $HOME/ivim
 ln -s $HOME/ivim/vimrc $HOME/.vimrc
 
 printf '\033[0;34m%s\033[0m\n' "Installing Vundle..."
