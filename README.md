@@ -1,8 +1,6 @@
-# ivim - The Vim Distribution of Xiao-Ou Zhang
+# ivim - A Special Vim Distribution
 
 [![Vim](http://www.vim.org/images/vim_editor.gif)](http://www.vim.org/)
-
-[See ivim's states on GitEgo](http://gitego.com/kepbod/ivim#watchers?interval=by_day)
 
 ## Installation
 
@@ -158,9 +156,9 @@ bash $HOME/ivim/tools/restore.sh
 
 ## Lisence
 
-ivim - The Vim Distribution of Xiao-Ou Zhang
+ivim - A Special Vim Distribution
 
-Copyright (C) 2013 Xiao-Ou Zhang
+Copyright (C) 2013 Xiao-Ou Zhang and contributors
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the "Software"),
