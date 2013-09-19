@@ -34,6 +34,7 @@
 "   -> Splitjoin
 "   -> Unite
 "   -> vimux
+"   -> startify
 "
 " Plugins_Included:
 "   > Vundle - https://github.com/gmarik/vundle
@@ -1043,5 +1044,21 @@ def flush; end unless Object.new.respond_to?(:flush)
 end
 EOF
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"--------------------------------------------------
+" => startify
+"--------------------------------------------------
+
+let g:startify_list_order = ['files', 'dir', 'bookmarks', 'sessions']
+let g:startify_custom_header = [
+            \'       _       _         ',
+            \'      (_)   __(_)___ ___ ',
+            \'     / / | / / / __ `__ \',
+            \'    / /| |/ / / / / / / /',
+            \'   /_/ |___/_/_/ /_/ /_/ ',
+            \'                         ',
+            \]
+let g:startify_custom_footer = "   This configuration is maintained by Xiao-Ou Zhang(kepbod@gmail.com) and other contributors. Thanks!"
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
