@@ -2,6 +2,8 @@
 
 [![Vim](http://www.vim.org/images/vim_editor.gif)](http://www.vim.org/)
 
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kepbod/ivim/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
 ## Installation
 
 ### Manual Install
@@ -177,8 +179,3 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
 DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kepbod/ivim/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
