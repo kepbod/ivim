@@ -4,6 +4,8 @@
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kepbod/ivim/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
+[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=kepbod&url=https://github.com/kepbod/ivim&title=ivim&language=&tags=github&category=software) 
+
 ## Installation
 
 ### Manual Install
