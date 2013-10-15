@@ -686,6 +686,12 @@ augroup ft_python
 
 augroup END
 
+" Ruby
+augroup ft_ruby
+    autocmd!
+    autocmd filetype ruby setlocal shiftwidth=2 softtabstop=2
+augroup END
+
 " Perl
 augroup ft_perl
     let perl_include_pod=1
