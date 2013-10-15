@@ -6,6 +6,8 @@
 
 [![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=kepbod&url=https://github.com/kepbod/ivim&title=ivim&language=English&tags=github&category=software) 
 
+[ivim V1.0 was released!!! Welcome to update to the newest stable branch!!!](https://github.com/kepbod/ivim/tree/1.0)
+
 ## Installation
 
 ### Manual Install
@@ -23,13 +25,13 @@
 **via 'curl'**
 
 ```bash
-curl -L https://raw.github.com/kepbod/ivim/master/tools/bootstrap.sh | bash
+curl -L https://raw.github.com/kepbod/ivim/blob/1.0/tools/bootstrap.sh | bash
 ```
 
 **via 'wget'**
 
 ```bash
-wget --no-check-certificate https://raw.github.com/kepbod/ivim/master/tools/bootstrap.sh -O - | bash
+wget --no-check-certificate https://raw.github.com/kepbod/ivim/blob/1.0/tools/bootstrap.sh -O - | bash
 ```
 
 ## Updating
