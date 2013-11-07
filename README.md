@@ -8,6 +8,8 @@
 
 [ivim v1.0 was released!!! Welcome to update to the newest stable branch!!!](https://github.com/kepbod/ivim/tree/1.0)
 
+[ivim v2.0 is under development](https://github.com/kepbod/ivim/tree/develop)
+
 ## Installation
 
 ### Manual Install
