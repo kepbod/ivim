@@ -33,7 +33,7 @@
 "   -> GoldenView
 "   -> Splitjoin
 "   -> Unite
-"   -> vimux
+"   -> Tmuxify
 "   -> startify
 "
 " Plugins_Included:
@@ -118,9 +118,9 @@
 "   > abolish.vim - https://github.com/tpope/vim-abolish
 "     Search for, substitute, and abbreviate multiple variants of a word
 "     info -> :help abolish.txt
-"   > vimux - https://github.com/benmills/vimux
+"   > Tmuxify - https://github.com/mhinz/vim-tmuxify
 "     Easily interact with tmux from vim
-"     info -> :help vimux.txt
+"     info -> :help tmuxify.txt
 "   > markdown-preview - https://github.com/swaroopch/vim-markdown-preview
 "     Select Markdown text, render to HTML and preview in browser
 "     info -> https://github.com/swaroopch/vim-markdown-preview/blob/master/README.md
@@ -299,9 +299,7 @@ endif
 if executable('git')
     Bundle 'tpope/vim-fugitive'
 endif
-if has('ruby')
-    Bundle 'benmills/vimux'
-endif
+Bundle 'mhinz/vim-tmuxify'
 Bundle 'tsaleh/vim-matchit'
 " Commands
 Bundle 'scrooloose/nerdcommenter'
@@ -1027,29 +1025,17 @@ let g:splitjoin_align=1
 "--------------------------------------------------
 
 let g:unite_enable_start_insert=1
-nnoremap <Leader>m :Unite<Space>
+nnoremap <Leader>v :Unite<Space>
 nnoremap <C-P> :Unite file_rec<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------
-" => vimux
+" => Tmuxify
 "--------------------------------------------------
 
-nnoremap <Leader>vp :VimuxPromptCommand<CR>
-vnoremap <Leader>vs "vy :call VimuxRunCommand(@v . "\n", 0)<CR>
-nnoremap <Leader>vx :VimuxClosePanes<CR>
-nnoremap <Leader>vq :VimuxCloseRunner<CR>
-nnoremap <Leader>vi :VimuxInspectRunner<CR>
-nnoremap <Leader>vl :VimuxRunLastCommand<CR>
-nnoremap <Leader>vc :VimuxClearRunnerHistory<CR>
-" Fix bug in ruby 1.9
-if has('ruby')
-    ruby << EOF
-class Object
-def flush; end unless Object.new.respond_to?(:flush)
-end
-EOF
-endif
+let g:tmuxify_run = {
+    \ 'sh': 'bash %',
+    \}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "--------------------------------------------------

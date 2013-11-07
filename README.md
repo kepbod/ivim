@@ -95,7 +95,7 @@ bash $HOME/ivim/tools/restore.sh
  * [Tabular](https://github.com/nathanaelkane/vim-indent-guides) - Line up text easily
  * [Syntastic](https://github.com/scrooloose/syntastic) - Syntax check that runs files through external syntax checkers
  * [EasyMotion](https://github.com/Lokaltog/vim-easymotion) - Provide a much simpler way to use some motions in Vim
- * [Indent Guides](https://github.com/mutewinter/vim-indent-guides) - Visually display indent levels in Vim
+ * [Indent Guides](https://github.com/nathanaelkane/vim-indent-guides) - Visually display indent levels in Vim
  * [fugitive](https://github.com/tpope/vim-fugitive) - Git wrapper
  * [Gundo](https://github.com/sjl/gundo.vim) - Visualize Vim undo tree
  * [EasyTags](https://github.com/xolox/vim-easytags) - Automated tag generation and syntax highlighting in Vim
@@ -110,7 +110,7 @@ bash $HOME/ivim/tools/restore.sh
  * [NrrwRgn](https://github.com/chrisbra/NrrwRgn) - Focus on a region and making the rest inaccessible
  * [unimpaired.vim](https://github.com/tpope/vim-unimpaired) - Complementary pairs of mappings
  * [abolish.vim](https://github.com/tpope/vim-abolish) - Search for, substitute, and abbreviate multiple variants of a word
- * [vimux](https://github.com/benmills/vimux) - Easily interact with tmux from vim
+ * [Tmuxify](https://github.com/mhinz/vim-tmuxify) - Easily interact with tmux from vim
  * [markdown-preview](https://github.com/swaroopch/vim-markdown-preview) - Select Markdown text, render to HTML and preview in browser
  * [unite-outline](https://github.com/h1mesuke/unite-outline) - Provide your Vim's buffer with the outline view
  * [swap-parameters](https://github.com/mutewinter/swap-parameters) - Swap parameters
