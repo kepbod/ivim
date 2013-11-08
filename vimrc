@@ -8,7 +8,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.0 beta
 "   Created: 2012-01-20
-"   Last Modified: 2013-07-21
+"   Last Modified: 2013-11-07
 "
 "   Sections:
 "     -> Ivim Setting
@@ -35,20 +35,14 @@
 "------------------------------------------------
 
 " Ivim user setting
-let g:ivim_user='Xiao-Ou Zhang' " User name 
-let g:ivim_email='kepbod@gmail.com' " User email
-let g:ivim_github='https://github.com/kepbod' " User github address
-" Ivim configuration
-let g:ivim_enable_plugin=0 " Enable using plugins
-let g:ivim_fancy_font=0 " Enable using fancy font
-let g:ivim_show_number=0 " Enable showing number
-let g:ivim_pure=0 " Use pure UI, it will ignore g:ivim_fancy_font and g:ivim_show_number
-
-" Set for pure UI 
-if g:ivim_pure
-    let g:ivim_fancy_font=0
-    let g:ivim_show_number=0
-endif
+let g:ivim_user="Xiao-Ou Zhang" " User name
+let g:ivim_email="kepbod@gmail.com" " User email
+let g:ivim_github="https://github.com/kepbod" " User github address
+" Ivim plugin setting
+let g:ivim_enable_plugin=1 " Enable using plugins
+" Ivim UI setting
+let g:ivim_fancy_font=1 " Enable using fancy font
+let g:ivim_show_number=1 " Enable showing number
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -56,15 +50,16 @@ endif
 " => General
 "------------------------------------------------
 
-set nocompatible " Get out of vi's compatible mode
+set nocompatible " Get out of vi compatible mode
 filetype plugin indent on " Enable filetype
-let mapleader=',' " Change the mapleader
-let maplocalleader='\' " Change the maplocalleader
+let mapleader="," " Change the mapleader
+let maplocalleader="\\" " Change the maplocalleader
 set timeoutlen=500 " Time to wait for a command
 
 " Source the vimrc file after saving it
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
-" Fast edit the .vimrc file using ',x'
+autocmd BufWritePost $MYVIMRC NeoBundleClean
+" Fast edit the .vimrc file using ,x
 nnoremap <Leader>x :tabedit $MYVIMRC<CR>
 
 set autoread " Set autoread when a file is changed outside
@@ -84,24 +79,23 @@ set undofile " Set undo
 " Set directories
 function! InitializeDirectories()
     let parent=$HOME
-    let prefix='.vim'
+    let prefix=".vim"
     let dir_list={
-                \ 'backup': 'backupdir',
-                \ 'view': 'viewdir',
-                \ 'swap': 'directory',
-                \ 'undo': 'undodir'}
+                \ "backup": "backupdir",
+                \ "view": "viewdir",
+                \ "swap": "directory",
+                \ "undo": "undodir"}
     for [dirname, settingname] in items(dir_list)
-        let directory=parent.'/'.prefix.'/'.dirname.'/'
+        let directory=parent."/".prefix."/".dirname."/"
         if !isdirectory(directory)
-            if exists('*mkdir')
-                call mkdir(directory, 'p')
-                exec 'set '.settingname.'='.directory
+            if exists("*mkdir")
+                call mkdir(directory, "p")
+                exec "set ".settingname."=".directory
             else
                 echo "Warning: Unable to create directory: ".directory
-                echo "Try: mkdir -p ".directory
             endif
         else
-            exec 'set '.settingname.'='.directory
+            exec "set ".settingname."=".directory
         endif
     endfor
 endfunction
@@ -121,8 +115,8 @@ set t_vb=
 " => Platform Specific Configuration
 "-------------------------------------------------
 
-" On Windows, also use '.vim' instead of 'vimfiles'
-if has('win32') || has('win64')
+" On Windows, also use .vim instead of vimfiles
+if has("win32") || has("win64")
     set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 endif
 
@@ -136,17 +130,29 @@ set fileformats=unix,mac,dos " Auto detect the file formats
 " => Vundle
 "--------------------------------------------------
 
+if has("vim_starting")
+    set nocompatible
+    set runtimepath+=$HOME/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#rc(expand("$HOME/.vim/bundle/"))
+
+" Use Vundle to manager plugins
+NeoBundleFetch "Shougo/neobundle.vim"
+
 if g:ivim_enable_plugin
-    filetype off " Required!
-    let g:vundle_default_git_proto='git'
-    set rtp+=~/.vim/bundle/vundle/
-    call vundle#rc()
-    Bundle 'gmarik/vundle'
+    NeoBundle "w0ng/vim-hybrid" " Colorscheme hybrid
+    NeoBundle "bling/vim-airline" " Status line
+    NeoBundle "bling/vim-bufferline" " Buffer line
+    NeoBundle "airblade/vim-gitgutter" " git diff sign
     if filereadable(expand("$HOME/.vimrc.bundles.local"))
         source $HOME/.vimrc.bundles.local
     endif
-    filetype plugin indent on " Required!
 endif
+
+filetype plugin indent on " Required!
+
+NeoBundleCheck
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -164,47 +170,54 @@ set showtabline=2 " Always show tab line
 set guitablabel=%m%N:%t\[%{tabpagewinnr(v:lnum)}\]
 set tabline=%!MyTabLine()
 function! MyTabLine()
-    let s=''
+    let s=""
     let t=tabpagenr() " The index of current page
     let i=1
-    while i<=tabpagenr('$') " From the first page
+    while i<=tabpagenr("$") " From the first page
         let buflist=tabpagebuflist(i)
         let winnr=tabpagewinnr(i)
-        let s.=(i==t?'%#TabLineSel#':'%#TabLine#')
-        let s.='%'.i.'T'
-        let s.=' '
+        let s.=(i==t?"%#TabLineSel#":"%#TabLine#")
+        let s.="%".i."T"
+        let s.=" "
         let bufnr=buflist[winnr - 1]
         let file=bufname(bufnr)
-        let m=''
+        let m=""
         if getbufvar(bufnr, "&modified")
-            let m='[+]'
+            let m="[+]"
         endif
-        if file=~'\/.'
-            let file=substitute(file,'.*\/\ze.','','')
+        if file=~"\/."
+            let file=substitute(file,".*\/\ze.","","")
         endif
-        if file==''
-            let file='[No Name]'
+        if file==""
+            let file="[No Name]"
         endif
         let s.=m
-        let s.=i.':'
+        let s.=i.":"
         let s.=file
-        let s.='['.winnr.']'
-        let s.=' '
+        let s.="[".winnr."]"
+        let s.=" "
         let i=i+1
     endwhile
-    let s.='%T%#TabLineFill#%='
-    let s.=(tabpagenr('$')>1?'%999XX':'X')
+    let s.="%T%#TabLineFill#%="
+    let s.=(tabpagenr("$")>1?"%999XX":"X")
     return s
 endfunction
 " Set up tab tooltips with every buffer name
 set guitabtooltip=%F
 
 " Set status line
-if g:ivim_enable_plugin && !g:ivim_pure
+if g:ivim_enable_plugin
     set laststatus=2 " Show the statusline
     set noshowmode " Hide the default mode text
-    if g:ivim_airline " Use airline, otherwise use powerline
+    let g:airline_theme="bubblegum"
+    set ttimeoutlen=50
+    let g:bufferline_echo=0
+    let g:bufferline_modified="[+]"
+    if g:ivim_fancy_font
         let g:airline_powerline_fonts=1
+    else
+        let g:airline_left_sep=""
+        let g:airline_right_sep=""
     endif
 endif
 
@@ -215,7 +228,7 @@ auto InsertEnter * set nocursorline
 auto InsertLeave * set cursorline
 set wildmenu " Show list instead of just completing
 set wildmode=list:longest,full " Use powerful wildmenu
-set shortmess=at " Avoids 'hit enter'
+set shortmess=at " Avoids hit enter
 set showcmd " Show cmd
 
 set backspace=indent,eol,start " Make backspaces delete sensibly
@@ -254,7 +267,7 @@ if g:ivim_fancy_font
 endif
 
 " Set gVim UI setting
-if has('gui_running')
+if has("gui_running")
     set guioptions-=m
     set guioptions-=T
 endif
@@ -267,7 +280,7 @@ endif
 
 syntax on " Enable syntax
 set background=dark " Set background
-if !has('gui_running')
+if !has("gui_running")
     set t_Co=256 " Use 256 colors
 endif
 
@@ -278,12 +291,12 @@ else
     colorscheme desert
 endif
 
-if has('gui_running')
-    if has('gui_gtk')
+if has("gui_running")
+    if has("gui_gtk")
         set guifont=DejaVu\ Sans\ Mono\ 11
-    elseif has('gui_macvim')
+    elseif has("gui_macvim")
         set guifont=Monaco:h11
-    elseif has('gui_win32')
+    elseif has("gui_win32")
         set guifont=Consolas:h11:cANSI
     endif
 endif
@@ -311,7 +324,7 @@ set ignorecase " Case insensitive search
 set smartcase " Case sensitive when uc present
 set hlsearch " Highlight search terms
 set incsearch " Find as you type search
-set gdefault " turn on 'g' flag
+set gdefault " turn on g flag
 
 " Use sane regexes
 nnoremap / /\v
@@ -333,7 +346,7 @@ nnoremap g# g#zzzv
 function! s:VSetSearch()
     let temp=@@
     normal! gvy
-    let @/='\V'.substitute(escape(@@, '\'), '\n', '\\n', 'g')
+    let @/="\V".substitute(escape(@@, "\\"), "\n", "\\\n", "g")
     let @@=temp
 endfunction
 vnoremap * :<C-U>call <SID>VSetSearch()<CR>//<CR>
@@ -343,6 +356,7 @@ vnoremap # :<C-U>call <SID>VSetSearch()<CR>??<CR>
 nnoremap <Leader><Space> :set hlsearch!<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "-------------------------------------------------
 " => Fold Related
 "-------------------------------------------------
@@ -351,7 +365,7 @@ set foldlevelstart=0 " Start with all folds closed
 set foldcolumn=1 " Set fold column
 
 " Space to toggle and create folds.
-nnoremap <silent><Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+nnoremap <silent><Space> @=(foldlevel(".")?"za":"\<Space>")<CR>
 vnoremap <Space> zf
 
 " Set foldtext
@@ -360,11 +374,11 @@ function! MyFoldText()
     let nucolwidth=&foldcolumn+&number*&numberwidth
     let windowwidth=winwidth(0)-nucolwidth-3
     let foldedlinecount=v:foldend-v:foldstart+1
-    let onetab=strpart('          ', 0, &tabstop)
-    let line=substitute(line, '\t', onetab, 'g')
+    let onetab=strpart("          ", 0, &tabstop)
+    let line=substitute(line, "\t", onetab, "g")
     let line=strpart(line, 0, windowwidth-2-len(foldedlinecount))
     let fillcharcount=windowwidth-len(line)-len(foldedlinecount)
-    return line.'…'.repeat(" ",fillcharcount).foldedlinecount.'…'.' '
+    return line."…".repeat(" ",fillcharcount).foldedlinecount."…"." "
 endfunction
 set foldtext=MyFoldText()
 
@@ -395,26 +409,25 @@ augroup ft_markdown
     autocmd Filetype markdown vnoremap <buffer> <localLeader>b :s/^/> /<CR>
     " Use <localLeader>ul and <localLeader>ol to add list symbols in visual mode
     autocmd Filetype markdown vnoremap <buffer> <localLeader>ul :s/^/* /<CR>
-    autocmd Filetype markdown vnoremap <buffer> <LocalLeader>ol :s/^/\=(line(".")-line("'<")+1).'. '/<CR>
+    autocmd Filetype markdown vnoremap <buffer> <LocalLeader>ol :s/^/\=(line(".")-line(""<")+1).". "/<CR>
     " Use <localLeader>e1/2/3 to add emphasis symbols
     autocmd Filetype markdown nnoremap <buffer> <localLeader>e1 I*<ESC>A*<ESC>
     autocmd Filetype markdown nnoremap <buffer> <localLeader>e2 I**<ESC>A**<ESC>
     autocmd Filetype markdown nnoremap <buffer> <localLeader>e3 I***<ESC>A***<ESC>
     " Use <Leader>P to preview markdown file in browser
     autocmd Filetype markdown nnoremap <buffer> <Leader>P :MarkdownPreview<CR>
-    " Turn spell on
+    " Turn on spell
     autocmd Filetype markdown setlocal spell
 augroup END
 
-" Html
-augroup ft_less
-    autocmd!
-    " Turn spell on
-    autocmd Filetype html setlocal spell
+" HTML
+augroup ft_html
     " Indent setting for html
     let g:html_indent_inctags="html,body,head,tbody"
     let g:html_indent_script1="inc"
     let g:html_indent_style1="inc"
+    autocmd!
+    autocmd Filetype html setlocal spell " Turn on spell
 augroup END
 
 " LESS
@@ -448,10 +461,10 @@ augroup ft_python
         "   open_paren_at_EOL(
         "       100, 200, 300, 400)
         call cursor(a:lnum, 1)
-        let [par_line, par_col] = searchpairpos('(\|{\|\[', '', ')\|}\|\]', 'bW',
-                    \ "line('.') < " . (a:lnum - s:maxoff) . " ? dummy :"
-                    \ . " synIDattr(synID(line('.'), col('.'), 1), 'name')"
-                    \ . " =~ '\\(Comment\\|String\\)$'")
+        let [par_line, par_col] = searchpairpos("(\|{\|\[", "", ")\|}\|\]", "bW",
+                    \ "line(".") < " . (a:lnum - s:maxoff) . " ? dummy :"
+                    \ . " synIDattr(synID(line("."), col("."), 1), "name")"
+                    \ . " =~ "\\(Comment\\|String\\)$"")
         if par_line > 0
             call cursor(par_line, 1)
             if par_col != col("$") - 1
@@ -468,11 +481,11 @@ augroup ft_python
         echo "2. Python3+\n"
         let flag=getchar()
         if flag==49
-            call SingleCompile#ChooseCompiler('python', 'python')
-            execute 'SingleCompileRun'
+            call SingleCompile#ChooseCompiler("python", "python")
+            execute "SingleCompileRun"
         elseif flag==50
-            call SingleCompile#ChooseCompiler('python', 'python3')
-            execute 'SingleCompileRun'
+            call SingleCompile#ChooseCompiler("python", "python3")
+            execute "SingleCompileRun"
         endif
     endfunction
 
@@ -503,7 +516,7 @@ augroup END
 " PHP
 augroup ft_php
     if filereadable(expand("$HOME/.vim/dict/php_funclist.txt"))
-        function! AddPHPFuncList()  " Inspired by hawk (https://github.com/hawklim)
+        function! AddPHPFuncList()
             set dictionary-=$HOME/.vim/dict/php_funclist.txt dictionary+=$HOME/.vim/dict/php_funclist.txt
             set complete-=k complete+=k
         endfunction
@@ -527,6 +540,8 @@ vnoremap k gk
 " Navigation between windows
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
+nnoremap <C-H> <C-W>h
+nnoremap <C-L> <C-W>l
 
 " Same when jumping around
 nnoremap g; g;zz
@@ -548,7 +563,7 @@ nnoremap vaa ggvGg_
 nnoremap Vaa ggVG
 
 " Strip all trailing whitespace in the current file
-nnoremap <Leader>q :%s/\s\+$//<CR>:let @/=''<CR>
+nnoremap <Leader>q :%s/\s\+$//<CR>:let @/=""<CR>
 
 " Modify all the indents
 nnoremap \= gg=G
@@ -569,7 +584,7 @@ if filereadable(expand("$HOME/.vimrc.local"))
 endif
 
 " Use local gvimrc if available and gui is running
-if has('gui_running')
+if has("gui_running")
     if filereadable(expand("$HOME/.gvimrc.local"))
         source $HOME/.gvimrc.local
     endif
