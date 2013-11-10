@@ -14,7 +14,7 @@
 "     -> Ivim Setting
 "     -> General
 "     -> Platform Specific Configuration
-"     -> Vundle
+"     -> NeoBundle
 "     -> Vim User Interface
 "     -> Colors and Fonts
 "     -> Indent and Tab Related
@@ -84,17 +84,18 @@ function! InitializeDirectories()
                 \ "backup": "backupdir",
                 \ "view": "viewdir",
                 \ "swap": "directory",
-                \ "undo": "undodir"}
+                \ "undo": "undodir",
+                \ "cache": ""}
     for [dirname, settingname] in items(dir_list)
         let directory=parent."/".prefix."/".dirname."/"
         if !isdirectory(directory)
             if exists("*mkdir")
                 call mkdir(directory, "p")
-                exec "set ".settingname."=".directory
             else
                 echo "Warning: Unable to create directory: ".directory
             endif
-        else
+        endif
+        if settingname!=""
             exec "set ".settingname."=".directory
         endif
     endfor
@@ -127,7 +128,7 @@ set fileformats=unix,mac,dos " Auto detect the file formats
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
-" => Vundle
+" => NeoBundle
 "--------------------------------------------------
 
 if has("vim_starting")
@@ -137,15 +138,38 @@ endif
 
 call neobundle#rc(expand("$HOME/.vim/bundle/"))
 
-" Use Vundle to manager plugins
+" Use NeoBundle to manager plugins
 NeoBundleFetch "Shougo/neobundle.vim"
 
 if g:ivim_enable_plugin
     NeoBundle "w0ng/vim-hybrid" " Colorscheme hybrid
     NeoBundle "bling/vim-airline" " Status line
     NeoBundle "bling/vim-bufferline" " Buffer line
-    NeoBundle "airblade/vim-gitgutter" " git diff sign
-    if filereadable(expand("$HOME/.vimrc.bundles.local"))
+    NeoBundle "airblade/vim-gitgutter" " Git diff sign
+    NeoBundle "Raimondi/delimitMate" " Closing of quotes
+    NeoBundle "Shougo/unite.vim" " Search engine
+    NeoBundle "Shougo/unite-outline" " Unite outline
+    NeoBundle "scrooloose/syntastic" " Syntax checking
+    if has("lua")
+        NeoBundle "Shougo/neocomplete.vim" " Auto completion framework
+        let g:ivim_completion_engine="neocomplete"
+    else
+        NeoBundle "Shougo/neocomplcache.vim" " Auto completion framework
+        let g:ivim_completion_engine="neocomplcache"
+    endif
+    NeoBundle "Shougo/neosnippet.vim" " Snippet engine
+    NeoBundle "honza/vim-snippets" " Snippets
+    NeoBundle "tpope/vim-fugitive" " Git wrapper
+    NeoBundle "gregsexton/gitv"
+    NeoBundle "Shougo/vimproc", {
+                \ "build" : {
+                \     "windows" : "make -f make_mingw32.mak",
+                \     "cygwin" : "make -f make_cygwin.mak",
+                \     "mac" : "make -f make_mac.mak",
+                \     "unix" : "make -f make_unix.mak",
+                \    },
+                \ }
+    if filereadable(expand("$HOME/.vimrc.bundles.local")) " Load local bundles
         source $HOME/.vimrc.bundles.local
     endif
 endif
@@ -346,7 +370,7 @@ nnoremap g# g#zzzv
 function! s:VSetSearch()
     let temp=@@
     normal! gvy
-    let @/="\V".substitute(escape(@@, "\\"), "\n", "\\\n", "g")
+    let @/='\V'.substitute(escape(@@, '\'), '\n', '\n', 'g')
     let @@=temp
 endfunction
 vnoremap * :<C-U>call <SID>VSetSearch()<CR>//<CR>
@@ -495,6 +519,7 @@ augroup ft_python
     autocmd!
     autocmd filetype python setlocal indentexpr=GetGooglePythonIndent(v:lnum)
     autocmd filetype python nnoremap <buffer> <Leader>r :call ChoosePythonCompiler()<CR>
+    autocmd fileType python let b:delimitMate_nesting_quotes = ['"']
 
 augroup END
 
@@ -594,9 +619,112 @@ endif
 
 "--------------------------------------------------
 " => Plugin Setting
+"
+" -> delimitMate
+" -> Unite
+" -> syntastic
+" -> neocomplete
 "--------------------------------------------------
+
 if !g:ivim_enable_plugin
     finish
 endif
 
+"--------------------------------------------------
+" delimitMate
+"--------------------------------------------------
+let delimitMate_expand_cr=1
+let delimitMate_expand_space=1
+let delimitMate_balance_matchpairs=1
+"--------------------------------------------------
+" Unite
+"--------------------------------------------------
+let g:unite_data_directory=$HOME . "/.vim/cache/unite"
+let g:unite_source_history_yank_enable=1
+let g:unite_source_rec_max_cache_files=100
+if g:ivim_fancy_font
+    let g:unite_prompt="» "
+endif
+if executable("ag")
+    " Use ag in unite grep source.
+    let g:unite_source_grep_command="ag"
+    let g:unite_source_grep_default_opts="--line-numbers --nocolor --nogroup --hidden"
+    let g:unite_source_grep_recursive_opt=""
+elseif executable("ack-grep")
+    " Use ack-grep in unite grep source.
+    let g:unite_source_grep_command="ack-grep"
+    let g:unite_source_grep_default_opts="--no-heading --no-color -a -H"
+    let g:unite_source_grep_recursive_opt=""
+elseif executable('ack')
+    " Use ack in unite grep source.
+    let g:unite_source_grep_command="ack"
+    let g:unite_source_grep_default_opts="--no-heading --no-color -a -H"
+    let g:unite_source_grep_recursive_opt=""
+endif
+function! s:unite_settings()
+    nmap <buffer> <ESC> <plug>(unite_exit)
+    imap <buffer> <ESC> <plug>(unite_exit)
+    imap <buffer> <C-J> <Plug>(unite_select_next_line)
+    imap <buffer> <C-K> <Plug>(unite_select_previous_line)
+endfunction
+autocmd FileType unite call s:unite_settings()
+nnoremap <silent> <Space>f :<C-U>Unite -start-insert -auto-resize -buffer-name=files file_rec/async<CR><C-U>
+nnoremap <silent> <Space>y :<C-U>Unite -start-insert -buffer-name=yanks history/yank<CR>
+nnoremap <silent> <Space>l :<C-U>Unite -start-insert -auto-resize -buffer-name=line line<CR>
+nnoremap <silent> <Space>o :<C-U>Unite -auto-resize -buffer-name=outline outline<CR>
+nnoremap <silent> <Space>b :<C-U>Unite -quick-match buffer<CR>
+nnoremap <silent> <Space>t :<C-U>Unite -quick-match tab<CR>
+nnoremap <silent> <Space>/ :<C-U>Unite -auto-resize -buffer-name=search grep:.<CR>
+"--------------------------------------------------
+" syntastic
+"--------------------------------------------------
+let g:syntastic_check_on_open=1
+let g:syntastic_aggregate_errors=1
+let g:syntastic_auto_jump=1
+let g:syntastic_auto_loc_list=1
+if g:ivim_fancy_font
+    let g:syntastic_error_symbol = '✗'
+    let g:syntastic_style_error_symbol = '✠'
+    let g:syntastic_warning_symbol = '∆'
+    let g:syntastic_style_warning_symbol = '≈'
+endif
+"--------------------------------------------------
+" neocomplete & neocomplcache & neosnippet
+"--------------------------------------------------
+" Use Tab and S-Tab to select candidate
+inoremap <expr><Tab>  pumvisible() ? "\<C-N>" : "\<Tab>"
+inoremap <expr><S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
+if g:ivim_completion_engine=="neocomplete"
+    let g:neocomplete#enable_at_startup=1
+    let g:neocomplete#data_directory=$HOME . "/.vim/cache/neocomplete"
+    let g:neocomplete#enable_auto_delimiter=1
+    " Use <C-E> to close popup
+    inoremap <expr><C-E> neocomplete#cancel_popup()
+    inoremap <expr> <CR> delimitMate#WithinEmptyPair() ?
+             \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
+             \ pumvisible() ? neocomplete#close_popup() : "\<CR>"
+else
+    let g:neocomplcache_enable_at_startup=1
+    let g:neocomplcache_temporary_dir=$HOME . "/.vim/cache/neocomplcache"
+    let g:neocomplcache_enable_auto_delimiter=1
+    let g:neocomplcache_enable_fuzzy_completion=1
+    " Use <C-E> to close popup
+    inoremap <expr><C-E> neocomplcache#cancel_popup()
+    inoremap <expr> <CR> delimitMate#WithinEmptyPair() ?
+             \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
+             \ pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+endif
+" Set information for snippets
+let g:snips_author=g:ivim_user
+let g:snips_email=g:ivim_email
+let g:snips_github=g:ivim_github
+let g:neosnippet#enable_snipmate_compatibility=1
+" Use <C-K> to expand or jump snippets in insert mode
+imap <C-K> <Plug>(neosnippet_expand_or_jump)
+" Use <C-K> to replace TARGET within snippets in visual mode
+xmap <C-K> <Plug>(neosnippet_start_unite_snippet_target)
+" For snippet_complete marker
+if has('conceal')
+    set conceallevel=2 concealcursor=i
+endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
