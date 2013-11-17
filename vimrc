@@ -37,12 +37,13 @@
 " Ivim user setting
 let g:ivim_user="Xiao-Ou Zhang" " User name
 let g:ivim_email="kepbod@gmail.com" " User email
-let g:ivim_github="https://github.com/kepbod" " User github address
-" Ivim plugin setting
-let g:ivim_enable_plugin=1 " Enable using plugins
+let g:ivim_github="https://github.com/kepbod" " User github
 " Ivim UI setting
 let g:ivim_fancy_font=1 " Enable using fancy font
 let g:ivim_show_number=1 " Enable showing number
+" Ivim plugin setting
+let g:ivim_bundle_groups=["ui", "enhance", "move", "navigate", "complete",
+                         \"compile", "git"]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -53,7 +54,7 @@ let g:ivim_show_number=1 " Enable showing number
 set nocompatible " Get out of vi compatible mode
 filetype plugin indent on " Enable filetype
 let mapleader="," " Change the mapleader
-let maplocalleader="\\" " Change the maplocalleader
+let maplocalleader='\' " Change the maplocalleader
 set timeoutlen=500 " Time to wait for a command
 
 " Source the vimrc file after saving it
@@ -85,7 +86,8 @@ function! InitializeDirectories()
                 \ "view": "viewdir",
                 \ "swap": "directory",
                 \ "undo": "undodir",
-                \ "cache": ""}
+                \ "cache": "",
+                \ "session": ""}
     for [dirname, settingname] in items(dir_list)
         let directory=parent."/".prefix."/".dirname."/"
         if !isdirectory(directory)
@@ -136,20 +138,55 @@ if has("vim_starting")
     set runtimepath+=$HOME/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand("$HOME/.vim/bundle/"))
+call neobundle#rc(expand($HOME . "/.vim/bundle/"))
 
 " Use NeoBundle to manager plugins
 NeoBundleFetch "Shougo/neobundle.vim"
 
-if g:ivim_enable_plugin
+if count(g:ivim_bundle_groups, "ui") " UI setting
     NeoBundle "w0ng/vim-hybrid" " Colorscheme hybrid
     NeoBundle "bling/vim-airline" " Status line
     NeoBundle "bling/vim-bufferline" " Buffer line
-    NeoBundle "airblade/vim-gitgutter" " Git diff sign
+    NeoBundle "nathanaelkane/vim-indent-guides" " Indent guides
+    NeoBundle "mhinz/vim-startify" " Start page
+endif
+
+if count(g:ivim_bundle_groups, "enhance") " Vim enhancement
     NeoBundle "Raimondi/delimitMate" " Closing of quotes
+    NeoBundle "scrooloose/nerdcommenter" " NERD commenter
+    NeoBundle "tpope/vim-abolish" " Abolish
+    NeoBundle "tpope/vim-speeddating" " Speed dating
+    NeoBundle "tpope/vim-repeat" " Repeat
+    NeoBundle "terryma/vim-multiple-cursors" " Multiple cursors
+    NeoBundle "michaeljsmith/vim-indent-object" " Indent object
+    NeoBundle "coderifous/textobj-word-column.vim" " Column object
+    NeoBundle "mbbill/undotree" " Undo tree
+endif
+
+if count(g:ivim_bundle_groups, "move") " Moving
+    NeoBundle "tpope/vim-unimpaired" " Pairs of mappings
+    NeoBundle "Lokaltog/vim-easymotion" " Easy motion
+    NeoBundle "bkad/CamelCaseMotion" " Camel case motion
+    NeoBundle "zhaocai/GoldenView.Vim" " Manage windows
+    NeoBundle "majutsushi/tagbar" " Tag bar
     NeoBundle "Shougo/unite.vim" " Search engine
     NeoBundle "Shougo/unite-outline" " Unite outline
-    NeoBundle "scrooloose/syntastic" " Syntax checking
+    NeoBundle "Shougo/vimproc", {
+                \ "build" : {
+                \     "windows" : "make -f make_mingw32.mak",
+                \     "cygwin" : "make -f make_cygwin.mak",
+                \     "mac" : "make -f make_mac.mak",
+                \     "unix" : "make -f make_unix.mak",
+                \    },
+                \ }
+endif
+
+if count(g:ivim_bundle_groups, "navigate") " Navigation
+    NeoBundle "scrooloose/nerdtree" " NERD tree
+    NeoBundle "jistr/vim-nerdtree-tabs" " NERD tree tabs
+endif
+
+if count(g:ivim_bundle_groups, "complete") " Completion
     if has("lua")
         NeoBundle "Shougo/neocomplete.vim" " Auto completion framework
         let g:ivim_completion_engine="neocomplete"
@@ -159,19 +196,22 @@ if g:ivim_enable_plugin
     endif
     NeoBundle "Shougo/neosnippet.vim" " Snippet engine
     NeoBundle "honza/vim-snippets" " Snippets
+endif
+
+if count(g:ivim_bundle_groups, "compile") " Compiling
+    NeoBundle "scrooloose/syntastic" " Syntax checking
+endif
+
+if count(g:ivim_bundle_groups, "git") " Git
     NeoBundle "tpope/vim-fugitive" " Git wrapper
-    NeoBundle "gregsexton/gitv"
-    NeoBundle "Shougo/vimproc", {
-                \ "build" : {
-                \     "windows" : "make -f make_mingw32.mak",
-                \     "cygwin" : "make -f make_cygwin.mak",
-                \     "mac" : "make -f make_mac.mak",
-                \     "unix" : "make -f make_unix.mak",
-                \    },
-                \ }
-    if filereadable(expand("$HOME/.vimrc.bundles.local")) " Load local bundles
-        source $HOME/.vimrc.bundles.local
+    NeoBundle "gregsexton/gitv" " Gitk clone
+    if has('signs')
+        NeoBundle "airblade/vim-gitgutter" " Git diff sign
     endif
+endif
+
+if filereadable(expand($HOME . "/.vimrc.bundles.local")) " Load local bundles
+    source $HOME/.vimrc.bundles.local
 endif
 
 filetype plugin indent on " Required!
@@ -230,7 +270,7 @@ endfunction
 set guitabtooltip=%F
 
 " Set status line
-if g:ivim_enable_plugin
+if count(g:ivim_bundle_groups, "ui")
     set laststatus=2 " Show the statusline
     set noshowmode " Hide the default mode text
     let g:airline_theme="bubblegum"
@@ -309,7 +349,7 @@ if !has("gui_running")
 endif
 
 " Load a colorscheme
-if g:ivim_enable_plugin
+if count(g:ivim_bundle_groups, "ui")
     colorscheme hybrid
 else
     colorscheme desert
@@ -540,7 +580,7 @@ augroup END
 
 " PHP
 augroup ft_php
-    if filereadable(expand("$HOME/.vim/dict/php_funclist.txt"))
+    if filereadable(expand($HOME . "/.vim/dict/php_funclist.txt"))
         function! AddPHPFuncList()
             set dictionary-=$HOME/.vim/dict/php_funclist.txt dictionary+=$HOME/.vim/dict/php_funclist.txt
             set complete-=k complete+=k
@@ -604,13 +644,13 @@ command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
 "--------------------------------------------------
 
 " Use local vimrc if available
-if filereadable(expand("$HOME/.vimrc.local"))
+if filereadable(expand($HOME . "/.vimrc.local"))
     source $HOME/.vimrc.local
 endif
 
 " Use local gvimrc if available and gui is running
 if has("gui_running")
-    if filereadable(expand("$HOME/.gvimrc.local"))
+    if filereadable(expand($HOME . "/.gvimrc.local"))
         source $HOME/.gvimrc.local
     endif
 endif
@@ -619,112 +659,220 @@ endif
 
 "--------------------------------------------------
 " => Plugin Setting
-"
-" -> delimitMate
-" -> Unite
-" -> syntastic
-" -> neocomplete
 "--------------------------------------------------
 
-if !g:ivim_enable_plugin
-    finish
+" Setting for UI plugins
+if count(g:ivim_bundle_groups, "ui")
+
+    " -> Indent Guides
+    if !has('gui_running')
+        let g:indent_guides_auto_colors=0
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=235
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=235
+    endif
+    let g:indent_guides_enable_on_vim_startup=1
+    let g:indent_guides_guide_size=1
+    let g:indent_guides_default_mapping=0
+    let g:indent_guides_exclude_filetypes=['help', 'nerdtree', 'startify']
+
+    " -> Startify
+    let g:startify_session_dir=$HOME . "/.vim/session"
+    let g:startify_custom_header=[
+                \'       _       _         ',
+                \'      (_)   __(_)___ ___ ',
+                \'     / / | / / / __ `__ \',
+                \'    / /| |/ / / / / / / /',
+                \'   /_/ |___/_/_/ /_/ /_/ ',
+                \'                         ']
+    let g:startify_custom_footer=['', "    This configuration is maintained by Xiao-Ou Zhang<kepbod@gmail.com> and other contributors. Thanks!"]
+    if has('gui_running')
+        hi StartifyHeader  guifg=#87afff
+        hi StartifyFooter  guifg=#87afff
+        hi StartifyBracket guifg=#585858
+        hi StartifyNumber  guifg=#ffaf5f
+        hi StartifyPath    guifg=#8a8a8a
+        hi StartifySlash   guifg=#585858
+    else
+        hi StartifyHeader  ctermfg=111
+        hi StartifyFooter  ctermfg=111
+        hi StartifyBracket ctermfg=240
+        hi StartifyNumber  ctermfg=215
+        hi StartifyPath    ctermfg=245
+        hi StartifySlash   ctermfg=240
+    endif
+
+endif
+
+" Setting for enhancement plugins
+if count(g:ivim_bundle_groups, "enhance")
+
+    " -> delimitMate
+    let delimitMate_expand_cr=1
+    let delimitMate_expand_space=1
+    let delimitMate_balance_matchpairs=1
+
+    " -> NERD Commenter
+    let NERDCommentWholeLinesInVMode=2
+    let NERDSpaceDelims=1
+    let NERDRemoveExtraSpaces=1
+    " Map \<Space> to commenting
+    function! IsWhiteLine()
+        if (getline(".")=~"^$")
+            let oldlinenumber=line(".")
+            call NERDComment('n', 'sexy')
+            if (line(".")==oldlinenumber)
+                call NERDComment('n', 'append')
+            else
+                normal! k
+                startinsert!
+            endif
+        else
+            normal! A
+            call NERDComment('n', 'append')
+        endif
+    endfunction
+    nnoremap <silent>\<Space> :call IsWhiteLine()<CR>
+
+    " -> Undo tree
+    nnoremap <Leader>u :UndotreeToggle<CR>
+    let g:undotree_SetFocusWhenToggle=1
+
+endif
+
+" setting for moving plugins
+if count(g:ivim_bundle_groups, "move")
+
+    " -> Golden View
+    let g:goldenview__enable_default_mapping=0
+    nmap <silent> <C-O> <Plug>GoldenViewSplit
+    nmap <silent> <C-F> <Plug>GoldenViewSwitchToggle
+
+    " -> Tag bar
+    nnoremap <Leader>t :TagbarToggle<CR>
+    let g:tagbar_autofocus=1
+    let g:tagbar_expand=1
+    let g:tagbar_foldlevel=2
+    let g:tagbar_autoshowtag=1
+
+    " -> Unite
+    let g:unite_data_directory=$HOME . "/.vim/cache/unite"
+    let g:unite_source_history_yank_enable=1
+    let g:unite_source_rec_max_cache_files=100
+    if g:ivim_fancy_font
+        let g:unite_prompt="» "
+    endif
+    if executable("ag")
+        " Use ag in unite grep source.
+        let g:unite_source_grep_command="ag"
+        let g:unite_source_grep_default_opts="--line-numbers --nocolor --nogroup --hidden"
+        let g:unite_source_grep_recursive_opt=""
+    elseif executable("ack-grep")
+        " Use ack-grep in unite grep source.
+        let g:unite_source_grep_command="ack-grep"
+        let g:unite_source_grep_default_opts="--no-heading --no-color -a -H"
+        let g:unite_source_grep_recursive_opt=""
+    elseif executable('ack')
+        " Use ack in unite grep source.
+        let g:unite_source_grep_command="ack"
+        let g:unite_source_grep_default_opts="--no-heading --no-color -a -H"
+        let g:unite_source_grep_recursive_opt=""
+    endif
+    function! s:unite_settings() " Use ESC to exit, and use C-J and C-K to move
+        nmap <buffer> <ESC> <plug>(unite_exit)
+        imap <buffer> <ESC> <plug>(unite_exit)
+        imap <buffer> <C-J> <Plug>(unite_select_next_line)
+        imap <buffer> <C-K> <Plug>(unite_select_previous_line)
+    endfunction
+    autocmd FileType unite call s:unite_settings()
+    nnoremap <silent> <Space>f :<C-U>Unite -start-insert -auto-resize -buffer-name=files file_rec/async<CR><C-U>
+    nnoremap <silent> <Space>y :<C-U>Unite -start-insert -buffer-name=yanks history/yank<CR>
+    nnoremap <silent> <Space>l :<C-U>Unite -start-insert -auto-resize -buffer-name=line line<CR>
+    nnoremap <silent> <Space>o :<C-U>Unite -auto-resize -buffer-name=outline outline<CR>
+    nnoremap <silent> <Space>b :<C-U>Unite -quick-match buffer<CR>
+    nnoremap <silent> <Space>t :<C-U>Unite -quick-match tab<CR>
+    nnoremap <silent> <Space>/ :<C-U>Unite -auto-resize -buffer-name=search grep:.<CR>
+
+endif
+
+" Setting for navigation plugins
+if count(g:ivim_bundle_groups, "navigate")
+
+    " -> NERD Tree
+    nnoremap <Leader>d :NERDTreeTabsToggle<CR>
+    nnoremap <Leader>f :NERDTreeFind<CR>
+    let NERDTreeChDirMode=2
+    let NERDTreeShowBookmarks=1
+    let NERDTreeShowHidden=1
+    let NERDTreeShowLineNumbers=1
+    let NERDTreeDirArrows=1
+    let g:nerdtree_tabs_open_on_gui_startup=0
+
+endif
+
+" Setting for compiling plugins
+if count(g:ivim_bundle_groups, "compile")
+
+    " -> Syntastic
+    let g:syntastic_check_on_open=1
+    let g:syntastic_aggregate_errors=1
+    let g:syntastic_auto_jump=1
+    let g:syntastic_auto_loc_list=1
+    if g:ivim_fancy_font
+        let g:syntastic_error_symbol = '✗'
+        let g:syntastic_style_error_symbol = '✠'
+        let g:syntastic_warning_symbol = '∆'
+        let g:syntastic_style_warning_symbol = '≈'
+    endif
+
+endif
+
+" Setting for completion plugins
+if count(g:ivim_bundle_groups, "complete")
+
+    " -> Neocomplete & Neocomplcache
+    " Use Tab and S-Tab to select candidate
+    inoremap <expr><Tab>  pumvisible() ? "\<C-N>" : "\<Tab>"
+    inoremap <expr><S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
+    if g:ivim_completion_engine=="neocomplete"
+        let g:neocomplete#enable_at_startup=1
+        let g:neocomplete#data_directory=$HOME . "/.vim/cache/neocomplete"
+        let g:neocomplete#enable_auto_delimiter=1
+        " Use <C-E> to close popup
+        inoremap <expr><C-E> neocomplete#cancel_popup()
+        inoremap <expr> <CR> delimitMate#WithinEmptyPair() ?
+                \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
+                \ pumvisible() ? neocomplete#close_popup() : "\<CR>"
+    else
+        let g:neocomplcache_enable_at_startup=1
+        let g:neocomplcache_temporary_dir=$HOME . "/.vim/cache/neocomplcache"
+        let g:neocomplcache_enable_auto_delimiter=1
+        let g:neocomplcache_enable_fuzzy_completion=1
+        " Use <C-E> to close popup
+        inoremap <expr><C-E> neocomplcache#cancel_popup()
+        inoremap <expr> <CR> delimitMate#WithinEmptyPair() ?
+                \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
+                \ pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+    endif
+
+    " -> Neosnippet
+    " Set information for snippets
+    let g:snips_author=g:ivim_user
+    let g:snips_email=g:ivim_email
+    let g:snips_github=g:ivim_github
+    let g:neosnippet#enable_snipmate_compatibility=1
+    " Use <C-K> to expand or jump snippets in insert mode
+    imap <C-K> <Plug>(neosnippet_expand_or_jump)
+    " Use <C-K> to replace TARGET within snippets in visual mode
+    xmap <C-K> <Plug>(neosnippet_start_unite_snippet_target)
+    " For snippet_complete marker
+    if has('conceal')
+        set conceallevel=2 concealcursor=i
+    endif
+
+endif
+
+" Setting for git plugins
+if count(g:ivim_bundle_groups, "git")
 endif
 
 "--------------------------------------------------
-" delimitMate
-"--------------------------------------------------
-let delimitMate_expand_cr=1
-let delimitMate_expand_space=1
-let delimitMate_balance_matchpairs=1
-"--------------------------------------------------
-" Unite
-"--------------------------------------------------
-let g:unite_data_directory=$HOME . "/.vim/cache/unite"
-let g:unite_source_history_yank_enable=1
-let g:unite_source_rec_max_cache_files=100
-if g:ivim_fancy_font
-    let g:unite_prompt="» "
-endif
-if executable("ag")
-    " Use ag in unite grep source.
-    let g:unite_source_grep_command="ag"
-    let g:unite_source_grep_default_opts="--line-numbers --nocolor --nogroup --hidden"
-    let g:unite_source_grep_recursive_opt=""
-elseif executable("ack-grep")
-    " Use ack-grep in unite grep source.
-    let g:unite_source_grep_command="ack-grep"
-    let g:unite_source_grep_default_opts="--no-heading --no-color -a -H"
-    let g:unite_source_grep_recursive_opt=""
-elseif executable('ack')
-    " Use ack in unite grep source.
-    let g:unite_source_grep_command="ack"
-    let g:unite_source_grep_default_opts="--no-heading --no-color -a -H"
-    let g:unite_source_grep_recursive_opt=""
-endif
-function! s:unite_settings()
-    nmap <buffer> <ESC> <plug>(unite_exit)
-    imap <buffer> <ESC> <plug>(unite_exit)
-    imap <buffer> <C-J> <Plug>(unite_select_next_line)
-    imap <buffer> <C-K> <Plug>(unite_select_previous_line)
-endfunction
-autocmd FileType unite call s:unite_settings()
-nnoremap <silent> <Space>f :<C-U>Unite -start-insert -auto-resize -buffer-name=files file_rec/async<CR><C-U>
-nnoremap <silent> <Space>y :<C-U>Unite -start-insert -buffer-name=yanks history/yank<CR>
-nnoremap <silent> <Space>l :<C-U>Unite -start-insert -auto-resize -buffer-name=line line<CR>
-nnoremap <silent> <Space>o :<C-U>Unite -auto-resize -buffer-name=outline outline<CR>
-nnoremap <silent> <Space>b :<C-U>Unite -quick-match buffer<CR>
-nnoremap <silent> <Space>t :<C-U>Unite -quick-match tab<CR>
-nnoremap <silent> <Space>/ :<C-U>Unite -auto-resize -buffer-name=search grep:.<CR>
-"--------------------------------------------------
-" syntastic
-"--------------------------------------------------
-let g:syntastic_check_on_open=1
-let g:syntastic_aggregate_errors=1
-let g:syntastic_auto_jump=1
-let g:syntastic_auto_loc_list=1
-if g:ivim_fancy_font
-    let g:syntastic_error_symbol = '✗'
-    let g:syntastic_style_error_symbol = '✠'
-    let g:syntastic_warning_symbol = '∆'
-    let g:syntastic_style_warning_symbol = '≈'
-endif
-"--------------------------------------------------
-" neocomplete & neocomplcache & neosnippet
-"--------------------------------------------------
-" Use Tab and S-Tab to select candidate
-inoremap <expr><Tab>  pumvisible() ? "\<C-N>" : "\<Tab>"
-inoremap <expr><S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
-if g:ivim_completion_engine=="neocomplete"
-    let g:neocomplete#enable_at_startup=1
-    let g:neocomplete#data_directory=$HOME . "/.vim/cache/neocomplete"
-    let g:neocomplete#enable_auto_delimiter=1
-    " Use <C-E> to close popup
-    inoremap <expr><C-E> neocomplete#cancel_popup()
-    inoremap <expr> <CR> delimitMate#WithinEmptyPair() ?
-             \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
-             \ pumvisible() ? neocomplete#close_popup() : "\<CR>"
-else
-    let g:neocomplcache_enable_at_startup=1
-    let g:neocomplcache_temporary_dir=$HOME . "/.vim/cache/neocomplcache"
-    let g:neocomplcache_enable_auto_delimiter=1
-    let g:neocomplcache_enable_fuzzy_completion=1
-    " Use <C-E> to close popup
-    inoremap <expr><C-E> neocomplcache#cancel_popup()
-    inoremap <expr> <CR> delimitMate#WithinEmptyPair() ?
-             \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
-             \ pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-endif
-" Set information for snippets
-let g:snips_author=g:ivim_user
-let g:snips_email=g:ivim_email
-let g:snips_github=g:ivim_github
-let g:neosnippet#enable_snipmate_compatibility=1
-" Use <C-K> to expand or jump snippets in insert mode
-imap <C-K> <Plug>(neosnippet_expand_or_jump)
-" Use <C-K> to replace TARGET within snippets in visual mode
-xmap <C-K> <Plug>(neosnippet_start_unite_snippet_target)
-" For snippet_complete marker
-if has('conceal')
-    set conceallevel=2 concealcursor=i
-endif
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
