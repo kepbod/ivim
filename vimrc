@@ -251,6 +251,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 " Let Vundle manage Vundle
 Bundle 'gmarik/vundle'
+Bundle 'xolox/vim-misc'
 
 " UI Additions
 Bundle 'w0ng/vim-hybrid'
@@ -258,7 +259,7 @@ Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'altercation/vim-colors-solarized'
 " Bundle 'nanotech/jellybeans.vim'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'mutewinter/vim-indent-guides'
+" Bundle 'mutewinter/vim-indent-guides'
 Bundle 'roman/golden-ratio'
 Bundle 'chrisbra/NrrwRgn'
 " Navigation
