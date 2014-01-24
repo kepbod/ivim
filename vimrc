@@ -201,6 +201,7 @@ if count(g:ivim_bundle_groups, 'complete') " Completion
         let g:ivim_completion_engine='neocomplcache'
     endif
     NeoBundle 'Shougo/neosnippet.vim' " Snippet engine
+    NeoBundle 'Shougo/neosnippet-snippets' " Snippets
     NeoBundle 'honza/vim-snippets' " Snippets
 endif
 
