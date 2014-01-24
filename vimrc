@@ -580,18 +580,6 @@ augroup ft_perl
     autocmd filetype perl setlocal keywordprg=perldoc\ -f
 augroup END
 
-" PHP
-augroup ft_php
-    if filereadable(expand($HOME . '/.vim/dict/php_funclist.txt'))
-        function! AddPHPFuncList()
-            set dictionary-=$HOME/.vim/dict/php_funclist.txt dictionary+=$HOME/.vim/dict/php_funclist.txt
-            set complete-=k complete+=k
-        endfunction
-        autocmd!
-        autocmd filetype php call AddPHPFuncList()
-    endif
-augroup END
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "-------------------------------------------------
