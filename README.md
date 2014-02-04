@@ -97,7 +97,7 @@ bash $HOME/ivim/tools/restore.sh
  * [Tabular](https://github.com/nathanaelkane/vim-indent-guides) - Line up text easily
  * [Syntastic](https://github.com/scrooloose/syntastic) - Syntax check that runs files through external syntax checkers
  * [EasyMotion](https://github.com/Lokaltog/vim-easymotion) - Provide a much simpler way to use some motions in Vim
- * [Indent Guides](https://github.com/mutewinter/vim-indent-guides) - Visually display indent levels in Vim
+ * [Indent Guides](https://github.com/nathanaelkane/vim-indent-guides) - Visually display indent levels in Vim
  * [fugitive](https://github.com/tpope/vim-fugitive) - Git wrapper
  * [Gundo](https://github.com/sjl/gundo.vim) - Visualize Vim undo tree
  * [EasyTags](https://github.com/xolox/vim-easytags) - Automated tag generation and syntax highlighting in Vim
