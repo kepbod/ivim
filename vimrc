@@ -527,7 +527,6 @@ augroup END
 augroup ft_python
 
     " Indent Python in the Google way.
-    setlocal indentexpr=GetGooglePythonIndent(v:lnum)
     let s:maxoff = 50 " maximum number of lines to look backwards.
     function! GetGooglePythonIndent(lnum)
     " Indent inside parens.
@@ -561,7 +560,7 @@ augroup ft_python
 
     autocmd!
     autocmd filetype python setlocal indentexpr=GetGooglePythonIndent(v:lnum)
-    autocmd fileType python let b:delimitMate_nesting_quotes = ['"']
+    autocmd filetype python let b:delimitMate_nesting_quotes = ['"']
 
 augroup END
 
