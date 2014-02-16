@@ -576,8 +576,6 @@ augroup ft_perl
     let perl_include_pod=1
     let perl_extended_vars=1
     let perl_sync_dist=250
-    autocmd!
-    autocmd filetype perl setlocal keywordprg=perldoc\ -f
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
