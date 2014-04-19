@@ -8,7 +8,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.0 beta
 "   Created: 2012-01-20
-"   Last Modified: 2014-02-17
+"   Last Modified: 2014-04-19
 "
 "   Sections:
 "     -> ivim Setting
@@ -144,6 +144,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 if count(g:ivim_bundle_groups, 'ui') " UI setting
     NeoBundle 'w0ng/vim-hybrid' " Colorscheme hybrid
+    NeoBundle 'altercation/vim-colors-solarized' " Colorscheme solarized
+    NeoBundle 'chriskempson/base16-vim' " Colorscheme base16
     NeoBundle 'bling/vim-airline' " Status line
     NeoBundle 'bling/vim-bufferline' " Buffer line
     NeoBundle 'nathanaelkane/vim-indent-guides' " Indent guides
@@ -170,7 +172,7 @@ if count(g:ivim_bundle_groups, 'move') " Moving
     NeoBundle 'tpope/vim-unimpaired' " Pairs of mappings
     NeoBundle 'Lokaltog/vim-easymotion' " Easy motion
     NeoBundle 'bkad/CamelCaseMotion' " Camel case motion
-    NeoBundle 'zhaocai/GoldenView.Vim' " Manage windows
+    NeoBundle 'spolu/dwm.vim' " Tiled window management
     NeoBundle 'majutsushi/tagbar' " Tag bar
     NeoBundle 'edsono/vim-matchit' " Match it
     NeoBundle 'Shougo/unite.vim' " Search engine
@@ -724,11 +726,6 @@ endif
 
 " setting for moving plugins
 if count(g:ivim_bundle_groups, 'move')
-
-    " -> Golden View
-    let g:goldenview__enable_default_mapping=0
-    nmap <silent> <C-O> <Plug>GoldenViewSplit
-    nmap <silent> <C-F> <Plug>GoldenViewSwitchToggle
 
     " -> Tag bar
     nnoremap <Leader>t :TagbarToggle<CR>
