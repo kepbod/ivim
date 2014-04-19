@@ -2,12 +2,12 @@
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kepbod/ivim/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
-     _       _          
-    (_)   __(_)___ ___  
-   / / | / / / __ `__ \ 
-  / /| |/ / / / / / / / 
- /_/ |___/_/_/ /_/ /_/  
-                        
+>     _       _          
+>    (_)   __(_)___ ___  
+>   / / | / / / __ `__ \ 
+>  / /| |/ / / / / / / / 
+> /_/ |___/_/_/ /_/ /_/  
+>                        
 
 **Version: 2.0 beta**
 
@@ -107,4 +107,4 @@ bash $HOME/ivim/setup.sh -n
 
 ## License
 
-Copyright (C) 2012-2014 Xiao-Ou Zhang and contributors. See the LICENSE file for license rights and limitations (MIT)
+Copyright (C) 2012-2014 Xiao-Ou Zhang and contributors. See the [LICENSE](https://github.com/kepbod/ivim/blob/master/LICENSE.txt) file for license rights and limitations (MIT)
