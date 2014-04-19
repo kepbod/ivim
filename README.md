@@ -2,12 +2,13 @@
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kepbod/ivim/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
->     _       _          
->    (_)   __(_)___ ___  
->   / / | / / / __ `__ \ 
->  / /| |/ / / / / / / / 
-> /_/ |___/_/_/ /_/ /_/  
->                        
+```
+    _       _          
+   (_)   __(_)___ ___  
+  / / | / / / __ `__ \ 
+ / /| |/ / / / / / / / 
+/_/ |___/_/_/ /_/ /_/  
+```                        
 
 **Version: 2.0 beta**
 
