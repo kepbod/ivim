@@ -1,6 +1,5 @@
 # ivim - An easy & highly customizable vim configuration 
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kepbod/ivim/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 ```
     _       _          
@@ -12,7 +11,6 @@
 
 **Version: 2.0 beta**
 
-[ivim v2.0 is under development](https://github.com/kepbod/ivim/tree/develop)
 
 ## Installation
 
