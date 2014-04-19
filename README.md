@@ -28,13 +28,13 @@
 **via 'curl'**
 
 ```bash
-bash <(curl -L https://raw.github.com/kepbod/ivim/blob/master/setup.sh) -i
+bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh) -i
 ```
 
 **via 'wget'**
 
 ```bash
-bash <(wget --no-check-certificate https://raw.github.com/kepbod/ivim/blob/master/setup.sh) -i
+bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh) -i
 ```
 
 ## Updating
