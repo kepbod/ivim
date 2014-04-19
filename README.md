@@ -34,7 +34,7 @@ bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh) -i
 **via 'wget'**
 
 ```bash
-bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh) -i
+bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh -O -) -i
 ```
 
 ## Updating
