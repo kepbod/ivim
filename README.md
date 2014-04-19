@@ -12,16 +12,18 @@
 
 **Version: 2.0 beta**
 
+[ivim v2.0 is under development](https://github.com/kepbod/ivim/tree/develop)
+
 ## Installation
 
 ### Manual Install
 
 0. A Vim/MacVim/gVim with version higher than 7.3 should be installed on your computer;
-3. Get ivim from github website, `git clone git://github.com/kepbod/ivim.git $HOME/ivim`;
-4. Make symbolic links of vimrc to your home directory, `ln -s $HOME/ivim/vimrc $HOME/.vimrc`;
-1. Install NeoBundle to install and update plugins, `git clone git://github.com/Shougo/neobundle.vim.git $HOME/.vim/bundle/neobundle.vim`;
-5. Install plugins, `$HOME/.vim/bundle/neobundle.vim/bin/neoinstall > /dev/null 2>&1` for *nix or `$HOME/.vim/bundle/neobundle.vim/bin/neoinstall.bat` for windows;
-6. Just enjoy it!
+1. Get ivim from github website, `git clone git://github.com/kepbod/ivim.git $HOME/ivim`;
+2. Make symbolic links of vimrc to your home directory, `ln -s $HOME/ivim/vimrc $HOME/.vimrc`;
+3. Install NeoBundle to install and update plugins, `git clone git://github.com/Shougo/neobundle.vim.git $HOME/.vim/bundle/neobundle.vim`;
+4. Install plugins, `$HOME/.vim/bundle/neobundle.vim/bin/neoinstall > /dev/null 2>&1` for *nix or `$HOME/.vim/bundle/neobundle.vim/bin/neoinstall.bat` for windows;
+5. Just enjoy it!
 
 ### Automatic Install (*nix only)
 
