@@ -1,48 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
 <html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Ivim : I love Vim, and I also love modifing it to adjust it to more convenient and effcient use. So I name it &quot;ivim&quot;!" />
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+  <title>Ivim</title>
+  <meta name="description" content="I love Vim, and I also love modifing it to adjust it to more convenient and effcient use. So I name it &quot;ivim&quot;!">
 
-    <title>Ivim</title>
-  </head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <body>
+</head>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/kepbod/ivim">View on GitHub</a>
+<body>
 
-          <h1 id="project_title">Ivim</h1>
-          <h2 id="project_tagline">I love Vim, and I also love modifing it to adjust it to more convenient and effcient use. So I name it &quot;ivim&quot;!</h2>
+  <div class="wrapper">
+    <header>
+      <h1 class="title">Ivim</h1>
+    </header>
+    <div id="container">
+      <p class="tagline">I love Vim, and I also love modifing it to adjust it to more convenient and effcient use. So I name it &quot;ivim&quot;!</p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/kepbod/ivim/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/kepbod/ivim/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/kepbod/ivim" class="code">View Ivim on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <h1>
+<a name="ivim---an-easy--highly-customizable-vim-configuration" class="anchor" href="#ivim---an-easy--highly-customizable-vim-configuration"><span class="octicon octicon-link"></span></a>ivim - An easy &amp; highly customizable vim configuration</h1>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/kepbod/ivim/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/kepbod/ivim/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+<pre><code>    _       _          
+   (_)   __(_)___ ___  
+  / / | / / / __ `__ \ 
+ / /| |/ / / / / / / / 
+/_/ |___/_/_/ /_/ /_/  
+</code></pre>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
-<a name="ivim---a-special-vim-distribution" class="anchor" href="#ivim---a-special-vim-distribution"><span class="octicon octicon-link"></span></a>ivim - A Special Vim Distribution</h1>
-
-<p><a href="http://www.vim.org/"><img src="http://www.vim.org/images/vim_editor.gif" alt="Vim"></a></p>
-
-<p><a href="https://bitdeli.com/free" title="Bitdeli Badge"><img src="https://d2weczhvl823v0.cloudfront.net/kepbod/ivim/trend.png" alt="Bitdeli Badge"></a></p>
-
-<p><a href="https://flattr.com/submit/auto?user_id=kepbod&amp;url=https://github.com/kepbod/ivim&amp;title=ivim&amp;language=English&amp;tags=github&amp;category=software"><img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this git repo"></a> </p>
-
-<p><a href="https://github.com/kepbod/ivim/tree/1.0">ivim v1.0 was released!!! Welcome to update to the newest stable branch!!!</a></p>
-
-<p><a href="https://github.com/kepbod/ivim/tree/develop">ivim v2.0 is under development</a></p>
+<p><strong>Version: 2.0 beta</strong></p>
 
 <h2>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
@@ -51,35 +55,29 @@
 <a name="manual-install" class="anchor" href="#manual-install"><span class="octicon octicon-link"></span></a>Manual Install</h3>
 
 <ol>
-<li>A Vim/MacVim/gVim with version higher than 7.3 has been installed on your computer, and back up your origin vim stuff;</li>
-<li>Install Vundle to install and update plugins, <code>git clone git://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle</code>;</li>
-<li>Install hybrid theme, <code>git clone git://github.com/w0ng/vim-hybrid.git $HOME/.vim/bundle/vim-hybrid</code>;</li>
+<li>A Vim/MacVim/gVim with version higher than 7.3 should be installed on your computer;</li>
 <li>Get ivim from github website, <code>git clone git://github.com/kepbod/ivim.git $HOME/ivim</code>;</li>
 <li>Make symbolic links of vimrc to your home directory, <code>ln -s $HOME/ivim/vimrc $HOME/.vimrc</code>;</li>
-<li>Install plugins, <code>vim +BundleInstall! +BundleClean! +qa!</code>;</li>
+<li>Install NeoBundle to install and update plugins, <code>git clone git://github.com/Shougo/neobundle.vim.git $HOME/.vim/bundle/neobundle.vim</code>;</li>
+<li>Install plugins, <code>$HOME/.vim/bundle/neobundle.vim/bin/neoinstall &gt; /dev/null 2&gt;&amp;1</code> for *nix or <code>$HOME/.vim/bundle/neobundle.vim/bin/neoinstall.bat</code> for windows;</li>
 <li>Just enjoy it!</li>
 </ol><h3>
 <a name="automatic-install-nix-only" class="anchor" href="#automatic-install-nix-only"><span class="octicon octicon-link"></span></a>Automatic Install (*nix only)</h3>
 
 <p><strong>via 'curl'</strong></p>
 
-<div class="highlight highlight-bash"><pre>curl -L https://raw.github.com/kepbod/ivim/1.0/tools/bootstrap.sh <span class="p">|</span> bash
+<div class="highlight highlight-bash"><pre>bash &lt;<span class="o">(</span>curl -L https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh<span class="o">)</span> -i
 </pre></div>
 
 <p><strong>via 'wget'</strong></p>
 
-<div class="highlight highlight-bash"><pre>wget --no-check-certificate https://raw.github.com/kepbod/ivim/1.0/tools/bootstrap.sh -O - <span class="p">|</span> bash
+<div class="highlight highlight-bash"><pre>bash &lt;<span class="o">(</span>wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh -O -<span class="o">)</span> -i
 </pre></div>
 
 <h2>
 <a name="updating" class="anchor" href="#updating"><span class="octicon octicon-link"></span></a>Updating</h2>
 
-<div class="highlight highlight-bash"><pre>bash <span class="nv">$HOME</span>/ivim/tools/update.sh
-</pre></div>
-
-<p><em>If you confront errors when you update vim plugins, please run command below.</em></p>
-
-<div class="highlight highlight-bash"><pre>bash <span class="nv">$HOME</span>/ivim/tools/restore.sh
+<div class="highlight highlight-bash"><pre>bash <span class="nv">$HOME</span>/ivim/setup.sh -n
 </pre></div>
 
 <h2>
@@ -111,101 +109,15 @@
 <ul>
 <li>
 <a href="https://github.com/w0ng/vim-hybrid">Hybrid</a>(default)</li>
-<li><a href="https://github.com/chriskempson/tomorrow-theme">Tomorrow-Night</a></li>
 <li><a href="https://github.com/altercation/vim-colors-solarized">Solarized</a></li>
-<li><a href="https://github.com/nanotech/jellybeans.vim">Jellybeans</a></li>
+<li><a href="https://github.com/chriskempson/base16-vim">Base16</a></li>
 </ul>
-<p><img src="https://lh6.googleusercontent.com/-e-CWpdeh7GA/UJuyYagHmDI/AAAAAAAAAHU/k4hYnUHv2xg/s910/Tooltip_005.png" alt="screenshot"></p>
 </li>
 </ul><p><strong><em>Efficient</em></strong></p>
 
 <ul>
-<li>Make using Vim more convenient and faster, and lots of useful plugins (such as <a href="https://github.com/Shougo/neocomplcache">Neocomplcache</a>, <a href="https://github.com/scrooloose/nerdcommenter">NERD_commenter</a>, <a href="https://github.com/scrooloose/syntastic">Syntastic</a> and <a href="https://github.com/xuhdev/SingleCompile">SingleCompile</a>) confirm a better performance of Vim.</li>
+<li>Make using Vim more convenient and faster, and lots of useful plugins (such as <a href="https://github.com/Shougo/neocomplcache">Neocomplcache</a>, <a href="https://github.com/scrooloose/nerdcommenter">NERD_commenter</a>, <a href="https://github.com/scrooloose/syntastic">Syntastic</a>) confirm a better performance of Vim.</li>
 </ul><p><em>This distribution is completely customisable using a <code>~/.vimrc.local</code>, <code>~/.gvimrc.local</code> and <code>~/.vimrc.bundles.local</code>!</em></p>
-
-<h2>
-<a name="plugin-list" class="anchor" href="#plugin-list"><span class="octicon octicon-link"></span></a>Plugin List</h2>
-
-<ul>
-<li>
-<a href="https://github.com/gmarik/vundle">Vundle</a> - Manage the Vim scripts</li>
-<li>
-<a href="https://github.com/majutsushi/tagbar">Tagbar</a> - Browse the tags of source code files</li>
-<li>
-<a href="https://github.com/scrooloose/nerdtree">NERD_tree</a> - Explore filesystem and to open files and directories</li>
-<li>
-<a href="https://github.com/scrooloose/nerdcommenter">NERD_commenter</a> - Provide many different commenting operations and styles</li>
-<li>
-<a href="https://github.com/Shougo/neocomplcache">Neocomplcache</a> - Performs keyword completion by maintaining a cache of keywords</li>
-<li>
-<a href="https://github.com/tpope/vim-surround">surround</a> - Provide mappings to delete, change and add surroundings in pairs</li>
-<li>
-<a href="https://github.com/Raimondi/delimitMate">delimitMate</a> - Provides automatic closing of quotes, parenthesis, brackets, etc.</li>
-<li>
-<a href="https://github.com/rking/ag.vim">Ag</a> - A front for ag, A.K.A. the_silver_searcher</li>
-<li>
-<a href="https://github.com/mileszs/ack.vim">Ack</a> - A replacement for 'grep' using Perl module App::Ack</li>
-<li>
-<a href="https://github.com/nathanaelkane/vim-indent-guides">Tabular</a> - Line up text easily</li>
-<li>
-<a href="https://github.com/scrooloose/syntastic">Syntastic</a> - Syntax check that runs files through external syntax checkers</li>
-<li>
-<a href="https://github.com/Lokaltog/vim-easymotion">EasyMotion</a> - Provide a much simpler way to use some motions in Vim</li>
-<li>
-<a href="https://github.com/mutewinter/vim-indent-guides">Indent Guides</a> - Visually display indent levels in Vim</li>
-<li>
-<a href="https://github.com/tpope/vim-fugitive">fugitive</a> - Git wrapper</li>
-<li>
-<a href="https://github.com/sjl/gundo.vim">Gundo</a> - Visualize Vim undo tree</li>
-<li>
-<a href="https://github.com/xolox/vim-easytags">EasyTags</a> - Automated tag generation and syntax highlighting in Vim</li>
-<li>
-<a href="https://github.com/Lokaltog/powerline">Powerline</a> - Create better-looking, more functional Vim statuslines</li>
-<li>
-<a href="https://github.com/xuhdev/SingleCompile">SingleCompile</a> - Compile or run a single source file without leaving Vim</li>
-<li>
-<a href="https://github.com/bkad/CamelCaseMotion">CamelCaseMotion</a> - Refine words motion in Vim</li>
-<li>
-<a href="https://github.com/mattn/emmet-vim">Emmet</a> - High-speed HTML, XML, XSL coding and editing</li>
-<li>
-<a href="https://github.com/AndrewRadev/splitjoin.vim">Splitjoin</a> - Switch between a single-line statement and a multi-line one</li>
-<li>
-<a href="https://github.com/Shougo/unite.vim">Unite</a> - Search and display information from arbitrary sources</li>
-<li>
-<a href="https://github.com/tpope/vim-rails">rails.vim</a> - Plugin for working with Ruby on Rails applications</li>
-<li>
-<a href="https://github.com/michaeljsmith/vim-indent-object">Indent Object</a> - Text objects based on indent levels</li>
-<li>
-<a href="https://github.com/chrisbra/NrrwRgn">NrrwRgn</a> - Focus on a region and making the rest inaccessible</li>
-<li>
-<a href="https://github.com/tpope/vim-unimpaired">unimpaired.vim</a> - Complementary pairs of mappings</li>
-<li>
-<a href="https://github.com/tpope/vim-abolish">abolish.vim</a> - Search for, substitute, and abbreviate multiple variants of a word</li>
-<li>
-<a href="https://github.com/benmills/vimux">vimux</a> - Easily interact with tmux from vim</li>
-<li>
-<a href="https://github.com/swaroopch/vim-markdown-preview">markdown-preview</a> - Select Markdown text, render to HTML and preview in browser</li>
-<li>
-<a href="https://github.com/h1mesuke/unite-outline">unite-outline</a> - Provide your Vim's buffer with the outline view</li>
-<li>
-<a href="https://github.com/mutewinter/swap-parameters">swap-parameters</a> - Swap parameters</li>
-<li>
-<a href="https://github.com/sampsyo/autolink.vim">autolink.vim</a> - Find and insert URLs for links in Markdown and ReST documents</li>
-<li>
-<a href="https://github.com/coderifous/textobj-word-column.vim">textobj-word-column.txt</a> - Make operating on columns of code conceptually simpler and reduces keystrokes</li>
-<li>
-<a href="https://github.com/tpope/vim-speeddating">vim-speeddating</a> Use CTRL-A/CTRL-X to increment dates, times, and more</li>
-<li>
-<a href="https://github.com/zhaocai/GoldenView.Vim">GoldenView.vim</a> Manage windows more convenient</li>
-<li>
-<a href="https://github.com/mhinz/vim-startify">vim-startify</a> Provide a good start screen for vim</li>
-<li>
-<a href="https://github.com/terryma/vim-multiple-cursors">vim-multiple-cursors</a> Provide Sublime Text's awesome multiple selection feature to vim</li>
-<li>
-<a href="https://github.com/tsaleh/vim-matchit">vim-matchit</a> Extend matching with "%"</li>
-<li>
-<a href="https://github.com/airblade/vim-gitgutter">vim-gitgutter</a> Show a git diff in the 'gutter' (sign column)</li>
-</ul><p><strong>Each plugin has its unique requirements and configurations, so if you have any questions with them, please check help files of them first!</strong></p>
 
 <h2>
 <a name="vim-tips" class="anchor" href="#vim-tips"><span class="octicon octicon-link"></span></a>Vim Tips</h2>
@@ -247,46 +159,30 @@
 </ul><p><strong>Hope You Enjoy Vimming</strong></p>
 
 <h2>
-<a name="notes" class="anchor" href="#notes"><span class="octicon octicon-link"></span></a>Notes</h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
-<p><strong>This distribution refers to many other famous Vim configurations (mainly contain <a href="https://github.com/spf13/spf13-vim">spf13-vim</a>, <a href="https://github.com/mutewinter/dot_vim">Champions' Configuration</a> and <a href="https://github.com/sjl/dotfiles/tree/master/vim">Steve's Configuration</a>), so there may be some unavoidable errors in it, but I'll try my best to make it work well. If you have any questions, please feel free to <a href="https://github.com/kepbod/ivim/issues">post your issues and suggestions</a>! Thanks!</strong></p>
-
-<h2>
-<a name="lisence" class="anchor" href="#lisence"><span class="octicon octicon-link"></span></a>Lisence</h2>
-
-<p>ivim - A Special Vim Distribution</p>
-
-<p>Copyright (C) 2013 Xiao-Ou Zhang and contributors</p>
-
-<p>Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the "Software"),
-to deal in the Software without restriction, including without limitation
-the rights to use, copy, modify, merge, publish, distribute, sublicense,
-and/or sell copies of the Software, and to permit persons to whom the 
-Software is furnished to do so, subject to the following conditions:</p>
-
-<p>The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.</p>
-
-<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
-OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
-      </section>
+<p>Copyright (C) 2012-2014 Xiao-Ou Zhang and contributors. See the <a href="https://github.com/kepbod/ivim/blob/master/LICENSE.txt">LICENSE</a> file for license rights and limitations (MIT)</p>
+        </article>
+      </div>
     </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/kepbod" class="avatar"><img src="https://avatars0.githubusercontent.com/u/1172557?s=60" width="48" height="48"/></a> <a href="https://github.com/kepbod">kepbod</a> maintains <a href="https://github.com/kepbod/ivim">Ivim</a></p>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Ivim maintained by <a href="https://github.com/kepbod">kepbod</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
 
-              <script type="text/javascript">
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="http://pages.github.com/">GitHub Pages</a><br/>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/kepbod/ivim/tarball/master" class="tar">tar</a><a href="https://github.com/kepbod/ivim/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
+
+            <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
@@ -297,6 +193,5 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
             } catch(err) {}
           </script>
 
-
-  </body>
+</body>
 </html>
