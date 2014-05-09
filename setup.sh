@@ -61,6 +61,7 @@ install() {
 update() {
     color_print "updating ivim..."
     git pull origin master
+    color_print "updating plugins..."
     $HOME/.vim/bundle/neobundle.vim/bin/neoinstall > /dev/null 2>&1
 }
 

@@ -43,6 +43,15 @@ bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim
 bash $HOME/ivim/setup.sh -n
 ```
 
+## Configuration
+There are some options you could set through `.vimrc` to configure ivim:
+* g:ivim_user -- your username
+* g:ivim_email -- your email
+* g:ivim_github -- your github
+* g:ivim_fancy_font -- using fancy font or not
+* g:ivim_show_number -- showing number or not
+* g:ivim_bundle_groups -- plugin groups
+
 ## Requirements
 
 **Vim**
