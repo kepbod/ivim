@@ -14,7 +14,7 @@
 
 ## Installation
 
-### Manual Install
+### Manual Installation
 
 0. A Vim/MacVim/gVim with version higher than 7.3 should be installed on your computer;
 1. Get ivim from github website, `git clone git://github.com/kepbod/ivim.git $HOME/ivim`;
@@ -23,7 +23,7 @@
 4. Install plugins, `$HOME/.vim/bundle/neobundle.vim/bin/neoinstall > /dev/null 2>&1` for *nix or `$HOME/.vim/bundle/neobundle.vim/bin/neoinstall.bat` for windows;
 5. Just enjoy it!
 
-### Automatic Install (*nix only)
+### Automatic Installation (*nix only)
 
 **via 'curl'**
 
