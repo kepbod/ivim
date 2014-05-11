@@ -1,16 +1,48 @@
 # ivim - An easy & highly customizable vim configuration 
 
-
 ```
     _       _          
    (_)   __(_)___ ___  
   / / | / / / __ `__ \ 
  / /| |/ / / / / / / / 
 /_/ |___/_/_/ /_/ /_/  
-```                        
+```
 
 **Version: 2.0 beta**
 
+## Features
+
+***Beautiful***
+
+![snapshot](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot.tiff)
+
+ * Use lots of famous colorschemes to make your eyes feel comfortable in both Vim and MacVim/gVim.
+
+    * [Hybrid](https://github.com/w0ng/vim-hybrid)(default)
+    * [Solarized](https://github.com/altercation/vim-colors-solarized)
+    * [Base16](https://github.com/chriskempson/base16-vim)
+
+***Efficient***
+
+ * Make using Vim more convenient and faster, and lots of useful plugins (such as [Neocomplcache](https://github.com/Shougo/neocomplcache), [NERD_commenter](https://github.com/scrooloose/nerdcommenter), [Syntastic](https://github.com/scrooloose/syntastic)) confirm a better performance of Vim.
+
+ * To view the full plugin list, please consult [here](https://github.com/kepbod/ivim/blob/master/vimrc#L132)
+
+## Requirements
+
+**Vim**
+
+ * This distribution is adapted to both [Vim](http://www.vim.org/download.php) and [MacVim](http://www.vim.org/download.php#mac)/[gVim](http://www.vim.org/download.php#pc). Remember that the Vim/MacVim/gVim version should be 7.3+, or errors would occur!
+
+**Git**
+
+ * All the installations are based on [Git](http://git-scm.com/) which is a famous distributed revision control system. If you use Windows, you may need install [msysgit](http://msysgit.github.com//).
+
+**Ctags**
+
+ * Ctags generates an index (or tag) file of language objects found in source files that allows these items to be quickly and easily located by a text editor or other utility. I recommend you to use [Exuberant Ctags](http://ctags.sourceforge.net/).
+
+*To use this distribution with less bugs, please get more suggestions from [here](https://github.com/kepbod/ivim/wiki/Tips-for-ivim)*
 
 ## Installation
 
@@ -44,6 +76,7 @@ bash $HOME/ivim/setup.sh -n
 ```
 
 ## Configuration
+
 There are some options you could set through `.vimrc` to configure ivim:
 * g:ivim_user -- your username
 * g:ivim_email -- your email
@@ -51,38 +84,6 @@ There are some options you could set through `.vimrc` to configure ivim:
 * g:ivim_fancy_font -- using fancy font or not
 * g:ivim_show_number -- showing number or not
 * g:ivim_bundle_groups -- plugin groups
-
-## Requirements
-
-**Vim**
-
- * This distribution is adapted to both [Vim](http://www.vim.org/download.php) and [MacVim](http://www.vim.org/download.php#mac)/[gVim](http://www.vim.org/download.php#pc). Remember that the Vim/MacVim/gVim version should be 7.3+, or errors would occur!
-
-**Git**
-
- * All the installations are based on [Git](http://git-scm.com/) which is a famous distributed revision control system. If you use Windows, you may need install [msysgit](http://msysgit.github.com//).
-
-**Ctags**
-
- * Ctags generates an index (or tag) file of language objects found in source files that allows these items to be quickly and easily located by a text editor or other utility. I recommend you to use [Exuberant Ctags](http://ctags.sourceforge.net/).
-
-*To use this distribution with less bugs, please get more suggestions from [here](https://github.com/kepbod/ivim/wiki/Tips-for-ivim)*
-
-## Features
-
-***Beautiful***
-
- * Use lots of famous colorschemes to make your eyes feel comfortable in both Vim and MacVim/gVim.
-
-    * [Hybrid](https://github.com/w0ng/vim-hybrid)(default)
-    * [Solarized](https://github.com/altercation/vim-colors-solarized)
-    * [Base16](https://github.com/chriskempson/base16-vim)
-
-***Efficient***
-
- * Make using Vim more convenient and faster, and lots of useful plugins (such as [Neocomplcache](https://github.com/Shougo/neocomplcache), [NERD_commenter](https://github.com/scrooloose/nerdcommenter), [Syntastic](https://github.com/scrooloose/syntastic)) confirm a better performance of Vim.
-
- * To view the full plugin list, please consult [here](https://github.com/kepbod/ivim/blob/master/vimrc#L132)
 
 *This distribution is completely customisable using a `~/.vimrc.local`, `~/.gvimrc.local` and `~/.vimrc.bundles.local`!*
 
