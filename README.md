@@ -14,7 +14,7 @@
 
 ***Beautiful***
 
-![snapshot](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot.tiff)
+![snapshot](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot.jpg)
 
  * Use lots of famous colorschemes to make your eyes feel comfortable in both Vim and MacVim/gVim.
 
