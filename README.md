@@ -82,6 +82,8 @@ There are some options you could set through `.vimrc` to configure ivim:
 
  * Make using Vim more convenient and faster, and lots of useful plugins (such as [Neocomplcache](https://github.com/Shougo/neocomplcache), [NERD_commenter](https://github.com/scrooloose/nerdcommenter), [Syntastic](https://github.com/scrooloose/syntastic)) confirm a better performance of Vim.
 
+ * To view the full plugin list, please refer to [here](https://github.com/kepbod/ivim/blob/master/vimrc#L132)
+
 *This distribution is completely customisable using a `~/.vimrc.local`, `~/.gvimrc.local` and `~/.vimrc.bundles.local`!*
 
 ## Vim Tips
