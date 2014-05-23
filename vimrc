@@ -8,7 +8,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.0 beta
 "   Created: 2012-01-20
-"   Last Modified: 2014-04-19
+"   Last Modified: 2014-05-23
 "
 "   Sections:
 "     -> ivim Setting
@@ -166,6 +166,7 @@ if count(g:ivim_bundle_groups, 'enhance') " Vim enhancement
     NeoBundle 'sickill/vim-pasta' " Vim pasta
     NeoBundle 'Keithbsmiley/investigate.vim' " Helper
     NeoBundle 'wikitopian/hardmode' " Hard mode
+    NeoBundle 'wellle/targets.vim' " Text objects
 endif
 
 if count(g:ivim_bundle_groups, 'move') " Moving
