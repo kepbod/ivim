@@ -8,7 +8,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.0 beta
 "   Created: 2012-01-20
-"   Last Modified: 2014-05-23
+"   Last Modified: 2014-06-10
 "
 "   Sections:
 "     -> ivim Setting
@@ -225,13 +225,7 @@ if count(g:ivim_bundle_groups, 'language') " Language Specificity
     NeoBundle 'tpope/vim-rails' " Rails
     NeoBundle 'mattn/emmet-vim' " Emmet
     NeoBundle 'LaTeX-Box-Team/LaTeX-Box' " LaTex
-    NeoBundle 'othree/html5.vim' " HTML5
-    NeoBundle 'tpope/vim-haml' " Haml, Sass, and SCSS
-    NeoBundle 'groenewege/vim-less' " LESS
-    NeoBundle 'pangloss/vim-javascript' " Javascript
-    NeoBundle 'kchmck/vim-coffee-script' " CoffeeScript
-    NeoBundle 'elzr/vim-json' " JSON
-    NeoBundle 'kepbod/php_indent' " PHP
+    NeoBundle 'sheerun/vim-polyglot' " Language Support
 endif
 
 if filereadable(expand($HOME . '/.vimrc.bundles.local')) " Load local bundles
