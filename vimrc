@@ -150,6 +150,8 @@ if count(g:ivim_bundle_groups, 'ui') " UI setting
     NeoBundle 'bling/vim-bufferline' " Buffer line
     NeoBundle 'nathanaelkane/vim-indent-guides' " Indent guides
     NeoBundle 'mhinz/vim-startify' " Start page
+    NeoBundle 'junegunn/goyo.vim' " Distraction-free
+    NeoBundle 'junegunn/limelight.vim' " Hyperfocus-writing
 endif
 
 if count(g:ivim_bundle_groups, 'enhance') " Vim enhancement
@@ -480,6 +482,16 @@ augroup END
 
 " Markdown
 augroup ft_markdown
+    function! GoyoBefore()
+        Limelight
+    endfunction
+
+    function! GoyoAfter()
+        Limelight!
+    endfunction
+
+    let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
+
     autocmd!
     " Use <localLeader>1/2/3/4/5/6 to add headings
     autocmd filetype markdown nnoremap <buffer> <LocalLeader>1 I# <ESC>
