@@ -169,13 +169,13 @@ if count(g:ivim_bundle_groups, 'enhance') " Vim enhancement
     NeoBundle 'Keithbsmiley/investigate.vim' " Helper
     NeoBundle 'wikitopian/hardmode' " Hard mode
     NeoBundle 'wellle/targets.vim' " Text objects
+    NeoBundle 'roman/golden-ratio' " Resize windows
 endif
 
 if count(g:ivim_bundle_groups, 'move') " Moving
     NeoBundle 'tpope/vim-unimpaired' " Pairs of mappings
     NeoBundle 'Lokaltog/vim-easymotion' " Easy motion
     NeoBundle 'bkad/CamelCaseMotion' " Camel case motion
-    NeoBundle 'spolu/dwm.vim' " Tiled window management
     NeoBundle 'majutsushi/tagbar' " Tag bar
     NeoBundle 'edsono/vim-matchit' " Match it
     NeoBundle 'Shougo/unite.vim' " Search engine
@@ -482,16 +482,6 @@ augroup END
 
 " Markdown
 augroup ft_markdown
-    function! GoyoBefore()
-        Limelight
-    endfunction
-
-    function! GoyoAfter()
-        Limelight!
-    endfunction
-
-    let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
-
     autocmd!
     " Use <localLeader>1/2/3/4/5/6 to add headings
     autocmd filetype markdown nnoremap <buffer> <LocalLeader>1 I# <ESC>
@@ -656,7 +646,7 @@ if count(g:ivim_bundle_groups, 'ui')
     let g:indent_guides_enable_on_vim_startup=1
     let g:indent_guides_guide_size=1
     let g:indent_guides_default_mapping=0
-    let g:indent_guides_exclude_filetypes=['help', 'nerdtree', 'startify']
+    let g:indent_guides_exclude_filetypes=['help', 'nerdtree', 'startify', 'markdown']
 
     " -> Startify
     let g:startify_session_dir=$HOME . '/.vim/session'
@@ -683,6 +673,15 @@ if count(g:ivim_bundle_groups, 'ui')
         hi StartifyPath    ctermfg=245
         hi StartifySlash   ctermfg=240
     endif
+
+    " -> Goyo & Limelight
+    function! GoyoBefore()
+        Limelight
+    endfunction
+    function! GoyoAfter()
+        Limelight!
+    endfunction
+    let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 
 endif
 
