@@ -150,8 +150,6 @@ if count(g:ivim_bundle_groups, 'ui') " UI setting
     NeoBundle 'bling/vim-bufferline' " Buffer line
     NeoBundle 'nathanaelkane/vim-indent-guides' " Indent guides
     NeoBundle 'mhinz/vim-startify' " Start page
-    NeoBundle 'junegunn/goyo.vim' " Distraction-free
-    NeoBundle 'junegunn/limelight.vim' " Hyperfocus-writing
 endif
 
 if count(g:ivim_bundle_groups, 'enhance') " Vim enhancement
@@ -673,15 +671,6 @@ if count(g:ivim_bundle_groups, 'ui')
         hi StartifyPath    ctermfg=245
         hi StartifySlash   ctermfg=240
     endif
-
-    " -> Goyo & Limelight
-    function! GoyoBefore()
-        Limelight
-    endfunction
-    function! GoyoAfter()
-        Limelight!
-    endfunction
-    let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 
 endif
 
