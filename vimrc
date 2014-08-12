@@ -8,7 +8,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.0 beta
 "   Created: 2012-01-20
-"   Last Modified: 2014-06-10
+"   Last Modified: 2014-08-12
 "
 "   Sections:
 "     -> ivim Setting
@@ -515,69 +515,6 @@ augroup END
 augroup ft_less
     autocmd!
     autocmd filetype less nnoremap <buffer> <Leader>r :w <BAR> !lessc % > %:t:r.css<CR><Space>
-augroup END
-
-" JSON
-augroup ft_json
-    autocmd!
-    " Disable concealing of double quotes
-    autocmd filetype json setlocal conceallevel=0
-    " Added folding of {...} and [...] blocks
-    autocmd filetype json setlocal foldmethod=syntax
-augroup END
-
-" Python
-augroup ft_python
-
-    " Indent Python in the Google way.
-    let s:maxoff = 50 " maximum number of lines to look backwards.
-    function! GetGooglePythonIndent(lnum)
-        " Indent inside parens.
-        " Align with the open paren unless it is at the end of the line.
-        " E.g.
-        "   open_paren_not_at_EOL(100,
-        "                         (200,
-        "                          300),
-        "                         400)
-        "   open_paren_at_EOL(
-        "       100, 200, 300, 400)
-        call cursor(a:lnum, 1)
-        let [par_line, par_col] = searchpairpos('(\|{\|\[', '', ')\|}\|\]', 'bW',
-                    \ "line('.') < " . (a:lnum - s:maxoff) . " ? dummy :"
-                    \ . " synIDattr(synID(line('.'), col('.'), 1), 'name')"
-                    \ . " =~ '\\(Comment\\|String\\)$'")
-        if par_line > 0
-            call cursor(par_line, 1)
-            if par_col != col("$") - 1
-                return par_col
-            endif
-        endif
-
-        " Delegate the rest to the original function.
-        return GetPythonIndent(a:lnum)
-
-    endfunction
-
-    let pyindent_nested_paren="&sw*2"
-    let pyindent_open_paren="&sw*2"
-
-    autocmd!
-    autocmd filetype python setlocal indentexpr=GetGooglePythonIndent(v:lnum)
-    autocmd filetype python let b:delimitMate_nesting_quotes = ['"']
-
-augroup END
-
-" Ruby
-augroup ft_ruby
-    autocmd!
-    autocmd filetype ruby setlocal shiftwidth=2 softtabstop=2
-augroup END
-
-" Perl
-augroup ft_perl
-    let perl_include_pod=1
-    let perl_extended_vars=1
-    let perl_sync_dist=250
 augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
