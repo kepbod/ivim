@@ -68,7 +68,6 @@ set autowrite " Write on make/shell commands
 set hidden " Turn on hidden"
 
 set history=1000 " Increase the lines of history
-set clipboard+=unnamed " Yanks go on clipboard instead
 set modeline " Turn on modeline
 set encoding=utf-8 " Set utf-8 encoding
 set completeopt+=longest " Optimize auto complete
