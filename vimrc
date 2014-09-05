@@ -6,9 +6,9 @@
 "   /_/ |___/_/_/ /_/ /_/
 "
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
-"   Version: 2.0 beta
+"   Version: 2.0
 "   Created: 2012-01-20
-"   Last Modified: 2014-08-12
+"   Last Modified: 2014-09-05
 "
 "   Sections:
 "     -> ivim Setting
