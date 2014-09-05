@@ -8,7 +8,7 @@
 /_/ |___/_/_/ /_/ /_/  
 ```
 
-**Version: 2.0 beta**
+**Version: 2.0**
 
 ## Features
 
@@ -116,7 +116,7 @@ There are some options you could set through `.vimrc` to configure ivim:
 * [Vim_Tips_Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki) is an excellent website, and you can learn much from it.
 * [Vimcasts](http://vimcasts.org) publishes free screencasts about Vim. It's useful and interesting! Believe me!
 
-**Hope You Enjoy Vimming**
+**Hope You Enjoy Vimming!!!**
 
 ## License
 
