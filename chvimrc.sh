@@ -39,20 +39,20 @@ create_symlinks() {
 
     endpath="$app_dir"
 
-    lnif "$endpath/.vimrc"              "$HOME/.vimrc"
+    lnif "$endpath/vimrc"              "$HOME/.vimrc"
     lnif "$endpath/.vim"                "$HOME/.vim"
 
     # Useful for fork maintainers
-    if [ -e "$endpath/.vimrc.local" ]; then
-        ln -sf "$endpath/.vimrc.local" "$HOME/.vimrc.local"
+    if [ -e "$endpath/vimrc.local" ]; then
+        ln -sf "$endpath/vimrc.local" "$HOME/.vimrc.local"
     fi
 
-    if [ -e "$endpath/.gvimrc.local" ]; then
-        ln -sf "$endpath/.gvimrc.local" "$HOME/.gvimrc.local"
+    if [ -e "$endpath/gvimrc.local" ]; then
+        ln -sf "$endpath/gvimrc.local" "$HOME/.gvimrc.local"
     fi
 
-    if [ -e "$endpath/.vimrc.bundles.local" ]; then
-        ln -sf "$endpath/.vimrc.bundles.local" "$HOME/.vimrc.bundles.local"
+    if [ -e "$endpath/vimrc.bundles.local" ]; then
+        ln -sf "$endpath/vimrc.bundles.local" "$HOME/.vimrc.bundles.local"
     fi
 
     ret="$?"
@@ -101,6 +101,6 @@ case $1 in
         create_symlinks
         ;;
     *)
-        echo 'input: vimrc, vimrcVundle or vimrcVundle'
+        echo 'input: vimrc, vimrcVundle or vimrcivim'
         ;;
 esac
