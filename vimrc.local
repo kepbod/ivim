@@ -1,0 +1,14 @@
+" local settings {
+
+" ivim user setting
+let g:ivim_user='houzy' " User name
+let g:ivim_email='h-zy2008@hotmail.com' " User email
+let g:ivim_github='https://github.com/houzy' " User github
+" ivim UI setting
+let g:ivim_fancy_font=1 " Enable using fancy font
+let g:ivim_show_number=1 " Enable showing number
+" ivim plugin setting
+let g:ivim_bundle_groups=['ui', 'enhance', 'move', 'navigate',
+            \'complete', 'compile', 'git', 'language']
+
+" }
