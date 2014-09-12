@@ -49,7 +49,7 @@ backup() {
 install() {
     color_print "Cloning ivim..."
     rm -rf $HOME/ivim
-    git clone git://github.com/kepbod/ivim.git $HOME/ivim
+    git clone https://github.com/houzy/ivim.git $HOME/ivim
     ln -sf $HOME/ivim/vimrc $HOME/.vimrc
     mkdir $HOME/ivim/.vim
     ln -sf $HOME/ivim/.vim $HOME/.vim
