@@ -50,7 +50,9 @@ install() {
     color_print "Cloning ivim..."
     rm -rf $HOME/ivim
     git clone git://github.com/kepbod/ivim.git $HOME/ivim
-    ln -s $HOME/ivim/vimrc $HOME/.vimrc
+    ln -sf $HOME/ivim/vimrc $HOME/.vimrc
+    mkdir $HOME/ivim/.vim
+    ln -sf $HOME/ivim/.vim $HOME/.vim
     color_print "Installing NeoBundle..."
     git clone git://github.com/Shougo/neobundle.vim.git $HOME/.vim/bundle/neobundle.vim
     color_print "Installing plugins using NeoBundle..."
