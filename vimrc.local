@@ -1,5 +1,20 @@
 " local settings {
 
+set encoding=utf-8
+set termencoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,ucs-bom,chinese,taiwan,japan,korea,latin1
+set fileformat=unix
+
+set mouse=a                 " Automatically enable mouse usage
+set mousehide               " Hide the mouse cursor while typing
+set virtualedit&            " Reset option to its default value.
+set whichwrap-=h
+set whichwrap-=l
+
+" set t_Co&
+" colorscheme ron
+
 " ivim user setting
 let g:ivim_user='houzy' " User name
 let g:ivim_email='h-zy2008@hotmail.com' " User email
@@ -10,5 +25,12 @@ let g:ivim_show_number=1 " Enable showing number
 " ivim plugin setting
 let g:ivim_bundle_groups=['ui', 'enhance', 'move', 'navigate',
             \'complete', 'compile', 'git', 'language']
+
+" ctrl+c default function: leave insert mode, similar to esc
+vmap <C-C> "+y
+
+" syntastic
+let g:syntastic_check_on_open = 0
+let g:syntastic_loc_list_height = 4
 
 " }
