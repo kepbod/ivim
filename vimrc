@@ -297,7 +297,7 @@ Bundle 'AndrewRadev/splitjoin.vim'
 if has('python')
     Bundle 'mutewinter/swap-parameters'
 endif
-Bundle 'xuhdev/SingleCompile'
+" "" Bundle 'xuhdev/SingleCompile'
 " Automatic Helper
 Bundle 'Shougo/neocomplcache'
 " Bundle 'Raimondi/delimitMate'
@@ -422,21 +422,21 @@ function! ToggleRelativenumber()
 endfunction
 nnoremap <Leader>n :call ToggleRelativenumber()<CR>
 
-set formatoptions+=rnlmM " Optimize format options
+" set formatoptions+=rnlmM " Optimize format options
 set wrap " Set wrap
 set textwidth=80 " Change text width
 set colorcolumn=+1 " Indicate text border
-set list " Show these tabs and spaces and so on
-set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮ " Change listchars
-set linebreak " Wrap long lines at a blank
-set showbreak=↪  " Change wrap line break
-set fillchars=diff:⣿,vert:│ " Change fillchars
+" set list " Show these tabs and spaces and so on
+" set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮ " Change listchars
+" set linebreak " Wrap long lines at a blank
+" set showbreak=↪  " Change wrap line break
+" set fillchars=diff:⣿,vert:│ " Change fillchars
 " Only show trailing whitespace when not in insert mode
-augroup trailing
-    autocmd!
-    autocmd InsertEnter * :set listchars-=trail:⌴
-    autocmd InsertLeave * :set listchars+=trail:⌴
-augroup END
+" augroup trailing
+"    autocmd!
+"    autocmd InsertEnter * :set listchars-=trail:⌴
+"    autocmd InsertLeave * :set listchars+=trail:⌴
+" augroup END
 
 " Set gVim UI setting
 if has('gui_running')
