@@ -35,11 +35,11 @@
 "------------------------------------------------
 
 " ivim user setting
-let g:ivim_user='Xiao-Ou Zhang' " User name
-let g:ivim_email='kepbod@gmail.com' " User email
+let g:ivim_user='Hu Xinbang' " User name
+let g:ivim_email='huxinbang@gmail.com' " User email
 let g:ivim_github='https://github.com/kepbod' " User github
 " ivim UI setting
-let g:ivim_fancy_font=1 " Enable using fancy font
+let g:ivim_fancy_font=0 " Enable using fancy font
 let g:ivim_show_number=1 " Enable showing number
 " ivim plugin setting
 let g:ivim_bundle_groups=['ui', 'enhance', 'move', 'navigate',
@@ -208,7 +208,7 @@ endif
 
 if count(g:ivim_bundle_groups, 'compile') " Compiling
     NeoBundle 'scrooloose/syntastic' " Syntax checking
-    NeoBundle 'xuhdev/SingleCompile' " Single compile
+    " NeoBundle 'xuhdev/SingleCompile' " Single compile
 endif
 
 if count(g:ivim_bundle_groups, 'git') " Git
@@ -838,3 +838,20 @@ if has('gui_running')
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" keybindings  for huxinbang@gmail.com
+
+" Tab configuration
+map <leader>tn :tabnew! %<cr>
+map <leader>te :tabedit 
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove 
+
+" When pressing <leader>cd switch to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
