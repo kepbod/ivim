@@ -49,7 +49,7 @@ backup() {
 install() {
     color_print "Cloning ivim..."
     rm -rf $HOME/ivim
-    git clone git://github.com/kepbod/ivim.git $HOME/ivim
+    git clone git://github.com/huxinbang/ivim.git $HOME/ivim
     ln -s $HOME/ivim/vimrc $HOME/.vimrc
     color_print "Installing NeoBundle..."
     git clone git://github.com/Shougo/neobundle.vim.git $HOME/.vim/bundle/neobundle.vim
