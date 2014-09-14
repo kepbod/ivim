@@ -15,6 +15,80 @@ set whichwrap-=l
 " set t_Co&
 " colorscheme ron
 
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'tacahiroy/ctrlp-funky'
+NeoBundle 'vim-scripts/VisIncr'
+" an excellent calendar app, has the same command with calendar-vim
+"NeoBundle 'itchyny/calendar.vim'
+
+" orgmode
+NeoBundle 'hsitz/VimOrganizer'
+NeoBundle 'mattn/calendar-vim'
+NeoBundle 'chrisbra/NrrwRgn'
+NeoBundle 'vim-scripts/utl.vim'
+
+" Identify platform {
+silent function! OSX()
+    return has('macunix')
+endfunction
+silent function! LINUX()
+    return has('unix') && !has('macunix') && !has('win32unix')
+endfunction
+silent function! WINDOWS()
+    return  (has('win16') || has('win32') || has('win64'))
+endfunction
+" }
+
+" ctrlp {
+if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
+    let g:ctrlp_working_path_mode = 'ra'
+    nnoremap <silent> <D-t> :CtrlP<CR>
+    nnoremap <silent> <D-r> :CtrlPMRU<CR>
+    let g:ctrlp_custom_ignore = {
+                \ 'dir':  '\.git$\|\.hg$\|\.svn$',
+                \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+
+    " On Windows use "dir" as fallback command.
+    if WINDOWS()
+        let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
+    elseif executable('ag')
+        let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
+    elseif executable('ack-grep')
+        let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
+    elseif executable('ack')
+        let s:ctrlp_fallback = 'ack %s --nocolor -f'
+    else
+        let s:ctrlp_fallback = 'find %s -type f'
+    endif
+    let g:ctrlp_user_command = {
+                \ 'types': {
+                \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+                \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+                \ },
+                \ 'fallback': s:ctrlp_fallback
+                \ }
+
+    if isdirectory(expand("~/.vim/bundle/ctrlp-funky/"))
+        " CtrlP extensions
+        let g:ctrlp_extensions = ['funky']
+
+        "funky
+        nnoremap <Leader>fu :CtrlPFunky<Cr>
+    endif
+endif
+"}
+
+" vim orgmode: VimOrganizer
+au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
+au BufEnter *.org call org#SetOrgFileType()
+
+" NrrwRgn
+" open the narrowed window as a vertical split buffer
+let g:nrrw_rgn_vert = 0
+
+" emmet-vim To remap the default <C-Y> leader
+let g:user_emmet_leader_key='<C-Z>'
+
 " ivim user setting
 let g:ivim_user='houzy' " User name
 let g:ivim_email='h-zy2008@hotmail.com' " User email
