@@ -8,7 +8,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.0
 "   Created: 2012-01-20
-"   Last Modified: 2014-09-05
+"   Last Modified: 2014-09-19
 "
 "   Sections:
 "     -> ivim Setting
@@ -639,6 +639,22 @@ if count(g:ivim_bundle_groups, 'enhance')
         endif
     endfunction
     nnoremap <silent> <LocalLeader><Space> :call IsWhiteLine()<CR>
+
+    " -> Multiple cursors
+    " Called once right before you start selecting multiple cursors
+    function! Multiple_cursors_before()
+        if g:ivim_completion_engine=='neocomplete'
+            exe 'NeoCompleteLock'
+        else
+            exe 'NeoComplCacheLock'
+    endfunction
+    " Called once only when the multiple selection is canceled (default <Esc>)
+    function! Multiple_cursors_after()
+        if g:ivim_completion_engine=='neocomplete'
+            exe 'NeoCompleteUnlock'
+        else
+            exe 'NeoComplCacheUnlock'
+    endfunction
 
     " -> Undo tree
     nnoremap <Leader>u :UndotreeToggle<CR>
