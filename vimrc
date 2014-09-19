@@ -647,6 +647,7 @@ if count(g:ivim_bundle_groups, 'enhance')
             exe 'NeoCompleteLock'
         else
             exe 'NeoComplCacheLock'
+        endif
     endfunction
     " Called once only when the multiple selection is canceled (default <Esc>)
     function! Multiple_cursors_after()
@@ -654,6 +655,7 @@ if count(g:ivim_bundle_groups, 'enhance')
             exe 'NeoCompleteUnlock'
         else
             exe 'NeoComplCacheUnlock'
+        endif
     endfunction
 
     " -> Undo tree
