@@ -157,7 +157,7 @@ if count(g:ivim_bundle_groups, 'enhance') " Vim enhancement
     NeoBundle 'tpope/vim-abolish' " Abolish
     NeoBundle 'tpope/vim-speeddating' " Speed dating
     NeoBundle 'tpope/vim-repeat' " Repeat
-    NeoBundle 'terryma/vim-multiple-cursors' " Multiple cursors
+    NeoBundle 'kristijanhusak/vim-multiple-cursors' " Multiple cursors
     NeoBundle 'mbbill/undotree' " Undo tree
     NeoBundle 'tpope/vim-surround' " Surround
     NeoBundle 'godlygeek/tabular' " Tabular
