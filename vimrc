@@ -99,7 +99,8 @@ function! InitializeDirectories()
         let directory=parent.'/'.prefix.'/'.dirname.'/'
         if !isdirectory(directory)
             if exists('*mkdir')
-                call mkdir(directory, 'p')
+                let dir = substitute(directory, "/$", "", "")
+                call mkdir(dir, 'p')
             else
                 echo 'Warning: Unable to create directory: '.directory
             endif
