@@ -81,12 +81,13 @@ There are some options you could set through `.vimrc` to configure ivim:
 * g:ivim_user -- your username
 * g:ivim_email -- your email
 * g:ivim_github -- your github
+* g:ivim_default_scheme -- color settings adapted for hybrid
 * g:ivim_fancy_font -- using fancy font or not
 * g:ivim_show_number -- showing number or not
 * g:ivim_autocomplete -- autocomplete engine (NEO: neocomplete/neocomplcache/neosnippet, YCM: YouCompleteMe/UltiSnips)
 * g:ivim_bundle_groups -- plugin groups ('ui', 'enhance', 'move', 'navigate', 'complete', 'compile', 'git', 'language')
 
-*This distribution is completely customisable using a `~/.vimrc.local`, `~/.gvimrc.local` and `~/.vimrc.bundles.local`!*
+*This distribution is completely customisable using a `~/.vimrc.local`, `~/.gvimrc.local`, `~/.vimrc.ivim.local` and `~/.vimrc.bundles.local`!*
 
 ## Vim Tips
 

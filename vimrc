@@ -8,7 +8,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.0
 "   Created: 2012-01-20
-"   Last Modified: 2014-09-26
+"   Last Modified: 2014-09-29
 "
 "   Sections:
 "     -> ivim Setting
@@ -39,6 +39,7 @@ let g:ivim_user='Xiao-Ou Zhang' " User name
 let g:ivim_email='kepbod@gmail.com' " User email
 let g:ivim_github='https://github.com/kepbod' " User github
 " ivim UI setting
+let g:ivim_default_scheme=1 " Enable color settings adapted for hybrid
 let g:ivim_fancy_font=1 " Enable using fancy font
 let g:ivim_show_number=1 " Enable showing number
 " ivim Autocomplete setting (YCM or NEO)
@@ -46,6 +47,11 @@ let g:ivim_autocomplete='NEO'
 " ivim plugin setting
 let g:ivim_bundle_groups=['ui', 'enhance', 'move', 'navigate',
             \'complete', 'compile', 'git', 'language']
+
+" Customise ivim settings for personal usage
+if filereadable(expand($HOME . '/.vimrc.ivim.local'))
+    source $HOME/.vimrc.ivim.local
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -589,12 +595,10 @@ command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
 if count(g:ivim_bundle_groups, 'ui')
 
     " -> Indent Guides
-    if !has('gui_running')
-        augroup indent_guides
-            let g:indent_guides_auto_colors=0
-            autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=235
-            autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=235
-        augroup END
+    if !has('gui_running') && g:ivim_default_scheme
+        let g:indent_guides_auto_colors=0
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=235
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=235
     endif
     let g:indent_guides_enable_on_vim_startup=1
     let g:indent_guides_guide_size=1
