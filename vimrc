@@ -152,14 +152,14 @@ if count(g:ivim_bundle_groups, 'ui') " UI setting
 endif
 
 if count(g:ivim_bundle_groups, 'enhance') " Vim enhancement
-    NeoBundle 'Raimondi/delimitMate' " Closing of quotes
+    " NeoBundle 'Raimondi/delimitMate' " Closing of quotes
     NeoBundle 'scrooloose/nerdcommenter' " NERD commenter
-    NeoBundle 'tpope/vim-abolish' " Abolish
-    NeoBundle 'tpope/vim-speeddating' " Speed dating
+    " NeoBundle 'tpope/vim-abolish' " Abolish
+    " NeoBundle 'tpope/vim-speeddating' " Speed dating
     NeoBundle 'tpope/vim-repeat' " Repeat
     NeoBundle 'terryma/vim-multiple-cursors' " Multiple cursors
     NeoBundle 'mbbill/undotree' " Undo tree
-    NeoBundle 'tpope/vim-surround' " Surround
+    " NeoBundle 'tpope/vim-surround' " Surround
     NeoBundle 'godlygeek/tabular' " Tabular
     NeoBundle 'AndrewRadev/splitjoin.vim' " Splitjoin
     NeoBundle 'sickill/vim-pasta' " Vim pasta
@@ -207,7 +207,7 @@ if count(g:ivim_bundle_groups, 'complete') " Completion
 endif
 
 if count(g:ivim_bundle_groups, 'compile') " Compiling
-    NeoBundle 'scrooloose/syntastic' " Syntax checking
+    " NeoBundle 'scrooloose/syntastic' " Syntax checking
     " NeoBundle 'xuhdev/SingleCompile' " Single compile
 endif
 
