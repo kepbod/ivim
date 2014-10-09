@@ -614,9 +614,9 @@ endif
 if count(g:ivim_bundle_groups, 'enhance')
 
     " -> delimitMate
-    let delimitMate_expand_cr=1
-    let delimitMate_expand_space=1
-    let delimitMate_balance_matchpairs=1
+    " let delimitMate_expand_cr=1
+    " let delimitMate_expand_space=1
+    " let delimitMate_balance_matchpairs=1
 
     " -> NERD Commenter
     let NERDCommentWholeLinesInVMode=2
@@ -738,9 +738,9 @@ if count(g:ivim_bundle_groups, 'complete')
         let g:neocomplete#enable_auto_delimiter=1
         " Use <C-E> to close popup
         inoremap <expr><C-E> neocomplete#cancel_popup()
-        inoremap <expr><CR> delimitMate#WithinEmptyPair() ?
-                    \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
-                    \ pumvisible() ? neocomplete#close_popup() : "\<CR>"
+        " inoremap <expr><CR> delimitMate#WithinEmptyPair() ?
+                    " \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
+                    " \ pumvisible() ? neocomplete#close_popup() : "\<CR>"
     else
         let g:neocomplcache_enable_at_startup=1
         let g:neocomplcache_temporary_dir=$HOME . '/.vim/cache/neocomplcache'
@@ -748,9 +748,9 @@ if count(g:ivim_bundle_groups, 'complete')
         let g:neocomplcache_enable_fuzzy_completion=1
         " Use <C-E> to close popup
         inoremap <expr><C-E> neocomplcache#cancel_popup()
-        inoremap <expr><CR> delimitMate#WithinEmptyPair() ?
-                    \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
-                    \ pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+        " inoremap <expr><CR> delimitMate#WithinEmptyPair() ?
+                    " \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
+                    " \ pumvisible() ? neocomplcache#close_popup() : "\<CR>"
     endif
 
     " -> Neosnippet
@@ -853,5 +853,5 @@ map <leader>tm :tabmove
 map <leader>cd :cd %:p:h<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+set fencs=utf8,gbk,gb2312,gb18030,cp936 
 
