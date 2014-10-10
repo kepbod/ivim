@@ -136,10 +136,12 @@ if has('vim_starting')
     set runtimepath+=$HOME/.vim/bundle/neobundle.vim/
 endif
 
-call neobundle#rc(expand($HOME . '/.vim/bundle/'))
+call neobundle#begin(expand($HOME . '/.vim/bundle/'))
 
 " Use NeoBundle to manager plugins
 NeoBundleFetch 'Shougo/neobundle.vim'
+
+call neobundle#end()
 
 if count(g:ivim_bundle_groups, 'ui') " UI setting
     NeoBundle 'w0ng/vim-hybrid' " Colorscheme hybrid
