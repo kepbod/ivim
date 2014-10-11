@@ -146,7 +146,7 @@ if has('vim_starting')
     let g:neobundle#install_process_timeout=600
 endif
 
-call neobundle#rc(expand($HOME . '/.vim/bundle/'))
+call neobundle#begin(expand($HOME . '/.vim/bundle/'))
 
 " Use NeoBundle to manager plugins
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -159,6 +159,8 @@ if count(g:ivim_bundle_groups, 'ui') " UI setting
     NeoBundle 'bling/vim-bufferline' " Buffer line
     NeoBundle 'nathanaelkane/vim-indent-guides' " Indent guides
     NeoBundle 'mhinz/vim-startify' " Start page
+    NeoBundle 'junegunn/goyo.vim' " Distraction-free
+    NeoBundle 'junegunn/limelight.vim' " Hyperfocus-writing
 endif
 
 if count(g:ivim_bundle_groups, 'enhance') " Vim enhancement
@@ -254,6 +256,8 @@ endif
 if filereadable(expand($HOME . '/.vimrc.bundles.local')) " Load local bundles
     source $HOME/.vimrc.bundles.local
 endif
+
+call neobundle#end()
 
 filetype plugin indent on " Required!
 
@@ -631,6 +635,15 @@ if count(g:ivim_bundle_groups, 'ui')
         hi StartifyPath    ctermfg=245
         hi StartifySlash   ctermfg=240
     endif
+
+    " -> Goyo & Limelight
+    function! GoyoBefore()
+        Limelight
+    endfunction
+    function! GoyoAfter()
+        Limelight!
+    endfunction
+    let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 
 endif
 
