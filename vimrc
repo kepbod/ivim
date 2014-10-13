@@ -8,7 +8,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.0
 "   Created: 2012-01-20
-"   Last Modified: 2014-09-29
+"   Last Modified: 2014-10-13
 "
 "   Sections:
 "     -> ivim Setting
@@ -666,13 +666,15 @@ if count(g:ivim_bundle_groups, 'enhance')
             call NERDComment('n', 'sexy')
             if (line('.')==oldlinenumber)
                 call NERDComment('n', 'append')
+                normal! x
             else
                 normal! k
                 startinsert!
             endif
         else
-            normal! A
+            normal! A 
             call NERDComment('n', 'append')
+            normal! x
         endif
     endfunction
     nnoremap <silent> <LocalLeader><Space> :call IsWhiteLine()<CR>
