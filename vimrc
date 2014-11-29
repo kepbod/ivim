@@ -681,21 +681,23 @@ if count(g:ivim_bundle_groups, 'enhance')
 
     " -> Multiple cursors
     " Called once right before you start selecting multiple cursors
-    function! Multiple_cursors_before()
-        if g:ivim_completion_engine=='neocomplete'
-            exe 'NeoCompleteLock'
-        else
-            exe 'NeoComplCacheLock'
-        endif
-    endfunction
-    " Called once only when the multiple selection is canceled (default <Esc>)
-    function! Multiple_cursors_after()
-        if g:ivim_completion_engine=='neocomplete'
-            exe 'NeoCompleteUnlock'
-        else
-            exe 'NeoComplCacheUnlock'
-        endif
-    endfunction
+    if g:ivim_autocomplete=='NEO'
+        function! Multiple_cursors_before()
+            if g:ivim_completion_engine=='neocomplete'
+                exe 'NeoCompleteLock'
+            else
+                exe 'NeoComplCacheLock'
+            endif
+        endfunction
+        " Called once only when the multiple selection is canceled (default <Esc>)
+        function! Multiple_cursors_after()
+            if g:ivim_completion_engine=='neocomplete'
+                exe 'NeoCompleteUnlock'
+            else
+                exe 'NeoComplCacheUnlock'
+            endif
+        endfunction
+    endif
 
     " -> Undo tree
     nnoremap <Leader>u :UndotreeToggle<CR>
