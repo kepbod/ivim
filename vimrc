@@ -179,6 +179,7 @@ if count(g:ivim_bundle_groups, 'enhance') " Vim enhancement
     NeoBundle 'wikitopian/hardmode' " Hard mode
     NeoBundle 'wellle/targets.vim' " Text objects
     NeoBundle 'roman/golden-ratio' " Resize windows
+    NeoBundle 'chrisbra/vim-diff-enhanced' " Create better diffs
 endif
 
 if count(g:ivim_bundle_groups, 'move') " Moving
