@@ -8,7 +8,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.0
 "   Created: 2012-01-20
-"   Last Modified: 2014-10-13
+"   Last Modified: 2015-04-10
 "
 "   Sections:
 "     -> ivim Setting
@@ -248,6 +248,7 @@ endif
 
 if count(g:ivim_bundle_groups, 'language') " Language Specificity
     NeoBundle 'matthias-guenther/hammer.vim' " Markup
+    NeoBundle 'fatih/vim-go' " Golang
     NeoBundle 'tpope/vim-rails' " Rails
     NeoBundle 'mattn/emmet-vim' " Emmet
     NeoBundle 'LaTeX-Box-Team/LaTeX-Box' " LaTex
