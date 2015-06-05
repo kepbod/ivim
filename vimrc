@@ -141,7 +141,6 @@ call neobundle#begin(expand($HOME . '/.vim/bundle/'))
 " Use NeoBundle to manager plugins
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-call neobundle#end()
 
 if count(g:ivim_bundle_groups, 'ui') " UI setting
     NeoBundle 'w0ng/vim-hybrid' " Colorscheme hybrid
@@ -232,6 +231,8 @@ endif
 if filereadable(expand($HOME . '/.vimrc.bundles.local')) " Load local bundles
     source $HOME/.vimrc.bundles.local
 endif
+
+call neobundle#end()
 
 filetype plugin indent on " Required!
 
