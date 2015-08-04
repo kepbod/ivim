@@ -164,7 +164,6 @@ if count(g:ivim_bundle_groups, 'ui') " UI setting
 endif
 
 if count(g:ivim_bundle_groups, 'enhance') " Vim enhancement
-    NeoBundle 'wincent/terminus' " Enhance integration with the terminal
     NeoBundle 'Raimondi/delimitMate' " Closing of quotes
     NeoBundle 'scrooloose/nerdcommenter' " NERD commenter
     NeoBundle 'tpope/vim-abolish' " Abolish
