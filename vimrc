@@ -8,7 +8,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.0
 "   Created: 2012-01-20
-"   Last Modified: 2015-04-10
+"   Last Modified: 2015-08-07
 "
 "   Sections:
 "     -> ivim Setting
@@ -185,6 +185,7 @@ endif
 if count(g:ivim_bundle_groups, 'move') " Moving
     NeoBundle 'tpope/vim-unimpaired' " Pairs of mappings
     NeoBundle 'Lokaltog/vim-easymotion' " Easy motion
+    NeoBundle 'unblevable/quick-scope' " Quick scope
     NeoBundle 'bkad/CamelCaseMotion' " Camel case motion
     NeoBundle 'majutsushi/tagbar' " Tag bar
     NeoBundle 'edsono/vim-matchit' " Match it
