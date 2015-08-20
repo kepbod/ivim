@@ -8,7 +8,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.0
 "   Created: 2012-01-20
-"   Last Modified: 2015-08-07
+"   Last Modified: 2015-08-20
 "
 "   Sections:
 "     -> ivim Setting
@@ -714,6 +714,10 @@ if count(g:ivim_bundle_groups, 'enhance')
 
     " -> investigate.vim
     nnoremap K :call investigate#Investigate()<CR>
+    let g:investigate_use_dash=1
+
+    " -> EnhancedDiff
+    let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
 
 endif
 
