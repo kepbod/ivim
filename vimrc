@@ -8,7 +8,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.0
 "   Created: 2012-01-20
-"   Last Modified: 2015-08-20
+"   Last Modified: 2015-09-12
 "
 "   Sections:
 "     -> ivim Setting
@@ -862,20 +862,6 @@ if count(g:ivim_bundle_groups, 'compile')
     " -> Singlecompile
     nnoremap <Leader>r :SingleCompileRun<CR>
     let g:SingleCompile_showquickfixiferror=1
-    function! ChoosePythonCompiler()
-        echo 'Please choose python compiler:\n'
-        echo '1. Python2+\n'
-        echo '2. Python3+\n'
-        let flag=getchar()
-        if flag==49
-            call SingleCompile#ChooseCompiler('python', 'python')
-            execute 'SingleCompileRun'
-        elseif flag==50
-            call SingleCompile#ChooseCompiler('python', 'python3')
-            execute 'SingleCompileRun'
-        endif
-    endfunction
-    autocmd filetype python nnoremap <buffer> <Leader>r :call ChoosePythonCompiler()<CR>
 
 endif
 
