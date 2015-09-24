@@ -23,7 +23,7 @@
 >
 > `bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh -O -) -m`
 >
-> See more information from https://raw.githubusercontent.com/kepbod/ivim/master/ivim_mini
+> See more information from https://github.com/kepbod/ivim/blob/master/vimrc_mini
 
 
 ## Features
