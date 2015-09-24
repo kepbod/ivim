@@ -111,13 +111,11 @@ NeoBundle 'majutsushi/tagbar' " Tag bar
 NeoBundle 'scrooloose/nerdtree' " NERD tree
 if has('lua')
     NeoBundle 'Shougo/neocomplete.vim' " Auto completion framework
-    let g:ivim_completion_engine='neocomplete'
 else
     NeoBundle 'Shougo/neocomplcache.vim' " Auto completion framework
-    let g:ivim_completion_engine='neocomplcache'
 endif
 NeoBundle 'Shougo/neosnippet.vim' " Snippet engine
-NeoBundle 'honza/vim-snippets' " Snippets
+NeoBundle 'Shougo/neosnippet-snippets' " Snippets
 NeoBundle 'scrooloose/syntastic' " Syntax checking
 NeoBundle 'airblade/vim-gitgutter' " Git diff sign
 NeoBundle 'sheerun/vim-polyglot' " Language Support
@@ -213,6 +211,8 @@ set sidescrolloff=10 " Minimal number of screen columns to keep away from cursor
 
 set showmatch " Show matching brackets/parenthesis
 set matchtime=2 " Decrease the time to blink
+
+set number " Show line numbers
 
 set formatoptions+=rnlmM " Optimize format options
 set wrap " Set wrap
@@ -421,7 +421,7 @@ nnoremap <silent> <LocalLeader><Space> :call IsWhiteLine()<CR>
 " -> Multiple cursors
 " Called once right before you start selecting multiple cursors
 function! Multiple_cursors_before()
-    if g:ivim_completion_engine=='neocomplete'
+    if has('lua')
         exe 'NeoCompleteLock'
     else
         exe 'NeoComplCacheLock'
@@ -429,7 +429,7 @@ function! Multiple_cursors_before()
 endfunction
 " Called once only when the multiple selection is canceled (default <Esc>)
 function! Multiple_cursors_after()
-    if g:ivim_completion_engine=='neocomplete'
+    if has('lua')
         exe 'NeoCompleteUnlock'
     else
         exe 'NeoComplCacheUnlock'
@@ -460,7 +460,7 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 " Use Tab and S-Tab to select candidate
 inoremap <expr><Tab>  pumvisible() ? "\<C-N>" : "\<Tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
-if g:ivim_completion_engine=='neocomplete'
+if has('lua')
     let g:neocomplete#enable_at_startup=1
     let g:neocomplete#data_directory=$HOME . '/.vim/cache/neocomplete'
     let g:neocomplete#enable_auto_delimiter=1
@@ -482,18 +482,12 @@ else
 endif
 
 " -> Neosnippet
-" Disable default snippets
-let g:neosnippet#disable_runtime_snippets={'_':1}
-" Set information for snippets
-let g:neosnippet#enable_snipmate_compatibility=1
 " Use <C-K> to expand or jump snippets in insert mode
 imap <C-K> <Plug>(neosnippet_expand_or_jump)
 " Use <C-K> to replace TARGET within snippets in visual mode
 xmap <C-K> <Plug>(neosnippet_start_unite_snippet_target)
 " For snippet_complete marker
-if has('conceal')
-    set conceallevel=2 concealcursor=i
-endif
+set conceallevel=2 concealcursor=i
 
 " -> Syntastic
 let g:syntastic_check_on_open=1
