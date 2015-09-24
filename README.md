@@ -10,6 +10,22 @@
 
 **Version: 2.0**
 
+**New: You could install the minimum ivim now for fast and basic usage!!!**
+
+> ivim mini only supports terminal vim, and speeds up startup time through loading
+> fewer plugins.
+>
+> Install:
+>
+> `bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh) -m`
+>
+> or
+>
+> `bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh -O -) -m`
+>
+> See more information from https://raw.githubusercontent.com/kepbod/ivim/master/ivim_mini
+
+
 ## Features
 
 ***Beautiful***
