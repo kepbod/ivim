@@ -7,8 +7,9 @@
 "
 "   ivim mini (ivim for fast and basic usage)
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
+"   Version: 2.1
 "   Created: 2015-09-24
-"   Last Modified: 2015-09-24
+"   Last Modified: 2015-10-10
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -94,7 +95,7 @@ call neobundle#begin(expand($HOME . '/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Install plugins
-NeoBundle 'w0ng/vim-hybrid' " Colorscheme hybrid
+NeoBundle 'mrhooray/vim-hybrid' " Colorscheme hybrid
 NeoBundle 'bling/vim-airline' " Status line
 NeoBundle 'bling/vim-bufferline' " Buffer line
 NeoBundle 'nathanaelkane/vim-indent-guides' " Indent guides

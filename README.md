@@ -8,7 +8,7 @@
 /_/ |___/_/_/ /_/ /_/  
 ```
 
-**Version: 2.0**
+**Version: 2.1**
 
 **New: You could install the minimum ivim now for fast and basic usage!!!**
 
@@ -30,13 +30,15 @@
 
 ***Beautiful***
 
-![snapshot](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot.jpg)
+Use lots of famous colorschemes to make your eyes feel comfortable in both Vim and MacVim/gVim.
 
- * Use lots of famous colorschemes to make your eyes feel comfortable in both Vim and MacVim/gVim.
+ * [Hybrid](https://github.com/mrhooray/vim-hybrid)(default)
 
-    * [Hybrid](https://github.com/w0ng/vim-hybrid)(default)
-    * [Solarized](https://github.com/altercation/vim-colors-solarized)
-    * [Base16](https://github.com/chriskempson/base16-vim)
+![snapshot1](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot1.jpg)
+
+ * [Gruvbox](https://github.com/morhetz/gruvbox)
+
+![snapshot2](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot2.jpg)
 
 ***Efficient***
 
@@ -97,7 +99,7 @@ There are some options you could set through `.vimrc` to configure ivim:
 * g:ivim_user -- your username
 * g:ivim_email -- your email
 * g:ivim_github -- your github
-* g:ivim_default_scheme -- color settings adapted for hybrid
+* g:ivim_default_scheme -- color settings (hybrid or gruvbox)
 * g:ivim_fancy_font -- using fancy font or not
 * g:ivim_show_number -- showing number or not
 * g:ivim_autocomplete -- autocomplete engine (NEO: neocomplete/neocomplcache/neosnippet, YCM: YouCompleteMe/UltiSnips)
