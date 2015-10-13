@@ -1,35 +1,26 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta charset="UTF-8">
     <title>Ivim by kepbod</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Ivim</h1>
-        <p>I love Vim, and I also love modifying it to be more convenient and efficient. So I name it &quot;ivim&quot;!</p>
+    <section class="page-header">
+      <h1 class="project-name">Ivim</h1>
+      <h2 class="project-tagline">I love Vim, and I also love modifying it to be more convenient and efficient. So I name it &quot;ivim&quot;!</h2>
+      <a href="https://github.com/kepbod/ivim" class="btn">View on GitHub</a>
+      <a href="https://github.com/kepbod/ivim/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/kepbod/ivim/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-        <p class="view"><a href="https://github.com/kepbod/ivim">View the Project on GitHub <small>kepbod/ivim</small></a></p>
-
-
-        <ul>
-          <li><a href="https://github.com/kepbod/ivim/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/kepbod/ivim/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/kepbod/ivim">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>
-<a name="ivim---an-easy--highly-customizable-vim-configuration" class="anchor" href="#ivim---an-easy--highly-customizable-vim-configuration"><span class="octicon octicon-link"></span></a>ivim - An easy &amp; highly customizable vim configuration</h1>
+    <section class="main-content">
+      <h1>
+<a id="ivim---an-easy--highly-customizable-vim-configuration" class="anchor" href="#ivim---an-easy--highly-customizable-vim-configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>ivim - An easy &amp; highly customizable vim configuration</h1>
 
 <pre><code>    _       _          
    (_)   __(_)___ ___  
@@ -38,53 +29,80 @@
 /_/ |___/_/_/ /_/ /_/  
 </code></pre>
 
-<p><strong>Version: 2.0</strong></p>
+<p><strong>Version: 2.1</strong></p>
+
+<p><strong>New: You could install the minimum ivim now for fast and basic usage!!!</strong></p>
+
+<blockquote>
+<p>ivim mini only supports terminal vim, and speeds up startup time through loading
+fewer plugins.</p>
+
+<p>Install:</p>
+
+<p><code>bash &lt;(curl -L https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh) -m</code></p>
+
+<p>or</p>
+
+<p><code>bash &lt;(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh -O -) -m</code></p>
+
+<p>See more information from <a href="https://github.com/kepbod/ivim/blob/master/vimrc_mini">https://github.com/kepbod/ivim/blob/master/vimrc_mini</a></p>
+</blockquote>
 
 <h2>
-<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
 
 <p><strong><em>Beautiful</em></strong></p>
 
-<p><img src="https://raw.githubusercontent.com/kepbod/ivim/master/snapshot.jpg" alt="snapshot"></p>
-
-<ul>
-<li>
 <p>Use lots of famous colorschemes to make your eyes feel comfortable in both Vim and MacVim/gVim.</p>
 
 <ul>
 <li>
-<a href="https://github.com/w0ng/vim-hybrid">Hybrid</a>(default)</li>
-<li><a href="https://github.com/altercation/vim-colors-solarized">Solarized</a></li>
-<li><a href="https://github.com/chriskempson/base16-vim">Base16</a></li>
+<a href="https://github.com/mrhooray/vim-hybrid">Hybrid</a>(default)</li>
 </ul>
-</li>
-</ul><p><strong><em>Efficient</em></strong></p>
+
+<p><img src="https://raw.githubusercontent.com/kepbod/ivim/master/snapshot1.jpg" alt="snapshot1"></p>
 
 <ul>
-<li><p>Make using Vim more convenient and faster, and lots of useful plugins (such as <a href="https://github.com/Shougo/neocomplcache">Neocomplcache</a>, <a href="https://github.com/scrooloose/nerdcommenter">NERD_commenter</a>, <a href="https://github.com/scrooloose/syntastic">Syntastic</a>) confirm a better performance of Vim.</p></li>
-<li><p>To view the full plugin list, please consult <a href="https://github.com/kepbod/ivim/blob/master/vimrc#L132">here</a></p></li>
-</ul><h2>
-<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
+<li><a href="https://github.com/morhetz/gruvbox">Gruvbox</a></li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/kepbod/ivim/master/snapshot2.jpg" alt="snapshot2"></p>
+
+<p><strong><em>Efficient</em></strong></p>
+
+<ul>
+<li><p>Make using Vim more convenient and faster, and lots of useful plugins confirm a better performance of Vim.</p></li>
+<li><p>To view the full plugin list, please refer <a href="https://github.com/kepbod/ivim/blob/master/vimrc#L140">here</a>.</p></li>
+</ul>
+
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
 
 <p><strong>Vim</strong></p>
 
 <ul>
 <li>This distribution is adapted to both <a href="http://www.vim.org/download.php">Vim</a> and <a href="http://www.vim.org/download.php#mac">MacVim</a>/<a href="http://www.vim.org/download.php#pc">gVim</a>. Remember that the Vim/MacVim/gVim version should be 7.3+, or errors would occur!</li>
-</ul><p><strong>Git</strong></p>
+</ul>
+
+<p><strong>Git</strong></p>
 
 <ul>
 <li>All the installations are based on <a href="http://git-scm.com/">Git</a> which is a famous distributed revision control system. If you use Windows, you may need install <a href="http://msysgit.github.com//">msysgit</a>.</li>
-</ul><p><strong>Ctags</strong></p>
+</ul>
+
+<p><strong>Ctags</strong></p>
 
 <ul>
 <li>Ctags generates an index (or tag) file of language objects found in source files that allows these items to be quickly and easily located by a text editor or other utility. I recommend you to use <a href="http://ctags.sourceforge.net/">Exuberant Ctags</a>.</li>
-</ul><p><em>To use this distribution with less bugs, please get more suggestions from <a href="https://github.com/kepbod/ivim/wiki/Tips-for-ivim">here</a></em></p>
+</ul>
+
+<p><em>To use this distribution with less bugs, please get more suggestions from <a href="https://github.com/kepbod/ivim/wiki/Tips-for-ivim">here</a>.</em></p>
 
 <h2>
-<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
 
 <h3>
-<a name="manual-installation" class="anchor" href="#manual-installation"><span class="octicon octicon-link"></span></a>Manual Installation</h3>
+<a id="manual-installation" class="anchor" href="#manual-installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Manual Installation</h3>
 
 <ol>
 <li>A Vim/MacVim/gVim with version higher than 7.3 should be installed on your computer;</li>
@@ -93,27 +111,26 @@
 <li>Install NeoBundle to install and update plugins, <code>git clone git://github.com/Shougo/neobundle.vim.git $HOME/.vim/bundle/neobundle.vim</code>;</li>
 <li>Install plugins, <code>$HOME/.vim/bundle/neobundle.vim/bin/neoinstall &gt; /dev/null 2&gt;&amp;1</code> for *nix or <code>$HOME/.vim/bundle/neobundle.vim/bin/neoinstall.bat</code> for windows;</li>
 <li>Just enjoy it!</li>
-</ol><h3>
-<a name="automatic-installation-nix-only" class="anchor" href="#automatic-installation-nix-only"><span class="octicon octicon-link"></span></a>Automatic Installation (*nix only)</h3>
+</ol>
+
+<h3>
+<a id="automatic-installation-nix-only" class="anchor" href="#automatic-installation-nix-only" aria-hidden="true"><span class="octicon octicon-link"></span></a>Automatic Installation (*nix only)</h3>
 
 <p><strong>via 'curl'</strong></p>
 
-<div class="highlight highlight-bash"><pre>bash &lt;<span class="o">(</span>curl -L https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh<span class="o">)</span> -i
-</pre></div>
+<div class="highlight highlight-source-shell"><pre>bash <span class="pl-s"><span class="pl-pds">&lt;(</span>curl -L https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh<span class="pl-pds">)</span></span> -i</pre></div>
 
 <p><strong>via 'wget'</strong></p>
 
-<div class="highlight highlight-bash"><pre>bash &lt;<span class="o">(</span>wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh -O -<span class="o">)</span> -i
-</pre></div>
+<div class="highlight highlight-source-shell"><pre>bash <span class="pl-s"><span class="pl-pds">&lt;(</span>wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh -O -<span class="pl-pds">)</span></span> -i</pre></div>
 
 <h2>
-<a name="updating" class="anchor" href="#updating"><span class="octicon octicon-link"></span></a>Updating</h2>
+<a id="updating" class="anchor" href="#updating" aria-hidden="true"><span class="octicon octicon-link"></span></a>Updating</h2>
 
-<div class="highlight highlight-bash"><pre>bash <span class="nv">$HOME</span>/ivim/setup.sh -n
-</pre></div>
+<div class="highlight highlight-source-shell"><pre>bash <span class="pl-smi">$HOME</span>/ivim/setup.sh -n</pre></div>
 
 <h2>
-<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h2>
 
 <p>There are some options you could set through <code>.vimrc</code> to configure ivim:</p>
 
@@ -121,13 +138,23 @@
 <li>g:ivim_user -- your username</li>
 <li>g:ivim_email -- your email</li>
 <li>g:ivim_github -- your github</li>
+<li>g:ivim_default_scheme -- color settings (hybrid or gruvbox)</li>
 <li>g:ivim_fancy_font -- using fancy font or not</li>
 <li>g:ivim_show_number -- showing number or not</li>
-<li>g:ivim_bundle_groups -- plugin groups</li>
-</ul><p><em>This distribution is completely customisable using a <code>~/.vimrc.local</code>, <code>~/.gvimrc.local</code> and <code>~/.vimrc.bundles.local</code>!</em></p>
+<li>g:ivim_autocomplete -- autocomplete engine (NEO: neocomplete/neocomplcache/neosnippet, YCM: YouCompleteMe/UltiSnips)</li>
+<li>g:ivim_bundle_groups -- plugin groups ('ui', 'enhance', 'move', 'navigate', 'complete', 'compile', 'git', 'language')</li>
+</ul>
+
+<h3>
+<a id="note" class="anchor" href="#note" aria-hidden="true"><span class="octicon octicon-link"></span></a>Note</h3>
+
+<ul>
+<li>This distribution is completely customisable using a <code>~/.vimrc.local</code>, <code>~/.gvimrc.local</code>, <code>~/.vimrc.ivim.local</code> and <code>~/.vimrc.bundles.local</code>!</li>
+<li>To make full use of auto-completion and syntax checking, please refer <a href="https://github.com/kepbod/ivim/wiki/Auto-completion-and-syntax-checking">wiki</a>.</li>
+</ul>
 
 <h2>
-<a name="vim-tips" class="anchor" href="#vim-tips"><span class="octicon octicon-link"></span></a>Vim Tips</h2>
+<a id="vim-tips" class="anchor" href="#vim-tips" aria-hidden="true"><span class="octicon octicon-link"></span></a>Vim Tips</h2>
 
 <p><em>Learning Vim</em></p>
 
@@ -148,7 +175,9 @@
 <p>It's easy and convenient to type <code>:h</code> or <code>:help</code> in Vim for help of whatever you want to know.</p>
 </li>
 <li><p>A beautiful Vim cheat sheet is available <a href="http://michael.peopleofhonoronly.com/vim/">here</a>. If you want one, just click it!</p></li>
-</ul><p><em>Key Mappings</em></p>
+</ul>
+
+<p><em>Key Mappings</em></p>
 
 <ul>
 <li>
@@ -156,27 +185,33 @@
 
 <p>You can just type <code>:map</code> in Vim to see them.</p>
 </li>
-</ul><p><em>More Tips</em></p>
+</ul>
+
+<p><em>More Tips</em></p>
 
 <ul>
 <li>
 <a href="http://vim.wikia.com/wiki/Vim_Tips_Wiki">Vim_Tips_Wiki</a> is an excellent website, and you can learn much from it.</li>
 <li>
 <a href="http://vimcasts.org">Vimcasts</a> publishes free screencasts about Vim. It's useful and interesting! Believe me!</li>
-</ul><p><strong>Hope You Enjoy Vimming!!!</strong></p>
+</ul>
+
+<p><strong>Hope You Enjoy Vimming!!!</strong></p>
 
 <h2>
-<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
 
-<p>Copyright (C) 2012-2014 Xiao-Ou Zhang and contributors. See the <a href="https://github.com/kepbod/ivim/blob/master/LICENSE.txt">LICENSE</a> file for license rights and limitations (MIT)</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/kepbod">kepbod</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+<p>Copyright (C) 2012-2015 Xiao-Ou Zhang and contributors. See the <a href="https://github.com/kepbod/ivim/blob/master/LICENSE.txt">LICENSE</a> file for license rights and limitations (MIT)</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/kepbod/ivim">Ivim</a> is maintained by <a href="https://github.com/kepbod">kepbod</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-              <script type="text/javascript">
+
+    </section>
+
+            <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
