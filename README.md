@@ -107,7 +107,7 @@ There are some options you could set through `.vimrc` to configure ivim:
 
 ###Note
 
-* This distribution is completely customisable using a `~/.vimrc.local`, `~/.gvimrc.local`, `~/.vimrc.ivim.local` and `~/.vimrc.bundles.local`!
+* This distribution is completely customisable using `~/.vimrc.ivim.local`(only for `vimrc`), `~/.vimrc.local`, `~/.gvimrc.local` and `~/.vimrc.bundles.local`!
 * To make full use of auto-completion and syntax checking, please refer [wiki](https://github.com/kepbod/ivim/wiki/Auto-completion-and-syntax-checking).
 
 ## Vim Tips

@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.1
 "   Created: 2015-09-24
-"   Last Modified: 2015-10-10
+"   Last Modified: 2015-12-25
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -120,6 +120,10 @@ NeoBundle 'Shougo/neosnippet-snippets' " Snippets
 NeoBundle 'scrooloose/syntastic' " Syntax checking
 NeoBundle 'airblade/vim-gitgutter' " Git diff sign
 NeoBundle 'sheerun/vim-polyglot' " Language Support
+
+if filereadable(expand($HOME . '/.vimrc.bundles.local')) " Load local bundles
+    source $HOME/.vimrc.bundles.local
+endif
 
 call neobundle#end()
 
@@ -499,3 +503,15 @@ let g:syntastic_error_symbol = '✗'
 let g:syntastic_style_error_symbol = '✠'
 let g:syntastic_warning_symbol = '∆'
 let g:syntastic_style_warning_symbol = '≈'
+
+" Use local vimrc if available
+if filereadable(expand($HOME . '/.vimrc.local'))
+    source $HOME/.vimrc.local
+endif
+
+" Use local gvimrc if available and gui is running
+if has('gui_running')
+    if filereadable(expand($HOME . '/.gvimrc.local'))
+        source $HOME/.gvimrc.local
+    endif
+endif
