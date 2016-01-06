@@ -8,7 +8,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.1
 "   Created: 2012-01-20
-"   Last Modified: 2015-10-10
+"   Last Modified: 2016-01-06
 "
 "   Sections:
 "     -> ivim Setting
@@ -144,7 +144,7 @@ set viewoptions-=options " in case of mapping change
 if has('vim_starting')
     set nocompatible
     set runtimepath+=$HOME/.vim/bundle/neobundle.vim/
-    let g:neobundle#install_process_timeout=600
+    let g:neobundle#install_process_timeout=1500
 endif
 
 call neobundle#begin(expand($HOME . '/.vim/bundle/'))
