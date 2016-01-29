@@ -8,7 +8,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.1
 "   Created: 2012-01-20
-"   Last Modified: 2016-01-06
+"   Last Modified: 2016-01-29
 "
 "   Sections:
 "     -> ivim Setting
@@ -173,6 +173,7 @@ if count(g:ivim_bundle_groups, 'enhance') " Vim enhancement
     NeoBundle 'mbbill/undotree' " Undo tree
     NeoBundle 'tpope/vim-surround' " Surround
     NeoBundle 'godlygeek/tabular' " Tabular
+    NeoBundle 'ludovicchabant/vim-gutentags' " Manage tag files
     NeoBundle 'AndrewRadev/splitjoin.vim' " Splitjoin
     NeoBundle 'sickill/vim-pasta' " Vim pasta
     NeoBundle 'Keithbsmiley/investigate.vim' " Helper
