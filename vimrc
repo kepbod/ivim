@@ -8,7 +8,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.1
 "   Created: 2012-01-20
-"   Last Modified: 2016-01-29
+"   Last Modified: 2016-02-22
 "
 "   Sections:
 "     -> ivim Setting
@@ -155,7 +155,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 if count(g:ivim_bundle_groups, 'ui') " UI setting
     NeoBundle 'mrhooray/vim-hybrid' " Colorscheme hybrid
     NeoBundle 'morhetz/gruvbox' " Colorscheme gruvbox
-    NeoBundle 'bling/vim-airline' " Status line
+    NeoBundle 'vim-airline/vim-airline' " Status line
+    NeoBundle 'vim-airline/vim-airline-themes' " Status line theme
     NeoBundle 'bling/vim-bufferline' " Buffer line
     NeoBundle 'nathanaelkane/vim-indent-guides' " Indent guides
     NeoBundle 'mhinz/vim-startify' " Start page
