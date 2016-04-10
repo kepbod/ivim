@@ -453,14 +453,12 @@ let g:tagbar_foldlevel=2
 let g:tagbar_autoshowtag=1
 
 " -> NERD Tree
-nnoremap <Leader>d :NERDTreeTabsToggle<CR>
+nnoremap <Leader>d :NERDTreeToggle<CR>
 nnoremap <Leader>f :NERDTreeFind<CR>
 let NERDTreeChDirMode=2
 let NERDTreeShowBookmarks=1
 let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1
-let NERDTreeDirArrows=1
-let g:nerdtree_tabs_open_on_gui_startup=0
 
 " -> Neocomplete & Neocomplcache
 " Use Tab and S-Tab to select candidate

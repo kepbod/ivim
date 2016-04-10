@@ -204,7 +204,7 @@ endif
 
 if count(g:ivim_bundle_groups, 'navigate') " Navigation
     NeoBundle 'scrooloose/nerdtree' " NERD tree
-    NeoBundle 'jistr/vim-nerdtree-tabs' " NERD tree tabs
+    NeoBundle 'Xuyuanp/nerdtree-git-plugin' " NERD tree git plugin
     NeoBundle 'mhinz/vim-tmuxify' " Tmux panes
 endif
 
@@ -798,14 +798,12 @@ endif
 if count(g:ivim_bundle_groups, 'navigate')
 
     " -> NERD Tree
-    nnoremap <Leader>d :NERDTreeTabsToggle<CR>
+    nnoremap <Leader>d :NERDTreeToggle<CR>
     nnoremap <Leader>f :NERDTreeFind<CR>
     let NERDTreeChDirMode=2
     let NERDTreeShowBookmarks=1
     let NERDTreeShowHidden=1
     let NERDTreeShowLineNumbers=1
-    let NERDTreeDirArrows=1
-    let g:nerdtree_tabs_open_on_gui_startup=0
 
 endif
 
