@@ -7,9 +7,9 @@
 "
 "   ivim mini (ivim for fast and basic usage)
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
-"   Version: 2.1
+"   Version: 2.2
 "   Created: 2015-09-24
-"   Last Modified: 2016-02-22
+"   Last Modified: 2016-04-10
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -25,7 +25,6 @@ set timeoutlen=500 " Time to wait for a command
 
 " Source the vimrc file after saving it
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
-autocmd BufWritePost $MYVIMRC NeoBundleClean
 " Fast edit the .vimrc file using ,x
 nnoremap <Leader>x :tabedit $MYVIMRC<CR>
 
@@ -95,7 +94,7 @@ call neobundle#begin(expand($HOME . '/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Install plugins
-NeoBundle 'mrhooray/vim-hybrid' " Colorscheme hybrid
+NeoBundle 'kepbod/vim-hybrid' " Colorscheme hybrid
 NeoBundle 'vim-airline/vim-airline' " Status line
 NeoBundle 'vim-airline/vim-airline-themes' " Status line theme
 NeoBundle 'bling/vim-bufferline' " Buffer line
@@ -110,6 +109,7 @@ NeoBundle 'chrisbra/vim-diff-enhanced' " Create better diffs
 NeoBundle 'unblevable/quick-scope' " Quick scope
 NeoBundle 'bkad/CamelCaseMotion' " Camel case motion
 NeoBundle 'majutsushi/tagbar' " Tag bar
+NeoBundle 'ludovicchabant/vim-gutentags' " Manage tag files
 NeoBundle 'scrooloose/nerdtree' " NERD tree
 if has('lua')
     NeoBundle 'Shougo/neocomplete.vim' " Auto completion framework

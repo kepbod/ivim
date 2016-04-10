@@ -6,9 +6,9 @@
 "   /_/ |___/_/_/ /_/ /_/
 "
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
-"   Version: 2.1
+"   Version: 2.2
 "   Created: 2012-01-20
-"   Last Modified: 2016-02-22
+"   Last Modified: 2016-04-10
 "
 "   Sections:
 "     -> ivim Setting
@@ -68,7 +68,6 @@ set timeoutlen=500 " Time to wait for a command
 
 " Source the vimrc file after saving it
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
-autocmd BufWritePost $MYVIMRC NeoBundleClean
 " Fast edit the .vimrc file using ,x
 nnoremap <Leader>x :tabedit $MYVIMRC<CR>
 
@@ -153,7 +152,7 @@ call neobundle#begin(expand($HOME . '/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 if count(g:ivim_bundle_groups, 'ui') " UI setting
-    NeoBundle 'mrhooray/vim-hybrid' " Colorscheme hybrid
+    NeoBundle 'kepbod/vim-hybrid' " Colorscheme hybrid
     NeoBundle 'morhetz/gruvbox' " Colorscheme gruvbox
     NeoBundle 'vim-airline/vim-airline' " Status line
     NeoBundle 'vim-airline/vim-airline-themes' " Status line theme

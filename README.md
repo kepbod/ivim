@@ -8,7 +8,7 @@
 /_/ |___/_/_/ /_/ /_/  
 ```
 
-**Version: 2.1**
+**Version: 2.2**
 
 **New: You could install the minimum ivim now for fast and basic usage!!!**
 
