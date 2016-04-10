@@ -172,7 +172,7 @@ if count(g:ivim_bundle_groups, 'enhance') " Vim enhancement
     NeoBundle 'kristijanhusak/vim-multiple-cursors' " Multiple cursors
     NeoBundle 'mbbill/undotree' " Undo tree
     NeoBundle 'tpope/vim-surround' " Surround
-    NeoBundle 'godlygeek/tabular' " Tabular
+    NeoBundle 'junegunn/vim-easy-align' " Easy align
     NeoBundle 'ludovicchabant/vim-gutentags' " Manage tag files
     NeoBundle 'AndrewRadev/splitjoin.vim' " Splitjoin
     NeoBundle 'sickill/vim-pasta' " Vim pasta
@@ -719,6 +719,10 @@ if count(g:ivim_bundle_groups, 'enhance')
     " -> Undo tree
     nnoremap <Leader>u :UndotreeToggle<CR>
     let g:undotree_SetFocusWhenToggle=1
+
+    " -> Easy Align
+    xmap ga <Plug>(EasyAlign)
+    nmap ga <Plug>(EasyAlign)
 
     " -> Splitjoin
     let g:splitjoin_split_mapping = ',s'
