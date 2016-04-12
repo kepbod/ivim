@@ -8,7 +8,7 @@
 /_/ |___/_/_/ /_/ /_/  
 ```
 
-**Version: 2.2**
+**Version: 2.3**
 
 **New: You could install the minimum ivim now for fast and basic usage!!!**
 
@@ -25,6 +25,7 @@
 >
 > See more information from https://github.com/kepbod/ivim/blob/master/vimrc_mini
 
+*Some new features will be firstly tested in vimrc_mini*
 
 ## Features
 

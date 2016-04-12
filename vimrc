@@ -6,9 +6,9 @@
 "   /_/ |___/_/_/ /_/ /_/
 "
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
-"   Version: 2.2
+"   Version: 2.3
 "   Created: 2012-01-20
-"   Last Modified: 2016-04-10
+"   Last Modified: 2016-04-12
 "
 "   Sections:
 "     -> ivim Setting
@@ -106,7 +106,7 @@ function! InitializeDirectories()
             endif
         endif
         if settingname!=''
-            exec 'set '.settingname.'='.directory
+            exe 'set '.settingname.'='.directory
         endif
     endfor
 endfunction
@@ -165,7 +165,7 @@ endif
 
 if count(g:ivim_bundle_groups, 'enhance') " Vim enhancement
     NeoBundle 'Raimondi/delimitMate' " Closing of quotes
-    NeoBundle 'scrooloose/nerdcommenter' " NERD commenter
+    NeoBundle 'tomtom/tcomment_vim' " Commenter
     NeoBundle 'tpope/vim-abolish' " Abolish
     NeoBundle 'tpope/vim-speeddating' " Speed dating
     NeoBundle 'tpope/vim-repeat' " Repeat
@@ -679,20 +679,15 @@ if count(g:ivim_bundle_groups, 'enhance')
     " Map \<Space> to commenting
     function! IsWhiteLine()
         if (getline('.')=~'^$')
-            let oldlinenumber=line('.')
-            call NERDComment('n', 'sexy')
-            if (line('.')==oldlinenumber)
-                call NERDComment('n', 'append')
-                normal! x
-            else
-                normal! k
-                startinsert!
-            endif
+            exe 'TCommentBlock'
+            normal! j
         else
-            normal! A 
-            call NERDComment('n', 'append')
+            normal! A   
+            exe 'TCommentRight'
+            normal! l
             normal! x
         endif
+        startinsert!
     endfunction
     nnoremap <silent> <LocalLeader><Space> :call IsWhiteLine()<CR>
 

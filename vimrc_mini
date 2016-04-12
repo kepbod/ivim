@@ -7,9 +7,9 @@
 "
 "   ivim mini (ivim for fast and basic usage)
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
-"   Version: 2.2
+"   Version: 2.3
 "   Created: 2015-09-24
-"   Last Modified: 2016-04-10
+"   Last Modified: 2016-04-12
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -63,7 +63,7 @@ function! InitializeDirectories()
             endif
         endif
         if settingname!=''
-            exec 'set '.settingname.'='.directory
+            exe 'set '.settingname.'='.directory
         endif
     endfor
 endfunction
@@ -101,7 +101,7 @@ NeoBundle 'bling/vim-bufferline' " Buffer line
 NeoBundle 'nathanaelkane/vim-indent-guides' " Indent guides
 NeoBundle 'mhinz/vim-startify' " Start page
 NeoBundle 'Raimondi/delimitMate' " Closing of quotes
-NeoBundle 'scrooloose/nerdcommenter' " NERD commenter
+NeoBundle 'tomtom/tcomment_vim' " Commenter
 NeoBundle 'kristijanhusak/vim-multiple-cursors' " Multiple cursors
 NeoBundle 'tpope/vim-surround' " Surround
 NeoBundle 'sickill/vim-pasta' " Vim pasta
@@ -407,20 +407,15 @@ let NERDRemoveExtraSpaces=1
 " Map \<Space> to commenting
 function! IsWhiteLine()
     if (getline('.')=~'^$')
-        let oldlinenumber=line('.')
-        call NERDComment('n', 'sexy')
-        if (line('.')==oldlinenumber)
-            call NERDComment('n', 'append')
-            normal! x
-        else
-            normal! k
-            startinsert!
-        endif
+        exe 'TCommentBlock'
+        normal! j
     else
-        normal! A 
-        call NERDComment('n', 'append')
+        normal! A   
+        exe 'TCommentRight'
+        normal! l
         normal! x
     endif
+    startinsert!
 endfunction
 nnoremap <silent> <LocalLeader><Space> :call IsWhiteLine()<CR>
 
