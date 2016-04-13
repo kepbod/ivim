@@ -1,5 +1,7 @@
 # ivim - An easy & highly customizable vim configuration 
 
+[![Join the chat at https://gitter.im/kepbod/ivim](https://badges.gitter.im/kepbod/ivim.svg)](https://gitter.im/kepbod/ivim?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ```
     _       _          
    (_)   __(_)___ ___  
