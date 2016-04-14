@@ -58,6 +58,8 @@ install() {
     fi
     color_print "Installing vim-plug..."
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    color_print "Installing hybrid theme..."
+    git clone git://github.com/w0ng/vim-hybrid.git $HOME/.vim/bundle/vim-hybrid
     color_print "Installing plugins using vim-plug..."
     vim +PlugUpdate +qal
     color_print "ivim has been installed. Just enjoy vimming!"
