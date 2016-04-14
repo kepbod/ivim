@@ -56,10 +56,10 @@ install() {
     else
         ln -s $HOME/ivim/vimrc_mini $HOME/.vimrc
     fi
-    color_print "Installing NeoBundle..."
-    git clone git://github.com/Shougo/neobundle.vim.git $HOME/.vim/bundle/neobundle.vim
-    color_print "Installing plugins using NeoBundle..."
-    $HOME/.vim/bundle/neobundle.vim/bin/neoinstall > /dev/null 2>&1
+    color_print "Installing vim-plug..."
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    color_print "Installing plugins using vim-plug..."
+    vim +PlugUpdate +qal
     color_print "ivim has been installed. Just enjoy vimming!"
 }
 
@@ -67,7 +67,7 @@ update() {
     color_print "updating ivim..."
     git pull origin master
     color_print "updating plugins..."
-    $HOME/.vim/bundle/neobundle.vim/bin/neoinstall > /dev/null 2>&1
+    vim +PlugUpdate +qal
 }
 
 if [ $# -ne 1 ]; then

@@ -6,15 +6,15 @@
 "   /_/ |___/_/_/ /_/ /_/
 "
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
-"   Version: 2.3
+"   Version: 2.5
 "   Created: 2012-01-20
-"   Last Modified: 2016-04-12
+"   Last Modified: 2016-04-14
 "
 "   Sections:
 "     -> ivim Setting
 "     -> General
 "     -> Platform Specific Setting
-"     -> NeoBundle
+"     -> Vim-plug
 "     -> User Interface
 "     -> Colors and Fonts
 "     -> Indent Related
@@ -137,135 +137,114 @@ set viewoptions-=options " in case of mapping change
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
-" => NeoBundle
+" => Vim-Plug
 "--------------------------------------------------
 
-if has('vim_starting')
-    set nocompatible
-    set runtimepath+=$HOME/.vim/bundle/neobundle.vim/
-    let g:neobundle#install_process_timeout=1500
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
-call neobundle#begin(expand($HOME . '/.vim/bundle/'))
-
-" Use NeoBundle to manager plugins
-NeoBundleFetch 'Shougo/neobundle.vim'
+call plug#begin('~/.vim/bundle')
 
 if count(g:ivim_bundle_groups, 'ui') " UI setting
-    NeoBundle 'kepbod/vim-hybrid' " Colorscheme hybrid
-    NeoBundle 'morhetz/gruvbox' " Colorscheme gruvbox
-    NeoBundle 'vim-airline/vim-airline' " Status line
-    NeoBundle 'vim-airline/vim-airline-themes' " Status line theme
-    NeoBundle 'bling/vim-bufferline' " Buffer line
-    NeoBundle 'nathanaelkane/vim-indent-guides' " Indent guides
-    NeoBundle 'mhinz/vim-startify' " Start page
-    NeoBundle 'junegunn/goyo.vim' " Distraction-free
-    NeoBundle 'junegunn/limelight.vim' " Hyperfocus-writing
+    Plug 'kepbod/vim-hybrid' " Colorscheme hybrid
+    Plug 'morhetz/gruvbox' " Colorscheme gruvbox
+    Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' " Status line
+    Plug 'bling/vim-bufferline' " Buffer line
+    Plug 'nathanaelkane/vim-indent-guides' " Indent guides
+    Plug 'mhinz/vim-startify' " Start page
+    Plug 'junegunn/goyo.vim', { 'for': 'markdown' } " Distraction-free
+    Plug 'junegunn/limelight.vim', { 'for': 'markdown' } " Hyperfocus-writing
 endif
 
 if count(g:ivim_bundle_groups, 'enhance') " Vim enhancement
-    NeoBundle 'Raimondi/delimitMate' " Closing of quotes
-    NeoBundle 'tomtom/tcomment_vim' " Commenter
-    NeoBundle 'tpope/vim-abolish' " Abolish
-    NeoBundle 'tpope/vim-speeddating' " Speed dating
-    NeoBundle 'tpope/vim-repeat' " Repeat
-    NeoBundle 'kristijanhusak/vim-multiple-cursors' " Multiple cursors
-    NeoBundle 'mbbill/undotree' " Undo tree
-    NeoBundle 'tpope/vim-surround' " Surround
-    NeoBundle 'junegunn/vim-easy-align' " Easy align
-    NeoBundle 'ludovicchabant/vim-gutentags' " Manage tag files
-    NeoBundle 'AndrewRadev/splitjoin.vim' " Splitjoin
-    NeoBundle 'sickill/vim-pasta' " Vim pasta
-    NeoBundle 'Keithbsmiley/investigate.vim' " Helper
-    NeoBundle 'wikitopian/hardmode' " Hard mode
-    NeoBundle 'wellle/targets.vim' " Text objects
-    NeoBundle 'roman/golden-ratio' " Resize windows
-    NeoBundle 'chrisbra/vim-diff-enhanced' " Create better diffs
+    Plug 'Raimondi/delimitMate' " Closing of quotes
+    Plug 'tomtom/tcomment_vim' " Commenter
+    Plug 'tpope/vim-abolish' " Abolish
+    Plug 'tpope/vim-speeddating' " Speed dating
+    Plug 'tpope/vim-repeat' " Repeat
+    Plug 'kristijanhusak/vim-multiple-cursors' " Multiple cursors
+    Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' } " Undo tree
+    Plug 'tpope/vim-surround' " Surround
+    Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] } " Easy align
+    Plug 'ludovicchabant/vim-gutentags' " Manage tag files
+    Plug 'AndrewRadev/splitjoin.vim' " Splitjoin
+    Plug 'sickill/vim-pasta' " Vim pasta
+    Plug 'Keithbsmiley/investigate.vim' " Helper
+    Plug 'wikitopian/hardmode' " Hard mode
+    Plug 'wellle/targets.vim' " Text objects
+    Plug 'roman/golden-ratio' " Resize windows
+    Plug 'chrisbra/vim-diff-enhanced' " Create better diffs
 endif
 
 if count(g:ivim_bundle_groups, 'move') " Moving
-    NeoBundle 'tpope/vim-unimpaired' " Pairs of mappings
-    NeoBundle 'Lokaltog/vim-easymotion' " Easy motion
-    NeoBundle 'unblevable/quick-scope' " Quick scope
-    NeoBundle 'bkad/CamelCaseMotion' " Camel case motion
-    NeoBundle 'majutsushi/tagbar' " Tag bar
-    NeoBundle 'edsono/vim-matchit' " Match it
-    NeoBundle 'Shougo/unite.vim' " Search engine
-    NeoBundle 'Shougo/unite-outline' " Unite outline
-    NeoBundle 'Shougo/vimproc', {
-                \ 'build' : {
-                \     'windows' : 'make -f make_mingw32.mak',
-                \     'cygwin' : 'make -f make_cygwin.mak',
-                \     'mac' : 'make -f make_mac.mak',
-                \     'unix' : 'make -f make_unix.mak',
-                \    },
-                \ }
+    Plug 'tpope/vim-unimpaired' " Pairs of mappings
+    Plug 'Lokaltog/vim-easymotion' " Easy motion
+    Plug 'unblevable/quick-scope' " Quick scope
+    Plug 'bkad/CamelCaseMotion' " Camel case motion
+    Plug 'majutsushi/tagbar' " Tag bar
+    Plug 'edsono/vim-matchit' " Match it
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  } " Fuzzy finder
+    Plug 'junegunn/fzf.vim' " fuzzy finder plugin
 endif
 
 if count(g:ivim_bundle_groups, 'navigate') " Navigation
-    NeoBundle 'scrooloose/nerdtree' " NERD tree
-    NeoBundle 'Xuyuanp/nerdtree-git-plugin' " NERD tree git plugin
-    NeoBundle 'mhinz/vim-tmuxify' " Tmux panes
+    Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " NERD tree
+    Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' } " NERD tree git plugin
+    Plug 'mhinz/vim-tmuxify' " Tmux panes
 endif
 
 if count(g:ivim_bundle_groups, 'complete') " Completion
     if g:ivim_autocomplete=='NEO'
         if has('lua')
-            NeoBundle 'Shougo/neocomplete.vim' " Auto completion framework
             let g:ivim_completion_engine='neocomplete'
+            Plug 'Shougo/neocomplete.vim' " Auto completion framework
         else
-            NeoBundle 'Shougo/neocomplcache.vim' " Auto completion framework
             let g:ivim_completion_engine='neocomplcache'
+            Plug 'Shougo/neocomplcache.vim' " Auto completion framework
         endif
-        NeoBundle 'Shougo/neosnippet.vim' " Snippet engine
-        NeoBundle 'Shougo/neosnippet-snippets' " Snippets
+        Plug 'Shougo/neosnippet.vim' " Snippet engine
+        Plug 'Shougo/neosnippet-snippets' " Snippets
+        Plug 'Shougo/vimproc.vim', { 'do': 'make' }
     else
         " Auto completion framework
-        NeoBundle 'Valloric/YouCompleteMe', {
-                    \ 'build' : {
-                    \     'mac' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-                    \     'unix' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-                    \     'windows' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-                    \     'cygwin' : './install.sh --clang-completer --system-libclang --omnisharp-completer'
-                    \    }
-                    \ }
         let g:ivim_completion_engine='YouCompleteMe'
-        NeoBundle 'sirver/ultisnips' " Snippet engine
+        Plug 'Valloric/YouCompleteMe', { 'do': './install.py' } "Auto completion framework
+        Plug 'honza/vim-snippets' " Snippets
+        Plug 'sirver/ultisnips' " Snippet engine
     endif
-    NeoBundle 'honza/vim-snippets' " Snippets
 endif
 
 if count(g:ivim_bundle_groups, 'compile') " Compiling
-    NeoBundle 'scrooloose/syntastic' " Syntax checking
-    NeoBundle 'xuhdev/SingleCompile' " Single compile
+    Plug 'scrooloose/syntastic' " Syntax checking
+    Plug 'xuhdev/SingleCompile' " Single compile
 endif
 
 if count(g:ivim_bundle_groups, 'git') " Git
-    NeoBundle 'tpope/vim-fugitive' " Git wrapper
-    NeoBundle 'gregsexton/gitv' " Gitk clone
+    Plug 'tpope/vim-fugitive' " Git wrapper
+    Plug 'gregsexton/gitv' " Gitk clone
     if has('signs')
-        NeoBundle 'airblade/vim-gitgutter' " Git diff sign
+        Plug 'airblade/vim-gitgutter' " Git diff sign
     endif
 endif
 
 if count(g:ivim_bundle_groups, 'language') " Language Specificity
-    NeoBundle 'matthias-guenther/hammer.vim' " Markup
-    NeoBundle 'fatih/vim-go' " Golang
-    NeoBundle 'tpope/vim-rails' " Rails
-    NeoBundle 'mattn/emmet-vim' " Emmet
-    NeoBundle 'LaTeX-Box-Team/LaTeX-Box' " LaTex
-    NeoBundle 'sheerun/vim-polyglot' " Language Support
+    Plug 'matthias-guenther/hammer.vim' " Markup
+    Plug 'davidhalter/jedi-vim', { 'for': 'python' } " Python jedi plugin
+    Plug 'fatih/vim-go', { 'for': 'go' } " Golang
+    Plug 'tpope/vim-rails', { 'for': [] } " Rails
+    Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] } " Emmet
+    Plug 'LaTeX-Box-Team/LaTeX-Box' " LaTex
+    Plug 'sheerun/vim-polyglot' " Language Support
 endif
 
 if filereadable(expand($HOME . '/.vimrc.bundles.local')) " Load local bundles
     source $HOME/.vimrc.bundles.local
 endif
 
-call neobundle#end()
-
-filetype plugin indent on " Required!
-
-NeoBundleCheck
+call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -654,13 +633,8 @@ if count(g:ivim_bundle_groups, 'ui')
     endif
 
     " -> Goyo & Limelight
-    function! GoyoBefore()
-        Limelight
-    endfunction
-    function! GoyoAfter()
-        Limelight!
-    endfunction
-    let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
+    autocmd! User GoyoEnter Limelight
+    autocmd! User GoyoLeave Limelight!
 
 endif
 
@@ -672,10 +646,7 @@ if count(g:ivim_bundle_groups, 'enhance')
     let delimitMate_expand_space=1
     let delimitMate_balance_matchpairs=1
 
-    " -> NERD Commenter
-    let NERDCommentWholeLinesInVMode=2
-    let NERDSpaceDelims=1
-    let NERDRemoveExtraSpaces=1
+    " -> Tcomment
     " Map \<Space> to commenting
     function! IsWhiteLine()
         if (getline('.')=~'^$')
@@ -725,7 +696,7 @@ if count(g:ivim_bundle_groups, 'enhance')
     let g:splitjoin_normalize_whitespace=1
     let g:splitjoin_align=1
 
-    " -> investigate.vim
+    " -> Investigate.vim
     nnoremap K :call investigate#Investigate()<CR>
     let g:investigate_use_dash=1
 
@@ -749,56 +720,26 @@ if count(g:ivim_bundle_groups, 'move')
     nmap <Tab> %
     vmap <Tab> %
 
-    " -> Unite
-    let g:unite_data_directory=$HOME . '/.vim/cache/unite'
-    let g:unite_source_history_yank_enable=1
-    let g:unite_source_rec_max_cache_files=100
-    if g:ivim_fancy_font
-        let g:unite_prompt='» '
-    endif
-    if executable('ag')
-        " Use ag in unite grep source.
-        let g:unite_source_grep_command='ag'
-        let g:unite_source_grep_default_opts='--line-numbers --nocolor --nogroup --hidden'
-        let g:unite_source_grep_recursive_opt=''
-    elseif executable('ack-grep')
-        " Use ack-grep in unite grep source.
-        let g:unite_source_grep_command='ack-grep'
-        let g:unite_source_grep_default_opts='--no-heading --no-color -a -H'
-        let g:unite_source_grep_recursive_opt=''
-    elseif executable('ack')
-        " Use ack in unite grep source.
-        let g:unite_source_grep_command='ack'
-        let g:unite_source_grep_default_opts='--no-heading --no-color -a -H'
-        let g:unite_source_grep_recursive_opt=''
-    endif
-    function! s:unite_settings() " Use ESC to exit, and use C-J and C-K to move
-        nmap <buffer> <ESC> <plug>(unite_exit)
-        imap <buffer> <ESC> <plug>(unite_exit)
-        imap <buffer> <C-J> <Plug>(unite_select_next_line)
-        imap <buffer> <C-K> <Plug>(unite_select_previous_line)
-    endfunction
-    autocmd filetype unite call s:unite_settings()
-    nnoremap <silent> <Space>f :<C-U>Unite -start-insert -auto-resize -buffer-name=files file_rec/async<CR><C-U>
-    nnoremap <silent> <Space>y :<C-U>Unite -start-insert -buffer-name=yanks history/yank<CR>
-    nnoremap <silent> <Space>l :<C-U>Unite -start-insert -auto-resize -buffer-name=line line<CR>
-    nnoremap <silent> <Space>o :<C-U>Unite -auto-resize -buffer-name=outline outline<CR>
-    nnoremap <silent> <Space>b :<C-U>Unite -quick-match buffer<CR>
-    nnoremap <silent> <Space>t :<C-U>Unite -quick-match tab<CR>
-    nnoremap <silent> <Space>/ :<C-U>Unite -auto-resize -buffer-name=search grep:.<CR>
-
 endif
 
 " Setting for navigation plugins
 if count(g:ivim_bundle_groups, 'navigate')
 
     " -> NERD Tree
-    nnoremap <Leader>d :NERDTreeToggle<CR>
-    nnoremap <Leader>f :NERDTreeFind<CR>
+    nnoremap <Leader>f :NERDTreeToggle<CR>
     let NERDTreeChDirMode=2
     let NERDTreeShowBookmarks=1
     let NERDTreeShowHidden=1
     let NERDTreeShowLineNumbers=1
+    augroup nerd_loader
+        autocmd!
+        autocmd VimEnter * silent! autocmd! FileExplorer
+        autocmd BufEnter,BufNew *
+                    \  if isdirectory(expand('<amatch>'))
+                    \|   call plug#load('nerdtree')
+                    \|   execute 'autocmd! nerd_loader'
+                    \| endif
+    augroup END
 
 endif
 
@@ -830,6 +771,22 @@ if count(g:ivim_bundle_groups, 'complete')
                         \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
                         \ pumvisible() ? neocomplcache#close_popup() : "\<CR>"
         endif
+        " Setting for specific language
+        if has('lua')
+            if !exists('g:neocomplete#force_omni_input_patterns')
+                let g:neocomplete#force_omni_input_patterns={}
+            endif
+            let g:neocomplete#force_omni_input_patterns.python='\h\w*\|[^. \t]\.\w*'
+        else
+            if !exists('g:neocomplcache_force_omni_patterns')
+                let g:neocomplcache_force_omni_patterns={}
+            endif
+            let g:neocomplcache_force_omni_patterns.python='\h\w*\|[^. \t]\.\w*'
+        endif
+        autocmd FileType python setlocal omnifunc=jedi#completions
+        let g:jedi#completions_enabled=0
+        let g:jedi#auto_vim_configuration=0
+        let g:jedi#smart_auto_mappings=0
         " -> Neosnippet
         " Set information for snippets
         let g:neosnippet#enable_snipmate_compatibility=1

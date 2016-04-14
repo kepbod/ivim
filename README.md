@@ -1,7 +1,5 @@
 # ivim - An easy & highly customizable vim configuration 
 
-[![Join the chat at https://gitter.im/kepbod/ivim](https://badges.gitter.im/kepbod/ivim.svg)](https://gitter.im/kepbod/ivim?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 ```
     _       _          
    (_)   __(_)___ ___  
@@ -10,7 +8,11 @@
 /_/ |___/_/_/ /_/ /_/  
 ```
 
-**Version: 2.3**
+[![Join the chat at https://gitter.im/kepbod/ivim](https://badges.gitter.im/kepbod/ivim.svg)](https://gitter.im/kepbod/ivim?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+**Version: 2.5**
+
+**Note: From v2.5, ivim uses [vim-plug](https://github.com/junegunn/vim-plug) instead of [NeoBundle](https://github.com/Shougo/neobundle.vim) to manage vim plugins. Please see [vim-plug docs](https://github.com/junegunn/vim-plug) to see the usage.**
 
 **New: You could install the minimum ivim now for fast and basic usage!!!**
 

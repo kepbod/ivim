@@ -7,9 +7,9 @@
 "
 "   ivim mini (ivim for fast and basic usage)
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
-"   Version: 2.3
+"   Version: 2.5
 "   Created: 2015-09-24
-"   Last Modified: 2016-04-12
+"   Last Modified: 2016-04-14
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -80,57 +80,63 @@ set t_vb=
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
-" => NeoBundle
+" => Vim-plug
 "--------------------------------------------------
 
-if has('vim_starting')
-    set nocompatible
-    set runtimepath+=$HOME/.vim/bundle/neobundle.vim/
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
-call neobundle#begin(expand($HOME . '/.vim/bundle/'))
-
-" Use NeoBundle to manager plugins
-NeoBundleFetch 'Shougo/neobundle.vim'
+call plug#begin('~/.vim/bundle/')
 
 " Install plugins
-NeoBundle 'kepbod/vim-hybrid' " Colorscheme hybrid
-NeoBundle 'vim-airline/vim-airline' " Status line
-NeoBundle 'vim-airline/vim-airline-themes' " Status line theme
-NeoBundle 'bling/vim-bufferline' " Buffer line
-NeoBundle 'nathanaelkane/vim-indent-guides' " Indent guides
-NeoBundle 'mhinz/vim-startify' " Start page
-NeoBundle 'Raimondi/delimitMate' " Closing of quotes
-NeoBundle 'tomtom/tcomment_vim' " Commenter
-NeoBundle 'kristijanhusak/vim-multiple-cursors' " Multiple cursors
-NeoBundle 'tpope/vim-surround' " Surround
-NeoBundle 'sickill/vim-pasta' " Vim pasta
-NeoBundle 'chrisbra/vim-diff-enhanced' " Create better diffs
-NeoBundle 'unblevable/quick-scope' " Quick scope
-NeoBundle 'bkad/CamelCaseMotion' " Camel case motion
-NeoBundle 'majutsushi/tagbar' " Tag bar
-NeoBundle 'ludovicchabant/vim-gutentags' " Manage tag files
-NeoBundle 'scrooloose/nerdtree' " NERD tree
+Plug 'kepbod/vim-hybrid' " Colorscheme hybrid
+Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' " Status line
+Plug 'bling/vim-bufferline' " Buffer line
+Plug 'nathanaelkane/vim-indent-guides' " Indent guides
+Plug 'mhinz/vim-startify' " Start page
+Plug 'Raimondi/delimitMate' " Closing of quotes
+Plug 'tomtom/tcomment_vim' " Commenter
+Plug 'kristijanhusak/vim-multiple-cursors' " Multiple cursors
+Plug 'tpope/vim-surround' " Surround
+Plug 'tpope/vim-repeat' " Repeat
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  } " Fuzzy finder
+Plug 'junegunn/fzf.vim' " fuzzy finder plugin
+Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] } " Easy align
+Plug 'sickill/vim-pasta' " Vim pasta
+Plug 'Keithbsmiley/investigate.vim' " Helper
+Plug 'roman/golden-ratio' " Resize windows
+Plug 'chrisbra/vim-diff-enhanced' " Create better diffs
+Plug 'unblevable/quick-scope' " Quick scope
+Plug 'bkad/CamelCaseMotion' " Camel case motion
+Plug 'majutsushi/tagbar' " Tag bar
+Plug 'ludovicchabant/vim-gutentags' " Manage tag files
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " NERD tree
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' } " NERD tree git
 if has('lua')
-    NeoBundle 'Shougo/neocomplete.vim' " Auto completion framework
+    Plug 'Shougo/neocomplete.vim' " Auto completion framework
 else
-    NeoBundle 'Shougo/neocomplcache.vim' " Auto completion framework
+    Plug 'Shougo/neocomplcache.vim' " Auto completion framework
 endif
-NeoBundle 'Shougo/neosnippet.vim' " Snippet engine
-NeoBundle 'Shougo/neosnippet-snippets' " Snippets
-NeoBundle 'scrooloose/syntastic' " Syntax checking
-NeoBundle 'airblade/vim-gitgutter' " Git diff sign
-NeoBundle 'sheerun/vim-polyglot' " Language Support
+Plug 'Shougo/neosnippet.vim' " Snippet engine
+Plug 'Shougo/neosnippet-snippets' " Snippets
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'scrooloose/syntastic' " Syntax checking
+Plug 'tpope/vim-fugitive' " Git wrapper
+Plug 'edsono/vim-matchit' " Match it
+Plug 'davidhalter/jedi-vim', { 'for': 'python' } " Python jedi plugin
+Plug 'fatih/vim-go', {'for': 'go'} " Vim go
+Plug 'airblade/vim-gitgutter' " Git diff sign
+Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] } " Emmet
+Plug 'sheerun/vim-polyglot' " Language Support
 
 if filereadable(expand($HOME . '/.vimrc.bundles.local')) " Load local bundles
     source $HOME/.vimrc.bundles.local
 endif
 
-call neobundle#end()
-
-filetype plugin indent on " Required!
-
-NeoBundleCheck
+call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -400,10 +406,7 @@ let delimitMate_expand_cr=1
 let delimitMate_expand_space=1
 let delimitMate_balance_matchpairs=1
 
-" -> NERD Commenter
-let NERDCommentWholeLinesInVMode=2
-let NERDSpaceDelims=1
-let NERDRemoveExtraSpaces=1
+" -> TComment
 " Map \<Space> to commenting
 function! IsWhiteLine()
     if (getline('.')=~'^$')
@@ -437,6 +440,14 @@ function! Multiple_cursors_after()
     endif
 endfunction
 
+" -> Easy Align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+" -> Investigate.vim
+nnoremap K :call investigate#Investigate()<CR>
+let g:investigate_use_dash=1
+
 " -> EnhancedDiff
 let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
 
@@ -448,12 +459,20 @@ let g:tagbar_foldlevel=2
 let g:tagbar_autoshowtag=1
 
 " -> NERD Tree
-nnoremap <Leader>d :NERDTreeToggle<CR>
-nnoremap <Leader>f :NERDTreeFind<CR>
+nnoremap <Leader>f :NERDTreeToggle<CR>
 let NERDTreeChDirMode=2
 let NERDTreeShowBookmarks=1
 let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1
+augroup nerd_loader
+    autocmd!
+    autocmd VimEnter * silent! autocmd! FileExplorer
+    autocmd BufEnter,BufNew *
+                \  if isdirectory(expand('<amatch>'))
+                \|   call plug#load('nerdtree')
+                \|   execute 'autocmd! nerd_loader'
+                \| endif
+augroup END
 
 " -> Neocomplete & Neocomplcache
 " Use Tab and S-Tab to select candidate
@@ -479,6 +498,22 @@ else
                 \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
                 \ pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 endif
+" Setting for specific language
+if has('lua')
+    if !exists('g:neocomplete#force_omni_input_patterns')
+        let g:neocomplete#force_omni_input_patterns={}
+    endif
+    let g:neocomplete#force_omni_input_patterns.python='\h\w*\|[^. \t]\.\w*'
+else
+    if !exists('g:neocomplcache_force_omni_patterns')
+        let g:neocomplcache_force_omni_patterns={}
+    endif
+    let g:neocomplcache_force_omni_patterns.python='\h\w*\|[^. \t]\.\w*'
+endif
+autocmd FileType python setlocal omnifunc=jedi#completions
+let g:jedi#completions_enabled=0
+let g:jedi#auto_vim_configuration=0
+let g:jedi#smart_auto_mappings=0
 
 " -> Neosnippet
 " Use <C-K> to expand or jump snippets in insert mode
@@ -497,6 +532,11 @@ let g:syntastic_error_symbol = '✗'
 let g:syntastic_style_error_symbol = '✠'
 let g:syntastic_warning_symbol = '∆'
 let g:syntastic_style_warning_symbol = '≈'
+
+" -> Emmet
+let g:user_emmet_leader_key='<C-Z>'
+let g:user_emmet_settings={'indentation':'    '}
+let g:use_emmet_complete_tag=1
 
 " Use local vimrc if available
 if filereadable(expand($HOME . '/.vimrc.local'))
