@@ -231,7 +231,6 @@ if count(g:ivim_bundle_groups, 'git') " Git
 endif
 
 if count(g:ivim_bundle_groups, 'language') " Language Specificity
-    Plug 'matthias-guenther/hammer.vim' " Markup
     Plug 'davidhalter/jedi-vim', { 'for': 'python' } " Python jedi plugin
     Plug 'fatih/vim-go', { 'for': 'go' } " Golang
     Plug 'tpope/vim-rails', { 'for': [] } " Rails
