@@ -50,7 +50,7 @@ backup() {
 install() {
     color_print "Cloning ivim..."
     rm -rf $HOME/ivim
-    git clone git://github.com/kepbod/ivim.git $HOME/ivim
+    git clone https://github.com/kepbod/ivim.git $HOME/ivim
     if [ $1 = 1 ]; then
         ln -s $HOME/ivim/vimrc $HOME/.vimrc
     else
@@ -59,7 +59,7 @@ install() {
     color_print "Installing vim-plug..."
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     color_print "Installing hybrid theme..."
-    git clone git://github.com/w0ng/vim-hybrid.git $HOME/.vim/bundle/vim-hybrid
+    git clone https://github.com/w0ng/vim-hybrid.git $HOME/.vim/bundle/vim-hybrid
     color_print "Installing plugins using vim-plug..."
     vim +PlugUpdate +qal
     color_print "ivim has been installed. Just enjoy vimming!"
