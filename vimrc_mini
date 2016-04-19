@@ -103,7 +103,7 @@ Plug 'kristijanhusak/vim-multiple-cursors' " Multiple cursors
 Plug 'tpope/vim-surround' " Surround
 Plug 'tpope/vim-repeat' " Repeat
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  } " Fuzzy finder
-Plug 'junegunn/fzf.vim' " fuzzy finder plugin
+Plug 'junegunn/fzf.vim' " Fuzzy finder plugin
 Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] } " Easy align
 Plug 'sickill/vim-pasta' " Vim pasta
 Plug 'Keithbsmiley/investigate.vim' " Helper

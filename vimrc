@@ -187,7 +187,7 @@ if count(g:ivim_bundle_groups, 'move') " Moving
     Plug 'majutsushi/tagbar' " Tag bar
     Plug 'edsono/vim-matchit' " Match it
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  } " Fuzzy finder
-    Plug 'junegunn/fzf.vim' " fuzzy finder plugin
+    Plug 'junegunn/fzf.vim' " Fuzzy finder plugin
 endif
 
 if count(g:ivim_bundle_groups, 'navigate') " Navigation
