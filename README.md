@@ -12,6 +12,8 @@
 
 **Note: From v2.5, ivim uses [vim-plug](https://github.com/junegunn/vim-plug) instead of [NeoBundle](https://github.com/Shougo/neobundle.vim) to manage vim plugins. Please see [vim-plug docs](https://github.com/junegunn/vim-plug) to see the usage.**
 
+### Welcome to contribute to ivim, see [issue #31](https://github.com/kepbod/ivim/issues/31) for details. Thank you very much for your supporting!
+
 **New: You could install the minimum ivim now for fast and basic usage!!!**
 
 > ivim mini only supports terminal vim, and speeds up startup time through loading
@@ -146,4 +148,4 @@ There are some options you could set through `.vimrc` to configure ivim:
 
 ## License
 
-Copyright (C) 2012-2015 Xiao-Ou Zhang and contributors. See the [LICENSE](https://github.com/kepbod/ivim/blob/master/LICENSE.txt) file for license rights and limitations (MIT)
+Copyright (C) 2012-2016 Xiao-Ou Zhang. See the [LICENSE](https://github.com/kepbod/ivim/blob/master/LICENSE.txt) file for license rights and limitations (MIT)
