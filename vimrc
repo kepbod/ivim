@@ -8,7 +8,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.5
 "   Created: 2012-01-20
-"   Last Modified: 2016-04-14
+"   Last Modified: 2016-05-28
 "
 "   Sections:
 "     -> ivim Setting
@@ -38,7 +38,7 @@
 let g:ivim_user='Xiao-Ou Zhang' " User name
 let g:ivim_email='kepbod@gmail.com' " User email
 let g:ivim_github='https://github.com/kepbod' " User github
-" ivim color settings (hybrid or gruvbox)
+" ivim color settings (hybrid, gruvbox or dracula )
 let g:ivim_default_scheme='hybrid'
 " ivim ui setting
 let g:ivim_fancy_font=1 " Enable using fancy font
@@ -151,6 +151,7 @@ call plug#begin('~/.vim/bundle')
 if count(g:ivim_bundle_groups, 'ui') " UI setting
     Plug 'kepbod/vim-hybrid' " Colorscheme hybrid
     Plug 'morhetz/gruvbox' " Colorscheme gruvbox
+    Plug 'dracula/vim' " Colorscheme dracula
     Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' " Status line
     Plug 'bling/vim-bufferline' " Buffer line
     Plug 'nathanaelkane/vim-indent-guides' " Indent guides
@@ -310,9 +311,7 @@ if count(g:ivim_bundle_groups, 'ui')
     set laststatus=2 " Show the statusline
     set noshowmode " Hide the default mode text
     " Set status line colorscheme
-    if g:ivim_default_scheme=='gruvbox'
-        let g:airline_theme='gruvbox'
-    elseif g:ivim_default_scheme=='hybrid'
+    if g:ivim_default_scheme=='hybrid'
         let g:airline_theme='bubblegum'
     endif
     set ttimeoutlen=50
@@ -389,10 +388,12 @@ endif
 
 " Load a colorscheme
 if count(g:ivim_bundle_groups, 'ui')
-    if g:ivim_default_scheme=='gruvbox'
-        colorscheme gruvbox
-    elseif g:ivim_default_scheme=='hybrid'
+    if g:ivim_default_scheme=='hybrid'
         colorscheme hybrid
+    elseif g:ivim_default_scheme=='gruvbox'
+        colorscheme gruvbox
+    elseif g:ivim_default_scheme=='dracula'
+        colorscheme dracula
     endif
 else
     colorscheme desert
@@ -595,7 +596,7 @@ command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
 if count(g:ivim_bundle_groups, 'ui')
 
     " -> Indent Guides
-    if !has('gui_running') && g:ivim_default_scheme=='hybrid'
+    if !has('gui_running') && g:ivim_default_scheme!='gruvbox'
         let g:indent_guides_auto_colors=0
         autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=235
         autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=235
@@ -786,6 +787,7 @@ if count(g:ivim_bundle_groups, 'complete')
         let g:jedi#completions_enabled=0
         let g:jedi#auto_vim_configuration=0
         let g:jedi#smart_auto_mappings=0
+        let g:jedi#use_tabs_not_buffers=1
         " -> Neosnippet
         " Set information for snippets
         let g:neosnippet#enable_snipmate_compatibility=1

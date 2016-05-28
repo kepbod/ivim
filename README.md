@@ -45,6 +45,10 @@ Use lots of famous colorschemes to make your eyes feel comfortable in both Vim a
 
 ![snapshot2](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot2.jpg)
 
+ * [Dracula](https://github.com/zenorocha/dracula-theme)
+
+![snapshot3](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot3.jpg)
+
 ***Efficient***
 
  * Make using Vim more convenient and faster, and lots of useful plugins confirm a better performance of Vim.

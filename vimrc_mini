@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.5
 "   Created: 2015-09-24
-"   Last Modified: 2016-04-14
+"   Last Modified: 2016-05-28
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -514,6 +514,7 @@ autocmd FileType python setlocal omnifunc=jedi#completions
 let g:jedi#completions_enabled=0
 let g:jedi#auto_vim_configuration=0
 let g:jedi#smart_auto_mappings=0
+let g:jedi#use_tabs_not_buffers=1
 
 " -> Neosnippet
 " Use <C-K> to expand or jump snippets in insert mode
