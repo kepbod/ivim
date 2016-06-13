@@ -20,7 +20,7 @@
 
     <section class="main-content">
       <h1>
-<a id="ivim---an-easy--highly-customizable-vim-configuration" class="anchor" href="#ivim---an-easy--highly-customizable-vim-configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>ivim - An easy &amp; highly customizable vim configuration</h1>
+<a id="ivim---an-easy--highly-customizable-vim-configuration" class="anchor" href="#ivim---an-easy--highly-customizable-vim-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ivim - An easy &amp; highly customizable vim configuration</h1>
 
 <pre><code>    _       _          
    (_)   __(_)___ ___  
@@ -29,7 +29,12 @@
 /_/ |___/_/_/ /_/ /_/  
 </code></pre>
 
-<p><strong>Version: 2.1</strong></p>
+<p><strong>Version: 2.5</strong></p>
+
+<p><strong>Note: From v2.5, ivim uses <a href="https://github.com/junegunn/vim-plug">vim-plug</a> instead of <a href="https://github.com/Shougo/neobundle.vim">NeoBundle</a> to manage vim plugins. Please see <a href="https://github.com/junegunn/vim-plug">vim-plug docs</a> to see the usage.</strong></p>
+
+<h3>
+<a id="welcome-to-contribute-to-ivim-see-issue-31-for-details-thank-you-very-much-for-your-supporting" class="anchor" href="#welcome-to-contribute-to-ivim-see-issue-31-for-details-thank-you-very-much-for-your-supporting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome to contribute to ivim, see <a href="https://github.com/kepbod/ivim/issues/31">issue #31</a> for details. Thank you very much for your supporting!</h3>
 
 <p><strong>New: You could install the minimum ivim now for fast and basic usage!!!</strong></p>
 
@@ -48,8 +53,10 @@ fewer plugins.</p>
 <p>See more information from <a href="https://github.com/kepbod/ivim/blob/master/vimrc_mini">https://github.com/kepbod/ivim/blob/master/vimrc_mini</a></p>
 </blockquote>
 
+<p><em>Some new features will be firstly tested in vimrc_mini</em></p>
+
 <h2>
-<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h2>
 
 <p><strong><em>Beautiful</em></strong></p>
 
@@ -68,6 +75,12 @@ fewer plugins.</p>
 
 <p><img src="https://raw.githubusercontent.com/kepbod/ivim/master/snapshot2.jpg" alt="snapshot2"></p>
 
+<ul>
+<li><a href="https://github.com/zenorocha/dracula-theme">Dracula</a></li>
+</ul>
+
+<p><img src="https://raw.githubusercontent.com/kepbod/ivim/master/snapshot3.jpg" alt="snapshot3"></p>
+
 <p><strong><em>Efficient</em></strong></p>
 
 <ul>
@@ -76,7 +89,7 @@ fewer plugins.</p>
 </ul>
 
 <h2>
-<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h2>
 
 <p><strong>Vim</strong></p>
 
@@ -99,10 +112,10 @@ fewer plugins.</p>
 <p><em>To use this distribution with less bugs, please get more suggestions from <a href="https://github.com/kepbod/ivim/wiki/Tips-for-ivim">here</a>.</em></p>
 
 <h2>
-<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
 
 <h3>
-<a id="manual-installation" class="anchor" href="#manual-installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Manual Installation</h3>
+<a id="manual-installation" class="anchor" href="#manual-installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Manual Installation</h3>
 
 <ol>
 <li>A Vim/MacVim/gVim with version higher than 7.3 should be installed on your computer;</li>
@@ -114,7 +127,7 @@ fewer plugins.</p>
 </ol>
 
 <h3>
-<a id="automatic-installation-nix-only" class="anchor" href="#automatic-installation-nix-only" aria-hidden="true"><span class="octicon octicon-link"></span></a>Automatic Installation (*nix only)</h3>
+<a id="automatic-installation-nix-only" class="anchor" href="#automatic-installation-nix-only" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Automatic Installation (*nix only)</h3>
 
 <p><strong>via 'curl'</strong></p>
 
@@ -125,12 +138,12 @@ fewer plugins.</p>
 <div class="highlight highlight-source-shell"><pre>bash <span class="pl-s"><span class="pl-pds">&lt;(</span>wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh -O -<span class="pl-pds">)</span></span> -i</pre></div>
 
 <h2>
-<a id="updating" class="anchor" href="#updating" aria-hidden="true"><span class="octicon octicon-link"></span></a>Updating</h2>
+<a id="updating" class="anchor" href="#updating" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Updating</h2>
 
 <div class="highlight highlight-source-shell"><pre>bash <span class="pl-smi">$HOME</span>/ivim/setup.sh -n</pre></div>
 
 <h2>
-<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Configuration</h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
 
 <p>There are some options you could set through <code>.vimrc</code> to configure ivim:</p>
 
@@ -146,15 +159,15 @@ fewer plugins.</p>
 </ul>
 
 <h3>
-<a id="note" class="anchor" href="#note" aria-hidden="true"><span class="octicon octicon-link"></span></a>Note</h3>
+<a id="note" class="anchor" href="#note" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Note</h3>
 
 <ul>
-<li>This distribution is completely customisable using a <code>~/.vimrc.local</code>, <code>~/.gvimrc.local</code>, <code>~/.vimrc.ivim.local</code> and <code>~/.vimrc.bundles.local</code>!</li>
+<li>This distribution is completely customisable using <code>~/.vimrc.ivim.local</code>(only for <code>vimrc</code>), <code>~/.vimrc.local</code>, <code>~/.gvimrc.local</code> and <code>~/.vimrc.bundles.local</code>!</li>
 <li>To make full use of auto-completion and syntax checking, please refer <a href="https://github.com/kepbod/ivim/wiki/Auto-completion-and-syntax-checking">wiki</a>.</li>
 </ul>
 
 <h2>
-<a id="vim-tips" class="anchor" href="#vim-tips" aria-hidden="true"><span class="octicon octicon-link"></span></a>Vim Tips</h2>
+<a id="vim-tips" class="anchor" href="#vim-tips" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Vim Tips</h2>
 
 <p><em>Learning Vim</em></p>
 
@@ -199,9 +212,9 @@ fewer plugins.</p>
 <p><strong>Hope You Enjoy Vimming!!!</strong></p>
 
 <h2>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
 
-<p>Copyright (C) 2012-2015 Xiao-Ou Zhang and contributors. See the <a href="https://github.com/kepbod/ivim/blob/master/LICENSE.txt">LICENSE</a> file for license rights and limitations (MIT)</p>
+<p>Copyright (C) 2012-2016 Xiao-Ou Zhang. See the <a href="https://github.com/kepbod/ivim/blob/master/LICENSE.txt">LICENSE</a> file for license rights and limitations (MIT)</p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/kepbod/ivim">Ivim</a> is maintained by <a href="https://github.com/kepbod">kepbod</a>.</span>
