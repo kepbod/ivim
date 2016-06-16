@@ -12,8 +12,6 @@
 
 **Note: From v2.5, ivim uses [vim-plug](https://github.com/junegunn/vim-plug) instead of [NeoBundle](https://github.com/Shougo/neobundle.vim) to manage vim plugins. Please see [vim-plug docs](https://github.com/junegunn/vim-plug) to see the usage.**
 
-### Welcome to contribute to ivim, see [issue #31](https://github.com/kepbod/ivim/issues/31) for details. Thank you very much for your supporting!
-
 **New: You could install the minimum ivim now for fast and basic usage!!!**
 
 > ivim mini only supports terminal vim, and speeds up startup time through loading
@@ -44,10 +42,6 @@ Use lots of famous colorschemes to make your eyes feel comfortable in both Vim a
  * [Gruvbox](https://github.com/morhetz/gruvbox)
 
 ![snapshot2](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot2.jpg)
-
- * [Dracula](https://github.com/zenorocha/dracula-theme)
-
-![snapshot3](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot3.jpg)
 
 ***Efficient***
 
@@ -114,10 +108,15 @@ There are some options you could set through `.vimrc` to configure ivim:
 * g:ivim_autocomplete -- autocomplete engine (NEO: neocomplete/neocomplcache/neosnippet, YCM: YouCompleteMe/UltiSnips)
 * g:ivim_bundle_groups -- plugin groups ('ui', 'enhance', 'move', 'navigate', 'complete', 'compile', 'git', 'language')
 
-###Note
+### Note
 
 * This distribution is completely customisable using `~/.vimrc.ivim.local`(only for `vimrc`), `~/.vimrc.local`, `~/.gvimrc.local` and `~/.vimrc.bundles.local`!
 * To make full use of auto-completion and syntax checking, please refer [wiki](https://github.com/kepbod/ivim/wiki/Auto-completion-and-syntax-checking).
+
+
+### Contributation
+
+Welcome to contribute to ivim, see [issue #31](https://github.com/kepbod/ivim/issues/31) for details. Thank you very much for your supporting!
 
 ## Vim Tips
 

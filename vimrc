@@ -8,7 +8,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.5
 "   Created: 2012-01-20
-"   Last Modified: 2016-05-28
+"   Last Modified: 2016-06-16
 "
 "   Sections:
 "     -> ivim Setting
@@ -20,7 +20,6 @@
 "     -> Indent Related
 "     -> Search Related
 "     -> Fold Related
-"     -> File Type Specific Setting
 "     -> Key Mapping
 "     -> Plugin Setting
 "     -> Local Setting
@@ -38,7 +37,7 @@
 let g:ivim_user='Xiao-Ou Zhang' " User name
 let g:ivim_email='kepbod@gmail.com' " User email
 let g:ivim_github='https://github.com/kepbod' " User github
-" ivim color settings (hybrid, gruvbox or dracula )
+" ivim color settings (hybrid, gruvbox or tender)
 let g:ivim_default_scheme='hybrid'
 " ivim ui setting
 let g:ivim_fancy_font=1 " Enable using fancy font
@@ -151,8 +150,9 @@ call plug#begin('~/.vim/bundle')
 if count(g:ivim_bundle_groups, 'ui') " UI setting
     Plug 'kepbod/vim-hybrid' " Colorscheme hybrid
     Plug 'morhetz/gruvbox' " Colorscheme gruvbox
-    Plug 'dracula/vim' " Colorscheme dracula
+    Plug 'jacoborus/tender.vim' " Colorscheme tender
     Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' " Status line
+    Plug 'ryanoasis/vim-devicons' " Devicons
     Plug 'bling/vim-bufferline' " Buffer line
     Plug 'nathanaelkane/vim-indent-guides' " Indent guides
     Plug 'mhinz/vim-startify' " Start page
@@ -311,7 +311,7 @@ if count(g:ivim_bundle_groups, 'ui')
     set laststatus=2 " Show the statusline
     set noshowmode " Hide the default mode text
     " Set status line colorscheme
-    if g:ivim_default_scheme=='hybrid'
+    if g:ivim_default_scheme!='gruvbox'
         let g:airline_theme='bubblegum'
     endif
     set ttimeoutlen=50
@@ -392,8 +392,8 @@ if count(g:ivim_bundle_groups, 'ui')
         colorscheme hybrid
     elseif g:ivim_default_scheme=='gruvbox'
         colorscheme gruvbox
-    elseif g:ivim_default_scheme=='dracula'
-        colorscheme dracula
+    elseif g:ivim_default_scheme=='tender'
+        colorscheme tender
     endif
 else
     colorscheme desert
@@ -402,9 +402,9 @@ endif
 " Set GUI font
 if has('gui_running')
     if has('gui_gtk')
-        set guifont=DejaVu\ Sans\ Mono\ 11
+        set guifont=DejaVu\ Sans\ Mono\ 18
     else
-        set guifont=DejaVu\ Sans\ Mono:h11
+        set guifont=DejaVu\ Sans\ Mono:h18
     endif
 endif
 
@@ -488,57 +488,6 @@ function! MyFoldText()
     return line.'…'.repeat(' ',fillcharcount).foldedlinecount.'L'.' '
 endfunction
 set foldtext=MyFoldText()
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"-------------------------------------------------
-" => File Type Specific Setting
-"-------------------------------------------------
-
-" QuickFix
-augroup ft_quickfix
-    autocmd!
-    autocmd filetype qf setlocal nolist nocursorline nowrap textwidth=0
-augroup END
-
-" Markdown
-augroup ft_markdown
-    autocmd!
-    " Use <localLeader>1/2/3/4/5/6 to add headings
-    autocmd filetype markdown nnoremap <buffer> <LocalLeader>1 I# <ESC>
-    autocmd filetype markdown nnoremap <buffer> <LocalLeader>2 I## <ESC>
-    autocmd filetype markdown nnoremap <buffer> <LocalLeader>3 I### <ESC>
-    autocmd filetype markdown nnoremap <buffer> <LocalLeader>4 I#### <ESC>
-    autocmd filetype markdown nnoremap <buffer> <LocalLeader>5 I##### <ESC>
-    autocmd filetype markdown nnoremap <buffer> <LocalLeader>6 I###### <ESC>
-    " Use <LocalLeader>b to add blockquotes in normal and visual mode
-    autocmd filetype markdown nnoremap <buffer> <LocalLeader>b I> <ESC>
-    autocmd filetype markdown vnoremap <buffer> <LocalLeader>b :s/^/> /<CR>
-    " Use <localLeader>ul and <localLeader>ol to add list symbols in visual mode
-    autocmd filetype markdown vnoremap <buffer> <LocalLeader>ul :s/^/* /<CR>
-    autocmd filetype markdown vnoremap <buffer> <LocalLeader>ol :s/^/\=(line(".")-line("'<")+1).'. '/<CR>
-    " Use <localLeader>e1/2/3 to add emphasis symbols
-    autocmd filetype markdown nnoremap <buffer> <LocalLeader>e1 I*<ESC>A*<ESC>
-    autocmd filetype markdown nnoremap <buffer> <LocalLeader>e2 I**<ESC>A**<ESC>
-    autocmd filetype markdown nnoremap <buffer> <LocalLeader>e3 I***<ESC>A***<ESC>
-    autocmd filetype markdown vnoremap <buffer> <LocalLeader>e1 :s/\%V\(.*\)\%V/\*\1\*/<CR>
-    autocmd filetype markdown vnoremap <buffer> <LocalLeader>e2 :s/\%V\(.*\)\%V/\*\*\1\*\*/<CR>
-    autocmd filetype markdown vnoremap <buffer> <LocalLeader>e3 :s/\%V\(.*\)\%V/\*\*\*\1\*\*\*/<CR>
-    " Turn on spell
-    autocmd filetype markdown setlocal spell
-augroup END
-
-" HTML
-augroup ft_html
-    autocmd!
-    autocmd filetype html setlocal spell " Turn on spell
-augroup END
-
-" LESS
-augroup ft_less
-    autocmd!
-    autocmd filetype less nnoremap <buffer> <Leader>r :w <BAR> !lessc % > %:t:r.css<CR><Space>
-augroup END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

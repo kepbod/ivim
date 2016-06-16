@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.5
 "   Created: 2015-09-24
-"   Last Modified: 2016-05-28
+"   Last Modified: 2016-06-16
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -94,6 +94,7 @@ call plug#begin('~/.vim/bundle/')
 " Install plugins
 Plug 'kepbod/vim-hybrid' " Colorscheme hybrid
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' " Status line
+Plug 'ryanoasis/vim-devicons' " Devicons
 Plug 'bling/vim-bufferline' " Buffer line
 Plug 'nathanaelkane/vim-indent-guides' " Indent guides
 Plug 'mhinz/vim-startify' " Start page
