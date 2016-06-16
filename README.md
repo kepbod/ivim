@@ -114,7 +114,7 @@ There are some options you could set through `.vimrc` to configure ivim:
 * To make full use of auto-completion and syntax checking, please refer [wiki](https://github.com/kepbod/ivim/wiki/Auto-completion-and-syntax-checking).
 
 
-### Contributation
+## Contributation
 
 Welcome to contribute to ivim, see [issue #31](https://github.com/kepbod/ivim/issues/31) for details. Thank you very much for your supporting!
 
