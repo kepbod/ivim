@@ -8,7 +8,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.5
 "   Created: 2012-01-20
-"   Last Modified: 2016-06-16
+"   Last Modified: 2016-06-22
 "
 "   Sections:
 "     -> ivim Setting
@@ -154,7 +154,6 @@ if count(g:ivim_bundle_groups, 'ui') " UI setting
     Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' " Status line
     Plug 'ryanoasis/vim-devicons' " Devicons
     Plug 'bling/vim-bufferline' " Buffer line
-    Plug 'nathanaelkane/vim-indent-guides' " Indent guides
     Plug 'mhinz/vim-startify' " Start page
     Plug 'junegunn/goyo.vim', { 'for': 'markdown' } " Distraction-free
     Plug 'junegunn/limelight.vim', { 'for': 'markdown' } " Hyperfocus-writing
@@ -311,8 +310,11 @@ if count(g:ivim_bundle_groups, 'ui')
     set laststatus=2 " Show the statusline
     set noshowmode " Hide the default mode text
     " Set status line colorscheme
-    if g:ivim_default_scheme!='gruvbox'
+    if g:ivim_default_scheme=='hybrid'
         let g:airline_theme='bubblegum'
+    elseif g:ivim_default_scheme=='tender'
+        let g:tender_airline=1
+        let g:airline_theme='tender'
     endif
     set ttimeoutlen=50
     let g:bufferline_echo=0
@@ -543,17 +545,6 @@ command! DiffOrig vert new | set bt=nofile | r ++edit # | 0d_
 
 " Setting for UI plugins
 if count(g:ivim_bundle_groups, 'ui')
-
-    " -> Indent Guides
-    if !has('gui_running') && g:ivim_default_scheme!='gruvbox'
-        let g:indent_guides_auto_colors=0
-        autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=235
-        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=235
-    endif
-    let g:indent_guides_enable_on_vim_startup=1
-    let g:indent_guides_guide_size=1
-    let g:indent_guides_default_mapping=0
-    let g:indent_guides_exclude_filetypes=['help', 'nerdtree', 'startify', 'markdown']
 
     " -> Startify
     let g:startify_session_dir=$HOME . '/.vim/session'

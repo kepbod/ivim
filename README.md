@@ -35,13 +35,19 @@
 
 Use lots of famous colorschemes to make your eyes feel comfortable in both Vim and MacVim/gVim.
 
- * [Hybrid](https://github.com/mrhooray/vim-hybrid)(default)
+ * [Hybrid](https://github.com/w0ng/vim-hybrid) (default)
 
 ![snapshot1](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot1.jpg)
 
  * [Gruvbox](https://github.com/morhetz/gruvbox)
 
 ![snapshot2](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot2.jpg)
+
+ * [Tender](https://github.com/jacoborus/tender.vim)
+
+![snapshot1](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot3.jpg)
+
+**you cloud install the patched font from [vim-devicons](https://github.com/ryanoasis/vim-devicons)**
 
 ***Efficient***
 

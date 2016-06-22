@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.5
 "   Created: 2015-09-24
-"   Last Modified: 2016-06-16
+"   Last Modified: 2016-06-22
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -96,7 +96,6 @@ Plug 'kepbod/vim-hybrid' " Colorscheme hybrid
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' " Status line
 Plug 'ryanoasis/vim-devicons' " Devicons
 Plug 'bling/vim-bufferline' " Buffer line
-Plug 'nathanaelkane/vim-indent-guides' " Indent guides
 Plug 'mhinz/vim-startify' " Start page
 Plug 'Raimondi/delimitMate' " Closing of quotes
 Plug 'tomtom/tcomment_vim' " Commenter
@@ -375,15 +374,6 @@ nnoremap \= gg=G
 "--------------------------------------------------
 " => Plugin Setting
 "--------------------------------------------------
-
-" -> Indent Guides
-let g:indent_guides_auto_colors=0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=235
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=235
-let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_guide_size=1
-let g:indent_guides_default_mapping=0
-let g:indent_guides_exclude_filetypes=['help', 'nerdtree', 'startify', 'markdown']
 
 " -> Startify
 let g:startify_session_dir=$HOME . '/.vim/session'
