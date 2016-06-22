@@ -47,7 +47,7 @@ Use lots of famous colorschemes to make your eyes feel comfortable in both Vim a
 
 ![snapshot1](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot3.jpg)
 
-**you cloud install the patched font from [vim-devicons](https://github.com/ryanoasis/vim-devicons)**
+**You cloud install the patched font from [vim-devicons](https://github.com/ryanoasis/vim-devicons).**
 
 ***Efficient***
 
