@@ -494,12 +494,14 @@ if has('lua')
     if !exists('g:neocomplete#force_omni_input_patterns')
         let g:neocomplete#force_omni_input_patterns={}
     endif
-    let g:neocomplete#force_omni_input_patterns.python='\h\w*\|[^. \t]\.\w*'
+    let g:neocomplete#force_omni_input_patterns.python=
+    \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 else
     if !exists('g:neocomplcache_force_omni_patterns')
         let g:neocomplcache_force_omni_patterns={}
     endif
-    let g:neocomplcache_force_omni_patterns.python='\h\w*\|[^. \t]\.\w*'
+    let g:neocomplcache_force_omni_patterns.python=
+    \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 endif
 autocmd FileType python setlocal omnifunc=jedi#completions
 let g:jedi#completions_enabled=0
