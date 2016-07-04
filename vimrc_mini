@@ -107,8 +107,10 @@ Plug 'junegunn/fzf.vim' " Fuzzy finder plugin
 Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] } " Easy align
 Plug 'sickill/vim-pasta' " Vim pasta
 Plug 'Keithbsmiley/investigate.vim' " Helper
+Plug 'wellle/targets.vim' " Text objects
 Plug 'roman/golden-ratio' " Resize windows
 Plug 'chrisbra/vim-diff-enhanced' " Create better diffs
+Plug 'tpope/vim-unimpaired' " Pairs of mappings
 Plug 'unblevable/quick-scope' " Quick scope
 Plug 'bkad/CamelCaseMotion' " Camel case motion
 Plug 'majutsushi/tagbar' " Tag bar
