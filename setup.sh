@@ -49,12 +49,12 @@ backup() {
 
 install() {
     color_print "Cloning ivim..."
-    rm -rf $HOME/ivim
-    git clone https://github.com/kepbod/ivim.git $HOME/ivim
+    rm -rf $HOME/.ivim
+    git clone https://github.com/kepbod/ivim.git $HOME/.ivim
     if [ $1 = 1 ]; then
-        ln -s $HOME/ivim/vimrc $HOME/.vimrc
+        ln -s $HOME/.ivim/vimrc $HOME/.vimrc
     else
-        ln -s $HOME/ivim/vimrc_mini $HOME/.vimrc
+        ln -s $HOME/.ivim/vimrc_mini $HOME/.vimrc
     fi
     color_print "Installing vim-plug..."
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

@@ -76,10 +76,10 @@ Use lots of famous colorschemes to make your eyes feel comfortable in both Vim a
 ### Manual Installation
 
 0. A Vim/MacVim/gVim with version higher than 7.3 should be installed on your computer;
-1. Get ivim from github website, `git clone git://github.com/kepbod/ivim.git $HOME/ivim`;
-2. Make symbolic links of vimrc to your home directory, `ln -s $HOME/ivim/vimrc $HOME/.vimrc`;
-3. Install NeoBundle to install and update plugins, `git clone git://github.com/Shougo/neobundle.vim.git $HOME/.vim/bundle/neobundle.vim`;
-4. Install plugins, `$HOME/.vim/bundle/neobundle.vim/bin/neoinstall > /dev/null 2>&1` for *nix or `$HOME/.vim/bundle/neobundle.vim/bin/neoinstall.bat` for windows;
+1. Get ivim from github website, `git clone git://github.com/kepbod/ivim.git $HOME/.ivim`;
+2. Make symbolic links of vimrc to your home directory, `ln -s $HOME/.ivim/vimrc $HOME/.vimrc`;
+3. Install vim-plug to install and update plugins, `curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`;
+4. Install plugins, `vim +PlugUpdate +qal`;
 5. Just enjoy it!
 
 ### Automatic Installation (*nix only)
