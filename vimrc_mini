@@ -534,6 +534,11 @@ let g:user_emmet_leader_key='<C-Z>'
 let g:user_emmet_settings={'indentation':'    '}
 let g:use_emmet_complete_tag=1
 
+" -> Matchit
+" Use Tab instead of % to switch
+nmap <Tab> %
+vmap <Tab> %
+
 " Use local vimrc if available
 if filereadable(expand($HOME . '/.vimrc.local'))
     source $HOME/.vimrc.local
