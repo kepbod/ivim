@@ -33,9 +33,6 @@
 
 <p><strong>Note: From v2.5, ivim uses <a href="https://github.com/junegunn/vim-plug">vim-plug</a> instead of <a href="https://github.com/Shougo/neobundle.vim">NeoBundle</a> to manage vim plugins. Please see <a href="https://github.com/junegunn/vim-plug">vim-plug docs</a> to see the usage.</strong></p>
 
-<h3>
-<a id="welcome-to-contribute-to-ivim-see-issue-31-for-details-thank-you-very-much-for-your-supporting" class="anchor" href="#welcome-to-contribute-to-ivim-see-issue-31-for-details-thank-you-very-much-for-your-supporting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome to contribute to ivim, see <a href="https://github.com/kepbod/ivim/issues/31">issue #31</a> for details. Thank you very much for your supporting!</h3>
-
 <p><strong>New: You could install the minimum ivim now for fast and basic usage!!!</strong></p>
 
 <blockquote>
@@ -64,7 +61,7 @@ fewer plugins.</p>
 
 <ul>
 <li>
-<a href="https://github.com/mrhooray/vim-hybrid">Hybrid</a>(default)</li>
+<a href="https://github.com/w0ng/vim-hybrid">Hybrid</a> (default)</li>
 </ul>
 
 <p><img src="https://raw.githubusercontent.com/kepbod/ivim/master/snapshot1.jpg" alt="snapshot1"></p>
@@ -76,10 +73,12 @@ fewer plugins.</p>
 <p><img src="https://raw.githubusercontent.com/kepbod/ivim/master/snapshot2.jpg" alt="snapshot2"></p>
 
 <ul>
-<li><a href="https://github.com/zenorocha/dracula-theme">Dracula</a></li>
+<li><a href="https://github.com/jacoborus/tender.vim">Tender</a></li>
 </ul>
 
-<p><img src="https://raw.githubusercontent.com/kepbod/ivim/master/snapshot3.jpg" alt="snapshot3"></p>
+<p><img src="https://raw.githubusercontent.com/kepbod/ivim/master/snapshot3.jpg" alt="snapshot1"></p>
+
+<p><strong>You cloud install the patched font from <a href="https://github.com/ryanoasis/vim-devicons">vim-devicons</a>.</strong></p>
 
 <p><strong><em>Efficient</em></strong></p>
 
@@ -119,10 +118,10 @@ fewer plugins.</p>
 
 <ol>
 <li>A Vim/MacVim/gVim with version higher than 7.3 should be installed on your computer;</li>
-<li>Get ivim from github website, <code>git clone git://github.com/kepbod/ivim.git $HOME/ivim</code>;</li>
-<li>Make symbolic links of vimrc to your home directory, <code>ln -s $HOME/ivim/vimrc $HOME/.vimrc</code>;</li>
-<li>Install NeoBundle to install and update plugins, <code>git clone git://github.com/Shougo/neobundle.vim.git $HOME/.vim/bundle/neobundle.vim</code>;</li>
-<li>Install plugins, <code>$HOME/.vim/bundle/neobundle.vim/bin/neoinstall &gt; /dev/null 2&gt;&amp;1</code> for *nix or <code>$HOME/.vim/bundle/neobundle.vim/bin/neoinstall.bat</code> for windows;</li>
+<li>Get ivim from github website, <code>git clone git://github.com/kepbod/ivim.git $HOME/.ivim</code>;</li>
+<li>Make symbolic links of vimrc to your home directory, <code>ln -s $HOME/.ivim/vimrc $HOME/.vimrc</code>;</li>
+<li>Install vim-plug to install and update plugins, <code>curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim</code>;</li>
+<li>Install plugins, <code>vim +PlugUpdate +qal</code>;</li>
 <li>Just enjoy it!</li>
 </ol>
 
@@ -151,7 +150,7 @@ fewer plugins.</p>
 <li>g:ivim_user -- your username</li>
 <li>g:ivim_email -- your email</li>
 <li>g:ivim_github -- your github</li>
-<li>g:ivim_default_scheme -- color settings (hybrid or gruvbox)</li>
+<li>g:ivim_default_scheme -- color settings (hybrid, gruvbox or tender)</li>
 <li>g:ivim_fancy_font -- using fancy font or not</li>
 <li>g:ivim_show_number -- showing number or not</li>
 <li>g:ivim_autocomplete -- autocomplete engine (NEO: neocomplete/neocomplcache/neosnippet, YCM: YouCompleteMe/UltiSnips)</li>
@@ -165,6 +164,11 @@ fewer plugins.</p>
 <li>This distribution is completely customisable using <code>~/.vimrc.ivim.local</code>(only for <code>vimrc</code>), <code>~/.vimrc.local</code>, <code>~/.gvimrc.local</code> and <code>~/.vimrc.bundles.local</code>!</li>
 <li>To make full use of auto-completion and syntax checking, please refer <a href="https://github.com/kepbod/ivim/wiki/Auto-completion-and-syntax-checking">wiki</a>.</li>
 </ul>
+
+<h2>
+<a id="contributation" class="anchor" href="#contributation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributation</h2>
+
+<p>Welcome to contribute to ivim, see <a href="https://github.com/kepbod/ivim/issues/31">issue #31</a> for details. Thank you very much for your supporting!</p>
 
 <h2>
 <a id="vim-tips" class="anchor" href="#vim-tips" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Vim Tips</h2>
