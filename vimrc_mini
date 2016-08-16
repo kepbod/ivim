@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.5
 "   Created: 2015-09-24
-"   Last Modified: 2016-07-04
+"   Last Modified: 2016-08-16
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -450,6 +450,9 @@ let g:tagbar_autofocus=1
 let g:tagbar_expand=1
 let g:tagbar_foldlevel=2
 let g:tagbar_autoshowtag=1
+
+" -> Gutentags
+let g:gutentags_cache_dir=$HOME . '/.vim/cache/ctags'
 
 " -> NERD Tree
 nnoremap <Leader>f :NERDTreeToggle<CR>

@@ -8,7 +8,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.5
 "   Created: 2012-01-20
-"   Last Modified: 2016-06-22
+"   Last Modified: 2016-08-16
 "
 "   Sections:
 "     -> ivim Setting
@@ -629,6 +629,9 @@ if count(g:ivim_bundle_groups, 'enhance')
     " -> Easy Align
     xmap ga <Plug>(EasyAlign)
     nmap ga <Plug>(EasyAlign)
+
+    " -> Gutentags
+    let g:gutentags_cache_dir=$HOME . '/.vim/cache/ctags'
 
     " -> Splitjoin
     let g:splitjoin_split_mapping = ',s'
