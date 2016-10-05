@@ -8,7 +8,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.5
 "   Created: 2012-01-20
-"   Last Modified: 2016-08-16
+"   Last Modified: 2016-10-05
 "
 "   Sections:
 "     -> ivim Setting
@@ -152,6 +152,7 @@ if count(g:ivim_bundle_groups, 'ui') " UI setting
     Plug 'morhetz/gruvbox' " Colorscheme gruvbox
     Plug 'jacoborus/tender.vim' " Colorscheme tender
     Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' " Status line
+    Plug 'Yggdroot/indentLine' " Indentation level
     Plug 'ryanoasis/vim-devicons' " Devicons
     Plug 'bling/vim-bufferline' " Buffer line
     Plug 'mhinz/vim-startify' " Start page
