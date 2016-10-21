@@ -3,13 +3,13 @@
 "      (_)   __(_)___ ___
 "     / / | / / / __ `__ \
 "    / /| |/ / / / / / / /
-"   /_/ |___/_/_/ /_/ /_/  mini
+"   /_/ |___/_/_/ /_/ /_/  nvim
 "
-"   ivim mini (ivim for fast and basic usage)
+"   ivim nvim (ivim for NeoVim)
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
-"   Version: 2.5
-"   Created: 2015-09-24
-"   Last Modified: 2016-10-05
+"   Version: 3.0
+"   Created: 2016-10-21
+"   Last Modified: 2016-10-21
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -17,8 +17,6 @@
 " => General
 "------------------------------------------------
 
-set nocompatible " Get out of vi compatible mode
-filetype plugin indent on " Enable filetype
 let mapleader=',' " Change the mapleader
 let maplocalleader='\' " Change the maplocalleader
 set timeoutlen=500 " Time to wait for a command
@@ -28,13 +26,11 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 " Fast edit the .vimrc file using ,x
 nnoremap <Leader>x :tabedit $MYVIMRC<CR>
 
-set autoread " Set autoread when a file is changed outside
 set autowrite " Write on make/shell commands
 set hidden " Turn on hidden"
 
 set history=1000 " Increase the lines of history
 set modeline " Turn on modeline
-set encoding=utf-8 " Set utf-8 encoding
 set completeopt+=longest " Optimize auto complete
 set completeopt-=preview " Optimize auto complete
 
@@ -43,15 +39,9 @@ set undofile " Set undo
 " Set directories
 function! InitializeDirectories()
     let parent=$HOME
-    let prefix='.vim'
-    let dir_list={
-                \ 'backup': 'backupdir',
-                \ 'view': 'viewdir',
-                \ 'swap': 'directory',
-                \ 'undo': 'undodir',
-                \ 'cache': '',
-                \ 'session': ''}
-    for [dirname, settingname] in items(dir_list)
+    let prefix='.local/share/nvim'
+    let dir_list=['cache', 'session']
+    for dirname in dir_list
         let directory=parent.'/'.prefix.'/'.dirname.'/'
         if !isdirectory(directory)
             if exists('*mkdir')
@@ -61,9 +51,6 @@ function! InitializeDirectories()
                 echo 'Warning: Unable to create directory: '.directory
             endif
         endif
-        if settingname!=''
-            exe 'set '.settingname.'='.directory
-        endif
     endfor
 endfunction
 call InitializeDirectories()
@@ -71,15 +58,17 @@ call InitializeDirectories()
 autocmd BufWinLeave *.* silent! mkview " Make Vim save view (state) (folds, cursor, etc)
 autocmd BufWinEnter *.* silent! loadview " Make Vim load view (state) (folds, cursor, etc)
 
+" Disable mouse
+set mouse=
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
 " => Vim-plug
 "--------------------------------------------------
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
