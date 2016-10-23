@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.5
 "   Created: 2015-09-24
-"   Last Modified: 2016-10-05
+"   Last Modified: 2016-10-23
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -86,7 +86,7 @@ endif
 call plug#begin('~/.vim/bundle/')
 
 " Install plugins
-Plug 'kepbod/vim-hybrid' " Colorscheme hybrid
+Plug 'kristijanhusak/vim-hybrid-material' " Colorscheme hybrid material
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' " Status line
 Plug 'Yggdroot/indentLine' " Indentation level
 Plug 'ryanoasis/vim-devicons' " Devicons
@@ -94,7 +94,7 @@ Plug 'bling/vim-bufferline' " Buffer line
 Plug 'mhinz/vim-startify' " Start page
 Plug 'Raimondi/delimitMate' " Closing of quotes
 Plug 'tomtom/tcomment_vim' " Commenter
-Plug 'kristijanhusak/vim-multiple-cursors' " Multiple cursors
+Plug 'terryma/vim-multiple-cursors' " Multiple cursors
 Plug 'tpope/vim-surround' " Surround
 Plug 'tpope/vim-repeat' " Repeat
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  } " Fuzzy finder
@@ -141,64 +141,17 @@ call plug#end()
 " => User Interface
 "-------------------------------------------------
 
-" Set title
-set title
-set titlestring=%t%(\ %m%)%(\ (%{expand('%:p:h')})%)%(\ %a%)
-
-" Set tabline
-set showtabline=2 " Always show tab line
-" Set up tab labels
-set guitablabel=%m%N:%t[%{tabpagewinnr(v:lnum)}]
-set tabline=%!MyTabLine()
-function! MyTabLine()
-    let s=''
-    let t=tabpagenr() " The index of current page
-    let i=1
-    while i<=tabpagenr('$') " From the first page
-        let buflist=tabpagebuflist(i)
-        let winnr=tabpagewinnr(i)
-        let s.=(i==t ? '%#TabLineSel#' : '%#TabLine#')
-        let s.='%'.i.'T'
-        let s.=' '
-        let bufnr=buflist[winnr-1]
-        let file=bufname(bufnr)
-        let buftype = getbufvar(bufnr, 'buftype')
-        let m=''
-        if getbufvar(bufnr, '&modified')
-            let m='[+]'
-        endif
-        if buftype=='nofile'
-            if file=~'\/.'
-                let file=substitute(file, '.*\/\ze.', '', '')
-            endif
-        else
-            let file=fnamemodify(file, ':p:t')
-        endif
-        if file==''
-            let file='[No Name]'
-        endif
-        let s.=m
-        let s.=i.':'
-        let s.=file
-        let s.='['.winnr.']'
-        let s.=' '
-        let i=i+1
-    endwhile
-    let s.='%T%#TabLineFill#%='
-    let s.=(tabpagenr('$')>1 ? '%999XX' : 'X')
-    return s
-endfunction
-" Set up tab tooltips with each buffer name
-set guitabtooltip=%F
-
 " Set status line
 set laststatus=2 " Show the statusline
 set noshowmode " Hide the default mode text
-let g:airline_theme='bubblegum'
+let g:airline_theme='hybrid'
 set ttimeoutlen=50
 let g:bufferline_echo=0
 let g:bufferline_modified='[+]'
 let g:airline_powerline_fonts=1
+
+" Set tabline
+let g:airline#extensions#tabline#enabled = 1
 
 " Only have cursorline in current window and in normal window
 autocmd WinLeave * set nocursorline
@@ -248,7 +201,7 @@ set background=dark " Set background
 set t_Co=256 " Use 256 colors
 
 " Load a colorscheme
-colorscheme hybrid
+colorscheme hybrid_material
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -365,6 +318,9 @@ nnoremap <Leader>q :%s/\s\+$//<CR>:let @/=''<CR>
 
 " Modify all the indents
 nnoremap \= gg=G
+
+" Toggle relativenumber
+nnoremap <Leader>n :set relativenumber!<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

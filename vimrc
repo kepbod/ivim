@@ -8,7 +8,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 2.5
 "   Created: 2012-01-20
-"   Last Modified: 2016-10-05
+"   Last Modified: 2016-10-23
 "
 "   Sections:
 "     -> ivim Setting
@@ -166,7 +166,7 @@ if count(g:ivim_bundle_groups, 'enhance') " Vim enhancement
     Plug 'tpope/vim-abolish' " Abolish
     Plug 'tpope/vim-speeddating' " Speed dating
     Plug 'tpope/vim-repeat' " Repeat
-    Plug 'kristijanhusak/vim-multiple-cursors' " Multiple cursors
+    Plug 'terryma/vim-multiple-cursors' " Multiple cursors
     Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' } " Undo tree
     Plug 'tpope/vim-surround' " Surround
     Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] } " Easy align
