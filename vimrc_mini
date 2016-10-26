@@ -144,7 +144,7 @@ call plug#end()
 " Set status line
 set laststatus=2 " Show the statusline
 set noshowmode " Hide the default mode text
-let g:airline_theme='hybrid'
+let g:airline_theme='bubblegum'
 set ttimeoutlen=50
 let g:bufferline_echo=0
 let g:bufferline_modified='[+]'
