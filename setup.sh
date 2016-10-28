@@ -35,7 +35,7 @@ logo() {
 require() {
     color_print "Checking requirements for ivim..."
     color_print "Checking vim version..."
-    vim --version | grep 7.[3-9] || die "Your vim's version is too low!\nPlease download higher version(7.3+) from http://www.vim.org/download.php"
+    vim --version | grep -E 7.[3-9]\|8.[0-9] || die "Your vim's version is too low!\nPlease download higher version(7.3+) from http://www.vim.org/download.php"
     color_print "Checking if git exists..."
     which git || die "No git installed!\nPlease install git from http://git-scm.com/downloads/"
     color_print "Check if ctags exists..."
