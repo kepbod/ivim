@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2016-10-21
-"   Last Modified: 2016-10-26
+"   Last Modified: 2016-10-28
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -70,7 +70,7 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 " Install plugins
-Plug 'mhartington/oceanic-next' " Colorscheme Oceanic-Next
+Plug 'rakr/vim-one' " Colorscheme one
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' " Status line
 Plug 'Yggdroot/indentLine' " Indentation level
 Plug 'ryanoasis/vim-devicons' " Devicons
@@ -123,14 +123,14 @@ call plug#end()
 
 " Set status line
 set noshowmode " Hide the default mode text
-let g:airline_theme='oceanicnext'
+let g:airline_theme='one'
 set ttimeoutlen=50
 let g:bufferline_echo=0
 let g:bufferline_modified='[+]'
 let g:airline_powerline_fonts=1
 
 " Set tabline
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled=1
 
 " Only have cursorline in current window and in normal window
 autocmd WinLeave * set nocursorline
@@ -173,15 +173,21 @@ augroup END
 " => Colors and Fonts
 "-------------------------------------------------
 
-if (has("termguicolors"))
-    set termguicolors
+" Use true colors
+if (empty($TMUX))
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    if (has("termguicolors"))
+        set termguicolors
+    endif
 endif
+
 
 set background=dark " Set background
 set t_Co=256 " Use 256 colors
+let g:one_allow_italics=1 " Allow italic
 
 " Load a colorscheme
-colorscheme OceanicNext
+colorscheme one
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

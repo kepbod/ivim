@@ -7,9 +7,9 @@
 "
 "   ivim mini (ivim for fast and basic usage)
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
-"   Version: 2.5
+"   Version: 3.0
 "   Created: 2015-09-24
-"   Last Modified: 2016-10-23
+"   Last Modified: 2016-10-28
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -86,7 +86,7 @@ endif
 call plug#begin('~/.vim/bundle/')
 
 " Install plugins
-Plug 'kristijanhusak/vim-hybrid-material' " Colorscheme hybrid material
+Plug 'jacoborus/tender.vim' " Colorscheme tender
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' " Status line
 Plug 'Yggdroot/indentLine' " Indentation level
 Plug 'ryanoasis/vim-devicons' " Devicons
@@ -144,14 +144,14 @@ call plug#end()
 " Set status line
 set laststatus=2 " Show the statusline
 set noshowmode " Hide the default mode text
-let g:airline_theme='bubblegum'
+let g:airline_theme='tender'
 set ttimeoutlen=50
 let g:bufferline_echo=0
 let g:bufferline_modified='[+]'
 let g:airline_powerline_fonts=1
 
 " Set tabline
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled=1
 
 " Only have cursorline in current window and in normal window
 autocmd WinLeave * set nocursorline
@@ -196,12 +196,19 @@ augroup END
 " => Colors and Fonts
 "-------------------------------------------------
 
+" Use true colors
+if (empty($TMUX))
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
 syntax on " Enable syntax
 set background=dark " Set background
 set t_Co=256 " Use 256 colors
 
 " Load a colorscheme
-colorscheme hybrid_material
+colorscheme tender
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
