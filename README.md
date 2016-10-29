@@ -12,7 +12,7 @@
 
 After 4 years' development, ivim contains 3 versions to satisfy different requirements.
 
-* [ivim](https://github.com/kepbod/ivim/blob/3.0/vimrc): highly customizable vim configuration, and it has more [colorschemes](https://github.com/kepbod/ivim/wiki/Colorscheme) and [settings](https://github.com/kepbod/ivim/wiki/Colorscheme).
+* [ivim](https://github.com/kepbod/ivim/blob/3.0/vimrc): highly customizable vim configuration, and it has more [colorschemes](https://github.com/kepbod/ivim/wiki/Colorscheme) and [settings](https://github.com/kepbod/ivim/wiki/Customization).
 * [ivim_mini](https://github.com/kepbod/ivim/blob/3.0/vimrc_mini): vim configuration with fast startup time and convenient usage.
 * [ivim_nvim](https://github.com/kepbod/ivim/blob/3.0/vimrc_nvim): comprehensive configuration for [NeoVim](https://neovim.io).
 

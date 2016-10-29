@@ -5,6 +5,7 @@ help() {
     echo "Usage: setup.sh -i/-n"
     echo "-i -- install ivim"
     echo "-m -- install mini ivim"
+    echo "-u -- install nvim ivim"
     echo "-n -- update ivim"
     exit 0
 }
@@ -34,8 +35,13 @@ logo() {
 
 require() {
     color_print "Checking requirements for ivim..."
-    color_print "Checking vim version..."
-    vim --version | grep -E 7.[3-9]\|8.[0-9] || die "Your vim's version is too low!\nPlease download higher version(7.3+) from http://www.vim.org/download.php"
+    if [ $1 = 0 ]; then
+        color_print "Checking Vim version..."
+        vim --version | grep -E 7.[3-9]\|8.[0-9] || die "Your vim's version is too low!\nPlease download higher version(7.3+) from http://www.vim.org/download.php"
+    else
+        color_print "Checking NeoVim version..."
+        nvim --version || die "Please install NeoVim according to https://github.com/neovim/neovim/wiki/Installing-Neovim"
+    fi
     color_print "Checking if git exists..."
     which git || die "No git installed!\nPlease install git from http://git-scm.com/downloads/"
     color_print "Check if ctags exists..."
@@ -45,23 +51,42 @@ require() {
 backup() {
     color_print "Backing up current vim config..."
     for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && mv -f $i $i.backup; done
+    if [ -e $HOME/.config/nvim/init.vim ]; then
+        mv -f $HOME/.config/nvim/init.vim $HOME/.nvimrc.backup
+    fi
 }
 
 install() {
     color_print "Cloning ivim..."
     rm -rf $HOME/.ivim
     git clone https://github.com/kepbod/ivim.git $HOME/.ivim
-    if [ $1 = 1 ]; then
+    if [ $1 = 0 ]; then
         ln -s $HOME/.ivim/vimrc $HOME/.vimrc
-    else
+    elif [ $i = 1 ]; then
         ln -s $HOME/.ivim/vimrc_mini $HOME/.vimrc
+    else
+        ln -s $HOME/.ivim/vimrc_nvim $HOME/.config/nvim/init.vim
     fi
     color_print "Installing vim-plug..."
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    color_print "Installing hybrid theme..."
-    git clone https://github.com/kepbod/vim-hybrid.git $HOME/.vim/bundle/vim-hybrid
+    if [ $1 = 2 ]; then
+        curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    else
+        curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    fi
+    color_print "Installing colortheme..."
+    if [ $1 = 0 ]; then
+        git clone https://github.com/kristijanhusak/vim-hybrid-material.git $HOME/.vim/bundle/vim-hybrid-material
+    elif [ $1 = 1 ]; then
+        git clone https://github.com/jacoborus/tender.vim.git $HOME/.vim/bundle/tender.vim
+    else
+        git clone https://github.com/rakr/vim-one.git $HOME/.config/nvim/plugged/vim-one
+    fi
     color_print "Installing plugins using vim-plug..."
-    vim +PlugUpdate +qal
+    if [ $1 = 2 ]; then
+        nvim +PlugUpdate +qal
+    else
+        vim +PlugUpdate +qal
+    fi
     color_print "ivim has been installed. Just enjoy vimming!"
 }
 
@@ -69,7 +94,12 @@ update() {
     color_print "updating ivim..."
     git pull origin master
     color_print "updating plugins..."
-    vim +PlugUpdate +qal
+    if [ -e $HOME/.config/nvim/init.vim ]; then
+        nvim +PlugUpdate +qal
+    fi
+    if [ -e $HOME/.vimrc ]; then
+        vim +PlugUpdate +qal
+    fi
 }
 
 if [ $# -ne 1 ]; then
@@ -80,15 +110,21 @@ while getopts ":imn" opts; do
     case $opts in
         i)
             logo
-            require
+            require 0
             backup
-            install 1
+            install 0
             ;;
         m)
             logo
-            require
+            require 0
             backup
-            install 0
+            install 1
+            ;;
+        u)
+            logo
+            require 1
+            backup
+            install 2
             ;;
         n)
             update
