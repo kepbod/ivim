@@ -106,7 +106,7 @@ if [ $# -ne 1 ]; then
     help
 fi
 
-while getopts ":imn" opts; do
+while getopts ":imun" opts; do
     case $opts in
         i)
             logo
