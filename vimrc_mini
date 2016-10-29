@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2015-09-24
-"   Last Modified: 2016-10-28
+"   Last Modified: 2016-10-29
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -122,7 +122,6 @@ Plug 'Shougo/neosnippet-snippets' " Snippets
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'scrooloose/syntastic' " Syntax checking
 Plug 'tpope/vim-fugitive' " Git wrapper
-Plug 'edsono/vim-matchit' " Match it
 Plug 'davidhalter/jedi-vim', { 'for': 'python' } " Python jedi plugin
 Plug 'fatih/vim-go', {'for': 'go'} " Vim go
 Plug 'airblade/vim-gitgutter' " Git diff sign
@@ -496,6 +495,8 @@ let g:user_emmet_settings={'indentation':'    '}
 let g:use_emmet_complete_tag=1
 
 " -> Matchit
+" Start matchit
+packadd! matchit
 " Use Tab instead of % to switch
 nmap <Tab> %
 vmap <Tab> %

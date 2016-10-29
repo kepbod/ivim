@@ -1,4 +1,3 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "       _       _
 "      (_)   __(_)___ ___
 "     / / | / / / __ `__ \
@@ -8,7 +7,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2012-01-20
-"   Last Modified: 2016-10-28
+"   Last Modified: 2016-10-29
 "
 "   Sections:
 "     -> ivim Setting
@@ -180,7 +179,6 @@ if count(g:ivim_bundle_groups, 'move') " Moving
     Plug 'unblevable/quick-scope' " Quick scope
     Plug 'bkad/CamelCaseMotion' " Camel case motion
     Plug 'majutsushi/tagbar' " Tag bar
-    Plug 'edsono/vim-matchit' " Match it
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  } " Fuzzy finder
     Plug 'junegunn/fzf.vim' " Fuzzy finder plugin
 endif
@@ -665,6 +663,8 @@ if count(g:ivim_bundle_groups, 'move')
     let g:tagbar_autoshowtag=1
 
     " Matchit
+    " Start mathit
+    packadd! matchit
     " Use Tab instead of % to switch
     nmap <Tab> %
     vmap <Tab> %

@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2016-10-21
-"   Last Modified: 2016-10-28
+"   Last Modified: 2016-10-29
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -93,7 +93,6 @@ Plug 'tpope/vim-unimpaired' " Pairs of mappings
 Plug 'unblevable/quick-scope' " Quick scope
 Plug 'bkad/CamelCaseMotion' " Camel case motion
 Plug 'majutsushi/tagbar' " Tag bar
-Plug 'edsono/vim-matchit' " Match it
 Plug 'ludovicchabant/vim-gutentags' " Manage tag files
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " NERD tree
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' } " NERD tree git
