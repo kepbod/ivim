@@ -65,6 +65,7 @@ install() {
     elif [ $1 = 1 ]; then
         ln -s $HOME/.ivim/vimrc_mini $HOME/.vimrc
     else
+        mkdir -p $HOME/.config/nvim
         ln -s $HOME/.ivim/vimrc_nvim $HOME/.config/nvim/init.vim
     fi
     color_print "Installing vim-plug..."
