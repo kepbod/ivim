@@ -6,9 +6,9 @@
 "   /_/ |___/_/_/ /_/ /_/
 "
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
-"   Version: 2.5
+"   Version: 3.0
 "   Created: 2012-01-20
-"   Last Modified: 2016-10-05
+"   Last Modified: 2016-10-28
 "
 "   Sections:
 "     -> ivim Setting
@@ -80,7 +80,6 @@ set encoding=utf-8 " Set utf-8 encoding
 set completeopt+=longest " Optimize auto complete
 set completeopt-=preview " Optimize auto complete
 
-set backup " Set backup
 set undofile " Set undo
 
 " Set directories
@@ -114,11 +113,6 @@ call InitializeDirectories()
 autocmd BufWinLeave *.* silent! mkview " Make Vim save view (state) (folds, cursor, etc)
 autocmd BufWinEnter *.* silent! loadview " Make Vim load view (state) (folds, cursor, etc)
 
-" No sound on errors
-set noerrorbells
-set novisualbell
-set t_vb=
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "-------------------------------------------------
@@ -136,7 +130,7 @@ set viewoptions-=options " in case of mapping change
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
-" => Vim-Plug
+" => Vim-plug
 "--------------------------------------------------
 
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -148,7 +142,7 @@ endif
 call plug#begin('~/.vim/bundle')
 
 if count(g:ivim_bundle_groups, 'ui') " UI setting
-    Plug 'kepbod/vim-hybrid' " Colorscheme hybrid
+    Plug 'kristijanhusak/vim-hybrid-material' " Colorscheme hybrid material
     Plug 'morhetz/gruvbox' " Colorscheme gruvbox
     Plug 'jacoborus/tender.vim' " Colorscheme tender
     Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' " Status line
@@ -166,7 +160,7 @@ if count(g:ivim_bundle_groups, 'enhance') " Vim enhancement
     Plug 'tpope/vim-abolish' " Abolish
     Plug 'tpope/vim-speeddating' " Speed dating
     Plug 'tpope/vim-repeat' " Repeat
-    Plug 'kristijanhusak/vim-multiple-cursors' " Multiple cursors
+    Plug 'terryma/vim-multiple-cursors' " Multiple cursors
     Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' } " Undo tree
     Plug 'tpope/vim-surround' " Surround
     Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] } " Easy align
@@ -252,59 +246,63 @@ call plug#end()
 " => User Interface
 "-------------------------------------------------
 
-" Set title
-set title
-set titlestring=%t%(\ %m%)%(\ (%{expand('%:p:h')})%)%(\ %a%)
+if count(g:ivim_bundle_groups, 'ui')
+    let g:airline#extensions#tabline#enabled=1
+else
+    " Set title
+    set title
+    set titlestring=%t%(\ %m%)%(\ (%{expand('%:p:h')})%)%(\ %a%)
 
-" Set tabline
-set showtabline=2 " Always show tab line
-" Set up tab labels
-set guitablabel=%m%N:%t[%{tabpagewinnr(v:lnum)}]
-set tabline=%!MyTabLine()
-function! MyTabLine()
-    let s=''
-    let t=tabpagenr() " The index of current page
-    let i=1
-    while i<=tabpagenr('$') " From the first page
-        let buflist=tabpagebuflist(i)
-        let winnr=tabpagewinnr(i)
-        let s.=(i==t ? '%#TabLineSel#' : '%#TabLine#')
-        let s.='%'.i.'T'
-        let s.=' '
-        let bufnr=buflist[winnr-1]
-        let file=bufname(bufnr)
-        let buftype = getbufvar(bufnr, 'buftype')
-        let m=''
-        if getbufvar(bufnr, '&modified')
-            let m='[+]'
-        endif
-        if buftype=='nofile'
-            if file=~'\/.'
-                let file=substitute(file, '.*\/\ze.', '', '')
+    " Set tabline
+    set showtabline=2 " Always show tab line
+    " Set up tab labels
+    set guitablabel=%m%N:%t[%{tabpagewinnr(v:lnum)}]
+    set tabline=%!MyTabLine()
+    function! MyTabLine()
+        let s=''
+        let t=tabpagenr() " The index of current page
+        let i=1
+        while i<=tabpagenr('$') " From the first page
+            let buflist=tabpagebuflist(i)
+            let winnr=tabpagewinnr(i)
+            let s.=(i==t ? '%#TabLineSel#' : '%#TabLine#')
+            let s.='%'.i.'T'
+            let s.=' '
+            let bufnr=buflist[winnr-1]
+            let file=bufname(bufnr)
+            let buftype = getbufvar(bufnr, 'buftype')
+            let m=''
+            if getbufvar(bufnr, '&modified')
+                let m='[+]'
             endif
-        else
-            let file=fnamemodify(file, ':p:t')
-        endif
-        if file==''
-            let file='[No Name]'
-        endif
-        let s.=m
-        let s.=i.':'
-        let s.=file
-        let s.='['.winnr.']'
-        let s.=' '
-        let i=i+1
-    endwhile
-    let s.='%T%#TabLineFill#%='
-    let s.=(tabpagenr('$')>1 ? '%999XX' : 'X')
-    return s
-endfunction
-" Set tabline colorscheme
-if g:ivim_default_scheme=='gruvbox'
-    let g:gruvbox_invert_tabline=1
+            if buftype=='nofile'
+                if file=~'\/.'
+                    let file=substitute(file, '.*\/\ze.', '', '')
+                endif
+            else
+                let file=fnamemodify(file, ':p:t')
+            endif
+            if file==''
+                let file='[No Name]'
+            endif
+            let s.=m
+            let s.=i.':'
+            let s.=file
+            let s.='['.winnr.']'
+            let s.=' '
+            let i=i+1
+        endwhile
+        let s.='%T%#TabLineFill#%='
+        let s.=(tabpagenr('$')>1 ? '%999XX' : 'X')
+        return s
+    endfunction
+    " Set tabline colorscheme
+    if g:ivim_default_scheme=='gruvbox'
+        let g:gruvbox_invert_tabline=1
+    endif
+    " Set up tab tooltips with each buffer name
+    set guitabtooltip=%F
 endif
-" Set up tab tooltips with each buffer name
-set guitabtooltip=%F
 
 " Set status line
 if count(g:ivim_bundle_groups, 'ui')
@@ -389,10 +387,17 @@ if !has('gui_running')
     set t_Co=256 " Use 256 colors
 endif
 
+" Use true colors
+if (empty($TMUX))
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
 " Load a colorscheme
 if count(g:ivim_bundle_groups, 'ui')
     if g:ivim_default_scheme=='hybrid'
-        colorscheme hybrid
+        colorscheme hybrid_material
     elseif g:ivim_default_scheme=='gruvbox'
         colorscheme gruvbox
     elseif g:ivim_default_scheme=='tender'

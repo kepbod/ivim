@@ -8,44 +8,29 @@
 /_/ |___/_/_/ /_/ /_/  
 ```
 
-**Version: 2.5**
+**Version: 3.0**
 
-**Note: From v2.5, ivim uses [vim-plug](https://github.com/junegunn/vim-plug) instead of [NeoBundle](https://github.com/Shougo/neobundle.vim) to manage vim plugins. Please see [vim-plug docs](https://github.com/junegunn/vim-plug) to see the usage.**
+After 4 years' development, ivim contains 3 versions to satisfy different requirements.
 
-**New: You could install the minimum ivim now for fast and basic usage!!!**
+* [ivim](https://github.com/kepbod/ivim/blob/3.0/vimrc): highly customizable vim configuration, and it has more [colorschemes](https://github.com/kepbod/ivim/wiki/Colorscheme) and [settings](https://github.com/kepbod/ivim/wiki/Customization).
+* [ivim_mini](https://github.com/kepbod/ivim/blob/3.0/vimrc_mini): vim configuration with fast startup time and convenient usage.
+* [ivim_nvim](https://github.com/kepbod/ivim/blob/3.0/vimrc_nvim): comprehensive configuration for [NeoVim](https://neovim.io).
 
-> ivim mini only supports terminal vim, and speeds up startup time through loading
-> fewer plugins.
->
-> Install:
->
-> `bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh) -m`
->
-> or
->
-> `bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh -O -) -m`
->
-> See more information from https://github.com/kepbod/ivim/blob/master/vimrc_mini
-
-*Some new features will be firstly tested in vimrc_mini*
 
 ## Features
 
 ***Beautiful***
 
-Use lots of famous colorschemes to make your eyes feel comfortable in both Vim and MacVim/gVim.
+Use lots of famous colorschemes to make your eyes feel comfortable in both Vim and NeoVim.
 
- * [Hybrid](https://github.com/w0ng/vim-hybrid) (default)
+* [ivim](https://github.com/kepbod/ivim/blob/3.0/vimrc)
+![ivim](https://raw.githubusercontent.com/kepbod/ivim/3.0/snapshot/ivim.jpeg)
 
-![snapshot1](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot1.jpg)
+* [ivim_mini](https://github.com/kepbod/ivim/blob/3.0/vimrc_mini)
+![ivim_mini](https://raw.githubusercontent.com/kepbod/ivim/3.0/snapshot/ivim_mini.jpeg)
 
- * [Gruvbox](https://github.com/morhetz/gruvbox)
-
-![snapshot2](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot2.jpg)
-
- * [Tender](https://github.com/jacoborus/tender.vim)
-
-![snapshot1](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot3.jpg)
+* [ivim_nvim](https://github.com/kepbod/ivim/blob/3.0/vimrc_nvim)
+![ivim_nvim](https://raw.githubusercontent.com/kepbod/ivim/3.0/snapshot/ivim_nvim.jpeg)
 
 **You could install the patched font from [vim-devicons](https://github.com/ryanoasis/vim-devicons).**
 
@@ -53,13 +38,13 @@ Use lots of famous colorschemes to make your eyes feel comfortable in both Vim a
 
  * Make using Vim more convenient and faster, and lots of useful plugins confirm a better performance of Vim.
 
- * To view the full plugin list, please refer [here](https://github.com/kepbod/ivim/blob/master/vimrc#L140).
+ * To view the full plugin list, please refer [here](https://github.com/kepbod/ivim/blob/3.0/vimrc#L133).
 
 ## Requirements
 
 **Vim**
 
- * This distribution is adapted to both [Vim](http://www.vim.org/download.php) and [MacVim](http://www.vim.org/download.php#mac)/[gVim](http://www.vim.org/download.php#pc). Remember that the Vim/MacVim/gVim version should be 7.3+, or errors would occur!
+ * This distribution is adapted to both [Vim](http://www.vim.org/download.php) and [NeoVim](https://neovim.io). For Vim, version should be 7.3+, and 8.0+ is recommended. For NeoVim, 0.1.5+ is recommended.
 
 **Git**
 
@@ -73,50 +58,40 @@ Use lots of famous colorschemes to make your eyes feel comfortable in both Vim a
 
 ## Installation
 
-### Manual Installation
-
-0. A Vim/MacVim/gVim with version higher than 7.3 should be installed on your computer;
-1. Get ivim from github website, `git clone git://github.com/kepbod/ivim.git $HOME/.ivim`;
-2. Make symbolic links of vimrc to your home directory, `ln -s $HOME/.ivim/vimrc $HOME/.vimrc`;
-3. Install vim-plug to install and update plugins, `curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`;
-4. Install plugins, `vim +PlugUpdate +qal`;
-5. Just enjoy it!
-
-### Automatic Installation (*nix only)
-
-**via 'curl'**
+* [ivim](https://github.com/kepbod/ivim/blob/3.0/vimrc)
 
 ```bash
-bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh) -i
+bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/3.0/setup.sh) -i
+# or
+bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/3.0/setup.sh -O -) -i
 ```
 
-**via 'wget'**
+* [ivim_mini](https://github.com/kepbod/ivim/blob/3.0/vimrc_mini)
 
 ```bash
-bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh -O -) -i
+bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/3.0/setup.sh) -m
+# or
+bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/3.0/setup.sh -O -) -m
 ```
+
+* [ivim_nvim](https://github.com/kepbod/ivim/blob/3.0/vimrc_nvim)
+
+```bash
+bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/3.0/setup.sh) -u
+# or
+bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/3.0/setup.sh -O -) -u
+```
+
 
 ## Updating
 
 ```bash
-bash $HOME/ivim/setup.sh -n
+bash $HOME/.ivim/setup.sh -n
 ```
 
 ## Configuration
 
-There are some options you could set through `.vimrc` to configure ivim:
-* g:ivim_user -- your username
-* g:ivim_email -- your email
-* g:ivim_github -- your github
-* g:ivim_default_scheme -- color settings (hybrid, gruvbox or tender)
-* g:ivim_fancy_font -- using fancy font or not
-* g:ivim_show_number -- showing number or not
-* g:ivim_autocomplete -- autocomplete engine (NEO: neocomplete/neocomplcache/neosnippet, YCM: YouCompleteMe/UltiSnips)
-* g:ivim_bundle_groups -- plugin groups ('ui', 'enhance', 'move', 'navigate', 'complete', 'compile', 'git', 'language')
-
-### Note
-
-* This distribution is completely customisable using `~/.vimrc.ivim.local`(only for `vimrc`), `~/.vimrc.local`, `~/.gvimrc.local` and `~/.vimrc.bundles.local`!
+* This distribution is completely customisable using `~/.vimrc.ivim.local`(only for `vimrc`), `~/.vimrc.local`, `~/.gvimrc.local`, `~/.nvimrc.local`, `~/.vimrc.bundles.local` and `~/.nvimrc.bundles.local`!
 * To make full use of auto-completion and syntax checking, please refer [wiki](https://github.com/kepbod/ivim/wiki/Auto-completion-and-syntax-checking).
 
 

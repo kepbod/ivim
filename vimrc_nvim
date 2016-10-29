@@ -3,12 +3,12 @@
 "      (_)   __(_)___ ___
 "     / / | / / / __ `__ \
 "    / /| |/ / / / / / / /
-"   /_/ |___/_/_/ /_/ /_/  mini
+"   /_/ |___/_/_/ /_/ /_/  nvim
 "
-"   ivim mini (ivim for fast and basic usage)
+"   ivim nvim (ivim for NeoVim)
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
-"   Created: 2015-09-24
+"   Created: 2016-10-21
 "   Last Modified: 2016-10-28
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -17,8 +17,6 @@
 " => General
 "------------------------------------------------
 
-set nocompatible " Get out of vi compatible mode
-filetype plugin indent on " Enable filetype
 let mapleader=',' " Change the mapleader
 let maplocalleader='\' " Change the maplocalleader
 set timeoutlen=500 " Time to wait for a command
@@ -28,13 +26,11 @@ autocmd BufWritePost $MYVIMRC source $MYVIMRC
 " Fast edit the .vimrc file using ,x
 nnoremap <Leader>x :tabedit $MYVIMRC<CR>
 
-set autoread " Set autoread when a file is changed outside
 set autowrite " Write on make/shell commands
 set hidden " Turn on hidden"
 
 set history=1000 " Increase the lines of history
 set modeline " Turn on modeline
-set encoding=utf-8 " Set utf-8 encoding
 set completeopt+=longest " Optimize auto complete
 set completeopt-=preview " Optimize auto complete
 
@@ -42,34 +38,23 @@ set undofile " Set undo
 
 " Set directories
 function! InitializeDirectories()
-    let parent=$HOME
-    let prefix='.vim'
-    let dir_list={
-                \ 'backup': 'backupdir',
-                \ 'view': 'viewdir',
-                \ 'swap': 'directory',
-                \ 'undo': 'undodir',
-                \ 'cache': '',
-                \ 'session': ''}
-    for [dirname, settingname] in items(dir_list)
-        let directory=parent.'/'.prefix.'/'.dirname.'/'
-        if !isdirectory(directory)
-            if exists('*mkdir')
-                let dir = substitute(directory, "/$", "", "")
-                call mkdir(dir, 'p')
-            else
-                echo 'Warning: Unable to create directory: '.directory
-            endif
+    let directory=$HOME . '/.local/share/nvim/cache'
+    if !isdirectory(directory)
+        if exists('*mkdir')
+            let dir = substitute(directory, "/$", "", "")
+            call mkdir(dir, 'p')
+        else
+            echo 'Warning: Unable to create directory: '.directory
         endif
-        if settingname!=''
-            exe 'set '.settingname.'='.directory
-        endif
-    endfor
+    endif
 endfunction
 call InitializeDirectories()
 
 autocmd BufWinLeave *.* silent! mkview " Make Vim save view (state) (folds, cursor, etc)
 autocmd BufWinEnter *.* silent! loadview " Make Vim load view (state) (folds, cursor, etc)
+
+" Disable mouse
+set mouse=
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -77,16 +62,15 @@ autocmd BufWinEnter *.* silent! loadview " Make Vim load view (state) (folds, cu
 " => Vim-plug
 "--------------------------------------------------
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+    silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
     autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
-call plug#begin('~/.vim/bundle/')
+call plug#begin('~/.config/nvim/plugged')
 
 " Install plugins
-Plug 'jacoborus/tender.vim' " Colorscheme tender
+Plug 'rakr/vim-one' " Colorscheme one
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' " Status line
 Plug 'Yggdroot/indentLine' " Indentation level
 Plug 'ryanoasis/vim-devicons' " Devicons
@@ -109,28 +93,24 @@ Plug 'tpope/vim-unimpaired' " Pairs of mappings
 Plug 'unblevable/quick-scope' " Quick scope
 Plug 'bkad/CamelCaseMotion' " Camel case motion
 Plug 'majutsushi/tagbar' " Tag bar
+Plug 'edsono/vim-matchit' " Match it
 Plug 'ludovicchabant/vim-gutentags' " Manage tag files
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " NERD tree
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' } " NERD tree git
-if has('lua')
-    Plug 'Shougo/neocomplete.vim' " Auto completion framework
-else
-    Plug 'Shougo/neocomplcache.vim' " Auto completion framework
-endif
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Auto completion framework
 Plug 'Shougo/neosnippet.vim' " Snippet engine
 Plug 'Shougo/neosnippet-snippets' " Snippets
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'scrooloose/syntastic' " Syntax checking
+Plug 'neomake/neomake' " Syntax checking
 Plug 'tpope/vim-fugitive' " Git wrapper
-Plug 'edsono/vim-matchit' " Match it
-Plug 'davidhalter/jedi-vim', { 'for': 'python' } " Python jedi plugin
-Plug 'fatih/vim-go', {'for': 'go'} " Vim go
+Plug 'zchee/deoplete-jedi', { 'for': 'python' } " Python jedi plugin
+Plug 'JuliaEditorSupport/deoplete-julia', { 'for': 'julia' } " Vim julia
+Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoInstallBinaries' } " Vim go
 Plug 'airblade/vim-gitgutter' " Git diff sign
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] } " Emmet
 Plug 'sheerun/vim-polyglot' " Language Support
 
-if filereadable(expand($HOME . '/.vimrc.bundles.local')) " Load local bundles
-    source $HOME/.vimrc.bundles.local
+if filereadable(expand($HOME . '/.nvimrc.bundles.local')) " Load local bundles
+    source $HOME/.nvimrc.bundles.local
 endif
 
 call plug#end()
@@ -142,9 +122,8 @@ call plug#end()
 "-------------------------------------------------
 
 " Set status line
-set laststatus=2 " Show the statusline
 set noshowmode " Hide the default mode text
-let g:airline_theme='tender'
+let g:airline_theme='one'
 set ttimeoutlen=50
 let g:bufferline_echo=0
 let g:bufferline_modified='[+]'
@@ -158,12 +137,10 @@ autocmd WinLeave * set nocursorline
 autocmd WinEnter * set cursorline
 autocmd InsertEnter * set nocursorline
 autocmd InsertLeave * set cursorline
-set wildmenu " Show list instead of just completing
 set wildmode=list:longest,full " Use powerful wildmenu
 set shortmess=at " Avoids hit enter
 set showcmd " Show cmd
 
-set backspace=indent,eol,start " Make backspaces delete sensibly
 set whichwrap+=h,l,<,>,[,] " Backspace and cursor keys wrap to
 set virtualedit=block,onemore " Allow for cursor beyond last character
 set scrolljump=5 " Lines to scroll when cursor leaves screen
@@ -198,17 +175,19 @@ augroup END
 
 " Use true colors
 if (empty($TMUX))
-  if (has("termguicolors"))
-    set termguicolors
-  endif
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    if (has("termguicolors"))
+        set termguicolors
+    endif
 endif
 
-syntax on " Enable syntax
+
 set background=dark " Set background
 set t_Co=256 " Use 256 colors
+let g:one_allow_italics=1 " Allow italic
 
 " Load a colorscheme
-colorscheme tender
+colorscheme one
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -216,7 +195,6 @@ colorscheme tender
 " => Indent Related
 "-------------------------------------------------
 
-set autoindent " Preserve current indent on new lines
 set cindent " set C style indent
 set expandtab " Convert all tabs typed to spaces
 set softtabstop=4 " Indentation levels every four columns
@@ -231,8 +209,6 @@ set shiftround " Indent/outdent to nearest tabstop
 
 set ignorecase " Case insensitive search
 set smartcase " Case sensitive when uc present
-set hlsearch " Highlight search terms
-set incsearch " Find as you type search
 set gdefault " turn on g flag
 
 " Use sane regexes
@@ -263,6 +239,9 @@ vnoremap # :<C-U>call <SID>VSetSearch()<CR>??<CR>
 
 " Use ,Space to toggle the highlight search
 nnoremap <Leader><Space> :set hlsearch!<CR>
+
+" Toggle relativenumber
+nnoremap <Leader>n :set relativenumber!<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -326,9 +305,6 @@ nnoremap <Leader>q :%s/\s\+$//<CR>:let @/=''<CR>
 " Modify all the indents
 nnoremap \= gg=G
 
-" Toggle relativenumber
-nnoremap <Leader>n :set relativenumber!<CR>
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
@@ -336,7 +312,7 @@ nnoremap <Leader>n :set relativenumber!<CR>
 "--------------------------------------------------
 
 " -> Startify
-let g:startify_session_dir=$HOME . '/.vim/session'
+let g:startify_session_dir=$HOME . '/.local/share/nvim/cache/session'
 let g:startify_custom_header=[
             \'       _       _         ',
             \'      (_)   __(_)___ ___ ',
@@ -376,19 +352,11 @@ nnoremap <silent> <LocalLeader><Space> :call IsWhiteLine()<CR>
 " -> Multiple cursors
 " Called once right before you start selecting multiple cursors
 function! Multiple_cursors_before()
-    if has('lua')
-        exe 'NeoCompleteLock'
-    else
-        exe 'NeoComplCacheLock'
-    endif
+    let g:deoplete#disable_auto_complete = 1
 endfunction
 " Called once only when the multiple selection is canceled (default <Esc>)
 function! Multiple_cursors_after()
-    if has('lua')
-        exe 'NeoCompleteUnlock'
-    else
-        exe 'NeoComplCacheUnlock'
-    endif
+    let g:deoplete#disable_auto_complete = 0
 endfunction
 
 " -> Easy Align
@@ -410,7 +378,7 @@ let g:tagbar_foldlevel=2
 let g:tagbar_autoshowtag=1
 
 " -> Gutentags
-let g:gutentags_cache_dir=$HOME . '/.vim/cache/ctags'
+let g:gutentags_cache_dir=$HOME . '/.local/share/nvim/cache/ctags'
 
 " -> NERD Tree
 nnoremap <Leader>f :NERDTreeToggle<CR>
@@ -428,49 +396,14 @@ augroup nerd_loader
                 \| endif
 augroup END
 
-" -> Neocomplete & Neocomplcache
+" -> Deoplete
+" Use deoplete.
+let g:deoplete#enable_at_startup=1
+" Enable camel case completion
+let g:deoplete#enable_camel_case=1
 " Use Tab and S-Tab to select candidate
 inoremap <expr><Tab>  pumvisible() ? "\<C-N>" : "\<Tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
-if has('lua')
-    let g:neocomplete#enable_at_startup=1
-    let g:neocomplete#data_directory=$HOME . '/.vim/cache/neocomplete'
-    let g:neocomplete#enable_auto_delimiter=1
-    " Use <C-E> to close popup
-    inoremap <expr><C-E> neocomplete#cancel_popup()
-    inoremap <expr><CR> delimitMate#WithinEmptyPair() ?
-                \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
-                \ pumvisible() ? neocomplete#close_popup() : "\<CR>"
-else
-    let g:neocomplcache_enable_at_startup=1
-    let g:neocomplcache_temporary_dir=$HOME . '/.vim/cache/neocomplcache'
-    let g:neocomplcache_enable_auto_delimiter=1
-    let g:neocomplcache_enable_fuzzy_completion=1
-    " Use <C-E> to close popup
-    inoremap <expr><C-E> neocomplcache#cancel_popup()
-    inoremap <expr><CR> delimitMate#WithinEmptyPair() ?
-                \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
-                \ pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-endif
-" Setting for specific language
-if has('lua')
-    if !exists('g:neocomplete#force_omni_input_patterns')
-        let g:neocomplete#force_omni_input_patterns={}
-    endif
-    let g:neocomplete#force_omni_input_patterns.python=
-    \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-else
-    if !exists('g:neocomplcache_force_omni_patterns')
-        let g:neocomplcache_force_omni_patterns={}
-    endif
-    let g:neocomplcache_force_omni_patterns.python=
-    \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-endif
-autocmd FileType python setlocal omnifunc=jedi#completions
-let g:jedi#completions_enabled=0
-let g:jedi#auto_vim_configuration=0
-let g:jedi#smart_auto_mappings=0
-let g:jedi#use_tabs_not_buffers=1
 
 " -> Neosnippet
 " Use <C-K> to expand or jump snippets in insert mode
@@ -480,15 +413,8 @@ xmap <C-K> <Plug>(neosnippet_start_unite_snippet_target)
 " For snippet_complete marker
 set conceallevel=2 concealcursor=i
 
-" -> Syntastic
-let g:syntastic_check_on_open=1
-let g:syntastic_aggregate_errors=1
-let g:syntastic_auto_jump=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_style_error_symbol = '✠'
-let g:syntastic_warning_symbol = '∆'
-let g:syntastic_style_warning_symbol = '≈'
+" -> Neomake
+autocmd! BufWritePost * Neomake
 
 " -> Emmet
 let g:user_emmet_leader_key='<C-Z>'
@@ -501,13 +427,7 @@ nmap <Tab> %
 vmap <Tab> %
 
 " Use local vimrc if available
-if filereadable(expand($HOME . '/.vimrc.local'))
-    source $HOME/.vimrc.local
+if filereadable(expand($HOME . '/.nvimrc.local'))
+    source $HOME/.nvimrc.local
 endif
 
-" Use local gvimrc if available and gui is running
-if has('gui_running')
-    if filereadable(expand($HOME . '/.gvimrc.local'))
-        source $HOME/.gvimrc.local
-    endif
-endif
