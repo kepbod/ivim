@@ -12,9 +12,9 @@
 
 After 4 years' development, ivim contains 3 versions to satisfy different requirements.
 
-* [ivim](https://github.com/kepbod/ivim/blob/3.0/vimrc): highly customizable vim configuration, and it has more [colorschemes](https://github.com/kepbod/ivim/wiki/Colorscheme) and [settings](https://github.com/kepbod/ivim/wiki/Customization).
-* [ivim_mini](https://github.com/kepbod/ivim/blob/3.0/vimrc_mini): vim configuration with fast startup time and convenient usage.
-* [ivim_nvim](https://github.com/kepbod/ivim/blob/3.0/vimrc_nvim): comprehensive configuration for [NeoVim](https://neovim.io).
+* [ivim](https://github.com/kepbod/ivim/blob/master/vimrc): highly customizable vim configuration, and it has more [colorschemes](https://github.com/kepbod/ivim/wiki/Colorscheme) and [settings](https://github.com/kepbod/ivim/wiki/Customization).
+* [ivim_mini](https://github.com/kepbod/ivim/blob/master/vimrc_mini): vim configuration with fast startup time and convenient usage.
+* [ivim_nvim](https://github.com/kepbod/ivim/blob/master/vimrc_nvim): comprehensive configuration for [NeoVim](https://neovim.io).
 
 
 ## Features
@@ -23,14 +23,14 @@ After 4 years' development, ivim contains 3 versions to satisfy different requir
 
 Use lots of famous colorschemes to make your eyes feel comfortable in both Vim and NeoVim.
 
-* [ivim](https://github.com/kepbod/ivim/blob/3.0/vimrc)
-![ivim](https://raw.githubusercontent.com/kepbod/ivim/3.0/snapshot/ivim.jpeg)
+* [ivim](https://github.com/kepbod/ivim/blob/master/vimrc)
+![ivim](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot/ivim.jpeg)
 
-* [ivim_mini](https://github.com/kepbod/ivim/blob/3.0/vimrc_mini)
-![ivim_mini](https://raw.githubusercontent.com/kepbod/ivim/3.0/snapshot/ivim_mini.jpeg)
+* [ivim_mini](https://github.com/kepbod/ivim/blob/master/vimrc_mini)
+![ivim_mini](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot/ivim_mini.jpeg)
 
-* [ivim_nvim](https://github.com/kepbod/ivim/blob/3.0/vimrc_nvim)
-![ivim_nvim](https://raw.githubusercontent.com/kepbod/ivim/3.0/snapshot/ivim_nvim.jpeg)
+* [ivim_nvim](https://github.com/kepbod/ivim/blob/master/vimrc_nvim)
+![ivim_nvim](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot/ivim_nvim.jpeg)
 
 **You could install the patched font from [vim-devicons](https://github.com/ryanoasis/vim-devicons).**
 
@@ -38,7 +38,7 @@ Use lots of famous colorschemes to make your eyes feel comfortable in both Vim a
 
  * Make using Vim more convenient and faster, and lots of useful plugins confirm a better performance of Vim.
 
- * To view the full plugin list, please refer [here](https://github.com/kepbod/ivim/blob/3.0/vimrc#L133).
+ * To view the full plugin list, please refer [here](https://github.com/kepbod/ivim/blob/master/vimrc#L133).
 
 ## Requirements
 
@@ -58,28 +58,28 @@ Use lots of famous colorschemes to make your eyes feel comfortable in both Vim a
 
 ## Installation
 
-* [ivim](https://github.com/kepbod/ivim/blob/3.0/vimrc)
+* [ivim](https://github.com/kepbod/ivim/blob/master/vimrc)
 
 ```bash
-bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/3.0/setup.sh) -i
+bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh) -i
 # or
-bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/3.0/setup.sh -O -) -i
+bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh -O -) -i
 ```
 
-* [ivim_mini](https://github.com/kepbod/ivim/blob/3.0/vimrc_mini)
+* [ivim_mini](https://github.com/kepbod/ivim/blob/master/vimrc_mini)
 
 ```bash
-bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/3.0/setup.sh) -m
+bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh) -m
 # or
-bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/3.0/setup.sh -O -) -m
+bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh -O -) -m
 ```
 
-* [ivim_nvim](https://github.com/kepbod/ivim/blob/3.0/vimrc_nvim)
+* [ivim_nvim](https://github.com/kepbod/ivim/blob/master/vimrc_nvim)
 
 ```bash
-bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/3.0/setup.sh) -u
+bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh) -u
 # or
-bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/3.0/setup.sh -O -) -u
+bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh -O -) -u
 ```
 
 
