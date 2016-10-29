@@ -2,7 +2,7 @@
 
 help() {
     echo "setup.sh -- setup ivim"
-    echo "Usage: setup.sh -i/-n"
+    echo "Usage: setup.sh -i|-m|-u|-n"
     echo "-i -- install ivim"
     echo "-m -- install mini ivim"
     echo "-u -- install nvim ivim"
