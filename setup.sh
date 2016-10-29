@@ -62,7 +62,7 @@ install() {
     git clone https://github.com/kepbod/ivim.git $HOME/.ivim
     if [ $1 = 0 ]; then
         ln -s $HOME/.ivim/vimrc $HOME/.vimrc
-    elif [ $i = 1 ]; then
+    elif [ $1 = 1 ]; then
         ln -s $HOME/.ivim/vimrc_mini $HOME/.vimrc
     else
         ln -s $HOME/.ivim/vimrc_nvim $HOME/.config/nvim/init.vim
