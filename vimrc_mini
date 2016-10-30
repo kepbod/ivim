@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2015-09-24
-"   Last Modified: 2016-10-29
+"   Last Modified: 2016-10-30
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -86,7 +86,7 @@ endif
 call plug#begin('~/.vim/bundle/')
 
 " Install plugins
-Plug 'jacoborus/tender.vim' " Colorscheme tender
+Plug 'joshdick/onedark.vim' " Colorscheme onedark
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' " Status line
 Plug 'Yggdroot/indentLine' " Indentation level
 Plug 'ryanoasis/vim-devicons' " Devicons
@@ -143,7 +143,7 @@ call plug#end()
 " Set status line
 set laststatus=2 " Show the statusline
 set noshowmode " Hide the default mode text
-let g:airline_theme='tender'
+let g:airline_theme='onedark'
 set ttimeoutlen=50
 let g:bufferline_echo=0
 let g:bufferline_modified='[+]'
@@ -206,8 +206,13 @@ syntax on " Enable syntax
 set background=dark " Set background
 set t_Co=256 " Use 256 colors
 
+" Allow italics
+let g:onedark_terminal_italics=1
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
+
 " Load a colorscheme
-colorscheme tender
+colorscheme onedark
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

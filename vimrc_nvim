@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2016-10-21
-"   Last Modified: 2016-10-29
+"   Last Modified: 2016-10-30
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -70,7 +70,7 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 " Install plugins
-Plug 'rakr/vim-one' " Colorscheme one
+Plug 'jacoborus/tender.vim' " Colorscheme tender
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' " Status line
 Plug 'Yggdroot/indentLine' " Indentation level
 Plug 'ryanoasis/vim-devicons' " Devicons
@@ -122,7 +122,7 @@ call plug#end()
 
 " Set status line
 set noshowmode " Hide the default mode text
-let g:airline_theme='one'
+let g:airline_theme='tender'
 set ttimeoutlen=50
 let g:bufferline_echo=0
 let g:bufferline_modified='[+]'
@@ -183,10 +183,9 @@ endif
 
 set background=dark " Set background
 set t_Co=256 " Use 256 colors
-let g:one_allow_italics=1 " Allow italic
 
 " Load a colorscheme
-colorscheme one
+colorscheme tender
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
