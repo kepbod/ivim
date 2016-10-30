@@ -50,9 +50,12 @@ require() {
 
 backup() {
     color_print "Backing up current vim config..."
-    for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && mv -f $i $i.backup; done
-    if [ -e $HOME/.config/nvim/init.vim ]; then
-        mv -f $HOME/.config/nvim/init.vim $HOME/.nvimrc.backup
+    if [ $1 = 0]; then
+        for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && mv -f $i $i.backup; done
+    else
+        if [ -e $HOME/.config/nvim/init.vim ]; then
+            mv -f $HOME/.config/nvim/init.vim $HOME/.nvimrc.backup
+        fi
     fi
 }
 
@@ -112,19 +115,19 @@ while getopts ":imun" opts; do
         i)
             logo
             require 0
-            backup
+            backup 0
             install 0
             ;;
         m)
             logo
             require 0
-            backup
+            backup 0
             install 1
             ;;
         u)
             logo
             require 1
-            backup
+            backup 1
             install 2
             ;;
         n)
