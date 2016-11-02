@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2016-10-21
-"   Last Modified: 2016-10-30
+"   Last Modified: 2016-11-02
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -106,6 +106,7 @@ Plug 'JuliaEditorSupport/deoplete-julia', { 'for': 'julia' } " Vim julia
 Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoInstallBinaries' } " Vim go
 Plug 'airblade/vim-gitgutter' " Git diff sign
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] } " Emmet
+Plug 'wellle/tmux-complete.vim' " Completion for tmux panes
 Plug 'sheerun/vim-polyglot' " Language Support
 
 if filereadable(expand($HOME . '/.nvimrc.bundles.local')) " Load local bundles
@@ -410,6 +411,9 @@ imap <C-K> <Plug>(neosnippet_expand_or_jump)
 xmap <C-K> <Plug>(neosnippet_start_unite_snippet_target)
 " For snippet_complete marker
 set conceallevel=2 concealcursor=i
+
+" -> Tmux-complete
+let g:tmuxcomplete#trigger=''
 
 " -> Neomake
 autocmd! BufWritePost * Neomake

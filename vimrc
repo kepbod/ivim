@@ -7,7 +7,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2012-01-20
-"   Last Modified: 2016-10-29
+"   Last Modified: 2016-11-02
 "
 "   Sections:
 "     -> ivim Setting
@@ -201,6 +201,7 @@ if count(g:ivim_bundle_groups, 'complete') " Completion
         Plug 'Shougo/neosnippet.vim' " Snippet engine
         Plug 'Shougo/neosnippet-snippets' " Snippets
         Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+        Plug 'wellle/tmux-complete.vim' " Completion for tmux panes
     else
         " Auto completion framework
         let g:ivim_completion_engine='YouCompleteMe'
@@ -739,6 +740,7 @@ if count(g:ivim_bundle_groups, 'complete')
         let g:jedi#auto_vim_configuration=0
         let g:jedi#smart_auto_mappings=0
         let g:jedi#use_tabs_not_buffers=1
+        let g:tmuxcomplete#trigger=''
         " -> Neosnippet
         " Set information for snippets
         let g:neosnippet#enable_snipmate_compatibility=1

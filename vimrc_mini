@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2015-09-24
-"   Last Modified: 2016-10-30
+"   Last Modified: 2016-11-02
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -126,6 +126,7 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python' } " Python jedi plugin
 Plug 'fatih/vim-go', {'for': 'go'} " Vim go
 Plug 'airblade/vim-gitgutter' " Git diff sign
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] } " Emmet
+Plug 'wellle/tmux-complete.vim' " Completion for tmux panes
 Plug 'sheerun/vim-polyglot' " Language Support
 
 if filereadable(expand($HOME . '/.vimrc.bundles.local')) " Load local bundles
@@ -475,6 +476,7 @@ let g:jedi#completions_enabled=0
 let g:jedi#auto_vim_configuration=0
 let g:jedi#smart_auto_mappings=0
 let g:jedi#use_tabs_not_buffers=1
+let g:tmuxcomplete#trigger=''
 
 " -> Neosnippet
 " Use <C-K> to expand or jump snippets in insert mode
