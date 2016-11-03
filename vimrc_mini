@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2015-09-24
-"   Last Modified: 2016-11-02
+"   Last Modified: 2016-11-03
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -198,19 +198,19 @@ augroup END
 
 " Use true colors
 if (empty($TMUX))
-  if (has("termguicolors"))
-    set termguicolors
-  endif
+    if (has("termguicolors"))
+        set termguicolors
+    endif
+    " Allow italics (only outside tmux)
+    let g:onedark_terminal_italics=1
+    let &t_ZH="\e[3m"
+    let &t_ZR="\e[23m"
 endif
 
 syntax on " Enable syntax
 set background=dark " Set background
 set t_Co=256 " Use 256 colors
 
-" Allow italics
-let g:onedark_terminal_italics=1
-let &t_ZH="\e[3m"
-let &t_ZR="\e[23m"
 
 " Load a colorscheme
 colorscheme onedark
@@ -369,7 +369,7 @@ function! IsWhiteLine()
         exe 'TCommentBlock'
         normal! j
     else
-        normal! A   
+        normal! A
         exe 'TCommentRight'
         normal! l
         normal! x

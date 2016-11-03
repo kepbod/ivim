@@ -7,7 +7,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2012-01-20
-"   Last Modified: 2016-11-02
+"   Last Modified: 2016-11-03
 "
 "   Sections:
 "     -> ivim Setting
@@ -388,9 +388,9 @@ endif
 
 " Use true colors
 if (empty($TMUX))
-  if (has("termguicolors"))
-    set termguicolors
-  endif
+    if (has("termguicolors"))
+        set termguicolors
+    endif
 endif
 
 " Load a colorscheme

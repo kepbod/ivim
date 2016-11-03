@@ -33,6 +33,7 @@ Use lots of famous colorschemes to make your eyes feel comfortable in both Vim a
 ![ivim_nvim](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot/ivim_nvim.jpeg)
 
 **You could install the patched font from [vim-devicons](https://github.com/ryanoasis/vim-devicons).**
+**You could enable italics with this [gist](https://gist.github.com/kepbod/2ea79ee2ada4c22591dc043c1ed4364c).**
 
 ***Efficient***
 
