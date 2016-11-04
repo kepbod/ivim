@@ -4,8 +4,8 @@ help() {
     echo "setup.sh -- setup ivim"
     echo "Usage: setup.sh -i|-m|-u|-n"
     echo "-i -- install ivim"
-    echo "-m -- install mini ivim"
-    echo "-u -- install nvim ivim"
+    echo "-m -- install ivim_mini for vim"
+    echo "-u -- install ivim_mini for neovim"
     echo "-n -- update ivim"
     exit 0
 }
@@ -38,6 +38,9 @@ require() {
     if [ $1 = 0 ]; then
         color_print "Checking Vim version..."
         vim --version | grep -E 7.[3-9]\|8.[0-9] || die "Your vim's version is too low!\nPlease download higher version(7.3+) from http://www.vim.org/download.php"
+    elif [ $1 = 1 ]; then
+        color_print "Checking Vim version..."
+        vim --version | grep -E 8.[0-9] || die "Your vim's version is too low!\nPlease download higher version(8.0+) from http://www.vim.org/download.php"
     else
         color_print "Checking NeoVim version..."
         nvim --version || die "Please install NeoVim according to https://github.com/neovim/neovim/wiki/Installing-Neovim"
@@ -69,7 +72,7 @@ install() {
         ln -s $HOME/.ivim/vimrc_mini $HOME/.vimrc
     else
         mkdir -p $HOME/.config/nvim
-        ln -s $HOME/.ivim/vimrc_nvim $HOME/.config/nvim/init.vim
+        ln -s $HOME/.ivim/vimrc_mini $HOME/.config/nvim/init.vim
     fi
     color_print "Installing vim-plug..."
     if [ $1 = 2 ]; then
@@ -81,9 +84,9 @@ install() {
     if [ $1 = 0 ]; then
         git clone https://github.com/kristijanhusak/vim-hybrid-material.git $HOME/.vim/bundle/vim-hybrid-material
     elif [ $1 = 1 ]; then
-        git clone https://github.com/jacoborus/tender.vim.git $HOME/.vim/bundle/tender.vim
+        git clone https://github.com/jacoborus/tender.vim.git $HOME/.vim/plugged/tender.vim
     else
-        git clone https://github.com/rakr/vim-one.git $HOME/.config/nvim/plugged/vim-one
+        git clone https://github.com/jacoborus/tender.vim.git $HOME/.config/nvim/plugged/tender.vim
     fi
     color_print "Installing plugins using vim-plug..."
     if [ $1 = 2 ]; then
@@ -120,13 +123,13 @@ while getopts ":imun" opts; do
             ;;
         m)
             logo
-            require 0
+            require 1
             backup 0
             install 1
             ;;
         u)
             logo
-            require 1
+            require 2
             backup 1
             install 2
             ;;

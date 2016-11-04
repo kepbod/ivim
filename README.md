@@ -13,8 +13,7 @@
 After 4 years' development, ivim contains 3 versions to satisfy different requirements.
 
 * [ivim](https://github.com/kepbod/ivim/blob/master/vimrc): highly customizable vim configuration, and it has more [colorschemes](https://github.com/kepbod/ivim/wiki/Colorscheme) and [settings](https://github.com/kepbod/ivim/wiki/Customization).
-* [ivim_mini](https://github.com/kepbod/ivim/blob/master/vimrc_mini): vim configuration with fast startup time and convenient usage.
-* [ivim_nvim](https://github.com/kepbod/ivim/blob/master/vimrc_nvim): comprehensive configuration for [NeoVim](https://neovim.io).
+* [ivim_mini](https://github.com/kepbod/ivim/blob/master/vimrc_mini): vim configuration with fast startup time and convenient usage, compatible with Vim 8.0 and NeoVim.
 
 
 ## Features
@@ -29,11 +28,7 @@ Use lots of famous colorschemes to make your eyes feel comfortable in both Vim a
 * [ivim_mini](https://github.com/kepbod/ivim/blob/master/vimrc_mini)
 ![ivim_mini](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot/ivim_mini.jpeg)
 
-* [ivim_nvim](https://github.com/kepbod/ivim/blob/master/vimrc_nvim)
-![ivim_nvim](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot/ivim_nvim.jpeg)
-
 **You could install the patched font from [vim-devicons](https://github.com/ryanoasis/vim-devicons).**
-**You could enable italics with this [gist](https://gist.github.com/kepbod/2ea79ee2ada4c22591dc043c1ed4364c).**
 
 ***Efficient***
 
@@ -75,15 +70,6 @@ bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh) -m
 bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh -O -) -m
 ```
 
-* [ivim_nvim](https://github.com/kepbod/ivim/blob/master/vimrc_nvim)
-
-```bash
-bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh) -u
-# or
-bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh -O -) -u
-```
-
-
 ## Updating
 
 ```bash
@@ -92,7 +78,7 @@ bash $HOME/.ivim/setup.sh -n
 
 ## Configuration
 
-* This distribution is completely customisable using `~/.vimrc.ivim.local`(only for `vimrc`), `~/.vimrc.local`, `~/.gvimrc.local`, `~/.nvimrc.local`, `~/.vimrc.bundles.local` and `~/.nvimrc.bundles.local`!
+* This distribution is completely customisable using `~/.vimrc.ivim.local`, `~/.vimrc.local`, `~/.gvimrc.local` and `~/.vimrc.bundles.local`! (only for `vimrc`)
 * To make full use of auto-completion and syntax checking, please refer [wiki](https://github.com/kepbod/ivim/wiki/Auto-completion-and-syntax-checking).
 
 

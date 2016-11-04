@@ -5,11 +5,11 @@
 "    / /| |/ / / / / / / /
 "   /_/ |___/_/_/ /_/ /_/  mini
 "
-"   ivim mini (ivim for fast and basic usage)
+"   ivim mini (ivim for fast and easy usage, supports both vim 8.0+ and neovim)
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2015-09-24
-"   Last Modified: 2016-11-03
+"   Last Modified: 2016-11-04
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -42,34 +42,27 @@ set undofile " Set undo
 
 " Set directories
 function! InitializeDirectories()
-    let parent=$HOME
-    let prefix='.vim'
-    let dir_list={
-                \ 'backup': 'backupdir',
-                \ 'view': 'viewdir',
-                \ 'swap': 'directory',
-                \ 'undo': 'undodir',
-                \ 'cache': '',
-                \ 'session': ''}
-    for [dirname, settingname] in items(dir_list)
-        let directory=parent.'/'.prefix.'/'.dirname.'/'
-        if !isdirectory(directory)
-            if exists('*mkdir')
-                let dir = substitute(directory, "/$", "", "")
-                call mkdir(dir, 'p')
-            else
-                echo 'Warning: Unable to create directory: '.directory
-            endif
+    if has('nvim')
+        let directory='~/.local/share/nvim/cache'
+    else
+        let directory='~/.vim/cache'
+    endif
+    if !isdirectory(directory)
+        if exists('*mkdir')
+            let dir = substitute(directory, "/$", "", "")
+            call mkdir(dir, 'p')
+        else
+            echo 'Warning: Unable to create directory: '.directory
         endif
-        if settingname!=''
-            exe 'set '.settingname.'='.directory
-        endif
-    endfor
+    endif
 endfunction
 call InitializeDirectories()
 
 autocmd BufWinLeave *.* silent! mkview " Make Vim save view (state) (folds, cursor, etc)
 autocmd BufWinEnter *.* silent! loadview " Make Vim load view (state) (folds, cursor, etc)
+
+" Disable mouse
+set mouse=
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -77,16 +70,27 @@ autocmd BufWinEnter *.* silent! loadview " Make Vim load view (state) (folds, cu
 " => Vim-plug
 "--------------------------------------------------
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall | source $MYVIMRC
+if has('nvim')
+    if empty(glob('~/.config/nvim/autoload/plug.vim'))
+        silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+                    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        autocmd VimEnter * PlugInstall | source $MYVIMRC
+    endif
+
+    call plug#begin('~/.config/nvim/plugged')
+else
+    if empty(glob('~/.vim/autoload/plug.vim'))
+        silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        autocmd VimEnter * PlugInstall | source $MYVIMRC
+    endif
+
+    call plug#begin('~/.vim/plugged')
 endif
 
-call plug#begin('~/.vim/bundle/')
 
 " Install plugins
-Plug 'joshdick/onedark.vim' " Colorscheme onedark
+Plug 'jacoborus/tender.vim' " Colorscheme tender
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' " Status line
 Plug 'Yggdroot/indentLine' " Indentation level
 Plug 'ryanoasis/vim-devicons' " Devicons
@@ -112,26 +116,28 @@ Plug 'majutsushi/tagbar' " Tag bar
 Plug 'ludovicchabant/vim-gutentags' " Manage tag files
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " NERD tree
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' } " NERD tree git
-if has('lua')
-    Plug 'Shougo/neocomplete.vim' " Auto completion framework
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Auto completion framework
+    Plug 'zchee/deoplete-jedi', { 'for': 'python' } " Python jedi plugin
+    Plug 'JuliaEditorSupport/deoplete-julia', { 'for': 'julia' } " Vim julia
 else
-    Plug 'Shougo/neocomplcache.vim' " Auto completion framework
+    if has('lua')
+        Plug 'Shougo/neocomplete.vim' " Auto completion framework
+    else
+        Plug 'Shougo/neocomplcache.vim' " Auto completion framework
+    endif
+    Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+    Plug 'davidhalter/jedi-vim', { 'for': 'python' } " Python jedi plugin
 endif
 Plug 'Shougo/neosnippet.vim' " Snippet engine
 Plug 'Shougo/neosnippet-snippets' " Snippets
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'scrooloose/syntastic' " Syntax checking
+Plug 'w0rp/ale' " Lint engine
 Plug 'tpope/vim-fugitive' " Git wrapper
-Plug 'davidhalter/jedi-vim', { 'for': 'python' } " Python jedi plugin
-Plug 'fatih/vim-go', {'for': 'go'} " Vim go
+Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoInstallBinaries' } " Vim go
 Plug 'airblade/vim-gitgutter' " Git diff sign
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] } " Emmet
 Plug 'wellle/tmux-complete.vim' " Completion for tmux panes
 Plug 'sheerun/vim-polyglot' " Language Support
-
-if filereadable(expand($HOME . '/.vimrc.bundles.local')) " Load local bundles
-    source $HOME/.vimrc.bundles.local
-endif
 
 call plug#end()
 
@@ -144,7 +150,7 @@ call plug#end()
 " Set status line
 set laststatus=2 " Show the statusline
 set noshowmode " Hide the default mode text
-let g:airline_theme='onedark'
+let g:airline_theme='tender'
 set ttimeoutlen=50
 let g:bufferline_echo=0
 let g:bufferline_modified='[+]'
@@ -198,22 +204,20 @@ augroup END
 
 " Use true colors
 if (empty($TMUX))
-    if (has("termguicolors"))
+    if (has('nvim'))
+        let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    endif
+    if (has('termguicolors'))
         set termguicolors
     endif
-    " Allow italics (only outside tmux)
-    let g:onedark_terminal_italics=1
-    let &t_ZH="\e[3m"
-    let &t_ZR="\e[23m"
 endif
 
 syntax on " Enable syntax
 set background=dark " Set background
 set t_Co=256 " Use 256 colors
 
-
 " Load a colorscheme
-colorscheme onedark
+colorscheme tender
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -268,6 +272,9 @@ vnoremap # :<C-U>call <SID>VSetSearch()<CR>??<CR>
 
 " Use ,Space to toggle the highlight search
 nnoremap <Leader><Space> :set hlsearch!<CR>
+
+" Toggle relativenumber
+nnoremap <Leader>n :set relativenumber!<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -331,9 +338,6 @@ nnoremap <Leader>q :%s/\s\+$//<CR>:let @/=''<CR>
 " Modify all the indents
 nnoremap \= gg=G
 
-" Toggle relativenumber
-nnoremap <Leader>n :set relativenumber!<CR>
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
@@ -341,7 +345,11 @@ nnoremap <Leader>n :set relativenumber!<CR>
 "--------------------------------------------------
 
 " -> Startify
-let g:startify_session_dir=$HOME . '/.vim/session'
+if has('nvim')
+    let g:startify_session_dir='~/.config/nvim/cache/session'
+else
+    let g:startify_session_dir='~/.vim/cache/session'
+endif
 let g:startify_custom_header=[
             \'       _       _         ',
             \'      (_)   __(_)___ ___ ',
@@ -369,7 +377,7 @@ function! IsWhiteLine()
         exe 'TCommentBlock'
         normal! j
     else
-        normal! A
+        normal! A   
         exe 'TCommentRight'
         normal! l
         normal! x
@@ -381,18 +389,26 @@ nnoremap <silent> <LocalLeader><Space> :call IsWhiteLine()<CR>
 " -> Multiple cursors
 " Called once right before you start selecting multiple cursors
 function! Multiple_cursors_before()
-    if has('lua')
-        exe 'NeoCompleteLock'
+    if has('nvim')
+        let g:deoplete#disable_auto_complete=1
     else
-        exe 'NeoComplCacheLock'
+        if has('lua')
+            exe 'NeoCompleteLock'
+        else
+            exe 'NeoComplCacheLock'
+        endif
     endif
 endfunction
 " Called once only when the multiple selection is canceled (default <Esc>)
 function! Multiple_cursors_after()
-    if has('lua')
-        exe 'NeoCompleteUnlock'
+    if has('nvim')
+        let g:deoplete#disable_auto_complete=0
     else
-        exe 'NeoComplCacheUnlock'
+        if has('lua')
+            exe 'NeoCompleteUnlock'
+        else
+            exe 'NeoComplCacheUnlock'
+        endif
     endif
 endfunction
 
@@ -415,7 +431,11 @@ let g:tagbar_foldlevel=2
 let g:tagbar_autoshowtag=1
 
 " -> Gutentags
-let g:gutentags_cache_dir=$HOME . '/.vim/cache/ctags'
+if has('nvim')
+    let gutentags_cache_dir='~/.local/share/nvim/cache/ctags'
+else
+    let g:gutentags_cache_dir='~/.vim/cache/ctags'
+endif
 
 " -> NERD Tree
 nnoremap <Leader>f :NERDTreeToggle<CR>
@@ -433,49 +453,56 @@ augroup nerd_loader
                 \| endif
 augroup END
 
-" -> Neocomplete & Neocomplcache
+" -> Neocomplete & Neocomplcache & Deoplete
 " Use Tab and S-Tab to select candidate
 inoremap <expr><Tab>  pumvisible() ? "\<C-N>" : "\<Tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
-if has('lua')
-    let g:neocomplete#enable_at_startup=1
-    let g:neocomplete#data_directory=$HOME . '/.vim/cache/neocomplete'
-    let g:neocomplete#enable_auto_delimiter=1
-    " Use <C-E> to close popup
-    inoremap <expr><C-E> neocomplete#cancel_popup()
-    inoremap <expr><CR> delimitMate#WithinEmptyPair() ?
-                \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
-                \ pumvisible() ? neocomplete#close_popup() : "\<CR>"
+if has('nvim')
+    " Use deoplete.
+    let g:deoplete#enable_at_startup=1
+    " Enable camel case completion
+    let g:deoplete#enable_camel_case=1
 else
-    let g:neocomplcache_enable_at_startup=1
-    let g:neocomplcache_temporary_dir=$HOME . '/.vim/cache/neocomplcache'
-    let g:neocomplcache_enable_auto_delimiter=1
-    let g:neocomplcache_enable_fuzzy_completion=1
-    " Use <C-E> to close popup
-    inoremap <expr><C-E> neocomplcache#cancel_popup()
-    inoremap <expr><CR> delimitMate#WithinEmptyPair() ?
-                \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
-                \ pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-endif
-" Setting for specific language
-if has('lua')
-    if !exists('g:neocomplete#force_omni_input_patterns')
-        let g:neocomplete#force_omni_input_patterns={}
+    if has('lua')
+        let g:neocomplete#enable_at_startup=1
+        let g:neocomplete#data_directory='~/.vim/cache/neocomplete'
+        let g:neocomplete#enable_auto_delimiter=1
+        " Use <C-E> to close popup
+        inoremap <expr><C-E> neocomplete#cancel_popup()
+        inoremap <expr><CR> delimitMate#WithinEmptyPair() ?
+                    \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
+                    \ pumvisible() ? neocomplete#close_popup() : "\<CR>"
+        " Setting for python
+        if !exists('g:neocomplete#force_omni_input_patterns')
+            let g:neocomplete#force_omni_input_patterns={}
+        endif
+        let g:neocomplete#force_omni_input_patterns.python=
+        \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+    else
+        let g:neocomplcache_enable_at_startup=1
+        let g:neocomplcache_temporary_dir='~/.vim/cache/neocomplcache'
+        let g:neocomplcache_enable_auto_delimiter=1
+        let g:neocomplcache_enable_fuzzy_completion=1
+        " Use <C-E> to close popup
+        inoremap <expr><C-E> neocomplcache#cancel_popup()
+        inoremap <expr><CR> delimitMate#WithinEmptyPair() ?
+                    \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
+                    \ pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+        " Setting for python
+        if !exists('g:neocomplcache_force_omni_patterns')
+            let g:neocomplcache_force_omni_patterns={}
+        endif
+        let g:neocomplcache_force_omni_patterns.python=
+        \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
     endif
-    let g:neocomplete#force_omni_input_patterns.python=
-    \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-else
-    if !exists('g:neocomplcache_force_omni_patterns')
-        let g:neocomplcache_force_omni_patterns={}
-    endif
-    let g:neocomplcache_force_omni_patterns.python=
-    \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+    " Setting for jedi-vim
+    autocmd FileType python setlocal omnifunc=jedi#completions
+    let g:jedi#completions_enabled=0
+    let g:jedi#auto_vim_configuration=0
+    let g:jedi#smart_auto_mappings=0
+    let g:jedi#use_tabs_not_buffers=1
 endif
-autocmd FileType python setlocal omnifunc=jedi#completions
-let g:jedi#completions_enabled=0
-let g:jedi#auto_vim_configuration=0
-let g:jedi#smart_auto_mappings=0
-let g:jedi#use_tabs_not_buffers=1
+" Setting for tmux-complete
 let g:tmuxcomplete#trigger=''
 
 " -> Neosnippet
@@ -486,15 +513,9 @@ xmap <C-K> <Plug>(neosnippet_start_unite_snippet_target)
 " For snippet_complete marker
 set conceallevel=2 concealcursor=i
 
-" -> Syntastic
-let g:syntastic_check_on_open=1
-let g:syntastic_aggregate_errors=1
-let g:syntastic_auto_jump=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_style_error_symbol = '✠'
-let g:syntastic_warning_symbol = '∆'
-let g:syntastic_style_warning_symbol = '≈'
+" -> Ale
+let g:ale_sign_error='✗'
+let g:ale_sign_warning='∆'
 
 " -> Emmet
 let g:user_emmet_leader_key='<C-Z>'
@@ -502,20 +523,10 @@ let g:user_emmet_settings={'indentation':'    '}
 let g:use_emmet_complete_tag=1
 
 " -> Matchit
-" Start matchit
-packadd! matchit
+if !has('nvim')
+    " Start matchit
+    packadd! matchit
+endif
 " Use Tab instead of % to switch
 nmap <Tab> %
 vmap <Tab> %
-
-" Use local vimrc if available
-if filereadable(expand($HOME . '/.vimrc.local'))
-    source $HOME/.vimrc.local
-endif
-
-" Use local gvimrc if available and gui is running
-if has('gui_running')
-    if filereadable(expand($HOME . '/.gvimrc.local'))
-        source $HOME/.gvimrc.local
-    endif
-endif
