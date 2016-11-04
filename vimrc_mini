@@ -43,9 +43,9 @@ set undofile " Set undo
 " Set directories
 function! InitializeDirectories()
     if has('nvim')
-        let directory='~/.local/share/nvim/cache'
+        let directory=$HOME . '/.local/share/nvim/cache'
     else
-        let directory='~/.vim/cache'
+        let directory=$HOME . '/.vim/Cache'
     endif
     if !isdirectory(directory)
         if exists('*mkdir')
@@ -59,7 +59,7 @@ endfunction
 call InitializeDirectories()
 
 if !has('nvim')
-    set undodir='~/.vim/cache/undo'
+    set undodir='$HOME/.vim/cache/undo'
 endif
 
 autocmd BufWinLeave *.* silent! mkview " Make Vim save view (state) (folds, cursor, etc)
@@ -350,9 +350,9 @@ nnoremap \= gg=G
 
 " -> Startify
 if has('nvim')
-    let g:startify_session_dir='~/.config/nvim/cache/session'
+    let g:startify_session_dir=$HOME . '/.config/nvim/cache/session'
 else
-    let g:startify_session_dir='~/.vim/cache/session'
+    let g:startify_session_dir=$HOME .'/.vim/cache/session'
 endif
 let g:startify_custom_header=[
             \'       _       _         ',
@@ -436,9 +436,9 @@ let g:tagbar_autoshowtag=1
 
 " -> Gutentags
 if has('nvim')
-    let gutentags_cache_dir='~/.local/share/nvim/cache/ctags'
+    let gutentags_cache_dir=$HOME . '/.local/share/nvim/cache/ctags'
 else
-    let g:gutentags_cache_dir='~/.vim/cache/ctags'
+    let g:gutentags_cache_dir=$HOME . '/.vim/cache/ctags'
 endif
 
 " -> NERD Tree
@@ -469,7 +469,7 @@ if has('nvim')
 else
     if has('lua')
         let g:neocomplete#enable_at_startup=1
-        let g:neocomplete#data_directory='~/.vim/cache/neocomplete'
+        let g:neocomplete#data_directory=$HOME . '/.vim/cache/neocomplete'
         let g:neocomplete#enable_auto_delimiter=1
         " Use <C-E> to close popup
         inoremap <expr><C-E> neocomplete#cancel_popup()
@@ -484,7 +484,7 @@ else
         \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
     else
         let g:neocomplcache_enable_at_startup=1
-        let g:neocomplcache_temporary_dir='~/.vim/cache/neocomplcache'
+        let g:neocomplcache_temporary_dir=$HOME . '/.vim/cache/neocomplcache'
         let g:neocomplcache_enable_auto_delimiter=1
         let g:neocomplcache_enable_fuzzy_completion=1
         " Use <C-E> to close popup
