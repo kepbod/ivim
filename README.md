@@ -73,9 +73,9 @@ bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim
 * [ivim_mini](https://github.com/kepbod/ivim/blob/master/vimrc_mini) for neovim
 
 ```bash
-bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh) -m
+bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh) -u
 # or
-bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh -O -) -m
+bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh -O -) -u
 ```
 
 ## Updating
