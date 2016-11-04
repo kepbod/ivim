@@ -53,7 +53,7 @@ require() {
 
 backup() {
     color_print "Backing up current vim config..."
-    if [ $1 = 0]; then
+    if [ $1 = 0 ]; then
         for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && mv -f $i $i.backup; done
     else
         if [ -e $HOME/.config/nvim/init.vim ]; then
