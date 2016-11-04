@@ -45,7 +45,7 @@ function! InitializeDirectories()
     if has('nvim')
         let directory=$HOME . '/.local/share/nvim/cache'
     else
-        let directory=$HOME . '/.vim/Cache'
+        let directory=$HOME . '/.vim/cache'
     endif
     if !isdirectory(directory)
         if exists('*mkdir')
