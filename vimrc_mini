@@ -68,6 +68,13 @@ autocmd BufWinEnter *.* silent! loadview " Make Vim load view (state) (folds, cu
 " Disable mouse
 set mouse=
 
+" set conceal
+if has('conceal')
+    let g:indentLine_setConceal=0
+    set conceallevel=2 concealcursor=niv
+    autocmd FileType markdown setlocal concealcursor=nvc
+endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
@@ -514,8 +521,6 @@ let g:tmuxcomplete#trigger=''
 imap <C-K> <Plug>(neosnippet_expand_or_jump)
 " Use <C-K> to replace TARGET within snippets in visual mode
 xmap <C-K> <Plug>(neosnippet_start_unite_snippet_target)
-" For snippet_complete marker
-set conceallevel=2 concealcursor=i
 
 " -> Ale
 let g:ale_sign_error='✗'
