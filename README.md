@@ -62,7 +62,15 @@ bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh) -i
 bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh -O -) -i
 ```
 
-* [ivim_mini](https://github.com/kepbod/ivim/blob/master/vimrc_mini)
+* [ivim_mini](https://github.com/kepbod/ivim/blob/master/vimrc_mini) for vim
+
+```bash
+bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh) -m
+# or
+bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh -O -) -m
+```
+
+* [ivim_mini](https://github.com/kepbod/ivim/blob/master/vimrc_mini) for neovim
 
 ```bash
 bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh) -m
