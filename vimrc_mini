@@ -68,13 +68,6 @@ autocmd BufWinEnter *.* silent! loadview " Make Vim load view (state) (folds, cu
 " Disable mouse
 set mouse=
 
-" set conceal
-if has('conceal')
-    let g:indentLine_setConceal=0
-    set conceallevel=2 concealcursor=niv
-    autocmd FileType markdown setlocal concealcursor=nvc
-endif
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "--------------------------------------------------
@@ -525,6 +518,8 @@ xmap <C-K> <Plug>(neosnippet_start_unite_snippet_target)
 " -> Ale
 let g:ale_sign_error='✗'
 let g:ale_sign_warning='∆'
+nmap <silent> [w <Plug>(ale_previous)
+nmap <silent> ]w <Plug>(ale_next)
 
 " -> Emmet
 let g:user_emmet_leader_key='<C-Z>'
@@ -539,3 +534,6 @@ endif
 " Use Tab instead of % to switch
 nmap <Tab> %
 vmap <Tab> %
+
+" -> Vim-polyglot
+let g:vim_markdown_conceal=0
