@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2015-09-24
-"   Last Modified: 2016-11-04
+"   Last Modified: 2016-11-06
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -42,25 +42,35 @@ set undofile " Set undo
 
 " Set directories
 function! InitializeDirectories()
+    let parent=$HOME
     if has('nvim')
-        let directory=$HOME . '/.local/share/nvim/cache'
+        let prefix='.vim'
+        let dir_list={
+                    \ 'backup': 'backupdir',
+                    \ 'view': 'viewdir',
+                    \ 'swap': 'directory',
+                    \ 'undo': 'undodir',
+                    \ 'cache': ''}
     else
-        let directory=$HOME . '/.vim/cache'
+        let prefix='.local/share/nvim'
+        let dir_list={'cache': ''}
     endif
-    if !isdirectory(directory)
-        if exists('*mkdir')
-            let dir = substitute(directory, "/$", "", "")
-            call mkdir(dir, 'p')
-        else
-            echo 'Warning: Unable to create directory: '.directory
+    for [dirname, settingname] in items(dir_list)
+        let directory=parent.'/'.prefix.'/'.dirname.'/'
+        if !isdirectory(directory)
+            if exists('*mkdir')
+                let dir = substitute(directory, "/$", "", "")
+                call mkdir(dir, 'p')
+            else
+                echo 'Warning: Unable to create directory: '.directory
+            endif
         endif
-    endif
+        if settingname!=''
+            exe 'set '.settingname.'='.directory
+        endif
+    endfor
 endfunction
 call InitializeDirectories()
-
-if !has('nvim')
-    set undodir='$HOME/.vim/cache/undo'
-endif
 
 autocmd BufWinLeave *.* silent! mkview " Make Vim save view (state) (folds, cursor, etc)
 autocmd BufWinEnter *.* silent! loadview " Make Vim load view (state) (folds, cursor, etc)
