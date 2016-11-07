@@ -51,17 +51,6 @@ require() {
     which ctags || warn "No ctags installed!\nPlease install ctags form http://ctags.sourceforge.net/ after ivim intallation!"
 }
 
-backup() {
-    color_print "Backing up current vim config..."
-    if [ $1 = 0 ]; then
-        for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do [ -e $i ] && mv -f $i $i.backup; done
-    else
-        if [ -e $HOME/.config/nvim/init.vim ]; then
-            mv -f $HOME/.config/nvim/init.vim $HOME/.nvimrc.backup
-        fi
-    fi
-}
-
 install() {
     color_print "Cloning ivim..."
     rm -rf $HOME/.ivim
@@ -118,19 +107,16 @@ while getopts ":imun" opts; do
         i)
             logo
             require 0
-            backup 0
             install 0
             ;;
         m)
             logo
             require 1
-            backup 0
             install 1
             ;;
         u)
             logo
             require 2
-            backup 1
             install 2
             ;;
         n)
