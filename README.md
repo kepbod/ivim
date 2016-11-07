@@ -22,11 +22,7 @@ After 4 years' development, ivim contains 3 versions to satisfy different requir
 
 Use lots of famous colorschemes to make your eyes feel comfortable in both Vim and NeoVim.
 
-* [ivim](https://github.com/kepbod/ivim/blob/master/vimrc)
 ![ivim](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot/ivim.jpeg)
-
-* [ivim_mini](https://github.com/kepbod/ivim/blob/master/vimrc_mini)
-![ivim_mini](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot/ivim_mini.jpeg)
 
 **You could install the patched font from [vim-devicons](https://github.com/ryanoasis/vim-devicons).**
 

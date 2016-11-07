@@ -396,7 +396,7 @@ endif
 " Load a colorscheme
 if count(g:ivim_bundle_groups, 'ui')
     if g:ivim_default_scheme=='hybrid'
-        colorscheme hybrid_material
+        colorscheme hybrid_reverse
     elseif g:ivim_default_scheme=='gruvbox'
         colorscheme gruvbox
     elseif g:ivim_default_scheme=='tender'

@@ -44,6 +44,9 @@ set undofile " Set undo
 function! InitializeDirectories()
     let parent=$HOME
     if has('nvim')
+        let prefix='.local/share/nvim'
+        let dir_list={'cache': ''}
+    else
         let prefix='.vim'
         let dir_list={
                     \ 'backup': 'backupdir',
@@ -51,9 +54,6 @@ function! InitializeDirectories()
                     \ 'swap': 'directory',
                     \ 'undo': 'undodir',
                     \ 'cache': ''}
-    else
-        let prefix='.local/share/nvim'
-        let dir_list={'cache': ''}
     endif
     for [dirname, settingname] in items(dir_list)
         let directory=parent.'/'.prefix.'/'.dirname.'/'
@@ -104,7 +104,7 @@ endif
 
 
 " Install plugins
-Plug 'jacoborus/tender.vim' " Colorscheme tender
+Plug 'kristijanhusak/vim-hybrid-material' " Colorscheme hybrid material
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' " Status line
 Plug 'Yggdroot/indentLine' " Indentation level
 Plug 'ryanoasis/vim-devicons' " Devicons
@@ -164,7 +164,7 @@ call plug#end()
 " Set status line
 set laststatus=2 " Show the statusline
 set noshowmode " Hide the default mode text
-let g:airline_theme='tender'
+let g:airline_theme='bubblegum'
 set ttimeoutlen=50
 let g:bufferline_echo=0
 let g:bufferline_modified='[+]'
@@ -231,7 +231,7 @@ set background=dark " Set background
 set t_Co=256 " Use 256 colors
 
 " Load a colorscheme
-colorscheme tender
+colorscheme hybrid_reverse
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
