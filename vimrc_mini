@@ -104,7 +104,7 @@ endif
 
 
 " Install plugins
-Plug 'kristijanhusak/vim-hybrid-material' " Colorscheme hybrid material
+Plug 'arcticicestudio/nord-vim' " Colorscheme Nord
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' " Status line
 Plug 'Yggdroot/indentLine' " Indentation level
 Plug 'ryanoasis/vim-devicons' " Devicons
@@ -124,7 +124,7 @@ Plug 'wellle/targets.vim' " Text objects
 Plug 'roman/golden-ratio' " Resize windows
 Plug 'chrisbra/vim-diff-enhanced' " Create better diffs
 Plug 'tpope/vim-unimpaired' " Pairs of mappings
-Plug 'unblevable/quick-scope' " Quick scope
+Plug 'kepbod/quick-scope' " Quick scope
 Plug 'bkad/CamelCaseMotion' " Camel case motion
 Plug 'majutsushi/tagbar' " Tag bar
 Plug 'ludovicchabant/vim-gutentags' " Manage tag files
@@ -164,7 +164,7 @@ call plug#end()
 " Set status line
 set laststatus=2 " Show the statusline
 set noshowmode " Hide the default mode text
-let g:airline_theme='bubblegum'
+let g:airline_theme='nord'
 set ttimeoutlen=50
 let g:bufferline_echo=0
 let g:bufferline_modified='[+]'
@@ -231,7 +231,7 @@ set background=dark " Set background
 set t_Co=256 " Use 256 colors
 
 " Load a colorscheme
-colorscheme hybrid_reverse
+colorscheme nord
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
