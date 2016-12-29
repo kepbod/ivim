@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2015-09-24
-"   Last Modified: 2016-11-06
+"   Last Modified: 2016-12-29
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -125,6 +125,7 @@ Plug 'roman/golden-ratio' " Resize windows
 Plug 'chrisbra/vim-diff-enhanced' " Create better diffs
 Plug 'tpope/vim-unimpaired' " Pairs of mappings
 Plug 'kepbod/quick-scope' " Quick scope
+Plug 'yuttie/comfortable-motion.vim' " Comfortable motion
 Plug 'bkad/CamelCaseMotion' " Camel case motion
 Plug 'majutsushi/tagbar' " Tag bar
 Plug 'ludovicchabant/vim-gutentags' " Manage tag files

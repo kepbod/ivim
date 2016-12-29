@@ -7,7 +7,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2012-01-20
-"   Last Modified: 2016-11-03
+"   Last Modified: 2016-12-29
 "
 "   Sections:
 "     -> ivim Setting
@@ -176,7 +176,8 @@ endif
 if count(g:ivim_bundle_groups, 'move') " Moving
     Plug 'tpope/vim-unimpaired' " Pairs of mappings
     Plug 'Lokaltog/vim-easymotion' " Easy motion
-    Plug 'unblevable/quick-scope' " Quick scope
+    Plug 'kepbod/quick-scope' " Quick scope
+    Plug 'yuttie/comfortable-motion.vim' " Comfortable motion
     Plug 'bkad/CamelCaseMotion' " Camel case motion
     Plug 'majutsushi/tagbar' " Tag bar
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  } " Fuzzy finder
