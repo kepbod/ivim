@@ -160,6 +160,7 @@ if count(g:ivim_bundle_groups, 'enhance') " Vim enhancement
     Plug 'tpope/vim-speeddating' " Speed dating
     Plug 'tpope/vim-repeat' " Repeat
     Plug 'terryma/vim-multiple-cursors' " Multiple cursors
+    Plug 'junegunn/vim-slash' " In-buffer search
     Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' } " Undo tree
     Plug 'tpope/vim-surround' " Surround
     Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] } " Easy align
@@ -448,24 +449,6 @@ cnoremap s/ s/\v
 nnoremap ? ?\v
 vnoremap ? ?\v
 cnoremap s? s?\v
-
-" Keep search matches in the middle of the window
-nnoremap n nzzzv
-nnoremap N Nzzzv
-nnoremap * *zzzv
-nnoremap # #zzzv
-nnoremap g* g*zzzv
-nnoremap g# g#zzzv
-
-" Visual search mappings
-function! s:VSetSearch()
-    let temp=@@
-    normal! gvy
-    let @/='\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
-    let @@=temp
-endfunction
-vnoremap * :<C-U>call <SID>VSetSearch()<CR>//<CR>
-vnoremap # :<C-U>call <SID>VSetSearch()<CR>??<CR>
 
 " Use ,Space to toggle the highlight search
 nnoremap <Leader><Space> :set hlsearch!<CR>
