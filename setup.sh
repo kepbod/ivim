@@ -73,9 +73,9 @@ install() {
     if [ $1 = 0 ]; then
         git clone https://github.com/kristijanhusak/vim-hybrid-material.git $HOME/.vim/bundle/vim-hybrid-material
     elif [ $1 = 1 ]; then
-        git clone https://github.com/jacoborus/tender.vim.git $HOME/.vim/plugged/tender.vim
+        git clone https://github.com/arcticicestudio/nord-vim.git $HOME/.vim/plugged/nord-vim
     else
-        git clone https://github.com/jacoborus/tender.vim.git $HOME/.config/nvim/plugged/tender.vim
+        git clone https://github.com/arcticicestudio/nord-vim.git $HOME/.config/nvim/plugged/nord-vim
     fi
     color_print "Installing plugins using vim-plug..."
     if [ $1 = 2 ]; then
