@@ -23,7 +23,13 @@ If you love ivim, welcome to [buy me a cup of coffee :coffee:](https://www.paypa
 
 Use lots of famous colorschemes to make your eyes feel comfortable in both Vim and NeoVim.
 
+* ivim
+
 ![ivim](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot/ivim.jpeg)
+
+* ivim_mini
+
+![ivim_mini](https://raw.githubusercontent.com/kepbod/ivim/master/snapshot/ivim_mini.jpeg)
 
 **You could install the patched font from [vim-devicons](https://github.com/ryanoasis/vim-devicons).**
 
@@ -31,7 +37,7 @@ Use lots of famous colorschemes to make your eyes feel comfortable in both Vim a
 
  * Make using Vim more convenient and faster, and lots of useful plugins confirm a better performance of Vim.
 
- * To view the full plugin list, please refer [here](https://github.com/kepbod/ivim/blob/master/vimrc#L133).
+ * To view the full plugin list, please refer [here](https://github.com/kepbod/ivim/blob/master/vimrc#L132).
 
 ## Requirements
 
