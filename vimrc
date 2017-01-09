@@ -783,6 +783,9 @@ if count(g:ivim_bundle_groups, 'language')
     let g:user_emmet_settings={'indentation':'    '}
     let g:use_emmet_complete_tag=1
 
+    " -> Polyglot
+    let g:vim_markdown_conceal=0
+
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
