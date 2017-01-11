@@ -88,13 +88,14 @@ install() {
 
 update() {
     color_print "updating ivim..."
+    cd $HOME/.ivim
     git pull origin master
     color_print "updating plugins..."
     if [ -e $HOME/.config/nvim/init.vim ]; then
-        nvim +PlugUpdate +qal
+        nvim +PlugClean! +PlugUpdate +qal
     fi
     if [ -e $HOME/.vimrc ]; then
-        vim +PlugUpdate +qal
+        vim +PlugClean! +PlugUpdate +qal
     fi
 }
 
