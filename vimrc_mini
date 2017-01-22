@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2015-09-24
-"   Last Modified: 2016-12-29
+"   Last Modified: 2017-01-22
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -119,6 +119,7 @@ Plug 'tpope/vim-repeat' " Repeat
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  } " Fuzzy finder
 Plug 'junegunn/fzf.vim' " Fuzzy finder plugin
 Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] } " Easy align
+Plug 'roxma/vim-paste-easy' " Easy paste
 Plug 'sickill/vim-pasta' " Vim pasta
 Plug 'Keithbsmiley/investigate.vim' " Helper
 Plug 'wellle/targets.vim' " Text objects
