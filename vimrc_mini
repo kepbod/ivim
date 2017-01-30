@@ -112,7 +112,8 @@ Plug 'bling/vim-bufferline' " Buffer line
 Plug 'mhinz/vim-startify' " Start page
 Plug 'Raimondi/delimitMate' " Closing of quotes
 Plug 'tomtom/tcomment_vim' " Commenter
-Plug 'junegunn/vim-slash' " In-buffer search
+Plug 'haya14busa/incsearch.vim' " Incremental highlighting
+Plug 'haya14busa/vim-asterisk' " Improved asterisk
 Plug 'terryma/vim-multiple-cursors' " Multiple cursors
 Plug 'tpope/vim-surround' " Surround
 Plug 'tpope/vim-repeat' " Repeat
@@ -236,6 +237,11 @@ set t_Co=256 " Use 256 colors
 " Load a colorscheme
 colorscheme nord
 
+" Enable italic
+let g:nord_italic_comments=1
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "-------------------------------------------------
@@ -261,16 +267,18 @@ set hlsearch " Highlight search terms
 set incsearch " Find as you type search
 set gdefault " turn on g flag
 
-" Use sane regexes
-nnoremap / /\v
-vnoremap / /\v
-cnoremap s/ s/\v
-nnoremap ? ?\v
-vnoremap ? ?\v
-cnoremap s? s?\v
-
-" Use ,Space to toggle the highlight search
-nnoremap <Leader><Space> :set hlsearch!<CR>
+" incsearch & asterisk
+let g:incsearch#magic='\m'
+let g:incsearch#auto_nohlsearch=1
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl0)<Plug>(asterisk-z*)
+map g* <Plug>(incsearch-nohl0)<Plug>(asterisk-gz*)
+map #  <Plug>(incsearch-nohl0)<Plug>(asterisk-z#)
+map g# <Plug>(incsearch-nohl0)<Plug>(asterisk-gz#)
 
 " Toggle relativenumber
 nnoremap <Leader>n :set relativenumber!<CR>
