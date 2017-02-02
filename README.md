@@ -35,7 +35,7 @@ Colorscheme: [Hybrid](https://github.com/kristijanhusak/vim-hybrid-material)
 
 Colorscheme: [Nord](https://github.com/arcticicestudio/nord-vim)
 
-**You could install the patched font from [vim-devicons](https://github.com/ryanoasis/vim-devicons).**
+**You could install the patched font from [nerd-fonts](https://github.com/ryanoasis/nerd-fonts).**
 
 ***Efficient***
 
