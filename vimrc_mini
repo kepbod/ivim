@@ -513,16 +513,19 @@ endif
 let g:tmuxcomplete#trigger=''
 
 " -> Neosnippet
-" Use <C-K> to expand or jump snippets in insert mode
+" Use <C-K> to expand or jump snippets in insert or select mode
 imap <C-K> <Plug>(neosnippet_expand_or_jump)
+smap <C-K> <Plug>(neosnippet_expand_or_jump)
 " Use <C-K> to replace TARGET within snippets in visual mode
-xmap <C-K> <Plug>(neosnippet_start_unite_snippet_target)
+xmap <C-K> <Plug>(neosnippet_expand_target)
 
 " -> Ale
 let g:ale_sign_error='✗'
 let g:ale_sign_warning='∆'
 nmap <silent> [w <Plug>(ale_previous)
 nmap <silent> ]w <Plug>(ale_next)
+highlight ALEErrorSign guibg=NONE guifg=red
+highlight ALEWarningSign guibg=NONE guifg=yellow
 
 " -> Emmet
 let g:user_emmet_leader_key='<C-Z>'
