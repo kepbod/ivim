@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2015-09-24
-"   Last Modified: 2017-01-22
+"   Last Modified: 2017-03-10
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -152,7 +152,6 @@ Plug 'Shougo/neosnippet-snippets' " Snippets
 Plug 'w0rp/ale' " Lint engine
 Plug 'tpope/vim-fugitive' " Git wrapper
 Plug 'airblade/vim-gitgutter' " Git diff sign
-Plug 'fatih/vim-go', {'for': 'go', 'do': ':GoInstallBinaries' } " Vim go
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] } " Emmet
 Plug 'wellle/tmux-complete.vim' " Completion for tmux panes
 Plug 'sheerun/vim-polyglot' " Language Support
