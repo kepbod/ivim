@@ -430,6 +430,9 @@ let g:investigate_use_dash=1
 " -> EnhancedDiff
 let &diffexpr='EnhancedDiff#Diff("git diff", "--diff-algorithm=patience")'
 
+" -> Quick-scope
+let g:qs_max_chars=80
+
 " -> Tag bar
 nnoremap <Leader>t :TagbarToggle<CR>
 let g:tagbar_autofocus=1
