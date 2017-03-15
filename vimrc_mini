@@ -134,26 +134,16 @@ Plug 'majutsushi/tagbar' " Tag bar
 Plug 'ludovicchabant/vim-gutentags' " Manage tag files
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " NERD tree
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' } " NERD tree git
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Auto completion framework
-    Plug 'zchee/deoplete-jedi', { 'for': 'python' } " Python jedi plugin
-    Plug 'JuliaEditorSupport/deoplete-julia', { 'for': 'julia' } " Vim julia
-else
-    if has('lua')
-        Plug 'Shougo/neocomplete.vim' " Auto completion framework
-    else
-        Plug 'Shougo/neocomplcache.vim' " Auto completion framework
-    endif
-    Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-    Plug 'davidhalter/jedi-vim', { 'for': 'python' } " Python jedi plugin
+Plug 'roxma/nvim-completion-manager'  " Auto completion framework
+if !has('nvim')
+    Plug 'roxma/vim-hug-neovim-rpc'  " Support for vim 8
 endif
-Plug 'Shougo/neosnippet.vim' " Snippet engine
-Plug 'Shougo/neosnippet-snippets' " Snippets
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'  " Snippet
+Plug 'roxma/nvim-cm-tern',  {'do': 'npm install', 'for': 'javascript'}  " Completion for Javascript
 Plug 'w0rp/ale' " Lint engine
 Plug 'tpope/vim-fugitive' " Git wrapper
 Plug 'airblade/vim-gitgutter' " Git diff sign
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] } " Emmet
-Plug 'wellle/tmux-complete.vim' " Completion for tmux panes
 Plug 'sheerun/vim-polyglot' " Language Support
 
 call plug#end()
@@ -395,27 +385,11 @@ nnoremap <silent> <LocalLeader><Space> :call IsWhiteLine()<CR>
 " -> Multiple cursors
 " Called once right before you start selecting multiple cursors
 function! Multiple_cursors_before()
-    if has('nvim')
-        let g:deoplete#disable_auto_complete=1
-    else
-        if has('lua')
-            exe 'NeoCompleteLock'
-        else
-            exe 'NeoComplCacheLock'
-        endif
-    endif
+    call cm#disable_for_buffer()
 endfunction
 " Called once only when the multiple selection is canceled (default <Esc>)
 function! Multiple_cursors_after()
-    if has('nvim')
-        let g:deoplete#disable_auto_complete=0
-    else
-        if has('lua')
-            exe 'NeoCompleteUnlock'
-        else
-            exe 'NeoComplCacheUnlock'
-        endif
-    endif
+    call cm#enable_for_buffer()
 endfunction
 
 " -> Easy Align
@@ -459,64 +433,16 @@ augroup nerd_loader
                 \| endif
 augroup END
 
-" -> Neocomplete & Neocomplcache & Deoplete
+" -> Nvim-completion-manager & Ultisnips
 " Use Tab and S-Tab to select candidate
 inoremap <expr><Tab>  pumvisible() ? "\<C-N>" : "\<Tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
-if has('nvim')
-    " Use deoplete.
-    let g:deoplete#enable_at_startup=1
-    " Enable camel case completion
-    let g:deoplete#enable_camel_case=1
-else
-    if has('lua')
-        let g:neocomplete#enable_at_startup=1
-        let g:neocomplete#data_directory=$HOME . '/.vim/cache/neocomplete'
-        let g:neocomplete#enable_auto_delimiter=1
-        " Use <C-E> to close popup
-        inoremap <expr><C-E> neocomplete#cancel_popup()
-        inoremap <expr><CR> delimitMate#WithinEmptyPair() ?
-                    \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
-                    \ pumvisible() ? neocomplete#close_popup() : "\<CR>"
-        " Setting for python
-        if !exists('g:neocomplete#force_omni_input_patterns')
-            let g:neocomplete#force_omni_input_patterns={}
-        endif
-        let g:neocomplete#force_omni_input_patterns.python=
-        \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-    else
-        let g:neocomplcache_enable_at_startup=1
-        let g:neocomplcache_temporary_dir=$HOME . '/.vim/cache/neocomplcache'
-        let g:neocomplcache_enable_auto_delimiter=1
-        let g:neocomplcache_enable_fuzzy_completion=1
-        " Use <C-E> to close popup
-        inoremap <expr><C-E> neocomplcache#cancel_popup()
-        inoremap <expr><CR> delimitMate#WithinEmptyPair() ?
-                    \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
-                    \ pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-        " Setting for python
-        if !exists('g:neocomplcache_force_omni_patterns')
-            let g:neocomplcache_force_omni_patterns={}
-        endif
-        let g:neocomplcache_force_omni_patterns.python=
-        \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-    endif
-    " Setting for jedi-vim
-    autocmd FileType python setlocal omnifunc=jedi#completions
-    let g:jedi#completions_enabled=0
-    let g:jedi#auto_vim_configuration=0
-    let g:jedi#smart_auto_mappings=0
-    let g:jedi#use_tabs_not_buffers=1
-endif
-" Setting for tmux-complete
-let g:tmuxcomplete#trigger=''
-
-" -> Neosnippet
-" Use <C-K> to expand or jump snippets in insert or select mode
-imap <C-K> <Plug>(neosnippet_expand_or_jump)
-smap <C-K> <Plug>(neosnippet_expand_or_jump)
-" Use <C-K> to replace TARGET within snippets in visual mode
-xmap <C-K> <Plug>(neosnippet_expand_target)
+" Use Enter to enter candidate
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+" Trigger snippets
+let g:UltiSnipsExpandTrigger="<C-K>"
+let g:UltiSnipsJumpForwardTrigger="<Tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 
 " -> Ale
 let g:ale_sign_error='✗'
