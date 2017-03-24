@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2015-09-24
-"   Last Modified: 2017-03-10
+"   Last Modified: 2017-03-24
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -136,8 +136,9 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " NERD tree
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' } " NERD tree git
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Auto completion framework
-    Plug 'zchee/deoplete-jedi', { 'for': 'python' } " Python jedi plugin
-    Plug 'JuliaEditorSupport/deoplete-julia', { 'for': 'julia' } " Vim julia
+    Plug 'zchee/deoplete-jedi', { 'for': 'python' } " Completion for python
+    Plug 'JuliaEditorSupport/deoplete-julia', { 'for': 'julia' } " Completion for julia
+    Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': 'javascript' } " Completion for javascript
 else
     if has('lua')
         Plug 'Shougo/neocomplete.vim' " Auto completion framework
@@ -145,7 +146,8 @@ else
         Plug 'Shougo/neocomplcache.vim' " Auto completion framework
     endif
     Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-    Plug 'davidhalter/jedi-vim', { 'for': 'python' } " Python jedi plugin
+    Plug 'davidhalter/jedi-vim', { 'for': 'python' } " Completion for python
+    Plug 'ternjs/tern_for_vim', { 'do': 'npm install -g tern', 'for': 'javascript' } " Completion for javascript
 endif
 Plug 'Shougo/neosnippet.vim' " Snippet engine
 Plug 'Shougo/neosnippet-snippets' " Snippets
@@ -487,6 +489,7 @@ else
         endif
         let g:neocomplete#force_omni_input_patterns.python=
         \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+        let g:neocomplete#force_omni_input_patterns.javascript='[^. \t]\.\w*'
     else
         let g:neocomplcache_enable_at_startup=1
         let g:neocomplcache_temporary_dir=$HOME . '/.vim/cache/neocomplcache'
@@ -503,6 +506,7 @@ else
         endif
         let g:neocomplcache_force_omni_patterns.python=
         \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+        let g:neocomplcache_force_omni_patterns.javascript='[^. \t]\.\w*'
     endif
     " Setting for jedi-vim
     autocmd FileType python setlocal omnifunc=jedi#completions
@@ -510,6 +514,8 @@ else
     let g:jedi#auto_vim_configuration=0
     let g:jedi#smart_auto_mappings=0
     let g:jedi#use_tabs_not_buffers=1
+    " Setting for ternjs
+    autocmd FileType javascript setlocal omnifunc=tern#Complete
 endif
 " Setting for tmux-complete
 let g:tmuxcomplete#trigger=''
