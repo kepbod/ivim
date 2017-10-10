@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2015-09-24
-"   Last Modified: 2017-03-24
+"   Last Modified: 2017-10-09
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -134,21 +134,14 @@ Plug 'majutsushi/tagbar' " Tag bar
 Plug 'ludovicchabant/vim-gutentags' " Manage tag files
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " NERD tree
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' } " NERD tree git
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Auto completion framework
-    Plug 'zchee/deoplete-jedi', { 'for': 'python' } " Completion for python
-    Plug 'JuliaEditorSupport/deoplete-julia', { 'for': 'julia' } " Completion for julia
-    Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern', 'for': 'javascript' } " Completion for javascript
-else
-    if has('lua')
-        Plug 'Shougo/neocomplete.vim' " Auto completion framework
-    else
-        Plug 'Shougo/neocomplcache.vim' " Auto completion framework
-    endif
-    Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-    Plug 'davidhalter/jedi-vim', { 'for': 'python' } " Completion for python
-    Plug 'ternjs/tern_for_vim', { 'do': 'npm install -g tern', 'for': 'javascript' } " Completion for javascript
-endif
+Plug 'prabirshrestha/asyncomplete.vim' " Async autocompletion
+Plug 'prabirshrestha/async.vim' " Normalize async job control api
+Plug 'prabirshrestha/vim-lsp' " Async language server protocol
+Plug 'prabirshrestha/asyncomplete-lsp.vim' " Language server protocol
+Plug 'prabirshrestha/asyncomplete-tags.vim' " Tag completions
+Plug 'yami-beta/asyncomplete-omni.vim' " Omni completion
+Plug 'prabirshrestha/asyncomplete-buffer.vim' " Buffer completion
+Plug 'prabirshrestha/asyncomplete-neosnippet.vim' " Neosnippet autocompletion
 Plug 'Shougo/neosnippet.vim' " Snippet engine
 Plug 'Shougo/neosnippet-snippets' " Snippets
 Plug 'w0rp/ale' " Lint engine
@@ -394,31 +387,49 @@ function! IsWhiteLine()
 endfunction
 nnoremap <silent> <LocalLeader><Space> :call IsWhiteLine()<CR>
 
-" -> Multiple cursors
-" Called once right before you start selecting multiple cursors
-function! Multiple_cursors_before()
-    if has('nvim')
-        let g:deoplete#disable_auto_complete=1
-    else
-        if has('lua')
-            exe 'NeoCompleteLock'
-        else
-            exe 'NeoComplCacheLock'
-        endif
-    endif
-endfunction
-" Called once only when the multiple selection is canceled (default <Esc>)
-function! Multiple_cursors_after()
-    if has('nvim')
-        let g:deoplete#disable_auto_complete=0
-    else
-        if has('lua')
-            exe 'NeoCompleteUnlock'
-        else
-            exe 'NeoComplCacheUnlock'
-        endif
-    endif
-endfunction
+" -> Asyncomplete
+let g:asyncomplete_remove_duplicates=1
+inoremap <expr> <Tab> pumvisible() ? "\<C-N>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
+inoremap <expr> <CR> delimitMate#WithinEmptyPair() ?
+            \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
+            \ pumvisible() ? "\<C-Y>" : "\<CR>"
+" Omni
+call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+\ 'name': 'omni',
+\ 'whitelist': ['*'],
+\ 'completor': function('asyncomplete#sources#omni#completor')
+\  }))
+" Ctags
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#tags#get_source_options({
+    \ 'name': 'tags',
+    \ 'whitelist': ['c'],
+    \ 'completor': function('asyncomplete#sources#tags#completor'),
+    \ }))
+" Buffer
+call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+    \ 'name': 'buffer',
+    \ 'whitelist': ['*'],
+    \ 'blacklist': ['go'],
+    \ 'completor': function('asyncomplete#sources#buffer#completor'),
+    \ }))
+" Python
+if executable('pyls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+endif
+" Neosnippet
+call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
+    \ 'name': 'neosnippet',
+    \ 'whitelist': ['*'],
+    \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
+    \ }))
+imap <C-K> <Plug>(neosnippet_expand_or_jump)
+smap <C-K> <Plug>(neosnippet_expand_or_jump)
+xmap <C-K> <Plug>(neosnippet_expand_target)
 
 " -> Easy Align
 xmap ga <Plug>(EasyAlign)
@@ -463,69 +474,6 @@ augroup nerd_loader
                 \|   execute 'autocmd! nerd_loader'
                 \| endif
 augroup END
-
-" -> Neocomplete & Neocomplcache & Deoplete
-" Use Tab and S-Tab to select candidate
-inoremap <expr><Tab>  pumvisible() ? "\<C-N>" : "\<Tab>"
-inoremap <expr><S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
-if has('nvim')
-    " Use deoplete.
-    let g:deoplete#enable_at_startup=1
-    " Enable camel case completion
-    let g:deoplete#enable_camel_case=1
-else
-    if has('lua')
-        let g:neocomplete#enable_at_startup=1
-        let g:neocomplete#data_directory=$HOME . '/.vim/cache/neocomplete'
-        let g:neocomplete#enable_auto_delimiter=1
-        " Use <C-E> to close popup
-        inoremap <expr><C-E> neocomplete#cancel_popup()
-        inoremap <expr><CR> delimitMate#WithinEmptyPair() ?
-                    \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
-                    \ pumvisible() ? neocomplete#close_popup() : "\<CR>"
-        " Setting for python
-        if !exists('g:neocomplete#force_omni_input_patterns')
-            let g:neocomplete#force_omni_input_patterns={}
-        endif
-        let g:neocomplete#force_omni_input_patterns.python=
-        \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-        let g:neocomplete#force_omni_input_patterns.javascript='[^. \t]\.\w*'
-    else
-        let g:neocomplcache_enable_at_startup=1
-        let g:neocomplcache_temporary_dir=$HOME . '/.vim/cache/neocomplcache'
-        let g:neocomplcache_enable_auto_delimiter=1
-        let g:neocomplcache_enable_fuzzy_completion=1
-        " Use <C-E> to close popup
-        inoremap <expr><C-E> neocomplcache#cancel_popup()
-        inoremap <expr><CR> delimitMate#WithinEmptyPair() ?
-                    \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
-                    \ pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-        " Setting for python
-        if !exists('g:neocomplcache_force_omni_patterns')
-            let g:neocomplcache_force_omni_patterns={}
-        endif
-        let g:neocomplcache_force_omni_patterns.python=
-        \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-        let g:neocomplcache_force_omni_patterns.javascript='[^. \t]\.\w*'
-    endif
-    " Setting for jedi-vim
-    autocmd FileType python setlocal omnifunc=jedi#completions
-    let g:jedi#completions_enabled=0
-    let g:jedi#auto_vim_configuration=0
-    let g:jedi#smart_auto_mappings=0
-    let g:jedi#use_tabs_not_buffers=1
-    " Setting for ternjs
-    autocmd FileType javascript setlocal omnifunc=tern#Complete
-endif
-" Setting for tmux-complete
-let g:tmuxcomplete#trigger=''
-
-" -> Neosnippet
-" Use <C-K> to expand or jump snippets in insert or select mode
-imap <C-K> <Plug>(neosnippet_expand_or_jump)
-smap <C-K> <Plug>(neosnippet_expand_or_jump)
-" Use <C-K> to replace TARGET within snippets in visual mode
-xmap <C-K> <Plug>(neosnippet_expand_target)
 
 " -> Ale
 let g:ale_sign_error='✗'
