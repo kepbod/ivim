@@ -130,6 +130,7 @@ Plug 'chrisbra/vim-diff-enhanced' " Create better diffs
 Plug 'tpope/vim-unimpaired' " Pairs of mappings
 Plug 'bradford-smith94/quick-scope' " Quick scope
 Plug 'yuttie/comfortable-motion.vim' " Comfortable motion
+Plug 'sjl/gundo.vim' " Uundo tree
 Plug 'bkad/CamelCaseMotion' " Camel case motion
 Plug 'majutsushi/tagbar' " Tag bar
 Plug 'ludovicchabant/vim-gutentags' " Manage tag files
@@ -494,6 +495,9 @@ autocmd FileType python BracelessEnable +indent
 let g:user_emmet_leader_key='<C-Z>'
 let g:user_emmet_settings={'indentation':'    '}
 let g:use_emmet_complete_tag=1
+
+" -> Gundo
+nnoremap <Leader>u :GundoToggle<CR>
 
 " -> Matchit
 if !has('nvim')
