@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2015-09-24
-"   Last Modified: 2017-10-09
+"   Last Modified: 2017-10-27
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -114,6 +114,7 @@ Plug 'Raimondi/delimitMate' " Closing of quotes
 Plug 'tomtom/tcomment_vim' " Commenter
 Plug 'haya14busa/incsearch.vim' " Incremental highlighting
 Plug 'haya14busa/vim-asterisk' " Improved asterisk
+Plug 'easymotion/vim-easymotion' " Easy motion
 Plug 'terryma/vim-multiple-cursors' " Multiple cursors
 Plug 'tpope/vim-surround' " Surround
 Plug 'tpope/vim-repeat' " Repeat
@@ -127,7 +128,7 @@ Plug 'wellle/targets.vim' " Text objects
 Plug 'roman/golden-ratio' " Resize windows
 Plug 'chrisbra/vim-diff-enhanced' " Create better diffs
 Plug 'tpope/vim-unimpaired' " Pairs of mappings
-Plug 'kepbod/quick-scope' " Quick scope
+Plug 'bradford-smith94/quick-scope' " Quick scope
 Plug 'yuttie/comfortable-motion.vim' " Comfortable motion
 Plug 'bkad/CamelCaseMotion' " Camel case motion
 Plug 'majutsushi/tagbar' " Tag bar
@@ -147,6 +148,7 @@ Plug 'Shougo/neosnippet-snippets' " Snippets
 Plug 'w0rp/ale' " Lint engine
 Plug 'tpope/vim-fugitive' " Git wrapper
 Plug 'airblade/vim-gitgutter' " Git diff sign
+Plug 'tweekmonster/braceless.vim', { 'for': 'python' } " Setting for Python
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] } " Emmet
 Plug 'wellle/tmux-complete.vim' " Completion for tmux panes
 Plug 'sheerun/vim-polyglot' " Language Support
@@ -430,6 +432,8 @@ call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_opt
 imap <C-K> <Plug>(neosnippet_expand_or_jump)
 smap <C-K> <Plug>(neosnippet_expand_or_jump)
 xmap <C-K> <Plug>(neosnippet_expand_target)
+" Tmux-complete
+let g:tmuxcomplete#trigger='omnifunc'
 
 " -> Easy Align
 xmap ga <Plug>(EasyAlign)
@@ -482,6 +486,9 @@ nmap <silent> [w <Plug>(ale_previous)
 nmap <silent> ]w <Plug>(ale_next)
 highlight ALEErrorSign guibg=NONE guifg=red
 highlight ALEWarningSign guibg=NONE guifg=yellow
+
+" -> Braceless
+autocmd FileType python BracelessEnable +indent
 
 " -> Emmet
 let g:user_emmet_leader_key='<C-Z>'
