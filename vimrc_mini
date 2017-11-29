@@ -146,12 +146,12 @@ Plug 'prabirshrestha/asyncomplete-buffer.vim' " Buffer completion
 Plug 'prabirshrestha/asyncomplete-neosnippet.vim' " Neosnippet autocompletion
 Plug 'Shougo/neosnippet.vim' " Snippet engine
 Plug 'Shougo/neosnippet-snippets' " Snippets
+Plug 'wellle/tmux-complete.vim' " Completion for tmux panes
 Plug 'w0rp/ale' " Lint engine
 Plug 'tpope/vim-fugitive' " Git wrapper
 Plug 'airblade/vim-gitgutter' " Git diff sign
 Plug 'tweekmonster/braceless.vim', { 'for': 'python' } " Setting for Python
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] } " Emmet
-Plug 'wellle/tmux-complete.vim' " Completion for tmux panes
 Plug 'sheerun/vim-polyglot' " Language Support
 
 call plug#end()
@@ -434,7 +434,17 @@ imap <C-K> <Plug>(neosnippet_expand_or_jump)
 smap <C-K> <Plug>(neosnippet_expand_or_jump)
 xmap <C-K> <Plug>(neosnippet_expand_target)
 " Tmux-complete
-let g:tmuxcomplete#trigger='omnifunc'
+let g:tmuxcomplete#asyncomplete_source_options = {
+    \ 'name':      'tmuxcomplete',
+    \ 'whitelist': ['*'],
+    \ 'config': {
+    \     'splitmode':      'words',
+    \     'filter_prefix':   1,
+    \     'show_incomplete': 1,
+    \     'sort_candidates': 0,
+    \     'scrollback':      0
+    \     }
+    \ }
 
 " -> Easy Align
 xmap ga <Plug>(EasyAlign)
