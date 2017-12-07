@@ -43,6 +43,86 @@ Colorscheme: [Nord](https://github.com/arcticicestudio/nord-vim)
 
  * To view the full plugin list, please refer [here](https://github.com/kepbod/ivim/blob/master/vimrc#L132).
 
+***Plugin List***
+
+- **UI Setting**
+  - [kristijanhusak/vim-hybrid-material](https://github.com/kristijanhusak/vim-hybrid-material) - Colorscheme hybrid material
+  - [morhetz/gruvbox](https://github.com/morhetz/gruvbox) - Colorscheme gruvbox
+  - [jacoborus/tender.vim](https://github.com/jacoborus/tender.vim) - Colorscheme tender
+  - [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline) - Status line
+  - [vim-airline/vim-airline-themes](https://github.com/vim-airline/vim-airline-themes) - Status line themes
+  - [Yggdroot/indentLine](https://github.com/Yggdroot/indentLine) - Indentation level
+  - [ryanoasis/vim-devicons](https://github.com/ryanoasis/vim-devicons) - Devicons
+  - [bling/vim-bufferline](https://github.com/bling/vim-bufferline) - Buffer line
+  - [mhinz/vim-startify](https://github.com/mhinz/vim-startify) - Start page
+  - [junegunn/goyo.vim](https://github.com/junegunn/goyo.vim) - Distraction-free
+  - [junegunn/limelight.vim](https://github.com/junegunn/limelight.vim) - Hyperfocus-writing
+
+- **Enhancement**
+  - [Raimondi/delimitMate](https://github.com/Raimondi/delimitMate) - Closing of quotes
+  - [tomtom/tcomment_vim](https://github.com/tomtom/tcomment_vim) - Commenter
+  - [tpope/vim-abolish](https://github.com/tpope/vim-abolish) - Abolish
+  - [tpope/vim-speeddating](https://github.com/tpope/vim-speeddating) - Speed dating
+  - [tpope/vim-repeat](https://github.com/tpope/vim-repeat) - Repeat
+  - [terryma/vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors) - Multiple cursors
+  - [junegunn/vim-slash](https://github.com/junegunn/vim-slash) - In-buffer search
+  - [mbbill/undotree](https://github.com/mbbill/undotree) - Undo tree
+  - [tpope/vim-surround](https://github.com/tpope/vim-surround) - Surround
+  - [junegunn/vim-easy-align](https://github.com/junegunn/vim-easy-align) - Easy align
+  - [ludovicchabant/vim-gutentags](https://github.com/ludovicchabant/vim-gutentags) - Manage tag files
+  - [AndrewRadev/splitjoin.vim](https://github.com/AndrewRadev/splitjoin.vim) - Splitjoin
+  - [sickill/vim-pasta](https://github.com/sickill/vim-pasta) - Vim pasta
+  - [Keithbsmiley/investigate.vim](https://github.com/Keithbsmiley/investigate.vim) - Helper
+  - [wikitopian/hardmode](https://github.com/wikitopian/hardmode) - Hard mode
+  - [wellle/targets.vim](https://github.com/wellle/targets.vim) - Text objects
+  - [roman/golden-ratio](https://github.com/roman/golden-ratio) - Resize windows
+  - [chrisbra/vim-diff-enhanced](https://github.com/chrisbra/vim-diff-enhanced) - Create better diffs
+
+- **Moving**
+  - [tpope/vim-unimpaired](https://github.com/tpope/vim-unimpaired) - Pairs of mappings
+  - [Lokaltog/vim-easymotion](https://github.com/Lokaltog/vim-easymotion) - Easy motion
+  - [kepbod/quick-scope](https://github.com/kepbod/quick-scope) - Quick scope
+  - [yuttie/comfortable-motion.vim](https://github.com/yuttie/comfortable-motion.vim) - Comfortable motion
+  - [bkad/CamelCaseMotion](https://github.com/bkad/CamelCaseMotion) - Camel case motion
+  - [majutsushi/tagbar](https://github.com/majutsushi/tagbar) - Tag bar
+  - [junegunn/fzf](https://github.com/junegunn/fzf) - Fuzzy finder
+  - [junegunn/fzf.vim](https://github.com/junegunn/fzf.vim) - Fuzzy finder plugin
+
+- **Navigation**
+  - [scrooloose/nerdtree](https://github.com/scrooloose/nerdtree) - NERD tree
+  - [Xuyuanp/nerdtree-git-plugin](https://github.com/Xuyuanp/nerdtree-git-plugin) - NERD tree git plugin
+  - [mhinz/vim-tmuxify](https://github.com/mhinz/vim-tmuxify) - Tmux panes
+
+- **Completion**
+  - Under NEO
+    - [Shougo/neocomplete.vim](https://github.com/Shougo/neocomplete.vim) - Auto completion framework with Lua
+    - [Shougo/neocomplcache.vim](https://github.com/Shougo/neocomplcache.vim) - Auto completion framework without Lua
+    - [Shougo/neosnippet.vim](https://github.com/Shougo/neosnippet.vim) - Snippet engine
+    - [Shougo/neosnippet-snippets](https://github.com/Shougo/neosnippet-snippets) - Snippets
+    - [Shougo/vimproc.vim](https://github.com/Shougo/vimproc.vim) - Interactive command execution
+    - [wellle/tmux-complete.vim](https://github.com/wellle/tmux-complete.vim) - Completion for tmux panes
+  - Under YouCompleteMe
+    - [Valloric/YouCompleteMe](https://github.com/Valloric/YouCompleteMe) -Auto completion framework
+    - [honza/vim-snippets](https://github.com/honza/vim-snippets) - Snippets
+    - [sirver/ultisnips](https://github.com/sirver/ultisnips) - Snippet engine
+
+- **Compiling**
+  - [scrooloose/syntastic](https://github.com/scrooloose/syntastic) - Syntax checking
+  - [xuhdev/SingleCompile](https://github.com/xuhdev/SingleCompile) - Single compile
+
+- **Git**
+  - [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive) - Git wrapper
+  - [junegunn/gv.vim](https://github.com/junegunn/gv.vim) - A git commit browser
+  - [airblade/vim-gitgutter](https://github.com/airblade/vim-gitgutter) - Git diff sign
+
+- **Language Specificity**
+  - [davidhalter/jedi-vim](https://github.com/davidhalter/jedi-vim) - Python jedi plugin
+  - [fatih/vim-go](https://github.com/fatih/vim-go) - Golang
+  - [tpope/vim-rails](https://github.com/tpope/vim-rails) - Rails
+  - [mattn/emmet-vim](https://github.com/mattn/emmet-vim) - Emmet
+  - [LaTeX-Box-Team/LaTeX-Box](https://github.com/LaTeX-Box-Team/LaTeX-Box) - LaTex
+  - [sheerun/vim-polyglot](https://github.com/sheerun/vim-polyglot) - Language Support
+
 ## Requirements
 
 **Vim**
