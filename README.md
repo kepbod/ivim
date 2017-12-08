@@ -41,8 +41,6 @@ Colorscheme: [Nord](https://github.com/arcticicestudio/nord-vim)
 
  * Make using Vim more convenient and faster, and lots of useful plugins confirm a better performance of Vim.
 
- * To view the full plugin list, please refer [here](https://github.com/kepbod/ivim/blob/master/vimrc#L132).
-
 ***Plugin List***
 
 - **UI Setting**
