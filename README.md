@@ -212,4 +212,4 @@ Welcome to contribute to ivim, see [issue #31](https://github.com/kepbod/ivim/is
 
 ## License
 
-Copyright (C) 2012-2017 Xiao-Ou Zhang. See the [LICENSE](https://github.com/kepbod/ivim/blob/master/LICENSE.txt) file for license rights and limitations (MIT).
+Copyright (C) 2012-2018 Xiao-Ou Zhang. See the [LICENSE](https://github.com/kepbod/ivim/blob/master/LICENSE.txt) file for license rights and limitations (MIT).

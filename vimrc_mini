@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2015-09-24
-"   Last Modified: 2017-10-27
+"   Last Modified: 2018-02-16
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -143,6 +143,7 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim' " Language server protocol
 Plug 'prabirshrestha/asyncomplete-tags.vim' " Tag completions
 Plug 'yami-beta/asyncomplete-omni.vim' " Omni completion
 Plug 'prabirshrestha/asyncomplete-buffer.vim' " Buffer completion
+Plug 'prabirshrestha/asyncomplete-file.vim' " File completion
 Plug 'prabirshrestha/asyncomplete-neosnippet.vim' " Neosnippet autocompletion
 Plug 'Shougo/neosnippet.vim' " Snippet engine
 Plug 'Shougo/neosnippet-snippets' " Snippets
@@ -150,7 +151,6 @@ Plug 'wellle/tmux-complete.vim' " Completion for tmux panes
 Plug 'w0rp/ale' " Lint engine
 Plug 'tpope/vim-fugitive' " Git wrapper
 Plug 'airblade/vim-gitgutter' " Git diff sign
-Plug 'tweekmonster/braceless.vim', { 'for': 'python' } " Setting for Python
 Plug 'mattn/emmet-vim', { 'for': ['html', 'css'] } " Emmet
 Plug 'sheerun/vim-polyglot' " Language Support
 
@@ -231,13 +231,14 @@ syntax on " Enable syntax
 set background=dark " Set background
 set t_Co=256 " Use 256 colors
 
-" Load a colorscheme
-colorscheme nord
-
 " Enable italic
+let g:nord_italic=1
 let g:nord_italic_comments=1
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
+
+" Load a colorscheme
+colorscheme nord
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -416,6 +417,13 @@ call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options
     \ 'blacklist': ['go'],
     \ 'completor': function('asyncomplete#sources#buffer#completor'),
     \ }))
+" File
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+    \ 'name': 'file',
+    \ 'whitelist': ['*'],
+    \ 'priority': 10,
+    \ 'completor': function('asyncomplete#sources#file#completor')
+    \ }))
 " Python
 if executable('pyls')
     au User lsp_setup call lsp#register_server({
@@ -497,9 +505,6 @@ nmap <silent> [w <Plug>(ale_previous)
 nmap <silent> ]w <Plug>(ale_next)
 highlight ALEErrorSign guibg=NONE guifg=red
 highlight ALEWarningSign guibg=NONE guifg=yellow
-
-" -> Braceless
-autocmd FileType python BracelessEnable +indent
 
 " -> Emmet
 let g:user_emmet_leader_key='<C-Z>'
