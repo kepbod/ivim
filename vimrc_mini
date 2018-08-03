@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2015-09-24
-"   Last Modified: 2018-02-16
+"   Last Modified: 2018-08-03
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -236,6 +236,11 @@ let g:nord_italic=1
 let g:nord_italic_comments=1
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
+
+" Set mode-specific cursor shapes
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
 
 " Load a colorscheme
 colorscheme nord
