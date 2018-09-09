@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2015-09-24
-"   Last Modified: 2018-08-03
+"   Last Modified: 2018-09-09
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -505,6 +505,7 @@ augroup nerd_loader
 augroup END
 
 " -> Ale
+let g:airline#extensions#ale#enabled=1
 let g:ale_sign_error='✗'
 let g:ale_sign_warning='∆'
 nmap <silent> [w <Plug>(ale_previous)
