@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2015-09-24
-"   Last Modified: 2018-09-09
+"   Last Modified: 2019-01-18
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -140,6 +140,7 @@ Plug 'prabirshrestha/asyncomplete.vim' " Async autocompletion
 Plug 'prabirshrestha/async.vim' " Normalize async job control api
 Plug 'prabirshrestha/vim-lsp' " Async language server protocol
 Plug 'prabirshrestha/asyncomplete-lsp.vim' " Language server protocol
+Plug 'ryanolsonx/vim-lsp-python' " Python language server
 Plug 'prabirshrestha/asyncomplete-tags.vim' " Tag completions
 Plug 'yami-beta/asyncomplete-omni.vim' " Omni completion
 Plug 'prabirshrestha/asyncomplete-buffer.vim' " Buffer completion
@@ -398,11 +399,15 @@ nnoremap <silent> <LocalLeader><Space> :call IsWhiteLine()<CR>
 
 " -> Asyncomplete
 let g:asyncomplete_remove_duplicates=1
+let g:asyncomplete_smart_completion=1
+let g:lsp_diagnostics_enabled=0
 inoremap <expr> <Tab> pumvisible() ? "\<C-N>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
 inoremap <expr> <CR> delimitMate#WithinEmptyPair() ?
             \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
             \ pumvisible() ? "\<C-Y>" : "\<CR>"
+
+nnoremap <silent> <LocalLeader>g :LspDefinition<CR>
 " Omni
 call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
 \ 'name': 'omni',
@@ -430,14 +435,6 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
     \ 'priority': 10,
     \ 'completor': function('asyncomplete#sources#file#completor')
     \ }))
-" Python
-if executable('pyls')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ })
-endif
 " Neosnippet
 call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
     \ 'name': 'neosnippet',

@@ -10,7 +10,7 @@
 
 **Version: 3.0**
 
-After about 5 years' development, ivim contains 2 versions to satisfy different requirements.
+After about 7 years' development, ivim contains 2 versions to satisfy different requirements.
 
 * [ivim](https://github.com/kepbod/ivim/blob/master/vimrc): highly customizable vim configuration, and it has more [colorschemes](https://github.com/kepbod/ivim/wiki/Colorscheme) and [settings](https://github.com/kepbod/ivim/wiki/Customization).
 * [ivim_mini](https://github.com/kepbod/ivim/blob/master/vimrc_mini): vim configuration with fast startup time and convenient usage, compatible with Vim 8.0+ and NeoVim.
@@ -212,4 +212,4 @@ Welcome to contribute to ivim, see [issue #31](https://github.com/kepbod/ivim/is
 
 ## License
 
-Copyright (C) 2012-2018 Xiao-Ou Zhang. See the [LICENSE](https://github.com/kepbod/ivim/blob/master/LICENSE.txt) file for license rights and limitations (MIT).
+Copyright (C) 2012-2019 Xiao-Ou Zhang. See the [LICENSE](https://github.com/kepbod/ivim/blob/master/LICENSE.txt) file for license rights and limitations (MIT).
