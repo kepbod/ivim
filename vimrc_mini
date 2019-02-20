@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2015-09-24
-"   Last Modified: 2019-01-18
+"   Last Modified: 2019-02-20
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -108,6 +108,7 @@ Plug 'arcticicestudio/nord-vim' " Colorscheme Nord
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' " Status line
 Plug 'Yggdroot/indentLine' " Indentation level
 Plug 'ryanoasis/vim-devicons' " Devicons
+Plug 'machakann/vim-highlightedyank' " highlight yanked region
 Plug 'bling/vim-bufferline' " Buffer line
 Plug 'mhinz/vim-startify' " Start page
 Plug 'Raimondi/delimitMate' " Closing of quotes
