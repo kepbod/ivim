@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2015-09-24
-"   Last Modified: 2019-02-20
+"   Last Modified: 2019-03-31
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -117,6 +117,7 @@ Plug 'haya14busa/incsearch.vim' " Incremental highlighting
 Plug 'haya14busa/vim-asterisk' " Improved asterisk
 Plug 'easymotion/vim-easymotion' " Easy motion
 Plug 'terryma/vim-multiple-cursors' " Multiple cursors
+Plug 'tommcdo/vim-exchange' " Exchange text
 Plug 'tpope/vim-surround' " Surround
 Plug 'tpope/vim-repeat' " Repeat
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  } " Fuzzy finder
@@ -271,6 +272,9 @@ set smartcase " Case sensitive when uc present
 set hlsearch " Highlight search terms
 set incsearch " Find as you type search
 set gdefault " turn on g flag
+if has('nvim')
+    set inccommand=split " live substitution
+endif
 
 " incsearch & asterisk
 let g:incsearch#magic='\m'
