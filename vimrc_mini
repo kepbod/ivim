@@ -273,7 +273,7 @@ set hlsearch " Highlight search terms
 set incsearch " Find as you type search
 set gdefault " turn on g flag
 if has('nvim')
-    set inccommand=split " live substitution
+    set inccommand=nosplit " live substitution
 endif
 
 " incsearch & asterisk
@@ -514,6 +514,9 @@ nmap <silent> [w <Plug>(ale_previous)
 nmap <silent> ]w <Plug>(ale_next)
 highlight ALEErrorSign guibg=NONE guifg=red
 highlight ALEWarningSign guibg=NONE guifg=yellow
+let g:ale_linters = {
+\   'python': ['flake8'],
+\}
 
 " -> Emmet
 let g:user_emmet_leader_key='<C-Z>'
