@@ -12,8 +12,8 @@
 
 After about 7 years' development, ivim contains 2 versions to satisfy different requirements.
 
-* [ivim](https://github.com/kepbod/ivim/blob/master/vimrc): highly customizable vim configuration, and it has more [colorschemes](https://github.com/kepbod/ivim/wiki/Colorscheme) and [settings](https://github.com/kepbod/ivim/wiki/Customization).
-* [ivim_mini](https://github.com/kepbod/ivim/blob/master/vimrc_mini): vim configuration with fast startup time and convenient usage, compatible with Vim 8.0+ and NeoVim.
+* [ivim](https://github.com/kepbod/ivim/blob/master/vimrc): highly customizable vim configuration, and it has more [colorschemes](https://github.com/kepbod/ivim/wiki/Colorscheme) and [settings](https://github.com/kepbod/ivim/wiki/Customization). (**Not maintained**)
+* [ivim_mini](https://github.com/kepbod/ivim/blob/master/vimrc_mini): vim configuration with fast startup time and convenient usage, compatible with Vim 8.0+ and NeoVim. (**Recommended**)
 
 If you love ivim, welcome to [buy me a cup of coffee :coffee:](https://www.paypal.me/kepbod). Thx!!!
 
