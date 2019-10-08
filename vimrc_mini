@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2015-09-24
-"   Last Modified: 2019-03-31
+"   Last Modified: 2019-10-08
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -410,7 +410,7 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-N>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
 inoremap <expr> <CR> delimitMate#WithinEmptyPair() ?
             \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
-            \ pumvisible() ? "\<C-Y>" : "\<CR>"
+            \ pumvisible() ? asyncomplete#close_popup() : "\<CR>"
 
 nnoremap <silent> <LocalLeader>g :LspDefinition<CR>
 " Omni
