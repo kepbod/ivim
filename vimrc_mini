@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2015-09-24
-"   Last Modified: 2019-10-08
+"   Last Modified: 2019-12-06
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -151,6 +151,7 @@ Plug 'prabirshrestha/asyncomplete-neosnippet.vim' " Neosnippet autocompletion
 Plug 'Shougo/neosnippet.vim' " Snippet engine
 Plug 'Shougo/neosnippet-snippets' " Snippets
 Plug 'wellle/tmux-complete.vim' " Completion for tmux panes
+Plug 'Shougo/echodoc.vim' " Function signatures
 Plug 'w0rp/ale' " Lint engine
 Plug 'tpope/vim-fugitive' " Git wrapper
 Plug 'airblade/vim-gitgutter' " Git diff sign
@@ -408,10 +409,7 @@ let g:asyncomplete_smart_completion=1
 let g:lsp_diagnostics_enabled=0
 inoremap <expr> <Tab> pumvisible() ? "\<C-N>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-P>" : "\<S-Tab>"
-inoremap <expr> <CR> delimitMate#WithinEmptyPair() ?
-            \ "\<C-R>=delimitMate#ExpandReturn()\<CR>" :
-            \ pumvisible() ? asyncomplete#close_popup() : "\<CR>"
-
+inoremap <expr> <CR> pumvisible() ? asyncomplete#close_popup() . "\<CR>" : "\<CR>"
 nnoremap <silent> <LocalLeader>g :LspDefinition<CR>
 " Omni
 call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
