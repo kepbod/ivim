@@ -9,7 +9,7 @@
 "   Main Contributor: Xiao-Ou Zhang (kepbod) <kepbod@gmail.com>
 "   Version: 3.0
 "   Created: 2015-09-24
-"   Last Modified: 2019-12-06
+"   Last Modified: 2021-08-11
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -102,6 +102,7 @@ else
     call plug#begin('~/.vim/plugged')
 endif
 
+let g:plug_url_format='https://hub.fastgit.org/%s.git'
 
 " Install plugins
 Plug 'arcticicestudio/nord-vim' " Colorscheme Nord
@@ -141,13 +142,14 @@ Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' } " NERD tree git
 Plug 'prabirshrestha/asyncomplete.vim' " Async autocompletion
 Plug 'prabirshrestha/async.vim' " Normalize async job control api
 Plug 'prabirshrestha/vim-lsp' " Async language server protocol
+Plug 'mattn/vim-lsp-settings' " Auto configurations for language servers
 Plug 'prabirshrestha/asyncomplete-lsp.vim' " Language server protocol
-Plug 'ryanolsonx/vim-lsp-python' " Python language server
 Plug 'prabirshrestha/asyncomplete-tags.vim' " Tag completions
 Plug 'yami-beta/asyncomplete-omni.vim' " Omni completion
 Plug 'prabirshrestha/asyncomplete-buffer.vim' " Buffer completion
 Plug 'prabirshrestha/asyncomplete-file.vim' " File completion
 Plug 'prabirshrestha/asyncomplete-neosnippet.vim' " Neosnippet autocompletion
+Plug 'andreypopp/asyncomplete-ale.vim' " Ale autocompletion
 Plug 'Shougo/neosnippet.vim' " Snippet engine
 Plug 'Shougo/neosnippet-snippets' " Snippets
 Plug 'wellle/tmux-complete.vim' " Completion for tmux panes
@@ -459,6 +461,11 @@ let g:tmuxcomplete#asyncomplete_source_options = {
     \     'scrollback':      0
     \     }
     \ }
+" Ale
+au User asyncomplete_setup call asyncomplete#ale#register_source({
+    \ 'name': 'reason',
+    \ 'linter': 'flow',
+    \ })
 
 " -> Easy Align
 xmap ga <Plug>(EasyAlign)
