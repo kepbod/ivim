@@ -102,8 +102,6 @@ else
     call plug#begin('~/.vim/plugged')
 endif
 
-let g:plug_url_format='https://hub.fastgit.org/%s.git'
-
 " Install plugins
 Plug 'arcticicestudio/nord-vim' " Colorscheme Nord
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' " Status line
