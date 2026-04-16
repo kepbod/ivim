@@ -163,10 +163,33 @@ bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh) -u
 bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh -O -) -u
 ```
 
+* modern Neovim config (single-file [nvim/init.lua](nvim/init.lua), Neovim 0.10+)
+
+```bash
+bash <(curl -L https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh) -N
+# or
+bash <(wget --no-check-certificate https://raw.githubusercontent.com/kepbod/ivim/master/setup.sh -O -) -N
+```
+
 ## Updating
 
 ```bash
 bash $HOME/.ivim/setup.sh -n
+```
+
+Optional script flags:
+
+- `-d` or `--dry-run`: print the actions without changing files.
+- `-y` or `--yes`: non-interactive mode, auto-confirm prompts.
+
+Examples:
+
+```bash
+# Preview modern Neovim installation without changing your machine
+bash setup.sh --dry-run -N
+
+# Install modern Neovim config non-interactively
+bash setup.sh --yes -N
 ```
 
 ## Configuration
