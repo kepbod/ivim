@@ -214,10 +214,10 @@ opt.rtp:prepend(lazypath)
 
 local plugins = {
 	{
-		"gbprod/nord.nvim",
+		"AlexvZyl/nordic.nvim",
 		priority = 1000,
 		config = function()
-			vim.cmd.colorscheme("nord")
+			vim.cmd.colorscheme("nordic")
 		end,
 	},
 	{
@@ -229,7 +229,7 @@ local plugins = {
 		event = "VeryLazy",
 		opts = {
 			options = {
-				theme = "nord",
+				theme = "nordic",
 				globalstatus = true,
 				component_separators = "",
 				section_separators = "",
@@ -445,7 +445,7 @@ local plugins = {
 			"windwp/nvim-ts-autotag",
 		},
 		config = function()
-			require("nvim-treesitter.configs").setup({
+			local ts_opts = {
 				ensure_installed = {
 					"bash",
 					"c",
@@ -468,7 +468,9 @@ local plugins = {
 				highlight = { enable = true },
 				indent = { enable = true },
 				autotag = { enable = true },
-			})
+			}
+
+			require("nvim-treesitter").setup(ts_opts)
 		end,
 	},
 	{
@@ -490,7 +492,6 @@ local plugins = {
 			"hrsh7th/cmp-nvim-lsp",
 		},
 		config = function()
-			local lspconfig = require("lspconfig")
 			local mason = require("mason")
 			local mason_lspconfig = require("mason-lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -542,20 +543,22 @@ local plugins = {
 			mason.setup()
 			mason_lspconfig.setup({
 				ensure_installed = vim.tbl_keys(servers),
+				automatic_enable = false,
 			})
-			mason_lspconfig.setup_handlers({
-				function(server_name)
-					local server = servers[server_name] or {}
-					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-					server.on_attach = on_attach
-					lspconfig[server_name].setup(server)
-				end,
-			})
+
+			for server_name, server in pairs(servers) do
+				local merged = vim.tbl_deep_extend("force", {}, server, {
+					capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {}),
+					on_attach = on_attach,
+				})
+				vim.lsp.config(server_name, merged)
+				vim.lsp.enable(server_name)
+			end
 		end,
 	},
 	{
 		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
+		lazy = false,
 		dependencies = {
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
@@ -571,12 +574,16 @@ local plugins = {
 			require("luasnip.loaders.from_vscode").lazy_load()
 
 			cmp.setup({
+				completion = {
+					autocomplete = { "TextChanged", "InsertEnter" },
+				},
 				snippet = {
 					expand = function(args)
 						luasnip.lsp_expand(args.body)
 					end,
 				},
 				mapping = cmp.mapping.preset.insert({
+					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-j>"] = cmp.mapping.select_next_item(),
 					["<C-k>"] = cmp.mapping.select_prev_item(),
 					["<CR>"] = cmp.mapping.confirm({ select = false }),
@@ -602,8 +609,8 @@ local plugins = {
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
-					{ name = "path" },
-					{ name = "buffer" },
+					{ name = "path", keyword_length = 1 },
+					{ name = "buffer", keyword_length = 1 },
 				}),
 			})
 		end,
@@ -643,11 +650,12 @@ local plugins = {
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			local lint = require("lint")
+			local has_ruff = vim.fn.executable("ruff") == 1
 
 			lint.linters_by_ft = {
 				javascript = { "eslint_d" },
 				markdown = { "markdownlint" },
-				python = { "ruff" },
+				python = has_ruff and { "ruff" } or {},
 				sh = { "shellcheck" },
 				typescript = { "eslint_d" },
 			}
@@ -670,7 +678,7 @@ require("lazy").setup({
 		version = false,
 	},
 	install = {
-		colorscheme = { "nord" },
+		colorscheme = { "nordic" },
 	},
 	checker = {
 		enabled = true,
@@ -693,4 +701,18 @@ require("lazy").setup({
 			},
 		},
 	},
+})
+
+api.nvim_create_autocmd("VimEnter", {
+	group = augroup,
+	callback = function()
+		if vim.fn.argc() ~= 1 then
+			return
+		end
+
+		local arg = vim.fn.argv(0)
+		if vim.fn.isdirectory(arg) == 1 then
+			vim.cmd("Neotree reveal dir=" .. vim.fn.fnameescape(arg) .. " filesystem left")
+		end
+	end,
 })
