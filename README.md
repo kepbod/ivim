@@ -51,6 +51,8 @@ Legacy screenshots are kept for reference:
 - Neovim 0.10+
 - Git
 - `curl` or `wget`
+- Node.js + npm (for `pyright` and other npm-based Mason packages)
+- Recommended external tools: `shellcheck`, `ruff`, `markdownlint`, `eslint_d`
 
 ### For legacy tracks (`-i`, `-m`, `-u`)
 
@@ -122,6 +124,28 @@ bash $HOME/.ivim/setup.sh -n
 - Modern Neovim config lives in [nvim/init.lua](nvim/init.lua).
 - Legacy mini config is [vimrc_mini](vimrc_mini).
 - Legacy full config is [vimrc](vimrc).
+- The modern Neovim track enables LSP by default for Lua (`lua_ls`), Python (`pyright`), and Markdown (`marksman`) through `mason.nvim`.
+- Leader key is `Space`.
+- Default LSP keys in the modern track include `gd`/`gr`/`gi`/`gD`, `K`, `<leader>ls`, `<leader>rn`, `<leader>ca`, and `<leader>cf`.
+- Default diagnostics keys include `[d`/`]d`, `<leader>le`, `<leader>ld`, `<leader>lj`, and `<leader>lk`.
+
+### Keymap Quick Reference (Modern Neovim)
+
+- `Space` then wait: open which-key hints
+- `Space ?`: open full keymap hints
+- `Space ff`: find files
+- `Space fg`: live grep
+- `Space fb`: buffers
+- `Space fr`: recent files
+- `Space f`: toggle file tree
+- `Space t`: symbols outline
+- `Space wh/wj/wk/wl`: move between windows
+- `Space wv` / `Space ws`: split vertical / horizontal
+- `Space wq`: close current window
+- `Space le` / `Space ld`: line diagnostics / diagnostics list
+- `Space rn`: rename symbol
+- `Space ca`: code action
+- `Space cf`: format buffer
 
 For historical customization docs, see the wiki:
 

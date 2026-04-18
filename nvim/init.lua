@@ -1,4 +1,4 @@
-vim.g.mapleader = ","
+vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 local opt = vim.opt
@@ -15,9 +15,11 @@ local directories = {
 	data .. "/sessions",
 }
 
-for _, directory in ipairs(directories) do
-	fn.mkdir(directory, "p")
-end
+vim.schedule(function()
+	for _, directory in ipairs(directories) do
+		fn.mkdir(directory, "p")
+	end
+end)
 
 opt.termguicolors = true
 opt.background = "dark"
@@ -27,6 +29,7 @@ opt.autoread = true
 opt.autowrite = true
 opt.confirm = true
 opt.updatetime = 200
+opt.timeout = true
 opt.timeoutlen = 400
 opt.ttimeoutlen = 10
 opt.history = 1000
@@ -130,8 +133,25 @@ map("x", ">", ">gv")
 map("n", "J", "mzJ`z")
 map("n", "<leader>q", [[:%s/\s\+$//e<CR>:nohlsearch<CR>]], { desc = "Trim trailing spaces" })
 map("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { desc = "Undo tree" })
+map("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
+map("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+map("n", "<leader>le", vim.diagnostic.open_float, { desc = "Line diagnostics" })
+map("n", "<leader>ld", vim.diagnostic.setloclist, { desc = "Diagnostics list" })
+map("n", "<leader>lj", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+map("n", "<leader>lk", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
+map("n", "<leader>?", "<cmd>WhichKey<CR>", { desc = "Keymaps" })
 
-map("n", "<Space>", function()
+map("n", "<leader>wh", "<C-w>h", { desc = "Go to left window" })
+map("n", "<leader>wj", "<C-w>j", { desc = "Go to lower window" })
+map("n", "<leader>wk", "<C-w>k", { desc = "Go to upper window" })
+map("n", "<leader>wl", "<C-w>l", { desc = "Go to right window" })
+map("n", "<leader>wv", "<C-w>v", { desc = "Split vertical" })
+map("n", "<leader>ws", "<C-w>s", { desc = "Split horizontal" })
+map("n", "<leader>wq", "<C-w>q", { desc = "Close window" })
+map("n", "<leader>pp", "<cmd>Lazy profile<CR>", { desc = "Lazy profile" })
+map("n", "<leader>ps", "<cmd>Lazy<CR>", { desc = "Lazy status" })
+
+map("n", "z<Space>", function()
 	if fn.foldlevel(".") > 0 then
 		vim.cmd.normal({ "za", bang = true })
 	else
@@ -210,11 +230,37 @@ if not vim.uv.fs_stat(lazypath) then
 	end
 end
 
+vim.schedule(function()
+	vim.diagnostic.config({
+		severity_sort = true,
+		underline = true,
+		update_in_insert = false,
+		virtual_text = {
+			spacing = 2,
+			source = "if_many",
+			prefix = "●",
+		},
+		float = {
+			border = "rounded",
+			source = "if_many",
+		},
+		signs = {
+			text = {
+				[vim.diagnostic.severity.ERROR] = "E",
+				[vim.diagnostic.severity.WARN] = "W",
+				[vim.diagnostic.severity.INFO] = "I",
+				[vim.diagnostic.severity.HINT] = "H",
+			},
+		},
+	})
+end)
+
 opt.rtp:prepend(lazypath)
 
 local plugins = {
 	{
 		"AlexvZyl/nordic.nvim",
+		lazy = false,
 		priority = 1000,
 		config = function()
 			vim.cmd.colorscheme("nordic")
@@ -286,6 +332,18 @@ local plugins = {
 				topdelete = { text = "^" },
 				changedelete = { text = "~" },
 			},
+			on_attach = function(bufnr)
+				local gs = package.loaded.gitsigns
+				local gs_map = function(mode, lhs, rhs, desc)
+					vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true, desc = desc })
+				end
+
+				gs_map("n", "<leader>gp", gs.preview_hunk, "Preview hunk")
+				gs_map("n", "<leader>gs", gs.stage_hunk, "Stage hunk")
+				gs_map("n", "<leader>gr", gs.reset_hunk, "Reset hunk")
+				gs_map("n", "<leader>gS", gs.stage_buffer, "Stage buffer")
+				gs_map("n", "<leader>gu", gs.undo_stage_hunk, "Undo stage hunk")
+			end,
 		},
 	},
 	{
@@ -336,6 +394,17 @@ local plugins = {
 		event = "VeryLazy",
 		opts = {
 			preset = "modern",
+			spec = {
+				{ "<leader>c", group = "Code" },
+				{ "<leader>f", group = "Find" },
+				{ "<leader>g", group = "Git" },
+				{ "<leader>l", group = "LSP / Diagnostics" },
+				{ "<leader>p", group = "Performance" },
+				{ "<leader>t", group = "Tools" },
+				{ "<leader>u", group = "Undo" },
+				{ "<leader>w", group = "Windows" },
+				{ "<leader>x", group = "Config" },
+			},
 		},
 	},
 	{
@@ -451,7 +520,6 @@ local plugins = {
 					"c",
 					"cpp",
 					"css",
-					"go",
 					"html",
 					"javascript",
 					"json",
@@ -497,21 +565,21 @@ local plugins = {
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 			local servers = {
-				bashls = {},
-				clangd = {},
-				cssls = {},
-				emmet_language_server = {},
-				gopls = {},
-				html = {},
-				jsonls = {},
 				lua_ls = {
 					settings = {
 						Lua = {
+							completion = {
+								callSnippet = "Replace",
+							},
 							diagnostics = {
 								globals = { "vim" },
 							},
 							workspace = {
 								checkThirdParty = false,
+								library = {
+									vim.env.VIMRUNTIME,
+									fn.stdpath("config"),
+								},
 							},
 							telemetry = {
 								enable = false,
@@ -519,9 +587,21 @@ local plugins = {
 						},
 					},
 				},
-				marksman = {},
-				pyright = {},
-				ts_ls = {},
+				marksman = {
+					filetypes = { "markdown", "markdown.mdx" },
+				},
+				pyright = {
+					settings = {
+						python = {
+							analysis = {
+								autoSearchPaths = true,
+								diagnosticMode = "workspace",
+								typeCheckingMode = "basic",
+								useLibraryCodeForTypes = true,
+							},
+						},
+					},
+				},
 			}
 
 			local on_attach = function(_, bufnr)
@@ -532,7 +612,9 @@ local plugins = {
 				lsp_map("n", "gd", vim.lsp.buf.definition, "Goto definition")
 				lsp_map("n", "gr", vim.lsp.buf.references, "Goto references")
 				lsp_map("n", "gi", vim.lsp.buf.implementation, "Goto implementation")
+				lsp_map("n", "gD", vim.lsp.buf.declaration, "Goto declaration")
 				lsp_map("n", "K", vim.lsp.buf.hover, "Hover")
+				lsp_map("n", "<leader>ls", vim.lsp.buf.workspace_symbol, "Workspace symbols")
 				lsp_map("n", "<leader>rn", vim.lsp.buf.rename, "Rename symbol")
 				lsp_map({ "n", "x" }, "<leader>ca", vim.lsp.buf.code_action, "Code action")
 				lsp_map("n", "<leader>cf", function()
@@ -558,7 +640,7 @@ local plugins = {
 	},
 	{
 		"hrsh7th/nvim-cmp",
-		lazy = false,
+		event = "InsertEnter",
 		dependencies = {
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
@@ -575,7 +657,18 @@ local plugins = {
 
 			cmp.setup({
 				completion = {
-					autocomplete = { "TextChanged", "InsertEnter" },
+					autocomplete = { "TextChanged" },
+					keyword_length = 2,
+				},
+				performance = {
+					debounce = 75,
+					throttle = 30,
+					fetching_timeout = 300,
+				},
+				preselect = cmp.PreselectMode.None,
+				window = {
+					completion = cmp.config.window.bordered(),
+					documentation = cmp.config.window.bordered(),
 				},
 				snippet = {
 					expand = function(args)
@@ -609,9 +702,12 @@ local plugins = {
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
-					{ name = "path", keyword_length = 1 },
-					{ name = "buffer", keyword_length = 1 },
+					{ name = "path", keyword_length = 2 },
+					{ name = "buffer", keyword_length = 3 },
 				}),
+				experimental = {
+					ghost_text = true,
+				},
 			})
 		end,
 	},
@@ -650,20 +746,33 @@ local plugins = {
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			local lint = require("lint")
+			local has_eslint_d = vim.fn.executable("eslint_d") == 1
+			local has_markdownlint = vim.fn.executable("markdownlint") == 1
 			local has_ruff = vim.fn.executable("ruff") == 1
+			local has_shellcheck = vim.fn.executable("shellcheck") == 1
 
 			lint.linters_by_ft = {
-				javascript = { "eslint_d" },
-				markdown = { "markdownlint" },
+				javascript = has_eslint_d and { "eslint_d" } or {},
+				markdown = has_markdownlint and { "markdownlint" } or {},
 				python = has_ruff and { "ruff" } or {},
-				sh = { "shellcheck" },
-				typescript = { "eslint_d" },
+				sh = has_shellcheck and { "shellcheck" } or {},
+				typescript = has_eslint_d and { "eslint_d" } or {},
 			}
 
 			local lint_group = api.nvim_create_augroup("ivim_lint", { clear = true })
-			api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+			api.nvim_create_autocmd({ "BufReadPost", "BufWritePost" }, {
 				group = lint_group,
-				callback = function()
+				callback = function(args)
+					if vim.bo[args.buf].buftype ~= "" then
+						return
+					end
+
+					local filetype = vim.bo[args.buf].filetype
+					local linters = lint.linters_by_ft[filetype]
+					if not linters or vim.tbl_isempty(linters) then
+						return
+					end
+
 					lint.try_lint()
 				end,
 			})
@@ -674,14 +783,14 @@ local plugins = {
 require("lazy").setup({
 	spec = plugins,
 	defaults = {
-		lazy = false,
+		lazy = true,
 		version = false,
 	},
 	install = {
 		colorscheme = { "nordic" },
 	},
 	checker = {
-		enabled = true,
+		enabled = false,
 		notify = false,
 	},
 	change_detection = {
