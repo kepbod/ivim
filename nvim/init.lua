@@ -132,7 +132,6 @@ map("x", "<", "<gv")
 map("x", ">", ">gv")
 map("n", "J", "mzJ`z")
 map("n", "<leader>q", [[:%s/\s\+$//e<CR>:nohlsearch<CR>]], { desc = "Trim trailing spaces" })
-map("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { desc = "Undo tree" })
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
 map("n", "<leader>le", vim.diagnostic.open_float, { desc = "Line diagnostics" })
@@ -315,7 +314,7 @@ local plugins = {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
-		event = { "BufReadPre", "BufNewFile" },
+		event = "VeryLazy",
 		opts = {
 			indent = { char = "|" },
 			scope = { enabled = false },
@@ -323,7 +322,7 @@ local plugins = {
 	},
 	{
 		"lewis6991/gitsigns.nvim",
-		event = { "BufReadPre", "BufNewFile" },
+		event = { "BufReadPost", "BufNewFile" },
 		opts = {
 			signs = {
 				add = { text = "+" },
@@ -365,27 +364,6 @@ local plugins = {
 		},
 	},
 	{
-		"mbbill/undotree",
-		cmd = "UndotreeToggle",
-	},
-	{
-		"mg979/vim-visual-multi",
-		branch = "master",
-		keys = {
-			{ "<C-n>", mode = { "n", "x" } },
-		},
-	},
-	{
-		"echasnovski/mini.align",
-		version = false,
-		keys = {
-			{ "ga", mode = { "n", "x" }, desc = "Align text" },
-		},
-		config = function()
-			require("mini.align").setup()
-		end,
-	},
-	{
 		"tpope/vim-repeat",
 		event = "VeryLazy",
 	},
@@ -401,7 +379,6 @@ local plugins = {
 				{ "<leader>l", group = "LSP / Diagnostics" },
 				{ "<leader>p", group = "Performance" },
 				{ "<leader>t", group = "Tools" },
-				{ "<leader>u", group = "Undo" },
 				{ "<leader>w", group = "Windows" },
 				{ "<leader>x", group = "Config" },
 			},
@@ -448,7 +425,7 @@ local plugins = {
 			enable_git_status = true,
 			filesystem = {
 				follow_current_file = { enabled = true },
-				use_libuv_file_watcher = true,
+				use_libuv_file_watcher = false,
 				filtered_items = {
 					hide_dotfiles = false,
 					hide_gitignored = false,
@@ -472,26 +449,48 @@ local plugins = {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons",
-		},
-		opts = {
-			defaults = {
-				sorting_strategy = "ascending",
-				layout_strategy = "horizontal",
-				prompt_prefix = " > ",
-				selection_caret = " > ",
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = "make",
+				cond = function()
+					return fn.executable("make") == 1
+				end,
 			},
-			pickers = {
-				find_files = {
-					hidden = true,
+		},
+		opts = function()
+			return {
+				defaults = {
+					sorting_strategy = "ascending",
+					layout_strategy = "horizontal",
+					prompt_prefix = " > ",
+					selection_caret = " > ",
 				},
-			},
-		},
+				pickers = {
+					find_files = {
+						hidden = true,
+					},
+				},
+				extensions = {
+					fzf = {
+						fuzzy = true,
+						override_generic_sorter = true,
+						override_file_sorter = true,
+						case_mode = "smart_case",
+					},
+				},
+			}
+		end,
+		config = function(_, opts)
+			local telescope = require("telescope")
+			telescope.setup(opts)
+			pcall(telescope.load_extension, "fzf")
+		end,
 	},
 	{
 		"stevearc/aerial.nvim",
 		cmd = "AerialToggle",
 		keys = {
-			{ "<leader>t", "<cmd>AerialToggle!<CR>", desc = "Symbols outline" },
+			{ "<leader>to", "<cmd>AerialToggle!<CR>", desc = "Symbols outline" },
 		},
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
@@ -552,8 +551,31 @@ local plugins = {
 		},
 	},
 	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		event = "VeryLazy",
+		dependencies = { "mason-org/mason.nvim" },
+		opts = {
+			auto_update = false,
+			run_on_start = false,
+			start_delay = 3000,
+			ensure_installed = {
+				"stylua",
+				"shfmt",
+				"shellcheck",
+				"ruff",
+				"black",
+				"prettierd",
+				"prettier",
+				"markdownlint",
+				"lua-language-server",
+				"marksman",
+				"pyright",
+			},
+		},
+	},
+	{
 		"neovim/nvim-lspconfig",
-		event = { "BufReadPre", "BufNewFile" },
+		event = { "BufReadPost", "BufNewFile" },
 		dependencies = {
 			"mason-org/mason.nvim",
 			"mason-org/mason-lspconfig.nvim",
@@ -657,7 +679,7 @@ local plugins = {
 
 			cmp.setup({
 				completion = {
-					autocomplete = { "TextChanged" },
+					autocomplete = { "TextChangedI" },
 					keyword_length = 2,
 				},
 				performance = {
@@ -713,6 +735,7 @@ local plugins = {
 	},
 	{
 		"stevearc/conform.nvim",
+		event = "BufWritePre",
 		cmd = "ConformInfo",
 		opts = {
 			notify_on_error = false,
@@ -743,7 +766,7 @@ local plugins = {
 	},
 	{
 		"mfussenegger/nvim-lint",
-		event = { "BufReadPre", "BufNewFile" },
+		event = "VeryLazy",
 		config = function()
 			local lint = require("lint")
 			local has_eslint_d = vim.fn.executable("eslint_d") == 1
@@ -760,7 +783,7 @@ local plugins = {
 			}
 
 			local lint_group = api.nvim_create_augroup("ivim_lint", { clear = true })
-			api.nvim_create_autocmd({ "BufReadPost", "BufWritePost" }, {
+			api.nvim_create_autocmd("BufWritePost", {
 				group = lint_group,
 				callback = function(args)
 					if vim.bo[args.buf].buftype ~= "" then
