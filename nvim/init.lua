@@ -26,7 +26,6 @@ opt.background = "dark"
 opt.mouse = ""
 opt.hidden = true
 opt.autoread = true
-opt.autowrite = true
 opt.confirm = true
 opt.updatetime = 200
 opt.timeout = true
@@ -104,8 +103,6 @@ opt.guicursor = {
 	"r-cr-o:hor20",
 }
 
-vim.g.loaded_matchparen = 1
-
 local map = vim.keymap.set
 
 map("n", "<leader>x", function()
@@ -150,6 +147,22 @@ map("n", "<leader>wq", "<C-w>q", { desc = "Close window" })
 map("n", "<leader>pp", "<cmd>Lazy profile<CR>", { desc = "Lazy profile" })
 map("n", "<leader>ps", "<cmd>Lazy<CR>", { desc = "Lazy status" })
 
+local session_file = data .. "/sessions/session.vim"
+
+map("n", "<leader>ss", function()
+	local ok = pcall(vim.cmd, "mksession! " .. fn.fnameescape(session_file))
+	vim.notify(ok and "session saved" or "saving session failed", ok and vim.log.levels.INFO or vim.log.levels.ERROR)
+end, { desc = "Save session" })
+
+map("n", "<leader>sl", function()
+	if fn.filereadable(session_file) == 0 then
+		vim.notify("no saved session yet", vim.log.levels.WARN)
+		return
+	end
+
+	pcall(vim.cmd, "source " .. fn.fnameescape(session_file))
+end, { desc = "Load session" })
+
 map("n", "z<Space>", function()
 	if fn.foldlevel(".") > 0 then
 		vim.cmd.normal({ "za", bang = true })
@@ -169,7 +182,7 @@ api.nvim_create_autocmd("TextYankPost", {
 
 api.nvim_create_autocmd("BufWinLeave", {
 	group = augroup,
-	pattern = "*.*",
+	pattern = "*",
 	callback = function(args)
 		if vim.bo[args.buf].buftype == "" then
 			pcall(vim.cmd, "silent! mkview!")
@@ -179,7 +192,7 @@ api.nvim_create_autocmd("BufWinLeave", {
 
 api.nvim_create_autocmd("BufWinEnter", {
 	group = augroup,
-	pattern = "*.*",
+	pattern = "*",
 	callback = function(args)
 		if vim.bo[args.buf].buftype == "" then
 			pcall(vim.cmd, "silent! loadview")
@@ -209,6 +222,14 @@ api.nvim_create_autocmd("BufReadPost", {
 		if mark[1] > 0 and mark[1] <= line_count then
 			pcall(api.nvim_win_set_cursor, 0, mark)
 		end
+	end,
+})
+
+api.nvim_create_autocmd("BufNewFile", {
+	group = augroup,
+	desc = "Warn when a path is edited that does not exist yet",
+	callback = function(args)
+		vim.notify("creating new file: " .. args.file, vim.log.levels.WARN)
 	end,
 })
 
@@ -278,7 +299,7 @@ local plugins = {
 				globalstatus = true,
 				component_separators = "",
 				section_separators = "",
-				disabled_filetypes = { "neo-tree", "dashboard" },
+				disabled_filetypes = { "neo-tree" },
 			},
 			sections = {
 				lualine_a = { "mode" },
@@ -378,6 +399,7 @@ local plugins = {
 				{ "<leader>g", group = "Git" },
 				{ "<leader>l", group = "LSP / Diagnostics" },
 				{ "<leader>p", group = "Performance" },
+				{ "<leader>s", group = "Sessions" },
 				{ "<leader>t", group = "Tools" },
 				{ "<leader>w", group = "Windows" },
 				{ "<leader>x", group = "Config" },
@@ -424,6 +446,10 @@ local plugins = {
 			popup_border_style = "rounded",
 			enable_git_status = true,
 			filesystem = {
+				-- directories are opened by the VimEnter autocmd below, and the
+				-- hijack fires late enough to steal the window from the file that
+				-- was just opened there, leaving a blank buffer behind
+				hijack_netrw_behavior = "disabled",
 				follow_current_file = { enabled = true },
 				use_libuv_file_watcher = false,
 				filtered_items = {
@@ -510,7 +536,7 @@ local plugins = {
 		build = ":TSUpdate",
 		event = { "BufReadPost", "BufNewFile" },
 		dependencies = {
-			"windwp/nvim-ts-autotag",
+			{ "windwp/nvim-ts-autotag", opts = {} },
 		},
 		config = function()
 			local ts_opts = {
@@ -534,7 +560,6 @@ local plugins = {
 				},
 				highlight = { enable = true },
 				indent = { enable = true },
-				autotag = { enable = true },
 			}
 
 			require("nvim-treesitter").setup(ts_opts)
@@ -567,9 +592,6 @@ local plugins = {
 				"prettierd",
 				"prettier",
 				"markdownlint",
-				"lua-language-server",
-				"marksman",
-				"pyright",
 			},
 		},
 	},
@@ -751,7 +773,6 @@ local plugins = {
 			end,
 			formatters_by_ft = {
 				css = { "prettierd", "prettier" },
-				go = { "gofumpt", "goimports" },
 				html = { "prettierd", "prettier" },
 				javascript = { "prettierd", "prettier" },
 				json = { "prettierd", "prettier" },
@@ -803,8 +824,12 @@ local plugins = {
 	},
 }
 
+-- keep the lockfile next to this file so plugin versions are tracked in git
+local config_dir = fn.fnamemodify(fn.resolve(fn.stdpath("config") .. "/init.lua"), ":h")
+
 require("lazy").setup({
 	spec = plugins,
+	lockfile = config_dir .. "/lazy-lock.json",
 	defaults = {
 		lazy = true,
 		version = false,
@@ -835,6 +860,30 @@ require("lazy").setup({
 	},
 })
 
+local function reveal_dir(dir)
+	-- Neo-tree resolves `dir=` against the cwd, so absolutize before changing it
+	local abs = vim.fs.normalize(vim.fn.fnamemodify(dir, ":p"))
+	local placeholder_buf = vim.api.nvim_get_current_buf()
+	local placeholder_win = vim.api.nvim_get_current_win()
+	vim.api.nvim_set_current_dir(abs)
+	vim.cmd("Neotree reveal dir=" .. vim.fn.fnameescape(abs) .. " filesystem left")
+
+	-- nvim's buffer for the directory argument cannot be edited or written, and
+	-- neo-tree keeps treating it as the "current file"; swap it for a blank,
+	-- unlisted buffer so the window is ready for a file without cluttering the
+	-- bufferline
+	if
+		vim.api.nvim_buf_is_valid(placeholder_buf)
+		and vim.bo[placeholder_buf].buftype == ""
+		and vim.fn.isdirectory(vim.api.nvim_buf_get_name(placeholder_buf)) == 1
+	then
+		if vim.api.nvim_win_is_valid(placeholder_win) then
+			vim.api.nvim_win_set_buf(placeholder_win, vim.api.nvim_create_buf(false, false))
+		end
+		pcall(vim.api.nvim_buf_delete, placeholder_buf, { force = true })
+	end
+end
+
 api.nvim_create_autocmd("VimEnter", {
 	group = augroup,
 	callback = function()
@@ -844,7 +893,7 @@ api.nvim_create_autocmd("VimEnter", {
 
 		local arg = vim.fn.argv(0)
 		if vim.fn.isdirectory(arg) == 1 then
-			vim.cmd("Neotree reveal dir=" .. vim.fn.fnameescape(arg) .. " filesystem left")
+			reveal_dir(arg)
 		end
 	end,
 })

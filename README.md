@@ -125,6 +125,8 @@ bash $HOME/.ivim/setup.sh -n
 - Legacy mini config is [vimrc_mini](vimrc_mini).
 - Legacy full config is [vimrc](vimrc).
 - The modern Neovim track enables LSP by default for Lua (`lua_ls`), Python (`pyright`), and Markdown (`marksman`) through `mason.nvim`.
+- Opening a directory (`nvim .` or `nvim <dir>`) makes it the working directory and reveals it in the file tree.
+- Plugin versions are pinned in [nvim/lazy-lock.json](nvim/lazy-lock.json), which is tracked in this repo.
 - Leader key is `Space`.
 - Default LSP keys in the modern track include `gd`/`gr`/`gi`/`gD`, `K`, `<leader>ls`, `<leader>rn`, `<leader>ca`, and `<leader>cf`.
 - Default diagnostics keys include `[d`/`]d`, `<leader>le`, `<leader>ld`, `<leader>lj`, and `<leader>lk`.
@@ -146,6 +148,7 @@ bash $HOME/.ivim/setup.sh -n
 - `Space rn`: rename symbol
 - `Space ca`: code action
 - `Space cf`: format buffer
+- `Space ss` / `Space sl`: save / load session
 
 For historical customization docs, see the wiki:
 
